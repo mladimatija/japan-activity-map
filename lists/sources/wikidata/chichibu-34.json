@@ -1,0 +1,281 @@
+{
+ "source": "Wikidata",
+ "circuit": "Q11596109",
+ "circuitLabel": "秩父札所三十四観音霊場",
+ "fetchedAt": "2026-11-25",
+ "query": "Items with part of (P361) = Q11596109 and a series ordinal (P1545) qualifier; coordinates from P625.",
+ "items": [
+  {
+   "qid": "Q112978247",
+   "order": 1,
+   "ja": "四萬部寺",
+   "en": "Shimabu-ji Temple",
+   "lon": 139.120694444,
+   "lat": 36.027277777
+  },
+  {
+   "qid": "Q111292741",
+   "order": 2,
+   "ja": "真福寺",
+   "en": "Shinpuku-ji Temple",
+   "lon": 139.131222222,
+   "lat": 36.0145
+  },
+  {
+   "qid": "Q114159549",
+   "order": 3,
+   "ja": "常泉寺",
+   "en": "Josen-ji Temple",
+   "lon": 139.106888888,
+   "lat": 36.012277777
+  },
+  {
+   "qid": "Q119928898",
+   "order": 4,
+   "ja": "金昌寺",
+   "en": "Kinshō-ji Temple",
+   "lon": 139.1135,
+   "lat": 36.006556
+  },
+  {
+   "qid": "Q110832813",
+   "order": 5,
+   "ja": "語歌堂",
+   "en": "Goka-dō Temple",
+   "lon": 139.106,
+   "lat": 35.998805555
+  },
+  {
+   "qid": "Q113864207",
+   "order": 6,
+   "ja": "卜雲寺",
+   "en": "Boku'un-ji Temple",
+   "lon": 139.11425,
+   "lat": 35.983694444
+  },
+  {
+   "qid": "Q113989934",
+   "order": 7,
+   "ja": "法長寺",
+   "en": "Hocho-ji Temple",
+   "lon": 139.107888888,
+   "lat": 35.983833333
+  },
+  {
+   "qid": "Q112274737",
+   "order": 8,
+   "ja": "西善寺",
+   "en": "Saizen-ji Temple",
+   "lon": 139.108694444,
+   "lat": 35.973055555
+  },
+  {
+   "qid": "Q134571586",
+   "order": 9,
+   "ja": "明智寺",
+   "en": "Akechi-dera Temple",
+   "lon": 139.102805555,
+   "lat": 35.984083333
+  },
+  {
+   "qid": "Q41692641",
+   "order": 10,
+   "ja": "大慈寺",
+   "en": "Daijiji Temple",
+   "lon": 139.09575,
+   "lat": 35.997167
+  },
+  {
+   "qid": "Q134578152",
+   "order": 11,
+   "ja": "常楽寺",
+   "en": "Joraku-ji Temple",
+   "lon": 139.090777777,
+   "lat": 35.993361111
+  },
+  {
+   "qid": "Q134578156",
+   "order": 12,
+   "ja": "野坂寺",
+   "en": "Nosaka-dera Temple",
+   "lon": 139.085555555,
+   "lat": 35.983416666
+  },
+  {
+   "qid": "Q116981469",
+   "order": 13,
+   "ja": "慈眼寺",
+   "en": "Jigen-ji Temple",
+   "lon": 139.082722222,
+   "lat": 35.992388888
+  },
+  {
+   "qid": "Q134578098",
+   "order": 14,
+   "ja": "今宮坊",
+   "en": "Imamiya-bō Temple",
+   "lon": 139.078638888,
+   "lat": 35.995083333
+  },
+  {
+   "qid": "Q134578097",
+   "order": 15,
+   "ja": "少林寺",
+   "en": "Shorin-ji Temple",
+   "lon": 139.08525,
+   "lat": 35.995222222
+  },
+  {
+   "qid": "Q134578093",
+   "order": 16,
+   "ja": "西光寺",
+   "en": "Saiko-ji Temple",
+   "lon": 139.077472222,
+   "lat": 36.000583333
+  },
+  {
+   "qid": "Q113668565",
+   "order": 17,
+   "ja": "定林寺",
+   "en": "Jorin-ji Temple",
+   "lon": 139.08425,
+   "lat": 36.00575
+  },
+  {
+   "qid": "Q134578074",
+   "order": 18,
+   "ja": "神門寺",
+   "en": "Gōdo-ji Temple",
+   "lon": 139.092444444,
+   "lat": 36.009972222
+  },
+  {
+   "qid": "Q134578067",
+   "order": 19,
+   "ja": "龍石寺",
+   "en": "Ryuseki-ji Temple",
+   "lon": 139.089166666,
+   "lat": 36.0175
+  },
+  {
+   "qid": "Q134572572",
+   "order": 20,
+   "ja": "岩之上堂",
+   "en": "Iwanoue-dō Temple",
+   "lon": 139.084472222,
+   "lat": 36.017444444
+  },
+  {
+   "qid": "Q134572522",
+   "order": 21,
+   "ja": "観音寺",
+   "en": "Kannon-ji Temple",
+   "lon": 139.077944444,
+   "lat": 36.015972222
+  },
+  {
+   "qid": "Q134572490",
+   "order": 22,
+   "ja": "童子堂",
+   "en": "Doji-dō Temple",
+   "lon": 139.073166666,
+   "lat": 36.00725
+  },
+  {
+   "qid": "Q112274734",
+   "order": 23,
+   "ja": "音楽寺",
+   "en": "Ongaku-ji Temple",
+   "lon": 139.062083333,
+   "lat": 36.006027777
+  },
+  {
+   "qid": "Q134572470",
+   "order": 24,
+   "ja": "法泉寺",
+   "en": "Hosen-ji Temple",
+   "lon": 139.061027777,
+   "lat": 35.9875
+  },
+  {
+   "qid": "Q134572451",
+   "order": 25,
+   "ja": "久昌寺",
+   "en": "Kyūshō-ji Temple",
+   "lon": 139.048777777,
+   "lat": 35.971527777
+  },
+  {
+   "qid": "Q113682333",
+   "order": 26,
+   "ja": "円融寺",
+   "en": "En'yu-ji Temple",
+   "lon": 139.073,
+   "lat": 35.972472222
+  },
+  {
+   "qid": "Q134578155",
+   "order": 27,
+   "ja": "大渕寺",
+   "en": "Daien-ji Temple",
+   "lon": 139.066833333,
+   "lat": 35.967694444
+  },
+  {
+   "qid": "Q134572378",
+   "order": 28,
+   "ja": "橋立堂",
+   "en": "Hashidate-dō Temple",
+   "lon": 139.061027777,
+   "lat": 35.9605
+  },
+  {
+   "qid": "Q134571602",
+   "order": 29,
+   "ja": "長泉院",
+   "en": "Chosen-in Temple",
+   "lon": 139.049888888,
+   "lat": 35.960333333
+  },
+  {
+   "qid": "Q113551441",
+   "order": 30,
+   "ja": "法雲寺",
+   "en": "Houn-ji Temple",
+   "lon": 138.991416666,
+   "lat": 35.951277777
+  },
+  {
+   "qid": "Q134571525",
+   "order": 31,
+   "ja": "観音院",
+   "en": "Kannon-in Temple",
+   "lon": 138.953861111,
+   "lat": 36.041055555
+  },
+  {
+   "qid": "Q118189196",
+   "order": 32,
+   "ja": "法性寺",
+   "en": "Hosho-ji Temple",
+   "lon": 139.012944444,
+   "lat": 35.996666666
+  },
+  {
+   "qid": "Q116924157",
+   "order": 33,
+   "ja": "菊水寺",
+   "en": "Kikusui-ji Temple",
+   "lon": 139.042277777,
+   "lat": 36.030888888
+  },
+  {
+   "qid": "Q110620211",
+   "order": 34,
+   "ja": "水潜寺",
+   "en": "Suisen-ji Temple",
+   "lon": 139.053777777,
+   "lat": 36.081833333
+  }
+ ]
+}

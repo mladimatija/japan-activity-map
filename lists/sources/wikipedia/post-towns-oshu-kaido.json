@@ -1,0 +1,911 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "奥州街道",
+ "revid": 109430339,
+ "fetchedAt": "2026-11-26",
+ "note": "The rendered article's numbered post-town rows (\"1. 品川宿\"), in page order, each with its linked article's Wikidata item, English label and positions. The build keeps those on its 五街道 line.",
+ "items": [
+  {
+   "seq": 0,
+   "number": 1,
+   "ja": "千住宿",
+   "article": "千住宿",
+   "qid": "Q11405343",
+   "wikidata": {
+    "lat": 35.75069,
+    "lon": 139.802313
+   },
+   "wikipedia": {
+    "lat": 35.75069,
+    "lon": 139.802313
+   }
+  },
+  {
+   "seq": 1,
+   "number": 2,
+   "ja": "草加宿",
+   "article": "草加宿",
+   "qid": "Q11618087",
+   "en": "Sōka-shuku",
+   "wikidata": {
+    "lat": 35.835336,
+    "lon": 139.80647
+   },
+   "wikipedia": {
+    "lat": 35.835336,
+    "lon": 139.80647
+   }
+  },
+  {
+   "seq": 2,
+   "number": 3,
+   "ja": "越ヶ谷宿",
+   "article": "越ヶ谷宿",
+   "qid": "Q11636368",
+   "en": "Koshigaya-juku",
+   "wikidata": {
+    "lat": 35.896628,
+    "lon": 139.783114
+   },
+   "wikipedia": {
+    "lat": 35.896628,
+    "lon": 139.783114
+   }
+  },
+  {
+   "seq": 3,
+   "number": 4,
+   "ja": "粕壁宿",
+   "article": "粕壁宿",
+   "qid": "Q24898728",
+   "wikidata": {
+    "lat": 35.98301,
+    "lon": 139.75349
+   }
+  },
+  {
+   "seq": 4,
+   "number": 5,
+   "ja": "杉戸宿",
+   "article": "杉戸宿",
+   "qid": "Q11522010",
+   "wikidata": {
+    "lat": 36.0268691,
+    "lon": 139.7332959
+   }
+  },
+  {
+   "seq": 5,
+   "number": 6,
+   "ja": "幸手宿",
+   "article": "幸手宿",
+   "qid": "Q11483989",
+   "en": "Satte-juku",
+   "wikidata": {
+    "lat": 36.14244,
+    "lon": 139.702595
+   },
+   "wikipedia": {
+    "lat": 36.14244,
+    "lon": 139.702595
+   }
+  },
+  {
+   "seq": 6,
+   "number": 7,
+   "ja": "栗橋宿",
+   "article": "栗橋宿",
+   "qid": "Q11536017",
+   "en": "Kurihashi-juku",
+   "wikidata": {
+    "lat": 36.142073,
+    "lon": 139.702477
+   },
+   "wikipedia": {
+    "lat": 36.142073,
+    "lon": 139.702477
+   }
+  },
+  {
+   "seq": 7,
+   "number": 8,
+   "ja": "中田宿",
+   "article": "中田宿",
+   "qid": "Q11366688",
+   "wikidata": {
+    "lat": 36.142389,
+    "lon": 139.7025
+   }
+  },
+  {
+   "seq": 8,
+   "number": 9,
+   "ja": "古河宿",
+   "article": "古河宿",
+   "qid": "Q11411372",
+   "en": "Koga-juku",
+   "wikidata": {
+    "lat": 36.1965,
+    "lon": 139.7061
+   },
+   "wikipedia": {
+    "lat": 36.1965,
+    "lon": 139.7061
+   }
+  },
+  {
+   "seq": 9,
+   "number": 10,
+   "ja": "野木宿",
+   "article": "野木宿",
+   "qid": "Q11645489",
+   "wikidata": {
+    "lat": 36.23325,
+    "lon": 139.74072
+   }
+  },
+  {
+   "seq": 10,
+   "number": 11,
+   "ja": "間々田宿",
+   "article": "間々田宿",
+   "qid": "Q11655356",
+   "wikidata": {
+    "lat": 36.26817,
+    "lon": 139.76806
+   }
+  },
+  {
+   "seq": 11,
+   "number": 12,
+   "ja": "小山宿",
+   "article": "小山宿",
+   "qid": "Q11459843",
+   "en": "Oyamashuku",
+   "wikidata": {
+    "lat": 36.31461,
+    "lon": 139.80017
+   },
+   "wikipedia": {
+    "lat": 36.31461,
+    "lon": 139.80017
+   }
+  },
+  {
+   "seq": 12,
+   "number": 13,
+   "ja": "新田宿",
+   "article": "新田宿",
+   "qid": "Q11503713",
+   "wikidata": {
+    "lat": 36.35918,
+    "lon": 139.83081
+   }
+  },
+  {
+   "seq": 13,
+   "number": 14,
+   "ja": "小金井宿",
+   "article": "小金井宿",
+   "qid": "Q11464317",
+   "wikidata": {
+    "lat": 36.387178,
+    "lon": 139.841969
+   },
+   "wikipedia": {
+    "lat": 36.387178,
+    "lon": 139.841969
+   }
+  },
+  {
+   "seq": 14,
+   "number": 15,
+   "ja": "石橋宿",
+   "article": "石橋宿",
+   "qid": "Q11586647",
+   "wikidata": {
+    "lat": 36.4365,
+    "lon": 139.8636
+   }
+  },
+  {
+   "seq": 15,
+   "number": 16,
+   "ja": "雀宮宿",
+   "article": "雀宮宿",
+   "qid": "Q11659118",
+   "wikidata": {
+    "lat": 36.4938,
+    "lon": 139.8729
+   }
+  },
+  {
+   "seq": 16,
+   "number": 17,
+   "ja": "宇都宮宿",
+   "article": "宇都宮宿",
+   "qid": "Q11449738",
+   "wikidata": {
+    "lat": 36.5618,
+    "lon": 139.8772
+   }
+  },
+  {
+   "seq": 17,
+   "number": 18,
+   "ja": "白沢宿",
+   "article": "白沢宿",
+   "qid": "Q11579932",
+   "wikidata": {
+    "lat": 36.6325,
+    "lon": 139.9436
+   }
+  },
+  {
+   "seq": 18,
+   "number": 19,
+   "ja": "氏家宿",
+   "article": "氏家宿",
+   "qid": "Q11547797",
+   "wikidata": {
+    "lat": 36.67991,
+    "lon": 139.96771
+   }
+  },
+  {
+   "seq": 19,
+   "number": 20,
+   "ja": "喜連川宿",
+   "article": "喜連川宿",
+   "qid": "Q11419249",
+   "wikidata": {
+    "lat": 36.71879,
+    "lon": 140.02595
+   }
+  },
+  {
+   "seq": 20,
+   "number": 21,
+   "ja": "佐久山宿",
+   "article": "佐久山宿",
+   "qid": "Q11382604",
+   "wikidata": {
+    "lat": 36.80804,
+    "lon": 140.00974
+   }
+  },
+  {
+   "seq": 21,
+   "number": 22,
+   "ja": "大田原宿",
+   "article": "大田原宿"
+  },
+  {
+   "seq": 22,
+   "number": 23,
+   "ja": "鍋掛宿",
+   "article": "鍋掛宿"
+  },
+  {
+   "seq": 23,
+   "number": 24,
+   "ja": "越堀宿",
+   "article": "越堀宿"
+  },
+  {
+   "seq": 24,
+   "number": 25,
+   "ja": "芦野宿",
+   "article": "芦野宿",
+   "qid": "Q142081881"
+  },
+  {
+   "seq": 25,
+   "number": 26,
+   "ja": "白坂宿",
+   "article": "白坂宿"
+  },
+  {
+   "seq": 26,
+   "number": 27,
+   "ja": "白河宿",
+   "article": "白河宿"
+  },
+  {
+   "seq": 27,
+   "number": 28,
+   "ja": "根田宿",
+   "article": "根田宿"
+  },
+  {
+   "seq": 28,
+   "number": 29,
+   "ja": "小田川宿",
+   "article": "小田川宿"
+  },
+  {
+   "seq": 29,
+   "number": 30,
+   "ja": "太田川宿",
+   "article": "太田川宿"
+  },
+  {
+   "seq": 30,
+   "number": 31,
+   "ja": "踏瀬宿",
+   "article": "踏瀬宿"
+  },
+  {
+   "seq": 31,
+   "number": 32,
+   "ja": "大和久宿",
+   "article": "大和久宿"
+  },
+  {
+   "seq": 32,
+   "number": 33,
+   "ja": "中畑新田宿",
+   "article": "中畑新田宿"
+  },
+  {
+   "seq": 33,
+   "number": 34,
+   "ja": "矢吹宿",
+   "article": "矢吹宿"
+  },
+  {
+   "seq": 34,
+   "number": 35,
+   "ja": "久来石宿",
+   "article": "久来石宿"
+  },
+  {
+   "seq": 35,
+   "number": 36,
+   "ja": "笠石宿",
+   "article": "笠石宿"
+  },
+  {
+   "seq": 36,
+   "number": 37,
+   "ja": "須賀川宿",
+   "article": "須賀川宿"
+  },
+  {
+   "seq": 37,
+   "number": 38,
+   "ja": "笹川宿",
+   "article": "笹川宿"
+  },
+  {
+   "seq": 38,
+   "number": 39,
+   "ja": "日出山宿",
+   "article": "日出山宿"
+  },
+  {
+   "seq": 39,
+   "number": 40,
+   "ja": "小原田宿",
+   "article": "小原田宿"
+  },
+  {
+   "seq": 40,
+   "number": 41,
+   "ja": "郡山宿",
+   "article": "郡山宿",
+   "qid": "Q56816709",
+   "en": "Kōriyama-shuku",
+   "wikidata": {
+    "lat": 37.397613888,
+    "lon": 140.384380555
+   },
+   "wikipedia": {
+    "lat": 37.397614,
+    "lon": 140.384381
+   }
+  },
+  {
+   "seq": 41,
+   "number": 42,
+   "ja": "福原宿",
+   "article": "福原宿"
+  },
+  {
+   "seq": 42,
+   "number": 43,
+   "ja": "日和田宿",
+   "article": "日和田宿",
+   "qid": "Q28687944",
+   "wikidata": {
+    "lat": 37.44658333,
+    "lon": 140.39097222
+   },
+   "wikipedia": {
+    "lat": 37.45,
+    "lon": 140.39
+   }
+  },
+  {
+   "seq": 43,
+   "number": 44,
+   "ja": "高倉宿",
+   "article": "高倉宿"
+  },
+  {
+   "seq": 44,
+   "number": 45,
+   "ja": "本宮宿",
+   "article": "本宮宿"
+  },
+  {
+   "seq": 45,
+   "number": 46,
+   "ja": "南杉田宿",
+   "article": "南杉田宿"
+  },
+  {
+   "seq": 46,
+   "number": 47,
+   "ja": "北杉田宿",
+   "article": "北杉田宿"
+  },
+  {
+   "seq": 47,
+   "number": 48,
+   "ja": "二本松宿",
+   "article": "二本松宿"
+  },
+  {
+   "seq": 48,
+   "number": 49,
+   "ja": "二本柳宿",
+   "article": "二本柳宿"
+  },
+  {
+   "seq": 49,
+   "number": 50,
+   "ja": "八丁目宿",
+   "article": "八丁目宿"
+  },
+  {
+   "seq": 50,
+   "number": 51,
+   "ja": "若宮宿",
+   "article": "若宮宿"
+  },
+  {
+   "seq": 51,
+   "number": 52,
+   "ja": "清水町宿",
+   "article": "清水町宿",
+   "qid": "Q48755952",
+   "wikidata": {
+    "lat": 37.70254,
+    "lon": 140.464137
+   },
+   "wikipedia": {
+    "lat": 37.70254,
+    "lon": 140.464137
+   }
+  },
+  {
+   "seq": 52,
+   "number": 53,
+   "ja": "福島宿",
+   "article": "福島宿 (奥州街道)",
+   "qid": "Q17230055",
+   "wikidata": {
+    "lat": 37.75341,
+    "lon": 140.46787
+   },
+   "wikipedia": {
+    "lat": 37.75341,
+    "lon": 140.46787
+   }
+  },
+  {
+   "seq": 53,
+   "number": 54,
+   "ja": "瀬上宿",
+   "article": "瀬上宿",
+   "qid": "Q48755953",
+   "wikidata": {
+    "lat": 37.80586,
+    "lon": 140.492191
+   },
+   "wikipedia": {
+    "lat": 37.80586,
+    "lon": 140.492191
+   }
+  },
+  {
+   "seq": 54,
+   "number": 55,
+   "ja": "桑折宿",
+   "article": "桑折宿"
+  },
+  {
+   "seq": 55,
+   "number": 56,
+   "ja": "藤田宿",
+   "article": "藤田宿"
+  },
+  {
+   "seq": 56,
+   "number": 57,
+   "ja": "貝田宿",
+   "article": "貝田宿"
+  },
+  {
+   "seq": 57,
+   "number": 58,
+   "ja": "越河宿",
+   "article": "越河村",
+   "qid": "Q11636578",
+   "en": "Kosugō",
+   "wikidata": {
+    "lat": 37.915083333,
+    "lon": 140.591972222
+   },
+   "wikipedia": {
+    "lat": 37.91508,
+    "lon": 140.59197
+   }
+  },
+  {
+   "seq": 58,
+   "number": 59,
+   "ja": "斎川宿",
+   "article": "斎川宿"
+  },
+  {
+   "seq": 59,
+   "number": 60,
+   "ja": "白石宿",
+   "article": "白石宿"
+  },
+  {
+   "seq": 60,
+   "number": 61,
+   "ja": "宮宿",
+   "article": "宮宿 (奥州街道)"
+  },
+  {
+   "seq": 61,
+   "number": 62,
+   "ja": "金ヶ瀬宿",
+   "article": "金ヶ瀬宿"
+  },
+  {
+   "seq": 62,
+   "number": 63,
+   "ja": "大河原宿",
+   "article": "大河原宿"
+  },
+  {
+   "seq": 63,
+   "number": 64,
+   "ja": "船迫宿",
+   "article": "船迫宿"
+  },
+  {
+   "seq": 64,
+   "number": 65,
+   "ja": "槻木宿",
+   "article": "槻木宿"
+  },
+  {
+   "seq": 65,
+   "number": 66,
+   "ja": "岩沼宿",
+   "article": "岩沼宿"
+  },
+  {
+   "seq": 66,
+   "number": 67,
+   "ja": "増田宿",
+   "article": "増田宿"
+  },
+  {
+   "seq": 67,
+   "number": 68,
+   "ja": "中田宿",
+   "article": "中田宿 (奥州街道)"
+  },
+  {
+   "seq": 68,
+   "number": 69,
+   "ja": "長町宿",
+   "article": "長町宿"
+  },
+  {
+   "seq": 69,
+   "number": 70,
+   "ja": "仙台宿",
+   "article": "仙台宿"
+  },
+  {
+   "seq": 70,
+   "number": 71,
+   "ja": "七北田宿",
+   "article": "七北田宿"
+  },
+  {
+   "seq": 71,
+   "number": 72,
+   "ja": "富谷宿",
+   "article": "富谷宿",
+   "qid": "Q21653779",
+   "wikidata": {
+    "lat": 38.39899722,
+    "lon": 140.88723056
+   },
+   "wikipedia": {
+    "lat": 38.4,
+    "lon": 140.89
+   }
+  },
+  {
+   "seq": 72,
+   "number": 73,
+   "ja": "吉岡宿",
+   "article": "吉岡宿",
+   "qid": "Q21655121",
+   "wikidata": {
+    "lat": 38.44535556,
+    "lon": 140.88537778
+   },
+   "wikipedia": {
+    "lat": 38.45,
+    "lon": 140.89
+   }
+  },
+  {
+   "seq": 73,
+   "number": 74,
+   "ja": "三本木宿",
+   "article": "三本木宿"
+  },
+  {
+   "seq": 74,
+   "number": 75,
+   "ja": "古川宿",
+   "article": "古川宿"
+  },
+  {
+   "seq": 75,
+   "number": 76,
+   "ja": "荒谷宿",
+   "article": "荒谷宿"
+  },
+  {
+   "seq": 76,
+   "number": 77,
+   "ja": "高清水宿",
+   "article": "高清水宿"
+  },
+  {
+   "seq": 77,
+   "number": 78,
+   "ja": "築館宿",
+   "article": "築館宿"
+  },
+  {
+   "seq": 78,
+   "number": 79,
+   "ja": "宮野宿",
+   "article": "宮野宿"
+  },
+  {
+   "seq": 79,
+   "number": 80,
+   "ja": "沢辺宿",
+   "article": "沢辺宿"
+  },
+  {
+   "seq": 80,
+   "number": 81,
+   "ja": "金成宿",
+   "article": "金成宿"
+  },
+  {
+   "seq": 81,
+   "number": 82,
+   "ja": "有壁宿",
+   "article": "有壁宿"
+  },
+  {
+   "seq": 82,
+   "number": 83,
+   "ja": "一関宿",
+   "article": "一関宿"
+  },
+  {
+   "seq": 83,
+   "number": 84,
+   "ja": "山目宿",
+   "article": "山目宿"
+  },
+  {
+   "seq": 84,
+   "number": 85,
+   "ja": "前沢宿",
+   "article": "前沢宿"
+  },
+  {
+   "seq": 85,
+   "number": 86,
+   "ja": "水沢宿",
+   "article": "水沢宿"
+  },
+  {
+   "seq": 86,
+   "number": 87,
+   "ja": "金ヶ崎宿",
+   "article": "金ヶ崎宿"
+  },
+  {
+   "seq": 87,
+   "number": 88,
+   "ja": "鬼柳宿",
+   "article": "鬼柳宿"
+  },
+  {
+   "seq": 88,
+   "number": 89,
+   "ja": "黒沢尻宿",
+   "article": "黒沢尻宿"
+  },
+  {
+   "seq": 89,
+   "number": 90,
+   "ja": "花巻宿",
+   "article": "花巻宿"
+  },
+  {
+   "seq": 90,
+   "number": 91,
+   "ja": "石鳥谷宿",
+   "article": "石鳥谷宿"
+  },
+  {
+   "seq": 91,
+   "number": 92,
+   "ja": "日詰郡山宿",
+   "article": "日詰郡山宿"
+  },
+  {
+   "seq": 92,
+   "number": 93,
+   "ja": "盛岡宿",
+   "article": "盛岡宿"
+  },
+  {
+   "seq": 93,
+   "number": 94,
+   "ja": "渋民宿",
+   "article": "渋民宿"
+  },
+  {
+   "seq": 94,
+   "number": 95,
+   "ja": "沼宮内宿",
+   "article": "沼宮内宿"
+  },
+  {
+   "seq": 95,
+   "number": 96,
+   "ja": "一戸宿",
+   "article": "一戸宿"
+  },
+  {
+   "seq": 96,
+   "number": 97,
+   "ja": "福岡宿",
+   "article": "福岡宿"
+  },
+  {
+   "seq": 97,
+   "number": 98,
+   "ja": "金田一宿",
+   "article": "金田一宿"
+  },
+  {
+   "seq": 98,
+   "number": 99,
+   "ja": "三戸宿",
+   "article": "三戸宿"
+  },
+  {
+   "seq": 99,
+   "number": 100,
+   "ja": "浅水宿",
+   "article": "浅水宿"
+  },
+  {
+   "seq": 100,
+   "number": 101,
+   "ja": "五戸宿",
+   "article": "五戸宿"
+  },
+  {
+   "seq": 101,
+   "number": 102,
+   "ja": "伝法寺宿",
+   "article": "伝法寺宿"
+  },
+  {
+   "seq": 102,
+   "number": 103,
+   "ja": "藤島宿",
+   "article": "藤島宿"
+  },
+  {
+   "seq": 103,
+   "number": 104,
+   "ja": "七戸宿",
+   "article": "七戸宿"
+  },
+  {
+   "seq": 104,
+   "number": 105,
+   "ja": "野辺地宿",
+   "article": "野辺地宿"
+  },
+  {
+   "seq": 105,
+   "number": 106,
+   "ja": "馬門宿",
+   "article": "馬門宿"
+  },
+  {
+   "seq": 106,
+   "number": 107,
+   "ja": "小湊宿",
+   "article": "小湊宿"
+  },
+  {
+   "seq": 107,
+   "number": 108,
+   "ja": "野内宿",
+   "article": "野内宿"
+  },
+  {
+   "seq": 108,
+   "number": 109,
+   "ja": "青森宿",
+   "article": "青森宿"
+  },
+  {
+   "seq": 109,
+   "number": 110,
+   "ja": "油川宿",
+   "article": "油川宿"
+  },
+  {
+   "seq": 110,
+   "number": 111,
+   "ja": "平舘宿",
+   "article": "平舘宿"
+  },
+  {
+   "seq": 111,
+   "number": 112,
+   "ja": "三厩宿",
+   "article": "三厩宿"
+  },
+  {
+   "seq": 112,
+   "number": 113,
+   "ja": "松前宿",
+   "article": "松前宿"
+  },
+  {
+   "seq": 113,
+   "number": 114,
+   "ja": "箱館宿",
+   "article": "箱館宿"
+  }
+ ]
+}

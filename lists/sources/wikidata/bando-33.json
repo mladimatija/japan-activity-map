@@ -1,0 +1,273 @@
+{
+ "source": "Wikidata",
+ "circuit": "Q806417",
+ "circuitLabel": "坂東三十三観音",
+ "fetchedAt": "2026-11-25",
+ "query": "Items with part of (P361) = Q806417 and a series ordinal (P1545) qualifier; coordinates from P625.",
+ "items": [
+  {
+   "qid": "Q3503094",
+   "order": 1,
+   "ja": "杉本寺",
+   "en": "Sugimoto-dera Temple",
+   "lon": 139.56744722,
+   "lat": 35.32261667
+  },
+  {
+   "qid": "Q11475241",
+   "order": 2,
+   "ja": "岩殿寺",
+   "en": "Ganden-ji Temple",
+   "lon": 139.572306,
+   "lat": 35.305056
+  },
+  {
+   "qid": "Q615465",
+   "order": 3,
+   "ja": "安養院",
+   "en": "An'yō-in Temple",
+   "lon": 139.555447,
+   "lat": 35.314064
+  },
+  {
+   "qid": "Q1034293",
+   "order": 4,
+   "ja": "長谷寺",
+   "en": "Hase-dera Temple",
+   "lon": 139.532995,
+   "lat": 35.312464
+  },
+  {
+   "qid": "Q3482769",
+   "order": 5,
+   "ja": "勝福寺 (小田原市)",
+   "en": "Shōfuku-ji Temple",
+   "lon": 139.164333333,
+   "lat": 35.280027777
+  },
+  {
+   "qid": "Q3128068",
+   "order": 6,
+   "ja": "長谷寺",
+   "en": "Iiyama Kannon Temple",
+   "lon": 139.311533333,
+   "lat": 35.491733333
+  },
+  {
+   "qid": "Q11388421",
+   "order": 7,
+   "ja": "光明寺",
+   "en": "Kōmyō-ji Temple (Hiratsuka)",
+   "lon": 139.28877778,
+   "lat": 35.35875
+  },
+  {
+   "qid": "Q11513031",
+   "order": 8,
+   "ja": "星谷寺",
+   "en": "Shōkoku-ji Temple",
+   "lon": 139.398889,
+   "lat": 35.484889
+  },
+  {
+   "qid": "Q11494982",
+   "order": 9,
+   "ja": "慈光寺",
+   "en": "Jikō-ji Temple",
+   "lon": 139.232111,
+   "lat": 36.0115
+  },
+  {
+   "qid": "Q11545560",
+   "order": 10,
+   "ja": "正法寺",
+   "en": "Shōbō-ji Temple",
+   "lon": 139.362361,
+   "lat": 36.001389
+  },
+  {
+   "qid": "Q11450874",
+   "order": 11,
+   "ja": "安楽寺",
+   "en": "Anraku-ji Temple",
+   "lon": 139.438278,
+   "lat": 36.054333
+  },
+  {
+   "qid": "Q11494996",
+   "order": 12,
+   "ja": "慈恩寺",
+   "en": "Jion-ji Temple (Saitama)",
+   "lon": 139.710777777,
+   "lat": 35.979444444
+  },
+  {
+   "qid": "Q615183",
+   "order": 13,
+   "ja": "浅草寺",
+   "en": "Sensō-ji Temple",
+   "lon": 139.796638888,
+   "lat": 35.714555555
+  },
+  {
+   "qid": "Q11487349",
+   "order": 14,
+   "ja": "弘明寺",
+   "en": "Gumyō-ji Temple",
+   "lon": 139.59741667,
+   "lat": 35.42416667
+  },
+  {
+   "qid": "Q11653683",
+   "order": 15,
+   "ja": "長谷寺",
+   "en": "Chōkoku-ji Temple",
+   "lon": 138.932611,
+   "lat": 36.385278
+  },
+  {
+   "qid": "Q24883792",
+   "order": 16,
+   "ja": "水澤寺",
+   "en": "Mizusawa-dera Temple",
+   "lon": 138.945278,
+   "lat": 36.479333
+  },
+  {
+   "qid": "Q11563960",
+   "order": 17,
+   "ja": "満願寺",
+   "en": "Mangan-ji Temple",
+   "lon": 139.58925,
+   "lat": 36.475528
+  },
+  {
+   "qid": "Q11366837",
+   "order": 18,
+   "ja": "中禅寺",
+   "en": "Chūzen-ji Temple",
+   "lon": 139.491666666,
+   "lat": 36.730916666
+  },
+  {
+   "qid": "Q3594059",
+   "order": 19,
+   "ja": "大谷寺",
+   "en": "Ōya-ji Temple",
+   "lon": 139.82888889,
+   "lat": 36.59444444
+  },
+  {
+   "qid": "Q3461648",
+   "order": 20,
+   "ja": "西明寺 (益子町)",
+   "en": "Saimyō-ji Temple",
+   "lon": 140.1172444,
+   "lat": 36.45284722
+  },
+  {
+   "qid": "Q11510487",
+   "order": 21,
+   "ja": "日輪寺",
+   "en": "Nichirin-ji Temple (Daigo, Ibaraki)",
+   "lon": 140.27372,
+   "lat": 36.92119
+  },
+  {
+   "qid": "Q11383389",
+   "order": 22,
+   "ja": "佐竹寺",
+   "en": "Satake-ji Temple",
+   "lon": 140.50467,
+   "lat": 36.52603
+  },
+  {
+   "qid": "Q11630500",
+   "order": 23,
+   "ja": "正福寺",
+   "en": "Shōfuku-ji Temple",
+   "lon": 140.259611,
+   "lat": 36.386306
+  },
+  {
+   "qid": "Q3915984",
+   "order": 24,
+   "ja": "楽法寺",
+   "en": "Rakuho-ji Temple",
+   "lon": 140.120833,
+   "lat": 36.330833
+  },
+  {
+   "qid": "Q11435427",
+   "order": 25,
+   "ja": "大御堂",
+   "en": "Ōmi-dō Temple",
+   "lon": 140.099417,
+   "lat": 36.212639
+  },
+  {
+   "qid": "Q11561306",
+   "order": 26,
+   "ja": "清滝寺",
+   "en": "Kiyotaki-dera Temple",
+   "lon": 140.167361,
+   "lat": 36.165194
+  },
+  {
+   "qid": "Q3054530",
+   "order": 27,
+   "ja": "円福寺",
+   "en": "Enpuku-ji Temple",
+   "lon": 140.840611111,
+   "lat": 35.731944444
+  },
+  {
+   "qid": "Q11679272",
+   "order": 28,
+   "ja": "龍正院",
+   "en": "Ryūshō-in Temple",
+   "lon": 140.341944,
+   "lat": 35.867083
+  },
+  {
+   "qid": "Q2963263",
+   "order": 29,
+   "ja": "千葉寺",
+   "en": "Chiba-dera Temple",
+   "lon": 140.13169444,
+   "lat": 35.59513889
+  },
+  {
+   "qid": "Q3201328",
+   "order": 30,
+   "ja": "高蔵寺",
+   "en": "Kōzō-ji Temple",
+   "lon": 139.994,
+   "lat": 35.3388
+  },
+  {
+   "qid": "Q3193660",
+   "order": 31,
+   "ja": "笠森寺",
+   "en": "Kasamori-ji Temple",
+   "lon": 140.199,
+   "lat": 35.3996
+  },
+  {
+   "qid": "Q3081222",
+   "order": 32,
+   "ja": "清水寺",
+   "en": "Kiyomizu-dera Temple",
+   "lon": 140.356,
+   "lat": 35.2901
+  },
+  {
+   "qid": "Q556746",
+   "order": 33,
+   "ja": "那古寺",
+   "en": "Nago-dera Temple",
+   "lon": 139.85787,
+   "lat": 35.02544
+  }
+ ]
+}

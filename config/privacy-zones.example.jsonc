@@ -1,0 +1,9 @@
+{
+  // Every published track loses the part inside any of these zones.
+  // Give each zone either "lat" and "lon", or an "address". Copy this file to privacy-zones.jsonc
+  // and add your own; the real file is git-ignored and never published.
+  "zones": [
+    // { "label": "home", "lat": 35.6895, "lon": 139.6917, "radiusM": 500 },
+    // { "label": "office", "address": "...", "radiusM": 300 }
+  ]
+}

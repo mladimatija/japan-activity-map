@@ -1,0 +1,17 @@
+{
+  "name": "@jam/core",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared types, schemas and geo logic. Runs in Node and the browser, so it never imports Node built-ins.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./domain": "./src/domain.ts",
+    "./geo": "./src/geo.ts",
+    "./output": "./src/output/schema.ts",
+    "./prefectures": "./src/prefectures.ts"
+  },
+  "dependencies": {
+    "zod": "4.6.7"
+  }
+}

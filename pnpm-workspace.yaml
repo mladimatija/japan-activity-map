@@ -1,0 +1,12 @@
+packages:
+  - packages/*
+
+# Refuse to install on any Node.js version other than the one pinned in package.json
+engineStrict: true
+# Record exact dependency versions
+saveExact: true
+# Vite+ manages the Node.js and pnpm versions; stop pnpm from managing them too
+runtimeOnFail: ignore
+pmOnFail: ignore
+minimumReleaseAgeExclude:
+  - lucide-react@1.80.0

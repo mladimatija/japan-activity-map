@@ -1,0 +1,19 @@
+{
+  "name": "@jam/cli",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The jam command: sync, build, audit and deploy. Runs on the dev machine only.",
+  "bin": {
+    "jam": "./src/main.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "@jam/core": "workspace:*",
+    "jsonc-parser": "3.3.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "sources": [
+    {
+      "id": "n03",
+      "name": "国土交通省 国土数値情報（行政区域データ）",
+      "url": "https://nlftp.mlit.go.jp/ksj/",
+      "licence": "MLIT National Land Numerical Information terms of use",
+      "attribution": "出典：国土交通省国土数値情報（行政区域データ）を加工して作成 (Source: MLIT National Land Numerical Information, processed; simplified by SmartNews Media Research Institute)",
+      "licenceJa": "国土数値情報利用約款",
+      "attributionJa": "出典：国土交通省国土数値情報（行政区域データ）を加工して作成",
+      "usedBy": [
+        "prefectures",
+        "municipalities"
+      ]
+    },
+    {
+      "id": "city-names",
+      "name": "list-of-cities-in-japan (nobuf)",
+      "url": "https://github.com/nobuf/list-of-cities-in-japan",
+      "licence": "MIT",
+      "attribution": "English names of municipalities from list-of-cities-in-japan by nobuf (MIT)",
+      "attributionJa": "市区町村の英語名：nobuf「list-of-cities-in-japan」（MIT）",
+      "usedBy": [
+        "municipalities"
+      ]
+    },
+    {
+      "id": "kongo",
+      "name": "kongo: Famous Mountains in Japan",
+      "url": "https://github.com/ryunosuke0922/kongo",
+      "licence": "MIT",
+      "attribution": "List membership, numbering and English names from kongo by ryunosuke (MIT)",
+      "attributionJa": "リストの構成・番号・英語名：ryunosuke「kongo」（MIT）",
+      "usedBy": [
+        "hyakumeizan",
+        "nihyakumeizan",
+        "sambyakumeizan",
+        "hyakukozan",
+        "hyakuteizan"
+      ]
+    },
+    {
+      "id": "gsi-mountains",
+      "name": "国土地理院「日本の主な山岳標高」 (GSI list of Japan’s main mountains)",
+      "url": "https://www.gsi.go.jp/kihonjohochousa/kihonjohochousa41139.html",
+      "licence": "GSI content terms of use (compatible with CC BY 4.0)",
+      "attribution": "出典：国土地理院「日本の主な山岳標高」を加工して作成 (Source: GSI, processed)",
+      "licenceJa": "国土地理院コンテンツ利用規約（CC BY 4.0互換）",
+      "attributionJa": "出典：国土地理院「日本の主な山岳標高」を加工して作成",
+      "usedBy": [
+        "hyakumeizan",
+        "nihyakumeizan",
+        "sambyakumeizan",
+        "prefecture-highpoints",
+        "peaks-3000m",
+        "yamanashi-hyakumeizan",
+        "hyakukozan",
+        "hyakuteizan"
+      ]
+    },
+    {
+      "id": "gsi-highpoints",
+      "name": "国土地理院「都道府県の最高地点」 (GSI table of prefectural high points)",
+      "url": "https://www.gsi.go.jp/KOKUJYOHO/MOUNTAIN/todofuken.pdf",
+      "licence": "GSI content terms of use (compatible with CC BY 4.0)",
+      "attribution": "出典：国土地理院「都道府県の最高地点」を加工して作成 (Source: GSI, processed)",
+      "licenceJa": "国土地理院コンテンツ利用規約（CC BY 4.0互換）",
+      "attributionJa": "出典：国土地理院「都道府県の最高地点」を加工して作成",
+      "usedBy": [
+        "prefecture-highpoints"
+      ]
+    },
+    {
+      "id": "wikipedia-ja",
+      "name": "Japanese Wikipedia: 山梨百名山",
+      "url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%A2%A8%E7%99%BE%E5%90%8D%E5%B1%B1",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "List of the Yamanashi 100 Mountains from Japanese Wikipedia, CC BY-SA 4.0",
+      "attributionJa": "山梨百名山のリスト：日本語版ウィキペディア（CC BY-SA 4.0）",
+      "usedBy": [
+        "yamanashi-hyakumeizan"
+      ]
+    },
+    {
+      "id": "openstreetmap",
+      "name": "OpenStreetMap",
+      "url": "https://www.openstreetmap.org/copyright",
+      "licence": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors (ODbL)",
+      "usedBy": [
+        "yamanashi-hyakumeizan",
+        "michi-100",
+        "shimanami-kaido",
+        "biwaichi",
+        "tsukuba-kasumigaura-ring-ring-road",
+        "tokapuchi-400",
+        "pacific-coast-cycling-road",
+        "toyama-bay-cycling-course",
+        "fukushima-hamadori-cycle-route",
+        "fujiichi",
+        "ishikawa-satoyama-satoumi-cycling-route",
+        "tottori-uminami-road",
+        "kanto-fureai-no-michi",
+        "shikoku-henro",
+        "kumano-kodo",
+        "michinoku-coastal-trail",
+        "kyushu-olle"
+      ]
+    },
+    {
+      "id": "wikidata",
+      "name": "Wikidata",
+      "url": "https://www.wikidata.org/",
+      "licence": "CC0 1.0",
+      "attribution": "Membership, numbering and coordinates of the temple and castle lists from Wikidata (CC0)",
+      "attributionJa": "寺院と城のリストの構成・番号・座標：Wikidata（CC0）",
+      "usedBy": [
+        "bando-33",
+        "chichibu-34",
+        "shikoku-88",
+        "saigoku-33",
+        "nihon-100-meijo",
+        "zoku-nihon-100-meijo",
+        "hana-no-hyakumeizan",
+        "kanto-hyakumeizan",
+        "kansai-hyakumeizan",
+        "taki-100",
+        "michi-100"
+      ]
+    },
+    {
+      "id": "wikipedia-ja-lists",
+      "name": "Japanese Wikipedia list articles: 四国八十八箇所, 西国三十三所, 日本100名城, 続日本100名城",
+      "url": "https://ja.wikipedia.org/",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "Membership and numbering of the temple and castle lists from Japanese Wikipedia, CC BY-SA 4.0",
+      "attributionJa": "寺院と城のリストの構成と番号：日本語版ウィキペディア（CC BY-SA 4.0）",
+      "usedBy": [
+        "shikoku-88",
+        "saigoku-33",
+        "nihon-100-meijo",
+        "zoku-nihon-100-meijo"
+      ]
+    },
+    {
+      "id": "wikipedia-ja-place-lists",
+      "name": "Japanese Wikipedia list articles: 花の百名山, 関東百名山, 関西百名山, 日本の滝百選",
+      "url": "https://ja.wikipedia.org/",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "Membership and order of the 花の百名山, 関東百名山, 関西百名山 and 日本の滝百選 lists from Japanese Wikipedia, CC BY-SA 4.0",
+      "attributionJa": "花の百名山・関東百名山・関西百名山・日本の滝百選の構成と順序：日本語版ウィキペディア（CC BY-SA 4.0）",
+      "usedBy": [
+        "hana-no-hyakumeizan",
+        "kanto-hyakumeizan",
+        "kansai-hyakumeizan",
+        "taki-100"
+      ]
+    },
+    {
+      "id": "wikipedia-ja-michi-100",
+      "name": "Japanese Wikipedia: 日本の道100選",
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E9%81%93100%E9%81%B8",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "Membership and order of 日本の道100選 from Japanese Wikipedia, CC BY-SA 4.0",
+      "attributionJa": "日本の道100選の構成と順序：日本語版ウィキペディア（CC BY-SA 4.0）",
+      "usedBy": [
+        "michi-100"
+      ]
+    },
+    {
+      "id": "gokaido-map",
+      "name": "五街道GPX・五街道KML・五街道SHP (国道愛好家 くにみち)",
+      "url": "https://github.com/japan-road-jp/Gokaodo-Map",
+      "licence": "CC BY-NC-SA 4.0",
+      "attribution": "五街道データ: 国道愛好家 くにみち「五街道GPX・五街道KML・五街道SHP」CC BY-NC-SA 4.0 (processed; derived route files are shared under the same licence)",
+      "attributionJa": "五街道データ：国道愛好家 くにみち「五街道GPX・五街道KML・五街道SHP」CC BY-NC-SA 4.0（加工して作成。派生したルートファイルも同じライセンスで共有）",
+      "usedBy": [
+        "tokaido",
+        "nakasendo",
+        "koshu-kaido",
+        "nikko-kaido",
+        "oshu-kaido"
+      ]
+    },
+    {
+      "id": "moe-tokai-gpx",
+      "name": "環境省「東海自然歩道GPSデータ」 (Ministry of the Environment GPS data for the Tōkai Nature Trail)",
+      "url": "https://www.env.go.jp/nature/long-trail.html",
+      "licence": "公共データ利用規約 (第1.0版) / Public Data License 1.0 (compatible with CC BY 4.0)",
+      "attribution": "出典：環境省「東海自然歩道GPSデータ」(https://www.env.go.jp/nature/long-trail.html) を加工して作成、PDL1.0 (Source: Ministry of the Environment, processed)",
+      "licenceJa": "公共データ利用規約（第1.0版）（CC BY 4.0互換）",
+      "attributionJa": "出典：環境省「東海自然歩道GPSデータ」(https://www.env.go.jp/nature/long-trail.html) を加工して作成、PDL1.0",
+      "usedBy": [
+        "tokai-shizen-hodo"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+# Activity sheet
+
+The manual activity sheet: hikes, walks, runs and rides that aren't on Strava, and corrections
+to ones that are. It is enough on its own to drive the map.
+
+1. Copy `activity-sheet.csv` (or `activity-sheet.xlsx`) to `data/activities.csv` (or `.xlsx`),
+   which is git-ignored, and replace the example rows. Another location works too: set it in
+   `config/sheet.jsonc`, or give the file to the command.
+2. Run `pnpm jam sync sheet --dry-run` to see what would change, then `pnpm jam sync sheet`.
+
+Every row is checked before anything is written. If any row has a problem, the command lists
+them all with their row numbers and imports nothing. Running it again with the same sheet
+changes nothing; an edited row updates its activity; a deleted row is removed from the store.
+
+## Columns
+
+Headers are matched without regard to case, and spaces count as `_`. Unknown headers are an
+error, so a typo can't silently drop a column.
+
+| Column             | Required | What                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `row_id`           | Yes      | Your own stable id for the row, for example `2025-05-kumotori`. Letters, digits, `.`, `_`, `-`. It is how a re-import knows a row: change it and the row counts as removed and added.                                                                                                                                                                                                    |
+| `date`             | Yes      | `YYYY-MM-DD`, or with a time `YYYY-MM-DDTHH:MM`, optionally with an offset (`+09:00`, `Z`).                                                                                                                                                                                                                                                                                              |
+| `end_date`         | No       | Last day of a multi-day trip.                                                                                                                                                                                                                                                                                                                                                            |
+| `time_zone`        | No       | IANA name, for example `Europe/Zagreb`. Without it (and without an offset), dates are Japan time, or the zone set in `config/sheet.jsonc`.                                                                                                                                                                                                                                               |
+| `activity_type`    | Yes      | `Hike`, `Walk`, `Run`, `Trail Run` or `Ride`.                                                                                                                                                                                                                                                                                                                                            |
+| `event_tags`       | No       | Comma-separated: `race`, `training`, `commute`, `group`, `solo`, `overnight`.                                                                                                                                                                                                                                                                                                            |
+| `name`             | Yes      | Free text.                                                                                                                                                                                                                                                                                                                                                                               |
+| `place`            | No       | What the outing reached: a place id (`peak-363`), a list item id (`hyakumeizan-066`, `bando-33-001`, `shimanami-kaido`), or an exact name in Japanese or English (`雲取山`, `Kumotoriyama`). Several separated by `;`. A name that matches several places, or none, is skipped and written to `data/sheet-review.md` with the ids to choose from; the rest of the row is still imported. |
+| `status`           | No       | What happened at those places: `done` (default), `DNS` (attempted, not reached), `repeat` (a repeat visit), `want` (wishlist). A `want` row isn't an activity.                                                                                                                                                                                                                           |
+| `lat`, `lon`       | No       | Both or neither: a pin for a place in no list.                                                                                                                                                                                                                                                                                                                                           |
+| `distance_km`      | No       | Used when there is no track.                                                                                                                                                                                                                                                                                                                                                             |
+| `elevation_gain_m` | No       | Total climb.                                                                                                                                                                                                                                                                                                                                                                             |
+| `duration`         | No       | `H:MM`, `H:MM:SS`, or a number of minutes.                                                                                                                                                                                                                                                                                                                                               |
+| `gpx_path`         | No       | A GPX track for the row, relative to the sheet's folder. Its distance, start time and elapsed time are used when the sheet leaves them out.                                                                                                                                                                                                                                              |
+| `strava_id`        | No       | The row then overrides that Strava activity instead of adding a new one: its name, type, tags, places, `hide`, `show_strava_link` and notes win over Strava's. Leave `gpx_path` empty; Strava's track is used.                                                                                                                                                                           |
+| `show_strava_link` | No       | `yes` or `no`: overrides the site-wide Strava link setting for this activity.                                                                                                                                                                                                                                                                                                            |
+| `hide`             | No       | `yes` keeps the activity out of the public build.                                                                                                                                                                                                                                                                                                                                        |
+| `notes`            | No       | Free text, for example `cairn only`.                                                                                                                                                                                                                                                                                                                                                     |
+
+## The example rows
+
+The template's rows show each feature: a peak by name, by list item id and by place id; an
+overnight trip; a DNS; a pin with `lat`/`lon`; several temples, one of them ambiguous on purpose
+(`長谷寺`); a route; a GPX track (`example-track.gpx`, made up); a Strava override; a wishlist
+row; and a repeat visit.
+
+In `.xlsx` files the first sheet is read. Date cells may be real dates or text.

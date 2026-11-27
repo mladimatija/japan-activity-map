@@ -1,0 +1,8 @@
+{
+  // The manual activity sheet, CSV or .xlsx, relative to the repository root. Keep it in data/,
+  // which is git-ignored. Start from templates/activity-sheet.csv; the columns are described in
+  // templates/README.md.
+  "path": "data/activities.csv",
+  // Time zone for dates and times that carry neither an offset nor a time_zone column.
+  "timeZone": "Asia/Tokyo"
+}

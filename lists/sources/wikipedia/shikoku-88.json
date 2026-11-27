@@ -1,0 +1,1329 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "四国八十八箇所",
+ "revid": 111109331,
+ "fetchedAt": "2026-11-26",
+ "note": "Membership and numbers from the rendered article's tables (each row's number and its first linked temple or castle). wikidata: P625 of the linked article's item; wikipedia: the linked article's primary coordinates.",
+ "items": [
+  {
+   "order": 1,
+   "ja": "霊山寺",
+   "article": "霊山寺 (鳴門市)",
+   "qid": "Q1085463",
+   "en": "Ryōzen-ji Temple",
+   "wikidata": {
+    "lat": 34.159826,
+    "lon": 134.502613
+   },
+   "wikipedia": {
+    "lat": 34.15980278,
+    "lon": 134.50259167
+   }
+  },
+  {
+   "order": 2,
+   "ja": "極楽寺",
+   "article": "極楽寺 (鳴門市)",
+   "qid": "Q1088485",
+   "en": "Gokuraku-ji Temple",
+   "wikidata": {
+    "lat": 34.15555556,
+    "lon": 134.49027778
+   },
+   "wikipedia": {
+    "lat": 34.15565,
+    "lon": 134.49034722
+   }
+  },
+  {
+   "order": 3,
+   "ja": "金泉寺",
+   "article": "金泉寺",
+   "qid": "Q3198759",
+   "en": "Konsen-ji Temple",
+   "wikidata": {
+    "lat": 34.14743611,
+    "lon": 134.46854444
+   },
+   "wikipedia": {
+    "lat": 34.14743611,
+    "lon": 134.46854444
+   }
+  },
+  {
+   "order": 4,
+   "ja": "大日寺",
+   "article": "大日寺 (徳島県板野町)",
+   "qid": "Q3012126",
+   "en": "Dainichi-ji Temple",
+   "wikidata": {
+    "lat": 34.15130556,
+    "lon": 134.43088889
+   },
+   "wikipedia": {
+    "lat": 34.15130556,
+    "lon": 134.43088889
+   }
+  },
+  {
+   "order": 5,
+   "ja": "地蔵寺",
+   "article": "地蔵寺 (徳島県板野町)",
+   "qid": "Q3179308",
+   "en": "Jizō-ji Temple",
+   "wikidata": {
+    "lat": 34.13722222,
+    "lon": 134.43194444
+   },
+   "wikipedia": {
+    "lat": 34.13721944,
+    "lon": 134.431925
+   }
+  },
+  {
+   "order": 6,
+   "ja": "安楽寺",
+   "article": "安楽寺 (徳島県上板町)",
+   "qid": "Q2852417",
+   "en": "Anraku-ji Temple",
+   "wikidata": {
+    "lat": 34.11805556,
+    "lon": 134.38838889
+   },
+   "wikipedia": {
+    "lat": 34.11805556,
+    "lon": 134.38838889
+   }
+  },
+  {
+   "order": 7,
+   "ja": "十楽寺",
+   "article": "十楽寺 (阿波市)",
+   "qid": "Q3191246",
+   "en": "Jūraku-ji Temple",
+   "wikidata": {
+    "lat": 34.12075,
+    "lon": 134.377925
+   },
+   "wikipedia": {
+    "lat": 34.12075,
+    "lon": 134.377925
+   }
+  },
+  {
+   "order": 8,
+   "ja": "熊谷寺",
+   "article": "熊谷寺 (阿波市)",
+   "qid": "Q3200347",
+   "en": "Kumadani-ji Temple",
+   "wikidata": {
+    "lat": 34.12277778,
+    "lon": 134.34
+   },
+   "wikipedia": {
+    "lat": 34.12275833,
+    "lon": 134.34003889
+   }
+  },
+  {
+   "order": 9,
+   "ja": "法輪寺",
+   "article": "法輪寺 (阿波市)",
+   "qid": "Q3146369",
+   "en": "Hōrin-ji Temple",
+   "wikidata": {
+    "lat": 34.10437778,
+    "lon": 134.33381389
+   },
+   "wikipedia": {
+    "lat": 34.10437778,
+    "lon": 134.33381389
+   }
+  },
+  {
+   "order": 10,
+   "ja": "切幡寺",
+   "article": "切幡寺",
+   "qid": "Q511070",
+   "en": "Kirihata-ji Temple",
+   "wikidata": {
+    "lat": 34.10775,
+    "lon": 134.30427778
+   },
+   "wikipedia": {
+    "lat": 34.10775,
+    "lon": 134.30427778
+   }
+  },
+  {
+   "order": 11,
+   "ja": "藤井寺",
+   "article": "藤井寺 (吉野川市)",
+   "qid": "Q11622752",
+   "en": "Fujii-dera Temple",
+   "wikidata": {
+    "lat": 34.051666666,
+    "lon": 134.3485
+   },
+   "wikipedia": {
+    "lat": 34.05166667,
+    "lon": 134.3485
+   }
+  },
+  {
+   "order": 12,
+   "ja": "焼山寺",
+   "article": "焼山寺",
+   "qid": "Q11567639",
+   "en": "Shousan-ji Temple",
+   "wikidata": {
+    "lat": 33.985027777,
+    "lon": 134.31025
+   },
+   "wikipedia": {
+    "lat": 33.98502778,
+    "lon": 134.31025
+   }
+  },
+  {
+   "order": 13,
+   "ja": "大日寺",
+   "article": "大日寺 (徳島市)",
+   "qid": "Q11435622",
+   "en": "Dainichi-ji Temple",
+   "wikidata": {
+    "lat": 34.038116666,
+    "lon": 134.462683333
+   },
+   "wikipedia": {
+    "lat": 34.03811667,
+    "lon": 134.46268333
+   }
+  },
+  {
+   "order": 14,
+   "ja": "常楽寺",
+   "article": "常楽寺 (徳島市)",
+   "qid": "Q11481422",
+   "en": "Jouraku-ji Temple",
+   "wikidata": {
+    "lat": 34.050333333,
+    "lon": 134.475638888
+   },
+   "wikipedia": {
+    "lat": 34.05033333,
+    "lon": 134.47563889
+   }
+  },
+  {
+   "order": 15,
+   "ja": "国分寺",
+   "article": "阿波国分寺",
+   "qid": "Q11657516",
+   "en": "Awa Kokubun-ji Temple",
+   "wikidata": {
+    "lat": 34.055611111,
+    "lon": 134.473611111
+   },
+   "wikipedia": {
+    "lat": 34.05561111,
+    "lon": 134.47361111
+   }
+  },
+  {
+   "order": 16,
+   "ja": "観音寺",
+   "article": "観音寺 (徳島市国府町観音寺)",
+   "qid": "Q11630606",
+   "en": "Kannon-ji Temple",
+   "wikidata": {
+    "lat": 34.068472222,
+    "lon": 134.474333333
+   },
+   "wikipedia": {
+    "lat": 34.06847222,
+    "lon": 134.47434444
+   }
+  },
+  {
+   "order": 17,
+   "ja": "井戸寺",
+   "article": "井戸寺",
+   "qid": "Q11373550",
+   "en": "Ido-ji Temple",
+   "wikidata": {
+    "lat": 34.085166666,
+    "lon": 134.485444444
+   },
+   "wikipedia": {
+    "lat": 34.08516667,
+    "lon": 134.48544444
+   }
+  },
+  {
+   "order": 18,
+   "ja": "恩山寺",
+   "article": "恩山寺",
+   "qid": "Q11492248",
+   "en": "Onzan-ji Temple",
+   "wikidata": {
+    "lat": 33.986,
+    "lon": 134.57825
+   },
+   "wikipedia": {
+    "lat": 33.986,
+    "lon": 134.57825
+   }
+  },
+  {
+   "order": 19,
+   "ja": "立江寺",
+   "article": "立江寺 (小松島市)",
+   "qid": "Q11598034",
+   "en": "Tatsue-ji Temple",
+   "wikidata": {
+    "lat": 33.967861111,
+    "lon": 134.605805555
+   },
+   "wikipedia": {
+    "lat": 33.96786111,
+    "lon": 134.60580556
+   }
+  },
+  {
+   "order": 20,
+   "ja": "鶴林寺",
+   "article": "鶴林寺 (徳島県勝浦町)",
+   "qid": "Q11676039",
+   "en": "Kakurin-ji Temple",
+   "wikidata": {
+    "lat": 33.913861111,
+    "lon": 134.505611111
+   },
+   "wikipedia": {
+    "lat": 33.91386111,
+    "lon": 134.50561111
+   }
+  },
+  {
+   "order": 21,
+   "ja": "太龍寺",
+   "article": "太龍寺",
+   "qid": "Q11444739",
+   "en": "Tairyū-ji Temple",
+   "wikidata": {
+    "lat": 33.882527777,
+    "lon": 134.521888888
+   },
+   "wikipedia": {
+    "lat": 33.88252778,
+    "lon": 134.52188889
+   }
+  },
+  {
+   "order": 22,
+   "ja": "平等寺",
+   "article": "平等寺 (阿南市)",
+   "qid": "Q11483473",
+   "en": "Byōdō-ji Temple",
+   "wikidata": {
+    "lat": 33.851833333,
+    "lon": 134.582777777
+   },
+   "wikipedia": {
+    "lat": 33.85183333,
+    "lon": 134.58277778
+   }
+  },
+  {
+   "order": 23,
+   "ja": "薬王寺",
+   "article": "薬王寺 (徳島県美波町)",
+   "qid": "Q11622491",
+   "en": "Yakuō-ji Temple",
+   "wikidata": {
+    "lat": 33.732305555,
+    "lon": 134.527583333
+   },
+   "wikipedia": {
+    "lat": 33.73230556,
+    "lon": 134.52758333
+   }
+  },
+  {
+   "order": 24,
+   "ja": "最御崎寺",
+   "article": "最御崎寺",
+   "qid": "Q11515607",
+   "en": "Hotsumisaki-ji Temple",
+   "wikidata": {
+    "lat": 33.249008333,
+    "lon": 134.175738888
+   },
+   "wikipedia": {
+    "lat": 33.24900833,
+    "lon": 134.17573889
+   }
+  },
+  {
+   "order": 25,
+   "ja": "津照寺",
+   "article": "津照寺",
+   "qid": "Q11556229",
+   "en": "Shinshou-ji Temple",
+   "wikidata": {
+    "lat": 33.287805555,
+    "lon": 134.14825
+   },
+   "wikipedia": {
+    "lat": 33.28780556,
+    "lon": 134.14825
+   }
+  },
+  {
+   "order": 26,
+   "ja": "金剛頂寺",
+   "article": "金剛頂寺 (室戸市)",
+   "qid": "Q11646556",
+   "en": "Kongouchou-ji Temple",
+   "wikidata": {
+    "lat": 33.307222222,
+    "lon": 134.122861111
+   },
+   "wikipedia": {
+    "lat": 33.30722222,
+    "lon": 134.12286111
+   }
+  },
+  {
+   "order": 27,
+   "ja": "神峯寺",
+   "article": "神峯寺",
+   "qid": "Q11589588",
+   "en": "Kounomine-ji Temple",
+   "wikidata": {
+    "lat": 33.467611111,
+    "lon": 133.974777777
+   },
+   "wikipedia": {
+    "lat": 33.46761111,
+    "lon": 133.97477778
+   }
+  },
+  {
+   "order": 28,
+   "ja": "大日寺",
+   "article": "大日寺 (香南市)",
+   "qid": "Q11435623",
+   "en": "Dainichi-ji Temple",
+   "wikidata": {
+    "lat": 33.577583333,
+    "lon": 133.705388888
+   },
+   "wikipedia": {
+    "lat": 33.57758333,
+    "lon": 133.70538889
+   }
+  },
+  {
+   "order": 29,
+   "ja": "国分寺",
+   "article": "土佐国分寺",
+   "qid": "Q10927608",
+   "en": "Tosa Kokubun-ji Temple",
+   "wikidata": {
+    "lat": 33.598694444,
+    "lon": 133.640416666
+   },
+   "wikipedia": {
+    "lat": 33.59869444,
+    "lon": 133.64041667
+   }
+  },
+  {
+   "order": 30,
+   "ja": "善楽寺",
+   "article": "善楽寺",
+   "qid": "Q11418945",
+   "en": "Zenraku-ji Temple",
+   "wikidata": {
+    "lat": 33.591916666,
+    "lon": 133.577555555
+   },
+   "wikipedia": {
+    "lat": 33.59191667,
+    "lon": 133.57755556
+   }
+  },
+  {
+   "order": 31,
+   "ja": "竹林寺",
+   "article": "竹林寺 (高知市)",
+   "qid": "Q426742",
+   "en": "Chikurin-ji Temple",
+   "wikidata": {
+    "lat": 33.54661111,
+    "lon": 133.57747222
+   },
+   "wikipedia": {
+    "lat": 33.54661111,
+    "lon": 133.57747222
+   }
+  },
+  {
+   "order": 32,
+   "ja": "禅師峰寺",
+   "article": "禅師峰寺",
+   "qid": "Q11591177",
+   "en": "Zenjibu-ji Temple",
+   "wikidata": {
+    "lat": 33.526694444,
+    "lon": 133.611388888
+   },
+   "wikipedia": {
+    "lat": 33.52669444,
+    "lon": 133.61138889
+   }
+  },
+  {
+   "order": 33,
+   "ja": "雪蹊寺",
+   "article": "雪蹊寺",
+   "qid": "Q11659947",
+   "en": "Sekkei-ji Temple",
+   "wikidata": {
+    "lat": 33.500833333,
+    "lon": 133.543083333
+   },
+   "wikipedia": {
+    "lat": 33.50083333,
+    "lon": 133.54308333
+   }
+  },
+  {
+   "order": 34,
+   "ja": "種間寺",
+   "article": "種間寺",
+   "qid": "Q11596438",
+   "en": "Tanema-ji Temple",
+   "wikidata": {
+    "lat": 33.491722222,
+    "lon": 133.487583333
+   },
+   "wikipedia": {
+    "lat": 33.49172222,
+    "lon": 133.48758333
+   }
+  },
+  {
+   "order": 35,
+   "ja": "清瀧寺",
+   "article": "清瀧寺 (土佐市)",
+   "qid": "Q11561323",
+   "en": "Kiyotaki-ji Temple",
+   "wikidata": {
+    "lat": 33.5125,
+    "lon": 133.4095
+   },
+   "wikipedia": {
+    "lat": 33.5125,
+    "lon": 133.4095
+   }
+  },
+  {
+   "order": 36,
+   "ja": "青龍寺",
+   "article": "青龍寺 (土佐市)",
+   "qid": "Q11662839",
+   "en": "Shouryū-ji Temple",
+   "wikidata": {
+    "lat": 33.426,
+    "lon": 133.450805555
+   },
+   "wikipedia": {
+    "lat": 33.426,
+    "lon": 133.45080556
+   }
+  },
+  {
+   "order": 37,
+   "ja": "岩本寺",
+   "article": "岩本寺",
+   "qid": "Q11475095",
+   "en": "Iwamoto-ji Temple",
+   "wikidata": {
+    "lat": 33.207972222,
+    "lon": 133.134611111
+   },
+   "wikipedia": {
+    "lat": 33.20797222,
+    "lon": 133.13461111
+   }
+  },
+  {
+   "order": 38,
+   "ja": "金剛福寺",
+   "article": "金剛福寺",
+   "qid": "Q11646540",
+   "en": "Kongōfuku-ji Temple",
+   "wikidata": {
+    "lat": 32.726027777,
+    "lon": 133.018555555
+   },
+   "wikipedia": {
+    "lat": 32.72602778,
+    "lon": 133.01855556
+   }
+  },
+  {
+   "order": 39,
+   "ja": "延光寺",
+   "article": "延光寺",
+   "qid": "Q11486476",
+   "en": "Enkou-ji Temple",
+   "wikidata": {
+    "lat": 32.961305555,
+    "lon": 132.774055555
+   },
+   "wikipedia": {
+    "lat": 32.96130556,
+    "lon": 132.77405556
+   }
+  },
+  {
+   "order": 40,
+   "ja": "観自在寺",
+   "article": "観自在寺",
+   "qid": "Q3192685",
+   "en": "Kanjizai-ji Temple",
+   "wikidata": {
+    "lat": 32.96466667,
+    "lon": 132.56405556
+   },
+   "wikipedia": {
+    "lat": 32.96461111,
+    "lon": 132.56405556
+   }
+  },
+  {
+   "order": 41,
+   "ja": "龍光寺",
+   "article": "龍光寺 (宇和島市)",
+   "qid": "Q11679196",
+   "en": "Ryūkou-ji Temple",
+   "wikidata": {
+    "lat": 33.295194444,
+    "lon": 132.5985
+   },
+   "wikipedia": {
+    "lat": 33.29519444,
+    "lon": 132.5985
+   }
+  },
+  {
+   "order": 42,
+   "ja": "佛木寺",
+   "article": "佛木寺",
+   "qid": "Q11385315",
+   "en": "Butsumoku-ji Temple",
+   "wikidata": {
+    "lat": 33.310583333,
+    "lon": 132.581472222
+   },
+   "wikipedia": {
+    "lat": 33.31058333,
+    "lon": 132.58147222
+   }
+  },
+  {
+   "order": 43,
+   "ja": "明石寺",
+   "article": "明石寺",
+   "qid": "Q11512501",
+   "en": "Meiseki-ji Temple",
+   "wikidata": {
+    "lat": 33.369222222,
+    "lon": 132.518972222
+   },
+   "wikipedia": {
+    "lat": 33.36922222,
+    "lon": 132.51897222
+   }
+  },
+  {
+   "order": 44,
+   "ja": "大寶寺",
+   "article": "大寶寺",
+   "qid": "Q11434511",
+   "en": "Daihō-ji Temple",
+   "wikidata": {
+    "lat": 33.660888888,
+    "lon": 132.912083333
+   },
+   "wikipedia": {
+    "lat": 33.66088889,
+    "lon": 132.91208333
+   }
+  },
+  {
+   "order": 45,
+   "ja": "岩屋寺",
+   "article": "岩屋寺 (愛媛県久万高原町)",
+   "qid": "Q11474382",
+   "en": "Iwaya-ji Temple",
+   "wikidata": {
+    "lat": 33.658666666,
+    "lon": 132.980722222
+   },
+   "wikipedia": {
+    "lat": 33.65866667,
+    "lon": 132.98072222
+   }
+  },
+  {
+   "order": 46,
+   "ja": "浄瑠璃寺",
+   "article": "浄瑠璃寺 (松山市)",
+   "qid": "Q11556869",
+   "en": "Jōruri-ji Temple",
+   "wikidata": {
+    "lat": 33.753555555,
+    "lon": 132.819111111
+   },
+   "wikipedia": {
+    "lat": 33.75355556,
+    "lon": 132.81911111
+   }
+  },
+  {
+   "order": 47,
+   "ja": "八坂寺",
+   "article": "八坂寺 (松山市)",
+   "qid": "Q11390686",
+   "en": "Yasaka-ji Temple",
+   "wikidata": {
+    "lat": 33.757944444,
+    "lon": 132.812861111
+   },
+   "wikipedia": {
+    "lat": 33.75794444,
+    "lon": 132.81286111
+   }
+  },
+  {
+   "order": 48,
+   "ja": "西林寺",
+   "article": "西林寺 (松山市)",
+   "qid": "Q11628773",
+   "en": "Sairin-ji Temple",
+   "wikidata": {
+    "lat": 33.793722222,
+    "lon": 132.813944444
+   },
+   "wikipedia": {
+    "lat": 33.79372222,
+    "lon": 132.81394444
+   }
+  },
+  {
+   "order": 49,
+   "ja": "浄土寺",
+   "article": "浄土寺 (松山市)",
+   "qid": "Q3191228",
+   "en": "Jōdo-ji Temple",
+   "wikidata": {
+    "lat": 33.81669444,
+    "lon": 132.80841667
+   },
+   "wikipedia": {
+    "lat": 33.81666667,
+    "lon": 132.80852778
+   }
+  },
+  {
+   "order": 50,
+   "ja": "繁多寺",
+   "article": "繁多寺",
+   "qid": "Q11608174",
+   "en": "Hanta-ji Temple",
+   "wikidata": {
+    "lat": 33.828138888,
+    "lon": 132.804555555
+   },
+   "wikipedia": {
+    "lat": 33.82813889,
+    "lon": 132.80455556
+   }
+  },
+  {
+   "order": 51,
+   "ja": "石手寺",
+   "article": "石手寺",
+   "qid": "Q3155277",
+   "en": "Ishite-ji Temple",
+   "wikidata": {
+    "lat": 33.84786111,
+    "lon": 132.79647222
+   },
+   "wikipedia": {
+    "lat": 33.84786111,
+    "lon": 132.79647222
+   }
+  },
+  {
+   "order": 52,
+   "ja": "太山寺",
+   "article": "太山寺 (松山市)",
+   "qid": "Q3514066",
+   "en": "Taisan-ji Temple",
+   "wikidata": {
+    "lat": 33.8851,
+    "lon": 132.715
+   },
+   "wikipedia": {
+    "lat": 33.88508333,
+    "lon": 132.71497222
+   }
+  },
+  {
+   "order": 53,
+   "ja": "圓明寺",
+   "article": "圓明寺",
+   "qid": "Q3054442",
+   "en": "Enmyō-ji Temple",
+   "wikidata": {
+    "lat": 33.89147222,
+    "lon": 132.74002778
+   },
+   "wikipedia": {
+    "lat": 33.89175,
+    "lon": 132.73966667
+   }
+  },
+  {
+   "order": 54,
+   "ja": "延命寺",
+   "article": "延命寺 (今治市)",
+   "qid": "Q11486488",
+   "en": "Enmei-ji Temple",
+   "wikidata": {
+    "lat": 34.066833333,
+    "lon": 132.964
+   },
+   "wikipedia": {
+    "lat": 34.06683333,
+    "lon": 132.964
+   }
+  },
+  {
+   "order": 55,
+   "ja": "南光坊",
+   "article": "南光坊",
+   "qid": "Q11407501",
+   "en": "Nankou-bou",
+   "wikidata": {
+    "lat": 34.06875,
+    "lon": 132.99575
+   },
+   "wikipedia": {
+    "lat": 34.06875,
+    "lon": 132.99575
+   }
+  },
+  {
+   "order": 56,
+   "ja": "泰山寺",
+   "article": "泰山寺",
+   "qid": "Q11555707",
+   "en": "Taisan-ji Temple",
+   "wikidata": {
+    "lat": 34.050111111,
+    "lon": 132.974583333
+   },
+   "wikipedia": {
+    "lat": 34.05011111,
+    "lon": 132.97458333
+   }
+  },
+  {
+   "order": 57,
+   "ja": "栄福寺",
+   "article": "栄福寺 (今治市)",
+   "qid": "Q11535734",
+   "en": "Eifuku-ji Temple",
+   "wikidata": {
+    "lat": 34.029472222,
+    "lon": 132.978472222
+   },
+   "wikipedia": {
+    "lat": 34.02947222,
+    "lon": 132.97847222
+   }
+  },
+  {
+   "order": 58,
+   "ja": "仙遊寺",
+   "article": "仙遊寺",
+   "qid": "Q11378194",
+   "en": "Senyū-ji Temple",
+   "wikidata": {
+    "lat": 34.013194444,
+    "lon": 132.977361111
+   },
+   "wikipedia": {
+    "lat": 34.01319444,
+    "lon": 132.97736111
+   }
+  },
+  {
+   "order": 59,
+   "ja": "国分寺",
+   "article": "伊予国分寺",
+   "qid": "Q10884820",
+   "en": "Iyo Kokubun-ji Temple",
+   "wikidata": {
+    "lat": 34.026166666,
+    "lon": 133.025444444
+   },
+   "wikipedia": {
+    "lat": 34.02616667,
+    "lon": 133.02544444
+   }
+  },
+  {
+   "order": 60,
+   "ja": "横峰寺",
+   "article": "横峰寺",
+   "qid": "Q11542681",
+   "en": "Yokomine-ji Temple",
+   "wikidata": {
+    "lat": 33.837861111,
+    "lon": 133.111138888
+   },
+   "wikipedia": {
+    "lat": 33.83786111,
+    "lon": 133.11113889
+   }
+  },
+  {
+   "order": 61,
+   "ja": "香園寺",
+   "article": "香園寺",
+   "qid": "Q11667203",
+   "en": "Kouon-ji Temple",
+   "wikidata": {
+    "lat": 33.893527777,
+    "lon": 133.103305555
+   },
+   "wikipedia": {
+    "lat": 33.89352778,
+    "lon": 133.10330556
+   }
+  },
+  {
+   "order": 62,
+   "ja": "宝寿寺",
+   "article": "宝寿寺",
+   "qid": "Q11452530",
+   "en": "Houju-ji Temple",
+   "wikidata": {
+    "lat": 33.897333333,
+    "lon": 133.114944444
+   },
+   "wikipedia": {
+    "lat": 33.89733333,
+    "lon": 133.11494444
+   }
+  },
+  {
+   "order": 63,
+   "ja": "吉祥寺",
+   "article": "吉祥寺 (西条市)",
+   "qid": "Q11414184",
+   "en": "Kichijou-ji Temple",
+   "wikidata": {
+    "lat": 33.896055555,
+    "lon": 133.129166666
+   },
+   "wikipedia": {
+    "lat": 33.89605556,
+    "lon": 133.12916667
+   }
+  },
+  {
+   "order": 64,
+   "ja": "前神寺",
+   "article": "前神寺",
+   "qid": "Q11397792",
+   "en": "Maegami-ji Temple",
+   "wikidata": {
+    "lat": 33.890222222,
+    "lon": 133.160666666
+   },
+   "wikipedia": {
+    "lat": 33.89022222,
+    "lon": 133.16066667
+   }
+  },
+  {
+   "order": 65,
+   "ja": "三角寺",
+   "article": "三角寺",
+   "qid": "Q11357215",
+   "en": "Sankaku-ji Temple",
+   "wikidata": {
+    "lat": 33.967638888,
+    "lon": 133.5865
+   },
+   "wikipedia": {
+    "lat": 33.96763889,
+    "lon": 133.5865
+   }
+  },
+  {
+   "order": 66,
+   "ja": "雲辺寺",
+   "article": "雲辺寺",
+   "qid": "Q11660090",
+   "en": "Unpen-ji Temple",
+   "wikidata": {
+    "lat": 34.035222222,
+    "lon": 133.723722222
+   },
+   "wikipedia": {
+    "lat": 34.03522222,
+    "lon": 133.72372222
+   }
+  },
+  {
+   "order": 67,
+   "ja": "大興寺",
+   "article": "大興寺 (三豊市)",
+   "qid": "Q11438586",
+   "en": "Daikou-ji Temple",
+   "wikidata": {
+    "lat": 34.102194444,
+    "lon": 133.719166666
+   },
+   "wikipedia": {
+    "lat": 34.10219444,
+    "lon": 133.71916667
+   }
+  },
+  {
+   "order": 68,
+   "ja": "神恵院",
+   "article": "神恵院",
+   "qid": "Q11589702",
+   "en": "Jinne-in Temple",
+   "wikidata": {
+    "lat": 34.133986111,
+    "lon": 133.647333333
+   },
+   "wikipedia": {
+    "lat": 34.13398611,
+    "lon": 133.64733333
+   }
+  },
+  {
+   "order": 69,
+   "ja": "観音寺",
+   "article": "観音寺 (観音寺市)",
+   "qid": "Q11630610",
+   "en": "Kan'on-ji Temple",
+   "wikidata": {
+    "lat": 34.1345,
+    "lon": 133.647527777
+   },
+   "wikipedia": {
+    "lat": 34.1345,
+    "lon": 133.64752778
+   }
+  },
+  {
+   "order": 70,
+   "ja": "本山寺",
+   "article": "本山寺 (三豊市)",
+   "qid": "Q3325310",
+   "en": "Motoyama-ji Temple",
+   "wikidata": {
+    "lat": 34.13966667,
+    "lon": 133.69405556
+   },
+   "wikipedia": {
+    "lat": 34.13966667,
+    "lon": 133.69405556
+   }
+  },
+  {
+   "order": 71,
+   "ja": "弥谷寺",
+   "article": "弥谷寺",
+   "qid": "Q11487478",
+   "en": "Iyadani-ji Temple",
+   "wikidata": {
+    "lat": 34.229722222,
+    "lon": 133.724261111
+   },
+   "wikipedia": {
+    "lat": 34.22972222,
+    "lon": 133.72426111
+   }
+  },
+  {
+   "order": 72,
+   "ja": "曼荼羅寺",
+   "article": "曼荼羅寺 (善通寺市)",
+   "qid": "Q11515242",
+   "en": "Mandara-ji Temple",
+   "wikidata": {
+    "lat": 34.223305555,
+    "lon": 133.750219444
+   },
+   "wikipedia": {
+    "lat": 34.22330556,
+    "lon": 133.75021944
+   }
+  },
+  {
+   "order": 73,
+   "ja": "出釈迦寺",
+   "article": "出釈迦寺",
+   "qid": "Q11395826",
+   "en": "Shusshaka-ji Temple",
+   "wikidata": {
+    "lat": 34.219388888,
+    "lon": 133.750277777
+   },
+   "wikipedia": {
+    "lat": 34.21938889,
+    "lon": 133.75027778
+   }
+  },
+  {
+   "order": 74,
+   "ja": "甲山寺",
+   "article": "甲山寺",
+   "qid": "Q11577737",
+   "en": "Kouyama-ji Temple",
+   "wikidata": {
+    "lat": 34.233194444,
+    "lon": 133.765763888
+   },
+   "wikipedia": {
+    "lat": 34.23319444,
+    "lon": 133.76576389
+   }
+  },
+  {
+   "order": 75,
+   "ja": "善通寺",
+   "article": "善通寺",
+   "qid": "Q787035",
+   "en": "Zentsū-ji Temple",
+   "wikidata": {
+    "lat": 34.22511111,
+    "lon": 133.77413889
+   },
+   "wikipedia": {
+    "lat": 34.22511111,
+    "lon": 133.77413889
+   }
+  },
+  {
+   "order": 76,
+   "ja": "金倉寺",
+   "article": "金倉寺",
+   "qid": "Q11646414",
+   "en": "Konzō-ji Temple",
+   "wikidata": {
+    "lat": 34.250097222,
+    "lon": 133.781013888
+   },
+   "wikipedia": {
+    "lat": 34.25009722,
+    "lon": 133.78101389
+   }
+  },
+  {
+   "order": 77,
+   "ja": "道隆寺",
+   "article": "道隆寺",
+   "qid": "Q11641857",
+   "en": "Dōryū-ji Temple",
+   "wikidata": {
+    "lat": 34.27675,
+    "lon": 133.762694444
+   },
+   "wikipedia": {
+    "lat": 34.27675,
+    "lon": 133.76269444
+   }
+  },
+  {
+   "order": 78,
+   "ja": "郷照寺",
+   "article": "郷照寺",
+   "qid": "Q11643424",
+   "en": "Gōshō-ji Temple",
+   "wikidata": {
+    "lat": 34.306694444,
+    "lon": 133.824583333
+   },
+   "wikipedia": {
+    "lat": 34.30669444,
+    "lon": 133.82458333
+   }
+  },
+  {
+   "order": 79,
+   "ja": "天皇寺",
+   "article": "天皇寺 (坂出市)",
+   "qid": "Q11443140",
+   "en": "Tennō-ji Temple",
+   "wikidata": {
+    "lat": 34.311472222,
+    "lon": 133.882861111
+   },
+   "wikipedia": {
+    "lat": 34.31147222,
+    "lon": 133.88286111
+   }
+  },
+  {
+   "order": 80,
+   "ja": "國分寺",
+   "article": "讃岐国分寺",
+   "qid": "Q1101226",
+   "en": "Sanuki Kokubun-ji Temple",
+   "wikidata": {
+    "lat": 34.30305556,
+    "lon": 133.94416667
+   },
+   "wikipedia": {
+    "lat": 34.30313889,
+    "lon": 133.94416667
+   }
+  },
+  {
+   "order": 81,
+   "ja": "白峯寺",
+   "article": "白峯寺",
+   "qid": "Q11579651",
+   "en": "Shiromine-ji Temple",
+   "wikidata": {
+    "lat": 34.333527777,
+    "lon": 133.926763888
+   },
+   "wikipedia": {
+    "lat": 34.33352778,
+    "lon": 133.92676389
+   }
+  },
+  {
+   "order": 82,
+   "ja": "根香寺",
+   "article": "根香寺",
+   "qid": "Q11536486",
+   "en": "Negoro-ji Temple",
+   "wikidata": {
+    "lat": 34.3445,
+    "lon": 133.960555555
+   },
+   "wikipedia": {
+    "lat": 34.3445,
+    "lon": 133.96055556
+   }
+  },
+  {
+   "order": 83,
+   "ja": "一宮寺",
+   "article": "一宮寺",
+   "qid": "Q11352538",
+   "en": "Ichinomiya-ji Temple",
+   "wikidata": {
+    "lat": 34.286611111,
+    "lon": 134.026583333
+   },
+   "wikipedia": {
+    "lat": 34.28661111,
+    "lon": 134.02658333
+   }
+  },
+  {
+   "order": 84,
+   "ja": "屋島寺",
+   "article": "屋島寺",
+   "qid": "Q3571906",
+   "en": "Yashima-ji Temple",
+   "wikidata": {
+    "lat": 34.35791667,
+    "lon": 134.10125
+   },
+   "wikipedia": {
+    "lat": 34.35791667,
+    "lon": 134.10125
+   }
+  },
+  {
+   "order": 85,
+   "ja": "八栗寺",
+   "article": "八栗寺",
+   "qid": "Q11391459",
+   "en": "Yakuri-ji Temple",
+   "wikidata": {
+    "lat": 34.359888888,
+    "lon": 134.139527777
+   },
+   "wikipedia": {
+    "lat": 34.35988889,
+    "lon": 134.13952778
+   }
+  },
+  {
+   "order": 86,
+   "ja": "志度寺",
+   "article": "志度寺",
+   "qid": "Q11490894",
+   "en": "Shido-ji Temple",
+   "wikidata": {
+    "lat": 34.324305555,
+    "lon": 134.179638888
+   },
+   "wikipedia": {
+    "lat": 34.32430556,
+    "lon": 134.17963889
+   }
+  },
+  {
+   "order": 87,
+   "ja": "長尾寺",
+   "article": "長尾寺",
+   "qid": "Q11651831",
+   "en": "Nagao-ji Temple",
+   "wikidata": {
+    "lat": 34.26672,
+    "lon": 134.17169
+   },
+   "wikipedia": {
+    "lat": 34.26670556,
+    "lon": 134.17171944
+   }
+  },
+  {
+   "order": 88,
+   "ja": "大窪寺",
+   "article": "大窪寺",
+   "qid": "Q667111",
+   "en": "Ōkubo-ji Temple",
+   "wikidata": {
+    "lat": 34.1914,
+    "lon": 134.207
+   },
+   "wikipedia": {
+    "lat": 34.19141667,
+    "lon": 134.20675
+   }
+  }
+ ]
+}

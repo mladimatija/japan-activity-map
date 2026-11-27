@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="japan-activity-map template" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Example: 高尾山口 to 高尾山 (made up for the template)</name></metadata>
+  <trk>
+    <name>高尾山</name>
+    <trkseg>
+      <trkpt lat="35.6325" lon="139.27"><ele>200.0</ele><time>2026-01-12T00:15:00Z</time></trkpt>
+      <trkpt lat="35.632502" lon="139.269796"><ele>221.3</ele><time>2026-01-12T00:17:26Z</time></trkpt>
+      <trkpt lat="35.632492" lon="139.269517"><ele>237.1</ele><time>2026-01-12T00:19:52Z</time></trkpt>
+      <trkpt lat="35.632461" lon="139.269099"><ele>251.3</ele><time>2026-01-12T00:22:18Z</time></trkpt>
+      <trkpt lat="35.632399" lon="139.268502"><ele>264.5</ele><time>2026-01-12T00:24:45Z</time></trkpt>
+      <trkpt lat="35.632299" lon="139.267712"><ele>277.1</ele><time>2026-01-12T00:27:11Z</time></trkpt>
+      <trkpt lat="35.632156" lon="139.26675"><ele>289.3</ele><time>2026-01-12T00:29:37Z</time></trkpt>
+      <trkpt lat="35.631966" lon="139.265659"><ele>301.0</ele><time>2026-01-12T00:32:03Z</time></trkpt>
+      <trkpt lat="35.63173" lon="139.264509"><ele>312.4</ele><time>2026-01-12T00:34:29Z</time></trkpt>
+      <trkpt lat="35.631451" lon="139.263373"><ele>323.5</ele><time>2026-01-12T00:36:55Z</time></trkpt>
+      <trkpt lat="35.631133" lon="139.262327"><ele>334.3</ele><time>2026-01-12T00:39:22Z</time></trkpt>
+      <trkpt lat="35.630785" lon="139.261429"><ele>345.0</ele><time>2026-01-12T00:41:48Z</time></trkpt>
+      <trkpt lat="35.630415" lon="139.260716"><ele>355.4</ele><time>2026-01-12T00:44:14Z</time></trkpt>
+      <trkpt lat="35.630033" lon="139.260194"><ele>365.7</ele><time>2026-01-12T00:46:40Z</time></trkpt>
+      <trkpt lat="35.629652" lon="139.259838"><ele>375.8</ele><time>2026-01-12T00:49:06Z</time></trkpt>
+      <trkpt lat="35.629282" lon="139.259597"><ele>385.8</ele><time>2026-01-12T00:51:32Z</time></trkpt>
+      <trkpt lat="35.628934" lon="139.259403"><ele>395.6</ele><time>2026-01-12T00:53:58Z</time></trkpt>
+      <trkpt lat="35.628616" lon="139.259177"><ele>405.3</ele><time>2026-01-12T00:56:25Z</time></trkpt>
+      <trkpt lat="35.628337" lon="139.258849"><ele>415.0</ele><time>2026-01-12T00:58:51Z</time></trkpt>
+      <trkpt lat="35.628101" lon="139.258363"><ele>424.5</ele><time>2026-01-12T01:01:17Z</time></trkpt>
+      <trkpt lat="35.627911" lon="139.257689"><ele>433.9</ele><time>2026-01-12T01:03:43Z</time></trkpt>
+      <trkpt lat="35.627767" lon="139.256826"><ele>443.2</ele><time>2026-01-12T01:06:09Z</time></trkpt>
+      <trkpt lat="35.627667" lon="139.255805"><ele>452.4</ele><time>2026-01-12T01:08:35Z</time></trkpt>
+      <trkpt lat="35.627605" lon="139.254682"><ele>461.5</ele><time>2026-01-12T01:11:02Z</time></trkpt>
+      <trkpt lat="35.627574" lon="139.253528"><ele>470.6</ele><time>2026-01-12T01:13:28Z</time></trkpt>
+      <trkpt lat="35.627565" lon="139.25242"><ele>479.6</ele><time>2026-01-12T01:15:54Z</time></trkpt>
+      <trkpt lat="35.627567" lon="139.251427"><ele>488.5</ele><time>2026-01-12T01:18:20Z</time></trkpt>
+      <trkpt lat="35.627568" lon="139.250601"><ele>497.3</ele><time>2026-01-12T01:20:46Z</time></trkpt>
+      <trkpt lat="35.627559" lon="139.249965"><ele>506.1</ele><time>2026-01-12T01:23:12Z</time></trkpt>
+      <trkpt lat="35.627528" lon="139.249514"><ele>514.8</ele><time>2026-01-12T01:25:38Z</time></trkpt>
+      <trkpt lat="35.627466" lon="139.249212"><ele>523.5</ele><time>2026-01-12T01:28:05Z</time></trkpt>
+      <trkpt lat="35.627366" lon="139.248998"><ele>532.1</ele><time>2026-01-12T01:30:31Z</time></trkpt>
+      <trkpt lat="35.627222" lon="139.248801"><ele>540.6</ele><time>2026-01-12T01:32:57Z</time></trkpt>
+      <trkpt lat="35.627033" lon="139.248542"><ele>549.1</ele><time>2026-01-12T01:35:23Z</time></trkpt>
+      <trkpt lat="35.626797" lon="139.248156"><ele>557.5</ele><time>2026-01-12T01:37:49Z</time></trkpt>
+      <trkpt lat="35.626517" lon="139.247596"><ele>565.9</ele><time>2026-01-12T01:40:15Z</time></trkpt>
+      <trkpt lat="35.6262" lon="139.246845"><ele>574.3</ele><time>2026-01-12T01:42:42Z</time></trkpt>
+      <trkpt lat="35.625851" lon="139.245914"><ele>582.5</ele><time>2026-01-12T01:45:08Z</time></trkpt>
+      <trkpt lat="35.625481" lon="139.244845"><ele>590.8</ele><time>2026-01-12T01:47:34Z</time></trkpt>
+      <trkpt lat="35.6251" lon="139.2437"><ele>599.0</ele><time>2026-01-12T01:50:00Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

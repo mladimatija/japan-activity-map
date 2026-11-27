@@ -1,0 +1,1461 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "続日本100名城",
+ "revid": 111217206,
+ "fetchedAt": "2026-11-26",
+ "note": "Membership and numbers from the rendered article's tables (each row's number and its first linked temple or castle). wikidata: P625 of the linked article's item; wikipedia: the linked article's primary coordinates.",
+ "items": [
+  {
+   "order": 101,
+   "ja": "志苔館",
+   "article": "志苔館",
+   "qid": "Q11491132",
+   "en": "Shinoridate",
+   "wikidata": {
+    "lat": 41.765722,
+    "lon": 140.822389
+   },
+   "wikipedia": {
+    "lat": 41.76572222,
+    "lon": 140.82238889
+   }
+  },
+  {
+   "order": 102,
+   "ja": "上ノ国勝山館",
+   "article": "勝山館",
+   "qid": "Q11400268",
+   "en": "Katsuyama-date",
+   "wikidata": {
+    "lat": 41.800833,
+    "lon": 140.099444
+   },
+   "wikipedia": {
+    "lat": 41.80083333,
+    "lon": 140.09944444
+   }
+  },
+  {
+   "order": 103,
+   "ja": "浪岡城",
+   "article": "浪岡城",
+   "qid": "Q11558405",
+   "en": "Namioka Castle",
+   "wikidata": {
+    "lat": 40.71694,
+    "lon": 140.60444
+   },
+   "wikipedia": {
+    "lat": 40.71694444,
+    "lon": 140.60444444
+   }
+  },
+  {
+   "order": 104,
+   "ja": "九戸城",
+   "article": "九戸城",
+   "qid": "Q10855488",
+   "en": "Kunohe Castle",
+   "wikidata": {
+    "lat": 40.26741404,
+    "lon": 141.30434366
+   },
+   "wikipedia": {
+    "lat": 40.267414,
+    "lon": 141.304344
+   }
+  },
+  {
+   "order": 105,
+   "ja": "白石城",
+   "article": "白石城",
+   "qid": "Q1037902",
+   "en": "Shiroishi Castle",
+   "wikidata": {
+    "lat": 38.002589,
+    "lon": 140.617128
+   },
+   "wikipedia": {
+    "lat": 38.0026,
+    "lon": 140.6171
+   }
+  },
+  {
+   "order": 106,
+   "ja": "脇本城",
+   "article": "脇本城",
+   "qid": "Q11612142",
+   "en": "Wakimoto Castle",
+   "wikidata": {
+    "lat": 39.9025,
+    "lon": 139.889166666
+   },
+   "wikipedia": {
+    "lat": 39.9025,
+    "lon": 139.8892
+   }
+  },
+  {
+   "order": 107,
+   "ja": "秋田城",
+   "article": "秋田城",
+   "qid": "Q11595283",
+   "en": "Akita Castle",
+   "wikidata": {
+    "lat": 39.74025935,
+    "lon": 140.08134159
+   },
+   "wikipedia": {
+    "lat": 39.740259,
+    "lon": 140.081342
+   }
+  },
+  {
+   "order": 108,
+   "ja": "鶴ヶ岡城",
+   "article": "鶴ヶ岡城",
+   "qid": "Q11675874",
+   "en": "Tsurugaoka Castle",
+   "wikidata": {
+    "lat": 38.72873889,
+    "lon": 139.82455278
+   },
+   "wikipedia": {
+    "lat": 38.73,
+    "lon": 139.82
+   }
+  },
+  {
+   "order": 109,
+   "ja": "米沢城",
+   "article": "米沢城",
+   "qid": "Q11262656",
+   "en": "Yonezawa Castle",
+   "wikidata": {
+    "lat": 37.9096,
+    "lon": 140.105
+   },
+   "wikipedia": {
+    "lat": 37.91,
+    "lon": 140.1
+   }
+  },
+  {
+   "order": 110,
+   "ja": "三春城",
+   "article": "三春城",
+   "qid": "Q11355537",
+   "en": "Miharu Castle",
+   "wikidata": {
+    "lat": 37.442555555,
+    "lon": 140.4965
+   },
+   "wikipedia": {
+    "lat": 37.44255556,
+    "lon": 140.4965
+   }
+  },
+  {
+   "order": 111,
+   "ja": "向羽黒山城",
+   "article": "向羽黒山城",
+   "qid": "Q11416034",
+   "en": "Mukaihaguroyama Castle",
+   "wikidata": {
+    "lat": 37.445389,
+    "lon": 139.9
+   },
+   "wikipedia": {
+    "lat": 37.44538889,
+    "lon": 139.9
+   }
+  },
+  {
+   "order": 112,
+   "ja": "笠間城",
+   "article": "笠間城",
+   "qid": "Q11599983",
+   "en": "Kasama Castle",
+   "wikidata": {
+    "lat": 36.38248611,
+    "lon": 140.26748056
+   },
+   "wikipedia": {
+    "lat": 36.38248611,
+    "lon": 140.26748056
+   }
+  },
+  {
+   "order": 113,
+   "ja": "土浦城",
+   "article": "土浦城",
+   "qid": "Q11423731",
+   "en": "Tsuchiura Castle",
+   "wikidata": {
+    "lat": 36.08510278,
+    "lon": 140.19814722
+   },
+   "wikipedia": {
+    "lat": 36.08510278,
+    "lon": 140.19814722
+   }
+  },
+  {
+   "order": 114,
+   "ja": "唐沢山城",
+   "article": "唐沢山城",
+   "qid": "Q11418602",
+   "en": "Karasawa Castle",
+   "wikidata": {
+    "lat": 36.3538,
+    "lon": 139.6003
+   },
+   "wikipedia": {
+    "lat": 36.35363889,
+    "lon": 139.60094444
+   }
+  },
+  {
+   "order": 115,
+   "ja": "名胡桃城",
+   "article": "名胡桃城",
+   "qid": "Q10917796",
+   "en": "Nagurumi Castle",
+   "wikidata": {
+    "lat": 36.669722222,
+    "lon": 138.991666666
+   },
+   "wikipedia": {
+    "lat": 36.67005556,
+    "lon": 138.99233333
+   }
+  },
+  {
+   "order": 116,
+   "ja": "沼田城",
+   "article": "沼田城",
+   "qid": "Q11554573",
+   "en": "Numata Castle",
+   "wikidata": {
+    "lat": 36.6487,
+    "lon": 139.039
+   },
+   "wikipedia": {
+    "lat": 36.64872222,
+    "lon": 139.03902778
+   }
+  },
+  {
+   "order": 117,
+   "ja": "岩櫃城",
+   "article": "岩櫃城",
+   "qid": "Q2968290",
+   "en": "Iwabitsu Castle",
+   "wikidata": {
+    "lat": 36.559152,
+    "lon": 138.8043768
+   },
+   "wikipedia": {
+    "lat": 36.55919444,
+    "lon": 138.80480556
+   }
+  },
+  {
+   "order": 118,
+   "ja": "忍城",
+   "article": "忍城",
+   "qid": "Q1074393",
+   "en": "Oshi Castle",
+   "wikidata": {
+    "lat": 36.1371,
+    "lon": 139.453
+   },
+   "wikipedia": {
+    "lat": 36.13715,
+    "lon": 139.45287778
+   }
+  },
+  {
+   "order": 119,
+   "ja": "杉山城",
+   "article": "杉山城",
+   "qid": "Q11521871",
+   "en": "Sugiyama Castle",
+   "wikidata": {
+    "lat": 36.062583333,
+    "lon": 139.312138888
+   },
+   "wikipedia": {
+    "lat": 36.06258333,
+    "lon": 139.31213889
+   }
+  },
+  {
+   "order": 120,
+   "ja": "菅谷館",
+   "article": "菅谷館",
+   "qid": "Q11619403",
+   "en": "Sugaya Yakata",
+   "wikidata": {
+    "lat": 36.035556,
+    "lon": 139.321944
+   },
+   "wikipedia": {
+    "lat": 36.03555556,
+    "lon": 139.32194444
+   }
+  },
+  {
+   "order": 121,
+   "ja": "本佐倉城",
+   "article": "本佐倉城",
+   "qid": "Q11519850",
+   "en": "Moto Sakura Castle",
+   "wikidata": {
+    "lat": 35.727536111,
+    "lon": 140.259008333
+   },
+   "wikipedia": {
+    "lat": 35.72753611,
+    "lon": 140.25900833
+   }
+  },
+  {
+   "order": 122,
+   "ja": "大多喜城",
+   "article": "大多喜城",
+   "qid": "Q2968402",
+   "en": "Ōtaki Castle",
+   "wikidata": {
+    "lat": 35.2859,
+    "lon": 140.239
+   },
+   "wikipedia": {
+    "lat": 35.28588333,
+    "lon": 140.23934167
+   }
+  },
+  {
+   "order": 123,
+   "ja": "滝山城",
+   "article": "滝山城",
+   "qid": "Q11565113",
+   "en": "Takiyama Castle",
+   "wikidata": {
+    "lat": 35.701961111,
+    "lon": 139.328291666
+   },
+   "wikipedia": {
+    "lat": 35.70196111,
+    "lon": 139.32829167
+   }
+  },
+  {
+   "order": 124,
+   "ja": "台場",
+   "article": "台場",
+   "qid": "Q10856363",
+   "en": "daiba"
+  },
+  {
+   "order": 125,
+   "ja": "小机城",
+   "article": "小机城",
+   "qid": "Q2969498",
+   "en": "Kozukue Castle",
+   "wikidata": {
+    "lat": 35.512447,
+    "lon": 139.593711
+   },
+   "wikipedia": {
+    "lat": 35.51244722,
+    "lon": 139.59371111
+   }
+  },
+  {
+   "order": 126,
+   "ja": "石垣山城",
+   "article": "石垣山城",
+   "qid": "Q8012031",
+   "en": "Ishigakiyama Castle",
+   "wikidata": {
+    "lat": 35.23531111,
+    "lon": 139.12699444
+   },
+   "wikipedia": {
+    "lat": 35.23541667,
+    "lon": 139.12777778
+   }
+  },
+  {
+   "order": 127,
+   "ja": "新府城",
+   "article": "新府城",
+   "qid": "Q11502234",
+   "en": "Shinpu Castle",
+   "wikidata": {
+    "lat": 35.73583333,
+    "lon": 138.42527778
+   },
+   "wikipedia": {
+    "lat": 35.74,
+    "lon": 138.43
+   }
+  },
+  {
+   "order": 128,
+   "ja": "要害山城",
+   "article": "要害山城",
+   "qid": "Q11630039",
+   "en": "Yogaisan Castle",
+   "wikidata": {
+    "lat": 35.703,
+    "lon": 138.598
+   },
+   "wikipedia": {
+    "lat": 35.7,
+    "lon": 138.6
+   }
+  },
+  {
+   "order": 129,
+   "ja": "龍岡城",
+   "article": "龍岡城",
+   "qid": "Q10856353",
+   "en": "Tatsuoka Castle",
+   "wikidata": {
+    "lat": 36.19606389,
+    "lon": 138.50155
+   },
+   "wikipedia": {
+    "lat": 36.196064,
+    "lon": 138.50155
+   }
+  },
+  {
+   "order": 130,
+   "ja": "高島城",
+   "article": "高島城",
+   "qid": "Q10856395",
+   "en": "Takashima Castle",
+   "wikidata": {
+    "lat": 36.03979167,
+    "lon": 138.11201944
+   },
+   "wikipedia": {
+    "lat": 36.039792,
+    "lon": 138.112019
+   }
+  },
+  {
+   "order": 131,
+   "ja": "村上城",
+   "article": "村上城",
+   "qid": "Q11522758",
+   "en": "Murakami Castle",
+   "wikidata": {
+    "lat": 38.21985,
+    "lon": 139.485
+   },
+   "wikipedia": {
+    "lat": 38.22,
+    "lon": 139.49
+   }
+  },
+  {
+   "order": 132,
+   "ja": "高田城",
+   "article": "高田城",
+   "qid": "Q10856387",
+   "en": "Takada Castle",
+   "wikidata": {
+    "lat": 37.11,
+    "lon": 138.25583333
+   },
+   "wikipedia": {
+    "lat": 37.11,
+    "lon": 138.255833
+   }
+  },
+  {
+   "order": 133,
+   "ja": "鮫ヶ尾城",
+   "article": "鮫ヶ尾城",
+   "qid": "Q11674175",
+   "en": "Samegao Castle",
+   "wikidata": {
+    "lat": 37.051111,
+    "lon": 138.23
+   },
+   "wikipedia": {
+    "lat": 37.051111,
+    "lon": 138.23
+   }
+  },
+  {
+   "order": 134,
+   "ja": "富山城",
+   "article": "富山城",
+   "qid": "Q911975",
+   "en": "Toyama Castle",
+   "wikidata": {
+    "lat": 36.6933,
+    "lon": 137.211
+   },
+   "wikipedia": {
+    "lat": 36.69,
+    "lon": 137.21
+   }
+  },
+  {
+   "order": 135,
+   "ja": "増山城",
+   "article": "増山城",
+   "qid": "Q11429184",
+   "en": "Masuyama Castle",
+   "wikidata": {
+    "lat": 36.65214722,
+    "lon": 137.04176667
+   },
+   "wikipedia": {
+    "lat": 36.65,
+    "lon": 137.04
+   }
+  },
+  {
+   "order": 136,
+   "ja": "鳥越城",
+   "article": "鳥越城",
+   "qid": "Q11675141",
+   "en": "Torigoe Castle",
+   "wikidata": {
+    "lat": 36.36611111,
+    "lon": 136.60111111
+   },
+   "wikipedia": {
+    "lat": 36.37,
+    "lon": 136.6
+   }
+  },
+  {
+   "order": 137,
+   "ja": "福井城",
+   "article": "福井城",
+   "qid": "Q1073692",
+   "en": "Fukui Castle",
+   "wikidata": {
+    "lat": 36.065456,
+    "lon": 136.2209
+   },
+   "wikipedia": {
+    "lat": 36.06545556,
+    "lon": 136.2209
+   }
+  },
+  {
+   "order": 138,
+   "ja": "越前大野城",
+   "article": "大野城 (越前国)",
+   "qid": "Q1072530",
+   "en": "Ōno Castle",
+   "wikidata": {
+    "lat": 35.986588,
+    "lon": 136.483042
+   },
+   "wikipedia": {
+    "lat": 35.9866,
+    "lon": 136.483
+   }
+  },
+  {
+   "order": 139,
+   "ja": "佐柿国吉城",
+   "article": "国吉城",
+   "qid": "Q28687362",
+   "en": "Kuniyoshi Castle",
+   "wikidata": {
+    "lat": 35.613611111,
+    "lon": 135.966111111
+   },
+   "wikipedia": {
+    "lat": 35.6136,
+    "lon": 135.9661
+   }
+  },
+  {
+   "order": 140,
+   "ja": "玄蕃尾城",
+   "article": "玄蕃尾城",
+   "qid": "Q28683391",
+   "en": "Genbao Castle",
+   "wikipedia": {
+    "lat": 35.59838889,
+    "lon": 136.17638889
+   }
+  },
+  {
+   "order": 141,
+   "ja": "郡上八幡城",
+   "article": "郡上八幡城",
+   "qid": "Q2969384",
+   "en": "Gujō Hachiman Castle",
+   "wikidata": {
+    "lat": 35.75333333,
+    "lon": 136.96138889
+   },
+   "wikipedia": {
+    "lat": 35.75328333,
+    "lon": 136.96145278
+   }
+  },
+  {
+   "order": 142,
+   "ja": "苗木城",
+   "article": "苗木城",
+   "qid": "Q11616119",
+   "en": "Naegi Castle",
+   "wikidata": {
+    "lat": 35.51308333,
+    "lon": 137.48526111
+   },
+   "wikipedia": {
+    "lat": 35.51319444,
+    "lon": 137.48525
+   }
+  },
+  {
+   "order": 143,
+   "ja": "美濃金山城",
+   "article": "金山城 (美濃国)",
+   "qid": "Q11646975",
+   "en": "Kaneyama Castle",
+   "wikidata": {
+    "lat": 35.513055555,
+    "lon": 137.485277777
+   },
+   "wikipedia": {
+    "lat": 35.45664722,
+    "lon": 137.09731667
+   }
+  },
+  {
+   "order": 144,
+   "ja": "大垣城",
+   "article": "大垣城",
+   "qid": "Q1067359",
+   "en": "Ōgaki Castle",
+   "wikidata": {
+    "lat": 35.361944444,
+    "lon": 136.616111111
+   },
+   "wikipedia": {
+    "lat": 35.36197778,
+    "lon": 136.61607222
+   }
+  },
+  {
+   "order": 145,
+   "ja": "興国寺城",
+   "article": "興国寺城",
+   "qid": "Q10855360",
+   "en": "Kōkokuji Castle",
+   "wikidata": {
+    "lat": 35.141643,
+    "lon": 138.807449
+   },
+   "wikipedia": {
+    "lat": 35.14145,
+    "lon": 138.80704167
+   }
+  },
+  {
+   "order": 146,
+   "ja": "諏訪原城",
+   "article": "諏訪原城",
+   "qid": "Q11631843",
+   "en": "Suwahara Castle",
+   "wikidata": {
+    "lat": 34.818038888,
+    "lon": 138.119833333
+   },
+   "wikipedia": {
+    "lat": 34.818039,
+    "lon": 138.119833
+   }
+  },
+  {
+   "order": 147,
+   "ja": "高天神城",
+   "article": "高天神城",
+   "qid": "Q11669114",
+   "en": "Takatenjin Castle",
+   "wikidata": {
+    "lat": 34.698497222,
+    "lon": 138.035272222
+   },
+   "wikipedia": {
+    "lat": 34.698497,
+    "lon": 138.035272
+   }
+  },
+  {
+   "order": 148,
+   "ja": "浜松城",
+   "article": "浜松城",
+   "qid": "Q1152352",
+   "en": "Hamamatsu Castle",
+   "wikidata": {
+    "lat": 34.711802,
+    "lon": 137.724958
+   },
+   "wikipedia": {
+    "lat": 34.7118,
+    "lon": 137.725
+   }
+  },
+  {
+   "order": 149,
+   "ja": "小牧山城",
+   "article": "小牧山",
+   "qid": "Q2969495",
+   "en": "Mount Komaki",
+   "wikidata": {
+    "lat": 35.2925,
+    "lon": 136.913611111
+   },
+   "wikipedia": {
+    "lat": 35.2925,
+    "lon": 136.91361111
+   }
+  },
+  {
+   "order": 150,
+   "ja": "古宮城",
+   "article": "古宮城",
+   "qid": "Q11411030",
+   "en": "Furumiya Castle",
+   "wikidata": {
+    "lat": 34.972444444,
+    "lon": 137.427555555
+   },
+   "wikipedia": {
+    "lat": 34.97244444,
+    "lon": 137.42755556
+   }
+  },
+  {
+   "order": 151,
+   "ja": "吉田城",
+   "article": "吉田城 (三河国)",
+   "qid": "Q849190",
+   "en": "Yoshida Castle",
+   "wikidata": {
+    "lat": 34.7701,
+    "lon": 137.393
+   },
+   "wikipedia": {
+    "lat": 34.77014722,
+    "lon": 137.39335
+   }
+  },
+  {
+   "order": 152,
+   "ja": "津城",
+   "article": "津城",
+   "qid": "Q2381333",
+   "en": "Tsu Castle",
+   "wikidata": {
+    "lat": 34.717735,
+    "lon": 136.508474
+   }
+  },
+  {
+   "order": 153,
+   "ja": "北畠氏館",
+   "article": "北畠神社",
+   "qid": "Q11403863",
+   "en": "Kitabatake Shrine",
+   "wikidata": {
+    "lat": 34.5186,
+    "lon": 136.299
+   },
+   "wikipedia": {
+    "lat": 34.51855556,
+    "lon": 136.29886111
+   }
+  },
+  {
+   "order": 154,
+   "ja": "田丸城",
+   "article": "田丸城",
+   "qid": "Q11576068",
+   "en": "Tamaru Castle",
+   "wikidata": {
+    "lat": 34.4905,
+    "lon": 136.6282
+   }
+  },
+  {
+   "order": 155,
+   "ja": "赤木城",
+   "article": "赤木城",
+   "qid": "Q38278530",
+   "en": "Akagi Castle",
+   "wikidata": {
+    "lat": 33.896111111,
+    "lon": 135.951666666
+   },
+   "wikipedia": {
+    "lat": 33.89527778,
+    "lon": 135.95222222
+   }
+  },
+  {
+   "order": 156,
+   "ja": "鎌刃城",
+   "article": "鎌刃城",
+   "qid": "Q38278527",
+   "en": "Kamaha Castle",
+   "wikidata": {
+    "lat": 35.297056,
+    "lon": 136.315444
+   },
+   "wikipedia": {
+    "lat": 35.297056,
+    "lon": 136.315444
+   }
+  },
+  {
+   "order": 157,
+   "ja": "八幡山城",
+   "article": "八幡山城",
+   "qid": "Q10892157",
+   "en": "Hachimanyama Castle",
+   "wikidata": {
+    "lat": 35.144319,
+    "lon": 136.082292
+   },
+   "wikipedia": {
+    "lat": 35.144319,
+    "lon": 136.082292
+   }
+  },
+  {
+   "order": 158,
+   "ja": "福知山城",
+   "article": "福知山城",
+   "qid": "Q2969288",
+   "en": "Fukuchiyama Castle",
+   "wikidata": {
+    "lat": 35.296753,
+    "lon": 135.129625
+   },
+   "wikipedia": {
+    "lat": 35.29680556,
+    "lon": 135.12966667
+   }
+  },
+  {
+   "order": 159,
+   "ja": "芥川山城",
+   "article": "芥川山城",
+   "qid": "Q11614735",
+   "en": "Akutagawayama Castle",
+   "wikidata": {
+    "lat": 34.880833333,
+    "lon": 135.588055555
+   },
+   "wikipedia": {
+    "lat": 34.88083333,
+    "lon": 135.58805556
+   }
+  },
+  {
+   "order": 160,
+   "ja": "飯盛城",
+   "article": "飯盛山城",
+   "qid": "Q11666638",
+   "en": "Iimoriyama Castle",
+   "wikidata": {
+    "lat": 34.726408333,
+    "lon": 135.653666666
+   }
+  },
+  {
+   "order": 161,
+   "ja": "岸和田城",
+   "article": "岸和田城",
+   "qid": "Q2969493",
+   "en": "Kishiwada Castle",
+   "wikidata": {
+    "lat": 34.45881667,
+    "lon": 135.37078056
+   },
+   "wikipedia": {
+    "lat": 34.45881667,
+    "lon": 135.37078056
+   }
+  },
+  {
+   "order": 162,
+   "ja": "出石城",
+   "article": "出石城",
+   "qid": "Q2968296",
+   "en": "Izushi Castle",
+   "wikidata": {
+    "lat": 35.46055556,
+    "lon": 134.87416667
+   },
+   "wikipedia": {
+    "lat": 35.46043333,
+    "lon": 134.87425278
+   }
+  },
+  {
+   "order": 163,
+   "ja": "黒井城",
+   "article": "黒井城",
+   "qid": "Q11677999",
+   "en": "Kuroi Castle",
+   "wikidata": {
+    "lat": 35.179167,
+    "lon": 135.104056
+   },
+   "wikipedia": {
+    "lat": 35.17916667,
+    "lon": 135.10405556
+   }
+  },
+  {
+   "order": 164,
+   "ja": "洲本城",
+   "article": "洲本城",
+   "qid": "Q5369846",
+   "en": "Sumoto Castle",
+   "wikidata": {
+    "lat": 34.3378,
+    "lon": 134.903
+   },
+   "wikipedia": {
+    "lat": 34.33770278,
+    "lon": 134.902875
+   }
+  },
+  {
+   "order": 165,
+   "ja": "大和郡山城",
+   "article": "郡山城 (大和国)",
+   "qid": "Q1073899",
+   "en": "Kōriyama Castle",
+   "wikidata": {
+    "lat": 34.651916666,
+    "lon": 135.778938888
+   },
+   "wikipedia": {
+    "lat": 34.65191667,
+    "lon": 135.77894444
+   }
+  },
+  {
+   "order": 166,
+   "ja": "宇陀松山城",
+   "article": "宇陀松山城",
+   "qid": "Q11449924",
+   "en": "Uda Matsuyama Castle",
+   "wikidata": {
+    "lat": 34.482777777,
+    "lon": 135.931166666
+   }
+  },
+  {
+   "order": 167,
+   "ja": "新宮城",
+   "article": "新宮城",
+   "qid": "Q11501731",
+   "en": "Shingū Castle",
+   "wikidata": {
+    "lat": 33.72991667,
+    "lon": 135.99247222
+   },
+   "wikipedia": {
+    "lat": 33.72991667,
+    "lon": 135.99247222
+   }
+  },
+  {
+   "order": 168,
+   "ja": "若桜鬼ヶ城",
+   "article": "若桜鬼ヶ城",
+   "qid": "Q11616557",
+   "en": "Wakasa Oniga Castle",
+   "wikidata": {
+    "lat": 35.33658333,
+    "lon": 134.39822222
+   },
+   "wikipedia": {
+    "lat": 35.33658333,
+    "lon": 134.39822222
+   }
+  },
+  {
+   "order": 169,
+   "ja": "米子城",
+   "article": "米子城",
+   "qid": "Q11604077",
+   "en": "Yonago Castle",
+   "wikidata": {
+    "lat": 35.425,
+    "lon": 133.3244
+   }
+  },
+  {
+   "order": 170,
+   "ja": "浜田城",
+   "article": "浜田城",
+   "qid": "Q11284269",
+   "en": "Hamada Castle",
+   "wikidata": {
+    "lat": 34.902908333,
+    "lon": 132.073325
+   },
+   "wikipedia": {
+    "lat": 34.90290833,
+    "lon": 132.073325
+   }
+  },
+  {
+   "order": 171,
+   "ja": "備中高松城",
+   "article": "高松城 (備中国)",
+   "qid": "Q1071073",
+   "en": "Takamatsu Castle",
+   "wikidata": {
+    "lat": 34.693,
+    "lon": 133.822
+   },
+   "wikipedia": {
+    "lat": 34.693,
+    "lon": 133.82204444
+   }
+  },
+  {
+   "order": 172,
+   "ja": "三原城",
+   "article": "三原城",
+   "qid": "Q2969891",
+   "en": "Mihara Castle",
+   "wikidata": {
+    "lat": 34.40128333,
+    "lon": 133.08265833
+   },
+   "wikipedia": {
+    "lat": 34.40128333,
+    "lon": 133.08265833
+   }
+  },
+  {
+   "order": 173,
+   "ja": "新高山城",
+   "article": "新高山城",
+   "qid": "Q11504315",
+   "en": "Niitakayama Castle",
+   "wikidata": {
+    "lat": 34.42016667,
+    "lon": 132.97555556
+   },
+   "wikipedia": {
+    "lat": 34.42016667,
+    "lon": 132.97555556
+   }
+  },
+  {
+   "order": 174,
+   "ja": "大内氏館",
+   "article": "大内氏館",
+   "qid": "Q11432542",
+   "en": "Ōuchi-shi Yakata",
+   "wikidata": {
+    "lat": 34.18411111,
+    "lon": 131.48044444
+   }
+  },
+  {
+   "order": 175,
+   "ja": "勝瑞城",
+   "article": "勝瑞城",
+   "qid": "Q11400421",
+   "en": "Shōzui Castle",
+   "wikipedia": {
+    "lat": 34.13260278,
+    "lon": 134.52293333
+   }
+  },
+  {
+   "order": 176,
+   "ja": "一宮城",
+   "article": "一宮城 (阿波国)",
+   "qid": "Q11266820",
+   "en": "Ichinomiya Castle",
+   "wikidata": {
+    "lat": 34.03405556,
+    "lon": 134.46308333
+   },
+   "wikipedia": {
+    "lat": 34.03405556,
+    "lon": 134.46308333
+   }
+  },
+  {
+   "order": 177,
+   "ja": "引田城",
+   "article": "引田城",
+   "qid": "Q11487162",
+   "en": "Hiketa Castle",
+   "wikidata": {
+    "lat": 34.23325,
+    "lon": 134.409194444
+   },
+   "wikipedia": {
+    "lat": 34.23326111,
+    "lon": 134.40918611
+   }
+  },
+  {
+   "order": 178,
+   "ja": "能島城",
+   "article": "能島",
+   "qid": "Q98546053",
+   "en": "Noshima",
+   "wikidata": {
+    "lat": 34.182778,
+    "lon": 133.080833
+   },
+   "wikipedia": {
+    "lat": 34.18277778,
+    "lon": 133.08083333
+   }
+  },
+  {
+   "order": 179,
+   "ja": "河後森城",
+   "article": "河後森城",
+   "qid": "Q11478653",
+   "en": "Kagomiri Castle",
+   "wikidata": {
+    "lat": 33.223611111,
+    "lon": 132.708611111
+   },
+   "wikipedia": {
+    "lat": 33.22361111,
+    "lon": 132.70861111
+   }
+  },
+  {
+   "order": 180,
+   "ja": "岡豊城",
+   "article": "岡豊城",
+   "qid": "Q11048926",
+   "en": "Okō Castle",
+   "wikidata": {
+    "lat": 33.59496111,
+    "lon": 133.62249167
+   },
+   "wikipedia": {
+    "lat": 33.59496111,
+    "lon": 133.62249167
+   }
+  },
+  {
+   "order": 181,
+   "ja": "小倉城",
+   "article": "小倉城",
+   "qid": "Q581644",
+   "en": "Kokura Castle",
+   "wikidata": {
+    "lat": 33.884444,
+    "lon": 130.874256
+   },
+   "wikipedia": {
+    "lat": 33.88444444,
+    "lon": 130.87425556
+   }
+  },
+  {
+   "order": 182,
+   "ja": "水城",
+   "article": "水城",
+   "qid": "Q11548410",
+   "en": "Mizuki",
+   "wikidata": {
+    "lat": 33.5181,
+    "lon": 130.4928
+   },
+   "wikipedia": {
+    "lat": 33.5181,
+    "lon": 130.4928
+   }
+  },
+  {
+   "order": 183,
+   "ja": "久留米城",
+   "article": "久留米城",
+   "qid": "Q8342364",
+   "en": "Kurume Castle",
+   "wikidata": {
+    "lat": 33.328425,
+    "lon": 130.507772222
+   },
+   "wikipedia": {
+    "lat": 33.328425,
+    "lon": 130.50777222
+   }
+  },
+  {
+   "order": 184,
+   "ja": "基肄城",
+   "article": "基肄城",
+   "qid": "Q11426463",
+   "en": "Kii Castle",
+   "wikidata": {
+    "lat": 33.445,
+    "lon": 130.513056
+   },
+   "wikipedia": {
+    "lat": 33.445,
+    "lon": 130.51305556
+   }
+  },
+  {
+   "order": 185,
+   "ja": "唐津城",
+   "article": "唐津城",
+   "qid": "Q1073585",
+   "en": "Karatsu Castle",
+   "wikidata": {
+    "lat": 33.453539,
+    "lon": 129.978194
+   },
+   "wikipedia": {
+    "lat": 33.45353889,
+    "lon": 129.97819444
+   }
+  },
+  {
+   "order": 186,
+   "ja": "金田城",
+   "article": "金田城",
+   "qid": "Q11647684",
+   "en": "Kaneda Castle",
+   "wikidata": {
+    "lat": 34.296417,
+    "lon": 129.272222
+   },
+   "wikipedia": {
+    "lat": 34.30135556,
+    "lon": 129.27324167
+   }
+  },
+  {
+   "order": 187,
+   "ja": "福江城",
+   "article": "石田城",
+   "qid": "Q11586952",
+   "en": "Ishida Castle",
+   "wikidata": {
+    "lat": 32.693472,
+    "lon": 128.846528
+   }
+  },
+  {
+   "order": 188,
+   "ja": "原城",
+   "article": "原城",
+   "qid": "Q2498312",
+   "en": "Hara Castle",
+   "wikidata": {
+    "lat": 32.6333,
+    "lon": 130.256
+   },
+   "wikipedia": {
+    "lat": 32.63330556,
+    "lon": 130.25647222
+   }
+  },
+  {
+   "order": 189,
+   "ja": "鞠智城",
+   "article": "鞠智城",
+   "qid": "Q11663924",
+   "en": "Kikuchi Castle",
+   "wikidata": {
+    "lat": 33.001277777,
+    "lon": 130.788833333
+   },
+   "wikipedia": {
+    "lat": 33.00128889,
+    "lon": 130.78882222
+   }
+  },
+  {
+   "order": 190,
+   "ja": "八代城",
+   "article": "八代城",
+   "qid": "Q11390511",
+   "en": "Yatsushiro Castle",
+   "wikidata": {
+    "lat": 32.507456,
+    "lon": 130.599892
+   },
+   "wikipedia": {
+    "lat": 32.50745556,
+    "lon": 130.59989167
+   }
+  },
+  {
+   "order": 191,
+   "ja": "中津城",
+   "article": "中津城",
+   "qid": "Q10875792",
+   "en": "Nakatsu Castle",
+   "wikidata": {
+    "lat": 33.606633,
+    "lon": 131.186422
+   },
+   "wikipedia": {
+    "lat": 33.60663333,
+    "lon": 131.18642222
+   }
+  },
+  {
+   "order": 192,
+   "ja": "角牟礼城",
+   "article": "角牟礼城",
+   "qid": "Q11630769",
+   "en": "Tsunomure Castle",
+   "wikidata": {
+    "lat": 33.309361111,
+    "lon": 131.1545
+   },
+   "wikipedia": {
+    "lat": 33.30936111,
+    "lon": 131.1545
+   }
+  },
+  {
+   "order": 193,
+   "ja": "臼杵城",
+   "article": "臼杵城",
+   "qid": "Q2968355",
+   "en": "Usuki Castle",
+   "wikidata": {
+    "lat": 33.1218,
+    "lon": 131.804
+   },
+   "wikipedia": {
+    "lat": 33.12183056,
+    "lon": 131.80410278
+   }
+  },
+  {
+   "order": 194,
+   "ja": "佐伯城",
+   "article": "佐伯城",
+   "qid": "Q11382803",
+   "en": "Saiki Castle",
+   "wikidata": {
+    "lat": 32.96023056,
+    "lon": 131.88981944
+   },
+   "wikipedia": {
+    "lat": 32.96023056,
+    "lon": 131.88981944
+   }
+  },
+  {
+   "order": 195,
+   "ja": "延岡城",
+   "article": "延岡城",
+   "qid": "Q11486526",
+   "en": "Nobeoka Castle",
+   "wikidata": {
+    "lat": 32.58055556,
+    "lon": 131.66297222
+   }
+  },
+  {
+   "order": 196,
+   "ja": "佐土原城",
+   "article": "佐土原城",
+   "qid": "Q11383098",
+   "en": "Sadowara Castle",
+   "wikidata": {
+    "lat": 32.047833,
+    "lon": 131.423833
+   },
+   "wikipedia": {
+    "lat": 32.04783333,
+    "lon": 131.42383333
+   }
+  },
+  {
+   "order": 197,
+   "ja": "志布志城",
+   "article": "志布志城",
+   "qid": "Q11490876",
+   "en": "Shibushi Castle",
+   "wikidata": {
+    "lat": 31.482916666,
+    "lon": 131.107388888
+   },
+   "wikipedia": {
+    "lat": 31.48483333,
+    "lon": 131.10891667
+   }
+  },
+  {
+   "order": 198,
+   "ja": "知覧城",
+   "article": "知覧城",
+   "qid": "Q11584656",
+   "en": "Chiran Castle",
+   "wikidata": {
+    "lat": 31.367444,
+    "lon": 130.443722
+   },
+   "wikipedia": {
+    "lat": 31.36744444,
+    "lon": 130.44372222
+   }
+  },
+  {
+   "order": 199,
+   "ja": "座喜味城",
+   "article": "座喜味城",
+   "qid": "Q2338956",
+   "en": "Zakimi Castle",
+   "wikidata": {
+    "lat": 26.408333333,
+    "lon": 127.741944444
+   },
+   "wikipedia": {
+    "lat": 26.40813889,
+    "lon": 127.74219444
+   }
+  },
+  {
+   "order": 200,
+   "ja": "勝連城",
+   "article": "勝連城",
+   "qid": "Q2471589",
+   "en": "Katsuren Castle",
+   "wikidata": {
+    "lat": 26.329811,
+    "lon": 127.87888
+   },
+   "wikipedia": {
+    "lat": 26.33019444,
+    "lon": 127.87891667
+   }
+  }
+ ]
+}

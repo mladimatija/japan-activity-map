@@ -1,0 +1,77 @@
+# Dependencies
+node_modules/
+
+# Local store, logs, backups and caches: never committed
+/data/*
+!/data/.gitkeep
+
+# Build output
+/dist/
+
+# The 五街道 tracks are CC BY-NC-SA (non-commercial), so neither they nor the route files built
+# from them are committed: `pnpm jam lists fetch gokaido` downloads them (lists/sources/gokaido/SOURCE.md)
+/lists/sources/gokaido/*
+!/lists/sources/gokaido/SOURCE.md
+/lists/routes/tokaido.geojson
+/lists/routes/nakasendo.geojson
+/lists/routes/koshu-kaido.geojson
+/lists/routes/nikko-kaido.geojson
+/lists/routes/oshu-kaido.geojson
+
+# Real config files hold personal settings and secrets; only examples are committed
+/config/*
+!/config/*.example.jsonc
+!/config/README.md
+
+# Environment files, anywhere
+.env
+.env.*
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+*.log
+
+# --- More of the same kinds, wherever a copy ends up ---
+
+# The local store and the Strava sign-in file, wherever a copy ends up
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+strava-token.json
+strava-token.json.tmp
+
+# Personal exports dropped at the repository root (templates/ and lists/sources/ keep theirs)
+/*.gpx
+/*.fit
+/*.tcx
+/*.csv
+/*.xlsx
+
+# Keys and certificates
+*.pem
+*.key
+
+# Tool output: TypeScript build info, test coverage, Vite caches, a local pnpm store
+*.tsbuildinfo
+coverage/
+.vite/
+.vite-temp/
+.pnpm-store/
+
+# The uploaders keep a cache beside where they run
+.wrangler/
+.netlify/
+
+# More editor and OS files
+*.swp
+*~
+Thumbs.db
+
+# The demo site (`pnpm demo:site`): made-up data, rebuilt by the Demo site workflow
+/dist-demo/
+
+# The setup page's build (`pnpm setup:build`): local only, never published
+/packages/web/dist-setup/

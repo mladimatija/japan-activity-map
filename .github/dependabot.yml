@@ -1,0 +1,74 @@
+# Weekly, grouped dependency updates. Security updates are separate and are not delayed.
+# https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference
+version: 2
+updates:
+  # pnpm is handled by the "npm" ecosystem. One entry at the root covers the workspace lockfile.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Tokyo
+    open-pull-requests-limit: 5
+    # Wait a few days after a release before proposing it (does not apply to security updates).
+    cooldown:
+      default-days: 7
+      semver-major-days: 21
+    commit-message:
+      prefix: deps
+    labels:
+      - dependencies
+    groups:
+      # The toolchain moves together: Vite+, TypeScript and the Node.js types.
+      toolchain:
+        patterns:
+          - vite-plus
+          - typescript
+          - '@types/node'
+      react:
+        patterns:
+          - react
+          - react-dom
+          - '@types/react'
+          - '@types/react-dom'
+      map:
+        patterns:
+          - maplibre-gl
+          - react-map-gl
+          - '@types/geojson'
+      styling:
+        patterns:
+          - tailwindcss
+          - '@tailwindcss/*'
+          - tw-animate-css
+          - tailwind-merge
+          - class-variance-authority
+          - clsx
+          - '@base-ui/*'
+          - lucide-react
+      # Everything else: minor and patch releases in one pull request; majors come one by one.
+      other-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Tokyo
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ci
+    labels:
+      - dependencies
+    groups:
+      actions:
+        patterns:
+          - '*'

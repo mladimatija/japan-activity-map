@@ -1,0 +1,1457 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "花の百名山",
+ "revid": 110967039,
+ "fetchedAt": "2026-11-26",
+ "note": "Membership from the rendered article (numbered table): each entry's number and its linked article. wikidata: P625 of the linked article's item; wikipedia: the linked article's primary coordinates.",
+ "items": [
+  {
+   "order": 1,
+   "ja": "高尾山",
+   "article": "高尾山",
+   "qid": "Q1329959",
+   "en": "Mount Takao",
+   "wikidata": {
+    "lat": 35.625277777,
+    "lon": 139.243611111
+   },
+   "wikipedia": {
+    "lat": 35.62527778,
+    "lon": 139.24361111
+   }
+  },
+  {
+   "order": 2,
+   "ja": "大楠山",
+   "article": "大楠山",
+   "qid": "Q10872107",
+   "en": "Mount Ōgusu",
+   "wikidata": {
+    "lat": 35.25,
+    "lon": 139.628055555
+   },
+   "wikipedia": {
+    "lat": 35.25,
+    "lon": 139.62805556
+   }
+  },
+  {
+   "order": 3,
+   "ja": "御前山",
+   "article": "御前山 (東京都)",
+   "qid": "Q10871776",
+   "en": "Mount Gozen",
+   "wikidata": {
+    "lat": 35.770083333,
+    "lon": 139.080638888
+   },
+   "wikipedia": {
+    "lat": 35.77008333,
+    "lon": 139.08063889
+   }
+  },
+  {
+   "order": 4,
+   "ja": "三頭山",
+   "article": "三頭山 (東京都)",
+   "qid": "Q10871785",
+   "en": "Mount Mitō",
+   "wikidata": {
+    "lat": 35.73861111,
+    "lon": 139.01416667
+   },
+   "wikipedia": {
+    "lat": 35.73861111,
+    "lon": 139.01416667
+   }
+  },
+  {
+   "order": 5,
+   "ja": "幕山",
+   "article": "幕山",
+   "qid": "Q31515897",
+   "en": "Maku Yama",
+   "wikidata": {
+    "lat": 35.173611111,
+    "lon": 139.091666666
+   },
+   "wikipedia": {
+    "lat": 35.1736,
+    "lon": 139.0914
+   }
+  },
+  {
+   "order": 6,
+   "ja": "武甲山",
+   "article": "武甲山",
+   "qid": "Q6352347",
+   "en": "Mount Bukō",
+   "wikidata": {
+    "lat": 35.95222,
+    "lon": 139.09944
+   },
+   "wikipedia": {
+    "lat": 35.9517,
+    "lon": 139.0978
+   }
+  },
+  {
+   "order": 7,
+   "ja": "高鈴山",
+   "article": "高鈴山",
+   "qid": "Q11673172",
+   "en": "Mount Takasuzu",
+   "wikidata": {
+    "lat": 36.621111,
+    "lon": 140.587778
+   },
+   "wikipedia": {
+    "lat": 36.62111111,
+    "lon": 140.58777778
+   }
+  },
+  {
+   "order": 8,
+   "ja": "天城山",
+   "article": "天城山",
+   "qid": "Q3276672",
+   "en": "Mount Amagi",
+   "wikidata": {
+    "lat": 34.862777777,
+    "lon": 139.001666666
+   },
+   "wikipedia": {
+    "lat": 34.86277778,
+    "lon": 139.00166667
+   }
+  },
+  {
+   "order": 9,
+   "ja": "三筋山",
+   "article": "三筋山"
+  },
+  {
+   "order": 10,
+   "ja": "大山",
+   "article": "大山 (神奈川県)",
+   "qid": "Q386518",
+   "en": "Mount Ōyama",
+   "wikidata": {
+    "lat": 35.440833333,
+    "lon": 139.231111111
+   },
+   "wikipedia": {
+    "lat": 35.44083333,
+    "lon": 139.23111111
+   }
+  },
+  {
+   "order": 11,
+   "ja": "川苔山",
+   "article": "川苔山",
+   "qid": "Q10871744",
+   "en": "Mount Kawanori",
+   "wikidata": {
+    "lat": 35.850833333,
+    "lon": 139.106944444
+   },
+   "wikipedia": {
+    "lat": 35.85083333,
+    "lon": 139.10694444
+   }
+  },
+  {
+   "order": 12,
+   "ja": "雲取山",
+   "article": "雲取山",
+   "qid": "Q1781878",
+   "en": "Mount Kumotori",
+   "wikidata": {
+    "lat": 35.855277777,
+    "lon": 138.943611111
+   },
+   "wikipedia": {
+    "lat": 35.8553,
+    "lon": 138.9436
+   }
+  },
+  {
+   "order": 13,
+   "ja": "地蔵岳",
+   "article": "赤城山",
+   "qid": "Q415251",
+   "en": "Mount Akagi",
+   "wikidata": {
+    "lat": 36.560833333,
+    "lon": 139.193611111
+   },
+   "wikipedia": {
+    "lat": 36.5608,
+    "lon": 139.1936
+   }
+  },
+  {
+   "order": 14,
+   "ja": "黒檜山",
+   "article": "赤城山",
+   "qid": "Q415251",
+   "en": "Mount Akagi",
+   "wikidata": {
+    "lat": 36.560833333,
+    "lon": 139.193611111
+   },
+   "wikipedia": {
+    "lat": 36.5608,
+    "lon": 139.1936
+   }
+  },
+  {
+   "order": 15,
+   "ja": "至仏山",
+   "article": "至仏山",
+   "qid": "Q11613163",
+   "en": "Mount Shibutsu",
+   "wikidata": {
+    "lat": 36.903472,
+    "lon": 139.17325
+   },
+   "wikipedia": {
+    "lat": 36.90347222,
+    "lon": 139.17325
+   }
+  },
+  {
+   "order": 16,
+   "ja": "大岳山",
+   "article": "大岳山 (東京都)",
+   "qid": "Q10871753",
+   "en": "Mount Ōdake",
+   "wikidata": {
+    "lat": 35.765,
+    "lon": 139.130277777
+   },
+   "wikipedia": {
+    "lat": 35.76513889,
+    "lon": 139.13041667
+   }
+  },
+  {
+   "order": 17,
+   "ja": "高水山",
+   "article": "高水山",
+   "qid": "Q10872888",
+   "en": "Mount Takamizu",
+   "wikidata": {
+    "lat": 35.8255,
+    "lon": 139.192222
+   },
+   "wikipedia": {
+    "lat": 35.82869444,
+    "lon": 139.18905556
+   }
+  },
+  {
+   "order": 18,
+   "ja": "鶏頂山",
+   "article": "鶏頂山",
+   "qid": "Q11675837",
+   "wikidata": {
+    "lat": 36.900833,
+    "lon": 139.762778
+   },
+   "wikipedia": {
+    "lat": 36.900833,
+    "lon": 139.762778
+   }
+  },
+  {
+   "order": 19,
+   "ja": "大菩薩峠",
+   "article": "大菩薩峠",
+   "qid": "Q11438680",
+   "en": "Daibosatsu pass",
+   "wikidata": {
+    "lat": 35.735833,
+    "lon": 138.853333
+   },
+   "wikipedia": {
+    "lat": 35.735833,
+    "lon": 138.853333
+   }
+  },
+  {
+   "order": 20,
+   "ja": "御岳山",
+   "article": "御岳山 (東京都)",
+   "qid": "Q1432565",
+   "en": "Mount Mitake",
+   "wikidata": {
+    "lat": 35.78333333,
+    "lon": 139.15
+   },
+   "wikipedia": {
+    "lat": 35.78286111,
+    "lon": 139.1495
+   }
+  },
+  {
+   "order": 21,
+   "ja": "生藤山",
+   "article": "生藤山",
+   "qid": "Q10872033",
+   "wikidata": {
+    "lat": 35.672389,
+    "lon": 139.132361
+   },
+   "wikipedia": {
+    "lat": 35.6725,
+    "lon": 139.13222222
+   }
+  },
+  {
+   "order": 22,
+   "ja": "石割山",
+   "article": "石割山",
+   "qid": "Q31517170",
+   "en": "Mount Ishiwari",
+   "wikidata": {
+    "lat": 35.452,
+    "lon": 138.9014
+   },
+   "wikipedia": {
+    "lat": 35.452,
+    "lon": 138.9014
+   }
+  },
+  {
+   "order": 23,
+   "ja": "尾瀬沼",
+   "article": "尾瀬沼",
+   "qid": "Q11465382",
+   "en": "Ozenuma",
+   "wikidata": {
+    "lat": 36.926388888,
+    "lon": 139.305833333
+   },
+   "wikipedia": {
+    "lat": 36.92583333,
+    "lon": 139.30444444
+   }
+  },
+  {
+   "order": 24,
+   "ja": "八幡平",
+   "article": "八幡平",
+   "qid": "Q3075593",
+   "en": "Hachimantai",
+   "wikidata": {
+    "lat": 39.957777777,
+    "lon": 140.854166666
+   },
+   "wikipedia": {
+    "lat": 39.95777778,
+    "lon": 140.85416667
+   }
+  },
+  {
+   "order": 25,
+   "ja": "大滝根山",
+   "article": "大滝根山",
+   "qid": "Q11437581",
+   "en": "Mount Otakine",
+   "wikidata": {
+    "lat": 37.354889,
+    "lon": 140.701639
+   },
+   "wikipedia": {
+    "lat": 37.355,
+    "lon": 140.70166667
+   }
+  },
+  {
+   "order": 26,
+   "ja": "鎌倉岳",
+   "article": "鎌倉岳 (田村市)",
+   "qid": "Q31503516",
+   "en": "Kamakura Dake",
+   "wikidata": {
+    "lat": 37.466944444,
+    "lon": 140.688888888
+   },
+   "wikipedia": {
+    "lat": 37.46694444,
+    "lon": 140.68888889
+   }
+  },
+  {
+   "order": 27,
+   "ja": "早池峰山",
+   "article": "早池峰山",
+   "qid": "Q3695496",
+   "en": "Mount Hayachine",
+   "wikidata": {
+    "lat": 39.558333333,
+    "lon": 141.488888888
+   },
+   "wikipedia": {
+    "lat": 39.55861111,
+    "lon": 141.48861111
+   }
+  },
+  {
+   "order": 28,
+   "ja": "田代山",
+   "article": "田代山 (帝釈山脈)",
+   "qid": "Q11576150",
+   "en": "Mount Tashiro",
+   "wikidata": {
+    "lat": 36.97438889,
+    "lon": 139.4785
+   },
+   "wikipedia": {
+    "lat": 36.97438889,
+    "lon": 139.4785
+   }
+  },
+  {
+   "order": 29,
+   "ja": "鳥海山",
+   "article": "鳥海山",
+   "qid": "Q713826",
+   "en": "Mount Chōkai",
+   "wikidata": {
+    "lat": 39.099166666,
+    "lon": 140.048888888
+   },
+   "wikipedia": {
+    "lat": 39.09936111,
+    "lon": 140.04888889
+   }
+  },
+  {
+   "order": 30,
+   "ja": "月山",
+   "article": "月山",
+   "qid": "Q3174863",
+   "en": "Mount Gassan",
+   "wikidata": {
+    "lat": 38.548888888,
+    "lon": 140.026944444
+   },
+   "wikipedia": {
+    "lat": 38.54888889,
+    "lon": 140.02694444
+   }
+  },
+  {
+   "order": 31,
+   "ja": "羽黒山",
+   "article": "羽黒山 (山形県)",
+   "qid": "Q3090765",
+   "en": "Mount Haguro",
+   "wikidata": {
+    "lat": 38.7008,
+    "lon": 139.9825
+   },
+   "wikipedia": {
+    "lat": 38.7008,
+    "lon": 139.9825
+   }
+  },
+  {
+   "order": 32,
+   "ja": "栗駒山",
+   "article": "栗駒山",
+   "qid": "Q11536102",
+   "en": "Mount Kurikoma",
+   "wikidata": {
+    "lat": 38.961944444,
+    "lon": 140.788888888
+   },
+   "wikipedia": {
+    "lat": 38.96091667,
+    "lon": 140.78841667
+   }
+  },
+  {
+   "order": 33,
+   "ja": "安達太良山",
+   "article": "安達太良山",
+   "qid": "Q352675",
+   "en": "Mount Adatara",
+   "wikidata": {
+    "lat": 37.633333333,
+    "lon": 140.283333333
+   },
+   "wikipedia": {
+    "lat": 37.6333,
+    "lon": 140.2833
+   }
+  },
+  {
+   "order": 34,
+   "ja": "五葉山",
+   "article": "五葉山",
+   "qid": "Q11372642",
+   "en": "Goyō-zan",
+   "wikidata": {
+    "lat": 39.20388889,
+    "lon": 141.72888889
+   },
+   "wikipedia": {
+    "lat": 39.2,
+    "lon": 141.73
+   }
+  },
+  {
+   "order": 35,
+   "ja": "利尻山",
+   "article": "利尻山",
+   "qid": "Q2154758",
+   "en": "Mount Rishiri",
+   "wikidata": {
+    "lat": 45.17865,
+    "lon": 141.241922222
+   },
+   "wikipedia": {
+    "lat": 45.17861111,
+    "lon": 141.24194444
+   }
+  },
+  {
+   "order": 36,
+   "ja": "礼文岳",
+   "article": "礼文岳",
+   "qid": "Q6923162",
+   "en": "Mount Rebun",
+   "wikidata": {
+    "lat": 45.3725,
+    "lon": 141.015833333
+   },
+   "wikipedia": {
+    "lat": 45.3725,
+    "lon": 141.01583333
+   }
+  },
+  {
+   "order": 37,
+   "ja": "余市岳",
+   "article": "余市岳",
+   "qid": "Q11385268",
+   "en": "Yoichi-dake",
+   "wikidata": {
+    "lat": 43.032778,
+    "lon": 141.019444
+   },
+   "wikipedia": {
+    "lat": 43.03277778,
+    "lon": 141.01944444
+   }
+  },
+  {
+   "order": 38,
+   "ja": "夕張岳",
+   "article": "夕張岳",
+   "qid": "Q6924714",
+   "en": "Mount Yūbari",
+   "wikidata": {
+    "lat": 43.0997,
+    "lon": 142.2510167
+   },
+   "wikipedia": {
+    "lat": 43.09966667,
+    "lon": 142.25102778
+   }
+  },
+  {
+   "order": 39,
+   "ja": "大千軒岳",
+   "article": "大千軒岳",
+   "qid": "Q11433096",
+   "en": "Mount Daisengen",
+   "wikidata": {
+    "lat": 41.579319,
+    "lon": 140.160818
+   },
+   "wikipedia": {
+    "lat": 41.57944444,
+    "lon": 140.16083333
+   }
+  },
+  {
+   "order": 40,
+   "ja": "斜里岳",
+   "article": "斜里岳",
+   "qid": "Q714564",
+   "en": "Mount Shari",
+   "wikidata": {
+    "lat": 43.765555555,
+    "lon": 144.718055555
+   },
+   "wikipedia": {
+    "lat": 43.76555556,
+    "lon": 144.71777778
+   }
+  },
+  {
+   "order": 41,
+   "ja": "大雪山",
+   "article": "大雪山",
+   "qid": "Q1157658",
+   "en": "Daisetsuzan Volcanic Group",
+   "wikidata": {
+    "lat": 43.65,
+    "lon": 142.85
+   },
+   "wikipedia": {
+    "lat": 43.66358333,
+    "lon": 142.85413889
+   }
+  },
+  {
+   "order": 42,
+   "ja": "アポイ岳",
+   "article": "アポイ岳",
+   "qid": "Q618843",
+   "en": "Mount Apoi",
+   "wikidata": {
+    "lat": 42.107777777,
+    "lon": 143.025555555
+   },
+   "wikipedia": {
+    "lat": 42.10777778,
+    "lon": 143.02555556
+   }
+  },
+  {
+   "order": 43,
+   "ja": "富良野岳",
+   "article": "富良野岳",
+   "qid": "Q8526591",
+   "en": "Mount Furano",
+   "wikidata": {
+    "lat": 43.393611111,
+    "lon": 142.634722222
+   },
+   "wikipedia": {
+    "lat": 43.39361111,
+    "lon": 142.635
+   }
+  },
+  {
+   "order": 44,
+   "ja": "十勝岳",
+   "article": "十勝岳",
+   "qid": "Q2620173",
+   "en": "Mount Tokachi",
+   "wikidata": {
+    "lat": 43.417827777,
+    "lon": 142.686216666
+   },
+   "wikipedia": {
+    "lat": 43.41783333,
+    "lon": 142.68627778
+   }
+  },
+  {
+   "order": 45,
+   "ja": "沼ノ平",
+   "article": "大雪山",
+   "qid": "Q1157658",
+   "en": "Daisetsuzan Volcanic Group",
+   "wikidata": {
+    "lat": 43.65,
+    "lon": 142.85
+   },
+   "wikipedia": {
+    "lat": 43.66358333,
+    "lon": 142.85413889
+   }
+  },
+  {
+   "order": 46,
+   "ja": "羅臼岳",
+   "article": "羅臼岳",
+   "qid": "Q714555",
+   "en": "Mount Rausu",
+   "wikidata": {
+    "lat": 44.075833333,
+    "lon": 145.1225
+   },
+   "wikipedia": {
+    "lat": 44.07583333,
+    "lon": 145.12222222
+   }
+  },
+  {
+   "order": 47,
+   "ja": "樽前山",
+   "article": "樽前山",
+   "qid": "Q1057979",
+   "en": "Mount Tarumae",
+   "wikidata": {
+    "lat": 42.69,
+    "lon": 141.378055555
+   },
+   "wikipedia": {
+    "lat": 42.69055556,
+    "lon": 141.37669444
+   }
+  },
+  {
+   "order": 48,
+   "ja": "雌阿寒岳",
+   "article": "雌阿寒岳",
+   "qid": "Q472705",
+   "en": "Mount Meakan",
+   "wikidata": {
+    "lat": 43.386111111,
+    "lon": 144.008888888
+   },
+   "wikipedia": {
+    "lat": 43.38630556,
+    "lon": 144.00880556
+   }
+  },
+  {
+   "order": 49,
+   "ja": "空沼岳",
+   "article": "空沼岳",
+   "qid": "Q17223765",
+   "en": "Mount Soranuma",
+   "wikidata": {
+    "lat": 42.865,
+    "lon": 141.253611
+   },
+   "wikipedia": {
+    "lat": 42.865,
+    "lon": 141.25361111
+   }
+  },
+  {
+   "order": 50,
+   "ja": "雨竜沼",
+   "article": "雨竜沼湿原",
+   "qid": "Q11263149",
+   "en": "Uryunuma Wetland",
+   "wikidata": {
+    "lat": 43.7,
+    "lon": 141.6
+   }
+  },
+  {
+   "order": 51,
+   "ja": "国師岳",
+   "article": "国師岳",
+   "qid": "Q11420842",
+   "en": "Mount Kokushi",
+   "wikidata": {
+    "lat": 35.870833,
+    "lon": 138.673056
+   },
+   "wikipedia": {
+    "lat": 35.87083333,
+    "lon": 138.67305556
+   }
+  },
+  {
+   "order": 52,
+   "ja": "葦毛湿原",
+   "article": "葦毛湿原",
+   "qid": "Q11621132",
+   "en": "Imō Wetland",
+   "wikidata": {
+    "lat": 34.748531,
+    "lon": 137.450456
+   },
+   "wikipedia": {
+    "lat": 34.74853056,
+    "lon": 137.45045556
+   }
+  },
+  {
+   "order": 53,
+   "ja": "金峰山",
+   "article": "金峰山 (山梨県・長野県)",
+   "qid": "Q6921689",
+   "en": "Mount Kinpu",
+   "wikidata": {
+    "lat": 35.871666666,
+    "lon": 138.625277777
+   },
+   "wikipedia": {
+    "lat": 35.87138889,
+    "lon": 138.62527778
+   }
+  },
+  {
+   "order": 54,
+   "ja": "白山",
+   "article": "白山",
+   "qid": "Q2639098",
+   "en": "Mount Haku",
+   "wikidata": {
+    "lat": 36.1,
+    "lon": 136.5
+   },
+   "wikipedia": {
+    "lat": 36.155,
+    "lon": 136.77138889
+   }
+  },
+  {
+   "order": 55,
+   "ja": "立山",
+   "article": "立山",
+   "qid": "Q2977103",
+   "en": "Mount Tate",
+   "wikidata": {
+    "lat": 36.575833333,
+    "lon": 137.619722222
+   },
+   "wikipedia": {
+    "lat": 36.57583333,
+    "lon": 137.61972222
+   }
+  },
+  {
+   "order": 56,
+   "ja": "薬師岳",
+   "article": "薬師岳",
+   "qid": "Q3695488",
+   "en": "Mount Yakushi",
+   "wikidata": {
+    "lat": 36.46888889,
+    "lon": 137.54472222
+   },
+   "wikipedia": {
+    "lat": 36.46888889,
+    "lon": 137.54472222
+   }
+  },
+  {
+   "order": 57,
+   "ja": "黒部五郎岳",
+   "article": "黒部五郎岳",
+   "qid": "Q6921736",
+   "en": "Mount Kurobegorō",
+   "wikidata": {
+    "lat": 36.3925,
+    "lon": 137.54
+   },
+   "wikipedia": {
+    "lat": 36.3925,
+    "lon": 137.54
+   }
+  },
+  {
+   "order": 58,
+   "ja": "五色ヶ原",
+   "article": "五色ヶ原 (立山連峰)",
+   "qid": "Q11372615",
+   "en": "Goshikigahara",
+   "wikidata": {
+    "lat": 36.538888888,
+    "lon": 137.594444444
+   },
+   "wikipedia": {
+    "lat": 36.53888889,
+    "lon": 137.59444444
+   }
+  },
+  {
+   "order": 59,
+   "ja": "弓折岳",
+   "article": "弓折岳",
+   "qid": "Q6924716",
+   "en": "Mount Yumiori",
+   "wikidata": {
+    "lat": 36.349444444,
+    "lon": 137.596666666
+   },
+   "wikipedia": {
+    "lat": 36.34944444,
+    "lon": 137.59666667
+   }
+  },
+  {
+   "order": 60,
+   "ja": "双六岳",
+   "article": "双六岳",
+   "qid": "Q11410419",
+   "en": "Mount Sugoroku",
+   "wikidata": {
+    "lat": 36.371944444,
+    "lon": 137.587222222
+   },
+   "wikipedia": {
+    "lat": 36.37194444,
+    "lon": 137.58722222
+   }
+  },
+  {
+   "order": 61,
+   "ja": "仙丈ヶ岳",
+   "article": "仙丈ヶ岳",
+   "qid": "Q3695490",
+   "en": "Mount Senjō",
+   "wikidata": {
+    "lat": 35.72,
+    "lon": 138.183333333
+   },
+   "wikipedia": {
+    "lat": 35.72,
+    "lon": 138.18361111
+   }
+  },
+  {
+   "order": 62,
+   "ja": "根子岳",
+   "article": "根子岳 (長野県)",
+   "qid": "Q11536252",
+   "en": "Mount Neko",
+   "wikidata": {
+    "lat": 36.54916667,
+    "lon": 138.39527778
+   },
+   "wikipedia": {
+    "lat": 36.54916667,
+    "lon": 138.39527778
+   }
+  },
+  {
+   "order": 63,
+   "ja": "苗場山",
+   "article": "苗場山",
+   "qid": "Q2345178",
+   "en": "Mount Naeba",
+   "wikidata": {
+    "lat": 36.845833333,
+    "lon": 138.690277777
+   },
+   "wikipedia": {
+    "lat": 36.84583333,
+    "lon": 138.69027778
+   }
+  },
+  {
+   "order": 64,
+   "ja": "霧ノ塔",
+   "article": "霧ノ塔"
+  },
+  {
+   "order": 65,
+   "ja": "守屋山",
+   "article": "守屋山",
+   "qid": "Q11450013",
+   "en": "Mount Moriya",
+   "wikidata": {
+    "lat": 35.9675,
+    "lon": 138.093333333
+   },
+   "wikipedia": {
+    "lat": 35.9675,
+    "lon": 138.09333333
+   }
+  },
+  {
+   "order": 66,
+   "ja": "黒斑山",
+   "article": "黒斑山",
+   "qid": "Q11678280",
+   "en": "Mount Kurofu",
+   "wikidata": {
+    "lat": 36.405833333,
+    "lon": 138.488611111
+   },
+   "wikipedia": {
+    "lat": 36.40527778,
+    "lon": 138.48861111
+   }
+  },
+  {
+   "order": 67,
+   "ja": "浅間山",
+   "article": "浅間山",
+   "qid": "Q242730",
+   "en": "Mount Asama",
+   "wikidata": {
+    "lat": 36.4070864,
+    "lon": 138.5197806
+   },
+   "wikipedia": {
+    "lat": 36.40638889,
+    "lon": 138.52305556
+   }
+  },
+  {
+   "order": 68,
+   "ja": "槍ヶ岳",
+   "article": "槍ヶ岳",
+   "qid": "Q2592686",
+   "en": "Mount Yari",
+   "wikidata": {
+    "lat": 36.341944444,
+    "lon": 137.6475
+   },
+   "wikipedia": {
+    "lat": 36.34194444,
+    "lon": 137.6475
+   }
+  },
+  {
+   "order": 69,
+   "ja": "白馬岳",
+   "article": "白馬岳",
+   "qid": "Q3695423",
+   "en": "Mount Shirouma",
+   "wikidata": {
+    "lat": 36.758611111,
+    "lon": 137.758611111
+   },
+   "wikipedia": {
+    "lat": 36.75847222,
+    "lon": 137.75855556
+   }
+  },
+  {
+   "order": 70,
+   "ja": "木曽駒ヶ岳",
+   "article": "木曽駒ヶ岳",
+   "qid": "Q3695791",
+   "en": "Mount Kisokoma",
+   "wikidata": {
+    "lat": 35.78983,
+    "lon": 137.80417
+   },
+   "wikipedia": {
+    "lat": 35.78944444,
+    "lon": 137.80444444
+   }
+  },
+  {
+   "order": 71,
+   "ja": "御嶽山",
+   "article": "御嶽山",
+   "qid": "Q1754806",
+   "en": "Mount Ontake",
+   "wikidata": {
+    "lat": 35.893055555,
+    "lon": 137.480555555
+   },
+   "wikipedia": {
+    "lat": 35.89277778,
+    "lon": 137.48027778
+   }
+  },
+  {
+   "order": 72,
+   "ja": "西穂高岳",
+   "article": "西穂高岳",
+   "qid": "Q11629360",
+   "en": "Mount Nishihotaka",
+   "wikidata": {
+    "lat": 36.278889,
+    "lon": 137.629167
+   },
+   "wikipedia": {
+    "lat": 36.27888889,
+    "lon": 137.62916667
+   }
+  },
+  {
+   "order": 73,
+   "ja": "戸隠山",
+   "article": "戸隠山",
+   "qid": "Q11496659",
+   "en": "Mount Togakushi",
+   "wikidata": {
+    "lat": 36.770277777,
+    "lon": 138.055277777
+   },
+   "wikipedia": {
+    "lat": 36.770278,
+    "lon": 138.055
+   }
+  },
+  {
+   "order": 74,
+   "ja": "火打山",
+   "article": "火打山",
+   "qid": "Q3695451",
+   "en": "Mount Hiuchi",
+   "wikidata": {
+    "lat": 36.92277778,
+    "lon": 138.06805556
+   },
+   "wikipedia": {
+    "lat": 36.92277778,
+    "lon": 138.06805556
+   }
+  },
+  {
+   "order": 75,
+   "ja": "縞枯山",
+   "article": "縞枯山",
+   "qid": "Q11608129",
+   "en": "Mount Shimagare",
+   "wikidata": {
+    "lat": 36.075278,
+    "lon": 138.331389
+   },
+   "wikipedia": {
+    "lat": 36.07527778,
+    "lon": 138.33138889
+   }
+  },
+  {
+   "order": 76,
+   "ja": "爺ヶ岳",
+   "article": "爺ヶ岳",
+   "qid": "Q11569478",
+   "en": "Mount Jii",
+   "wikidata": {
+    "lat": 36.5891,
+    "lon": 137.7502
+   },
+   "wikipedia": {
+    "lat": 36.58833333,
+    "lon": 137.75083333
+   }
+  },
+  {
+   "order": 77,
+   "ja": "鹿島槍ヶ岳",
+   "article": "鹿島槍ヶ岳",
+   "qid": "Q11677135",
+   "en": "Mount Kashimayari",
+   "wikidata": {
+    "lat": 36.624444,
+    "lon": 137.746944
+   },
+   "wikipedia": {
+    "lat": 36.62444444,
+    "lon": 137.74694444
+   }
+  },
+  {
+   "order": 78,
+   "ja": "五頭山",
+   "article": "五頭山",
+   "qid": "Q11372730",
+   "wikidata": {
+    "lat": 37.800833,
+    "lon": 139.345833
+   },
+   "wikipedia": {
+    "lat": 37.80094444,
+    "lon": 139.34566667
+   }
+  },
+  {
+   "order": 79,
+   "ja": "高峰山",
+   "article": "高峰山",
+   "qid": "Q11669585"
+  },
+  {
+   "order": 80,
+   "ja": "霧ヶ峰",
+   "article": "霧ヶ峰",
+   "qid": "Q3695499",
+   "en": "Mount Kirigamine",
+   "wikidata": {
+    "lat": 36.1,
+    "lon": 138.167
+   },
+   "wikipedia": {
+    "lat": 36.1,
+    "lon": 138.167
+   }
+  },
+  {
+   "order": 81,
+   "ja": "志賀高原",
+   "article": "志賀高原",
+   "qid": "Q1532916",
+   "en": "Shiga Highlands",
+   "wikidata": {
+    "lat": 36.7,
+    "lon": 138.491666666
+   },
+   "wikipedia": {
+    "lat": 36.70555556,
+    "lon": 138.50777778
+   }
+  },
+  {
+   "order": 82,
+   "ja": "浜石岳",
+   "article": "浜石岳",
+   "qid": "Q28687333",
+   "en": "Mount Hamaishi",
+   "wikidata": {
+    "lat": 35.119444444,
+    "lon": 138.533333333
+   },
+   "wikipedia": {
+    "lat": 35.12011111,
+    "lon": 138.53352778
+   }
+  },
+  {
+   "order": 83,
+   "ja": "三上山",
+   "article": "三上山",
+   "qid": "Q10865239",
+   "en": "Mount Mikami",
+   "wikidata": {
+    "lat": 35.05028,
+    "lon": 136.03778
+   },
+   "wikipedia": {
+    "lat": 35.05027778,
+    "lon": 136.03777778
+   }
+  },
+  {
+   "order": 84,
+   "ja": "藤原岳",
+   "article": "藤原岳",
+   "qid": "Q11623216",
+   "en": "Mount Fujiwara",
+   "wikidata": {
+    "lat": 35.158611111,
+    "lon": 136.452777777
+   },
+   "wikipedia": {
+    "lat": 35.15861111,
+    "lon": 136.45277778
+   }
+  },
+  {
+   "order": 85,
+   "ja": "霊仙山",
+   "article": "霊仙山",
+   "qid": "Q11660687",
+   "en": "Mount Ryozen",
+   "wikidata": {
+    "lat": 35.27916667,
+    "lon": 136.38138889
+   }
+  },
+  {
+   "order": 86,
+   "ja": "二上山",
+   "article": "二上山 (奈良県・大阪府)",
+   "qid": "Q11371271",
+   "en": "Mount Nijō",
+   "wikidata": {
+    "lat": 34.525555555,
+    "lon": 135.6775
+   },
+   "wikipedia": {
+    "lat": 34.52555556,
+    "lon": 135.6775
+   }
+  },
+  {
+   "order": 87,
+   "ja": "葛城山",
+   "article": "大和葛城山",
+   "qid": "Q11433560",
+   "en": "Mount Yamato Katsuragi",
+   "wikidata": {
+    "lat": 34.456111111,
+    "lon": 135.682222222
+   },
+   "wikipedia": {
+    "lat": 34.45611111,
+    "lon": 135.68222222
+   }
+  },
+  {
+   "order": 88,
+   "ja": "愛宕山",
+   "article": "愛宕山 (京都市)",
+   "qid": "Q2975204",
+   "en": "Mount Atago",
+   "wikidata": {
+    "lat": 35.06,
+    "lon": 135.634166666
+   },
+   "wikipedia": {
+    "lat": 35.06,
+    "lon": 135.63416667
+   }
+  },
+  {
+   "order": 89,
+   "ja": "御池岳",
+   "article": "御池岳",
+   "qid": "Q11489178",
+   "en": "Mount Oike",
+   "wikidata": {
+    "lat": 35.178611,
+    "lon": 136.415
+   },
+   "wikipedia": {
+    "lat": 35.17861111,
+    "lon": 136.415
+   }
+  },
+  {
+   "order": 90,
+   "ja": "大台ケ原山",
+   "article": "大台ヶ原山",
+   "qid": "Q3139461",
+   "en": "Mount Ōdaigahara",
+   "wikidata": {
+    "lat": 34.11,
+    "lon": 136.03
+   },
+   "wikipedia": {
+    "lat": 34.11,
+    "lon": 136.03
+   }
+  },
+  {
+   "order": 91,
+   "ja": "大山",
+   "article": "大山 (鳥取県)",
+   "qid": "Q715498",
+   "en": "Daisen",
+   "wikidata": {
+    "lat": 35.371111,
+    "lon": 133.546389
+   },
+   "wikipedia": {
+    "lat": 35.3711,
+    "lon": 133.5464
+   }
+  },
+  {
+   "order": 92,
+   "ja": "天狗高原",
+   "article": "天狗高原",
+   "qid": "Q106824338",
+   "en": "Tengu Highland",
+   "wikipedia": {
+    "lat": 33.47469444,
+    "lon": 132.99455556
+   }
+  },
+  {
+   "order": 93,
+   "ja": "東赤石山",
+   "article": "東赤石山",
+   "qid": "Q9034747",
+   "en": "Mount Higashiakaishi",
+   "wikidata": {
+    "lat": 33.875,
+    "lon": 133.375
+   },
+   "wikipedia": {
+    "lat": 33.875,
+    "lon": 133.375
+   }
+  },
+  {
+   "order": 94,
+   "ja": "横倉山",
+   "article": "横倉山 (高知県)",
+   "qid": "Q21655102",
+   "en": "Mount Yokokura",
+   "wikidata": {
+    "lat": 33.535833333,
+    "lon": 133.207777777
+   }
+  },
+  {
+   "order": 95,
+   "ja": "石鎚山",
+   "article": "石鎚山",
+   "qid": "Q2744214",
+   "en": "Mount Ishizuchi",
+   "wikidata": {
+    "lat": 33.766666666,
+    "lon": 133.116666666
+   },
+   "wikipedia": {
+    "lat": 33.7667,
+    "lon": 133.1167
+   }
+  },
+  {
+   "order": 96,
+   "ja": "丸笹山",
+   "article": "丸笹山",
+   "qid": "Q11368414",
+   "en": "Mount Marusasa",
+   "wikidata": {
+    "lat": 33.874166666,
+    "lon": 134.09
+   }
+  },
+  {
+   "order": 97,
+   "ja": "剣山",
+   "article": "剣山",
+   "qid": "Q3695995",
+   "en": "Mount Tsurugi",
+   "wikidata": {
+    "lat": 33.85361111,
+    "lon": 134.09416667
+   },
+   "wikipedia": {
+    "lat": 33.85361111,
+    "lon": 134.09416667
+   }
+  },
+  {
+   "order": 98,
+   "ja": "霧島山",
+   "article": "霧島山",
+   "qid": "Q1319361",
+   "en": "Mount Kirishima",
+   "wikidata": {
+    "lat": 31.916666666,
+    "lon": 130.866666666
+   },
+   "wikipedia": {
+    "lat": 31.93416667,
+    "lon": 130.86166667
+   }
+  },
+  {
+   "order": 99,
+   "ja": "久住山",
+   "article": "久住山",
+   "qid": "Q8540007",
+   "en": "Mount Kuju",
+   "wikidata": {
+    "lat": 33.082222222,
+    "lon": 131.240833333
+   },
+   "wikipedia": {
+    "lat": 33.0822,
+    "lon": 131.2408
+   }
+  },
+  {
+   "order": 100,
+   "ja": "祖母山",
+   "article": "祖母山",
+   "qid": "Q3695986",
+   "en": "Mount Sobo",
+   "wikidata": {
+    "lat": 32.828055555,
+    "lon": 131.346944444
+   },
+   "wikipedia": {
+    "lat": 32.8281,
+    "lon": 131.3469
+   }
+  }
+ ]
+}

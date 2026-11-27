@@ -1,0 +1,3 @@
+/* The setup page's stylesheet: the site's tokens and components, plus the classes used here. */
+@import '../index.css';
+@source './';

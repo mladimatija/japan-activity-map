@@ -1,0 +1,76 @@
+name: Demo site
+
+# Publishes the map over made-up demo data (`pnpm jam demo`) to this repository's GitHub Pages.
+# Nobody's real activities are involved: the job has no secrets and no data/ to read.
+#
+# It runs only where the repository variable DEMO_SITE is "true" (Settings > Secrets and variables
+# > Actions > Variables). Variables are not copied to forks or clones, so a copy of this repository
+# does not publish anything until its owner asks for it. Pages must use "GitHub Actions" as its
+# source (Settings > Pages).
+
+on:
+  push:
+    branches: [main, master]
+  # Mondays 03:00 Japan time: the demo's history ends "today", so it is remade to stay current.
+  schedule:
+    - cron: '0 18 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One publish at a time; a run in progress finishes, the newest waiting run goes next.
+concurrency:
+  group: demo-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build the demo site
+    if: vars.DEMO_SITE == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Actions are pinned to a commit; the comment names the release. Dependabot keeps both in step.
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Made-up activities, the site data built from them, the web app, all in dist-demo/.
+      - name: Make the demo and build the site
+        run: pnpm demo:site
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist-demo
+
+  deploy:
+    name: Publish to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Only this job may publish, and only to Pages.
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

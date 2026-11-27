@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 1,
+  "lists": [
+    {
+      "id": "prefectures",
+      "title": {
+        "en": "47 prefectures",
+        "ja": "47都道府県"
+      },
+      "kind": "area",
+      "theme": "areas",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 47,
+      "file": "prefectures.geojson",
+      "itemCount": 47
+    },
+    {
+      "id": "hyakumeizan",
+      "title": {
+        "en": "100 Famous Japanese Mountains",
+        "ja": "日本百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/hyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "nihyakumeizan",
+      "title": {
+        "en": "200 Famous Japanese Mountains (#101–200)",
+        "ja": "日本二百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/nihyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "sambyakumeizan",
+      "title": {
+        "en": "300 Famous Japanese Mountains (#201–300)",
+        "ja": "日本三百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/sambyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "prefecture-highpoints",
+      "title": {
+        "en": "Highest point of each prefecture",
+        "ja": "都道府県の最高地点"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 47,
+      "file": "peaks/prefecture-highpoints.geojson",
+      "itemCount": 47,
+      "withCoordinates": 47
+    },
+    {
+      "id": "peaks-3000m",
+      "title": {
+        "en": "Peaks of 3,000 m and higher",
+        "ja": "日本の3000m峰"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 21,
+      "file": "peaks/peaks-3000m.geojson",
+      "itemCount": 21,
+      "withCoordinates": 21
+    },
+    {
+      "id": "yamanashi-hyakumeizan",
+      "title": {
+        "en": "Yamanashi 100 Mountains",
+        "ja": "山梨百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/yamanashi-hyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "bando-33",
+      "title": {
+        "en": "Bandō 33 Kannon",
+        "ja": "坂東三十三観音"
+      },
+      "kind": "point",
+      "theme": "pilgrimage",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 33,
+      "file": "pilgrimage/bando-33.geojson",
+      "itemCount": 33,
+      "withCoordinates": 33
+    },
+    {
+      "id": "chichibu-34",
+      "title": {
+        "en": "Chichibu 34 Kannon",
+        "ja": "秩父三十四観音"
+      },
+      "kind": "point",
+      "theme": "pilgrimage",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 34,
+      "file": "pilgrimage/chichibu-34.geojson",
+      "itemCount": 34,
+      "withCoordinates": 34
+    },
+    {
+      "id": "shikoku-88",
+      "title": {
+        "en": "Shikoku 88 Temples",
+        "ja": "四国八十八箇所"
+      },
+      "kind": "point",
+      "theme": "pilgrimage",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 88,
+      "file": "pilgrimage/shikoku-88.geojson",
+      "itemCount": 88,
+      "withCoordinates": 88
+    },
+    {
+      "id": "saigoku-33",
+      "title": {
+        "en": "Saigoku 33 Kannon",
+        "ja": "西国三十三所"
+      },
+      "kind": "point",
+      "theme": "pilgrimage",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 33,
+      "file": "pilgrimage/saigoku-33.geojson",
+      "itemCount": 33,
+      "withCoordinates": 33
+    },
+    {
+      "id": "nihon-100-meijo",
+      "title": {
+        "en": "100 Fine Castles of Japan",
+        "ja": "日本100名城"
+      },
+      "kind": "point",
+      "theme": "castles",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "castles/nihon-100-meijo.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "zoku-nihon-100-meijo",
+      "title": {
+        "en": "Continued 100 Fine Castles of Japan",
+        "ja": "続日本100名城"
+      },
+      "kind": "point",
+      "theme": "castles",
+      "phase": "first",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "castles/zoku-nihon-100-meijo.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "hyakukozan",
+      "title": {
+        "en": "100 Highest Mountains of Japan",
+        "ja": "日本百高山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "later",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/hyakukozan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "hyakuteizan",
+      "title": {
+        "en": "100 Low Mountains of Japan",
+        "ja": "日本百低山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "later",
+      "status": "ready",
+      "expectedSize": 101,
+      "file": "peaks/hyakuteizan.geojson",
+      "itemCount": 101,
+      "withCoordinates": 101
+    },
+    {
+      "id": "hana-no-hyakumeizan",
+      "title": {
+        "en": "100 Mountains of Flowers",
+        "ja": "花の百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "later",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/hana-no-hyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "kanto-hyakumeizan",
+      "title": {
+        "en": "Kantō 100 Mountains",
+        "ja": "関東百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "later",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/kanto-hyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "kansai-hyakumeizan",
+      "title": {
+        "en": "Kansai 100 Mountains",
+        "ja": "関西百名山"
+      },
+      "kind": "point",
+      "theme": "peaks",
+      "phase": "later",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "peaks/kansai-hyakumeizan.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "taki-100",
+      "title": {
+        "en": "Japan's Top 100 Waterfalls",
+        "ja": "日本の滝百選"
+      },
+      "kind": "point",
+      "theme": "waterfalls",
+      "phase": "later",
+      "status": "ready",
+      "expectedSize": 100,
+      "file": "waterfalls/taki-100.geojson",
+      "itemCount": 100,
+      "withCoordinates": 100
+    },
+    {
+      "id": "michi-100",
+      "title": {
+        "en": "Japan's 100 Roads",
+        "ja": "日本の道100選"
+      },
+      "kind": "point",
+      "theme": "roads",
+      "phase": "later",
+      "status": "partial",
+      "expectedSize": 104,
+      "file": "roads/michi-100.geojson",
+      "itemCount": 104,
+      "withCoordinates": 92,
+      "reason": "No coordinates yet for: 一関市道金沢線・岩が崎線, 寺町通り, ひな市通り, 旧奥州街道, ハナミズキ通り, 白馬山麓線, 板取街道, 大山道路, みゆきの道, 大津街道, 佐伯市道山際線, 北滝ロマン道路."
+    },
+    {
+      "id": "tokaido",
+      "title": {
+        "en": "Tōkaidō",
+        "ja": "東海道"
+      },
+      "kind": "route",
+      "theme": "old-highways",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/tokaido.geojson",
+      "itemCount": 54
+    },
+    {
+      "id": "nakasendo",
+      "title": {
+        "en": "Nakasendō",
+        "ja": "中山道"
+      },
+      "kind": "route",
+      "theme": "old-highways",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/nakasendo.geojson",
+      "itemCount": 68
+    },
+    {
+      "id": "koshu-kaido",
+      "title": {
+        "en": "Kōshū Kaidō",
+        "ja": "甲州道中"
+      },
+      "kind": "route",
+      "theme": "old-highways",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/koshu-kaido.geojson",
+      "itemCount": 36
+    },
+    {
+      "id": "nikko-kaido",
+      "title": {
+        "en": "Nikkō Kaidō",
+        "ja": "日光道中"
+      },
+      "kind": "route",
+      "theme": "old-highways",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/nikko-kaido.geojson",
+      "itemCount": 20
+    },
+    {
+      "id": "oshu-kaido",
+      "title": {
+        "en": "Ōshū Kaidō",
+        "ja": "奥州道中"
+      },
+      "kind": "route",
+      "theme": "old-highways",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/oshu-kaido.geojson",
+      "itemCount": 10
+    },
+    {
+      "id": "tokai-shizen-hodo",
+      "title": {
+        "en": "Tōkai Nature Trail",
+        "ja": "東海自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/tokai-shizen-hodo.geojson",
+      "itemCount": 3
+    },
+    {
+      "id": "shimanami-kaido",
+      "title": {
+        "en": "Shimanami Kaidō",
+        "ja": "しまなみ海道"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/shimanami-kaido.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "biwaichi",
+      "title": {
+        "en": "Biwaichi",
+        "ja": "ビワイチ"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/biwaichi.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "tsukuba-kasumigaura-ring-ring-road",
+      "title": {
+        "en": "Tsukuba Kasumigaura Ring-Ring Road",
+        "ja": "つくば霞ヶ浦りんりんロード"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/tsukuba-kasumigaura-ring-ring-road.geojson",
+      "itemCount": 3
+    },
+    {
+      "id": "tokapuchi-400",
+      "title": {
+        "en": "Tokapuchi 400",
+        "ja": "トカプチ400"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/tokapuchi-400.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "pacific-coast-cycling-road",
+      "title": {
+        "en": "Pacific Coast Cycling Road",
+        "ja": "太平洋岸自転車道"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/pacific-coast-cycling-road.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "toyama-bay-cycling-course",
+      "title": {
+        "en": "Toyama Bay Cycling Course",
+        "ja": "富山湾岸サイクリングコース"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/toyama-bay-cycling-course.geojson",
+      "itemCount": 3
+    },
+    {
+      "id": "fukushima-hamadori-cycle-route",
+      "title": {
+        "en": "Fukushima Hamadori Cycle Route",
+        "ja": "ふくしま浜通りサイクルルート"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/fukushima-hamadori-cycle-route.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "fujiichi",
+      "title": {
+        "en": "Fujiichi",
+        "ja": "フジイチ"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/fujiichi.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "yukiguni-uonuma-golden-cycle-route",
+      "title": {
+        "en": "Yukiguni Uonuma Golden Cycle Route",
+        "ja": "雪国魚沼Golden Cycle Route"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /魚沼|Uonuma/ (data as of 2026-11-25T15:26:06Z). Designated in July 2026 (193 km, three stages); the official route is only in the ツール・ド app, with no open data."
+    },
+    {
+      "id": "ishikawa-satoyama-satoumi-cycling-route",
+      "title": {
+        "en": "Ishikawa Satoyama-Satoumi Cycling Route",
+        "ja": "いしかわ里山里海サイクリングルート"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/ishikawa-satoyama-satoumi-cycling-route.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "tottori-uminami-road",
+      "title": {
+        "en": "Tottori Uminami Road",
+        "ja": "鳥取うみなみロード"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/tottori-uminami-road.geojson",
+      "itemCount": 1
+    },
+    {
+      "id": "amaichi",
+      "title": {
+        "en": "Amaichi",
+        "ja": "あまいち"
+      },
+      "kind": "route",
+      "theme": "cycle-routes",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /あまいち|Amaichi/ (data as of 2026-11-25T15:26:06Z). Designated in July 2026 (about 150 km, 三角駅 to 牛深港); the official map links a Ride with GPS route with no licence for reuse."
+    },
+    {
+      "id": "kanto-fureai-no-michi",
+      "title": {
+        "en": "Tokyo Metropolitan Nature Trail (Kanto Fureai no Michi)",
+        "ja": "関東ふれあいの道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/kanto-fureai-no-michi.geojson",
+      "itemCount": 166
+    },
+    {
+      "id": "japan-trail",
+      "title": {
+        "en": "Japan Trail",
+        "ja": "JAPAN TRAIL"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /JAPAN TRAIL|ジャパントレイル|ジャパン・トレイル/ (data as of 2026-11-25T15:26:06Z). About 10,000 km, published only in the Japan Long Trail Association app."
+    },
+    {
+      "id": "shikoku-henro",
+      "title": {
+        "en": "Shikoku Henro",
+        "ja": "四国遍路"
+      },
+      "kind": "route",
+      "theme": "pilgrimage",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/shikoku-henro.geojson",
+      "itemCount": 89
+    },
+    {
+      "id": "kumano-kodo",
+      "title": {
+        "en": "Kumano Kodō",
+        "ja": "熊野古道"
+      },
+      "kind": "route",
+      "theme": "pilgrimage",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/kumano-kodo.geojson",
+      "itemCount": 7
+    },
+    {
+      "id": "kyushu-shizen-hodo",
+      "title": {
+        "en": "Kyūshū Nature Trail",
+        "ja": "九州自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "OpenStreetMap has only 31 km of the official 2,934.9 km as route relations (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "chugoku-shizen-hodo",
+      "title": {
+        "en": "Chūgoku Nature Trail",
+        "ja": "中国自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /中国自然歩道|Chugoku Nature Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "shikoku-shizen-hodo",
+      "title": {
+        "en": "Shikoku Nature Trail",
+        "ja": "四国自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /四国自然歩道|四国のみち|Shikoku Nature Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "kinki-shizen-hodo",
+      "title": {
+        "en": "Kinki Nature Trail",
+        "ja": "近畿自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /近畿自然歩道|Kinki Nature Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "chubu-hokuriku-shizen-hodo",
+      "title": {
+        "en": "Chūbu-Hokuriku Nature Trail",
+        "ja": "中部北陸自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /中部北陸自然歩道|Chubu.Hokuriku Nature Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "tohoku-shizen-hodo",
+      "title": {
+        "en": "Tōhoku Nature Trail",
+        "ja": "東北自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /東北自然歩道|新・奥の細道|Tohoku Nature Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "hokkaido-shizen-hodo",
+      "title": {
+        "en": "Hokkaidō Nature Trail",
+        "ja": "北海道自然歩道"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /北海道自然歩道|Hokkaido Nature Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "michinoku-coastal-trail",
+      "title": {
+        "en": "Michinoku Coastal Trail",
+        "ja": "みちのく潮風トレイル"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "partial",
+      "file": "routes/michinoku-coastal-trail.geojson",
+      "itemCount": 77,
+      "reason": "Has 522 km of the official 1,030.9 km."
+    },
+    {
+      "id": "shinetsu-trail",
+      "title": {
+        "en": "Shinetsu Trail",
+        "ja": "信越トレイル"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /信越トレイル|Shin-?etsu Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "hokkaido-higashi-trail",
+      "title": {
+        "en": "Hokkaidō East Trail",
+        "ja": "北海道東トレイル"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "blocked",
+      "reason": "No OpenStreetMap route relation matches /北海道東トレイル|Hokkaido East Trail|Hokkaido Higashi Trail/ (data as of 2026-11-25T15:26:06Z)."
+    },
+    {
+      "id": "kyushu-olle",
+      "title": {
+        "en": "Kyūshū Olle",
+        "ja": "九州オルレ"
+      },
+      "kind": "route",
+      "theme": "long-trails",
+      "phase": "first",
+      "status": "ready",
+      "file": "routes/kyushu-olle.geojson",
+      "itemCount": 1
+    }
+  ]
+}

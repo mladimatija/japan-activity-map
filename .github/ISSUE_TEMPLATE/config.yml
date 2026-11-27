@@ -1,0 +1,13 @@
+# Every issue starts from a form: a bug, or a feature or list request.
+#
+# Security problems, above all anything that lets private data (a track inside a privacy zone, an
+# excluded activity, a token) reach the published site, are reported privately: see SECURITY.md.
+# GitHub adds a "Report a security vulnerability" entry to the chooser once private reporting is
+# turned on (Settings > Code security > Private vulnerability reporting).
+#
+# Questions about setting up a site of your own are answered by docs/setup.md and docs/deploy.md.
+blank_issues_enabled: false
+contact_links:
+  - name: Report a privacy or security problem (private)
+    url: https://github.com/mladimatija/japan-activity-map/security/advisories/new
+    about: Anything that lets private data or a token reach the published site. Never in a public issue. See SECURITY.md.

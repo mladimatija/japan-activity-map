@@ -1,0 +1,870 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "東海道五十三次",
+ "revid": 111710480,
+ "fetchedAt": "2026-11-26",
+ "note": "The rendered article's numbered post-town rows (\"1. 品川宿\"), in page order, each with its linked article's Wikidata item, English label and positions. The build keeps those on its 五街道 line.",
+ "items": [
+  {
+   "seq": 0,
+   "number": 1,
+   "ja": "品川宿",
+   "article": "品川宿",
+   "qid": "Q3133266",
+   "en": "Shinagawa-juku",
+   "wikidata": {
+    "lat": 35.619974,
+    "lon": 139.742148
+   },
+   "wikipedia": {
+    "lat": 35.619974,
+    "lon": 139.742148
+   }
+  },
+  {
+   "seq": 1,
+   "number": 2,
+   "ja": "川崎宿",
+   "article": "川崎宿",
+   "qid": "Q3133126",
+   "en": "Kawasaki-juku",
+   "wikidata": {
+    "lat": 35.53251,
+    "lon": 139.70292
+   },
+   "wikipedia": {
+    "lat": 35.53251,
+    "lon": 139.70292
+   }
+  },
+  {
+   "seq": 2,
+   "number": 3,
+   "ja": "神奈川宿",
+   "article": "神奈川宿",
+   "qid": "Q546680",
+   "en": "Kanagawa-juku",
+   "wikidata": {
+    "lat": 35.474995,
+    "lon": 139.632958
+   },
+   "wikipedia": {
+    "lat": 35.474995,
+    "lon": 139.632958
+   }
+  },
+  {
+   "seq": 3,
+   "number": 4,
+   "ja": "保土ヶ谷宿",
+   "article": "保土ヶ谷宿",
+   "qid": "Q684671",
+   "en": "Hodogaya-juku",
+   "wikidata": {
+    "lat": 35.444028,
+    "lon": 139.595556
+   },
+   "wikipedia": {
+    "lat": 35.44,
+    "lon": 139.6
+   }
+  },
+  {
+   "seq": 4,
+   "number": 5,
+   "ja": "戸塚宿",
+   "article": "戸塚宿",
+   "qid": "Q962026",
+   "en": "Totsuka-juku",
+   "wikidata": {
+    "lat": 35.395028,
+    "lon": 139.529861
+   },
+   "wikipedia": {
+    "lat": 35.4,
+    "lon": 139.53
+   }
+  },
+  {
+   "seq": 5,
+   "number": 6,
+   "ja": "藤沢宿",
+   "article": "藤沢宿",
+   "qid": "Q3069856",
+   "en": "Fujisawa-shuku",
+   "wikidata": {
+    "lat": 35.34775,
+    "lon": 139.48294444
+   },
+   "wikipedia": {
+    "lat": 35.35,
+    "lon": 139.48
+   }
+  },
+  {
+   "seq": 6,
+   "number": 7,
+   "ja": "平塚宿",
+   "article": "平塚宿",
+   "qid": "Q613324",
+   "en": "Hiratsuka-juku",
+   "wikidata": {
+    "lat": 35.327278,
+    "lon": 139.337806
+   },
+   "wikipedia": {
+    "lat": 35.33,
+    "lon": 139.34
+   }
+  },
+  {
+   "seq": 7,
+   "number": 8,
+   "ja": "大磯宿",
+   "article": "大磯宿",
+   "qid": "Q3069823",
+   "en": "Ōiso-juku",
+   "wikidata": {
+    "lat": 35.309073,
+    "lon": 139.315203
+   },
+   "wikipedia": {
+    "lat": 35.31,
+    "lon": 139.32
+   }
+  },
+  {
+   "seq": 8,
+   "number": 9,
+   "ja": "小田原宿",
+   "article": "小田原宿",
+   "qid": "Q3069741",
+   "en": "Odawara-juku",
+   "wikidata": {
+    "lat": 35.248573,
+    "lon": 139.160525
+   },
+   "wikipedia": {
+    "lat": 35.248573,
+    "lon": 139.160525
+   }
+  },
+  {
+   "seq": 9,
+   "number": 10,
+   "ja": "箱根宿",
+   "article": "箱根宿",
+   "qid": "Q3069817",
+   "en": "Hakone-juku",
+   "wikidata": {
+    "lat": 35.189493,
+    "lon": 139.025375
+   }
+  },
+  {
+   "seq": 10,
+   "number": 11,
+   "ja": "三島宿",
+   "article": "三島宿",
+   "qid": "Q524171",
+   "en": "Mishima-shuku",
+   "wikidata": {
+    "lat": 35.11931,
+    "lon": 138.91447
+   },
+   "wikipedia": {
+    "lat": 35.11931,
+    "lon": 138.91447
+   }
+  },
+  {
+   "seq": 11,
+   "number": 12,
+   "ja": "沼津宿",
+   "article": "沼津宿",
+   "qid": "Q3070218",
+   "en": "Numazu-juku",
+   "wikidata": {
+    "lat": 35.096122,
+    "lon": 138.856815
+   },
+   "wikipedia": {
+    "lat": 35.096122,
+    "lon": 138.856815
+   }
+  },
+  {
+   "seq": 12,
+   "number": 13,
+   "ja": "原宿",
+   "article": "原宿 (東海道)",
+   "qid": "Q3032821",
+   "en": "Hara-juku",
+   "wikidata": {
+    "lat": 35.125262,
+    "lon": 138.797854
+   }
+  },
+  {
+   "seq": 13,
+   "number": 14,
+   "ja": "吉原宿",
+   "article": "吉原宿",
+   "qid": "Q3069833",
+   "en": "Yoshiwara-juku",
+   "wikidata": {
+    "lat": 35.1625,
+    "lon": 138.68777778
+   },
+   "wikipedia": {
+    "lat": 35.16238472,
+    "lon": 138.68772083
+   }
+  },
+  {
+   "seq": 14,
+   "number": 15,
+   "ja": "蒲原宿",
+   "article": "蒲原宿",
+   "qid": "Q3069866",
+   "en": "Kanbara-juku",
+   "wikidata": {
+    "lat": 35.119956,
+    "lon": 138.605569
+   },
+   "wikipedia": {
+    "lat": 35.12,
+    "lon": 138.60555556
+   }
+  },
+  {
+   "seq": 15,
+   "number": 16,
+   "ja": "由比宿",
+   "article": "由比宿",
+   "qid": "Q3070211",
+   "en": "Yui-shuku",
+   "wikidata": {
+    "lat": 35.0914,
+    "lon": 138.549
+   },
+   "wikipedia": {
+    "lat": 35.1075,
+    "lon": 138.5675
+   }
+  },
+  {
+   "seq": 16,
+   "number": 17,
+   "ja": "興津宿",
+   "article": "興津",
+   "qid": "Q3069877",
+   "en": "Okitsu"
+  },
+  {
+   "seq": 17,
+   "number": 18,
+   "ja": "江尻宿",
+   "article": "江尻宿",
+   "qid": "Q3033380",
+   "en": "Ejiri-juku",
+   "wikidata": {
+    "lat": 35.02349,
+    "lon": 138.48704
+   },
+   "wikipedia": {
+    "lat": 35.01944444,
+    "lon": 138.48222222
+   }
+  },
+  {
+   "seq": 18,
+   "number": 19,
+   "ja": "府中宿",
+   "article": "府中宿 (東海道)",
+   "qid": "Q3032835",
+   "en": "Fuchū-shuku",
+   "wikidata": {
+    "lat": 34.9747,
+    "lon": 138.387686
+   },
+   "wikipedia": {
+    "lat": 34.97472222,
+    "lon": 138.38777778
+   }
+  },
+  {
+   "seq": 19,
+   "number": 20,
+   "ja": "鞠子宿",
+   "article": "鞠子宿",
+   "qid": "Q1568406",
+   "en": "Mariko-juku",
+   "wikidata": {
+    "lat": 34.9525,
+    "lon": 138.34472222
+   },
+   "wikipedia": {
+    "lat": 34.94916667,
+    "lon": 138.34277778
+   }
+  },
+  {
+   "seq": 20,
+   "number": 21,
+   "ja": "岡部宿",
+   "article": "岡部宿",
+   "qid": "Q3032825",
+   "en": "Okabe-juku",
+   "wikidata": {
+    "lat": 34.918847,
+    "lon": 138.282312
+   },
+   "wikipedia": {
+    "lat": 34.91888889,
+    "lon": 138.28222222
+   }
+  },
+  {
+   "seq": 21,
+   "number": 22,
+   "ja": "藤枝宿",
+   "article": "藤枝宿",
+   "qid": "Q3069558",
+   "en": "Fujieda-juku",
+   "wikidata": {
+    "lat": 34.870393,
+    "lon": 138.252862
+   },
+   "wikipedia": {
+    "lat": 34.87027778,
+    "lon": 138.25277778
+   }
+  },
+  {
+   "seq": 22,
+   "number": 23,
+   "ja": "島田宿",
+   "article": "島田宿",
+   "qid": "Q3069810",
+   "en": "Shimada-juku",
+   "wikidata": {
+    "lat": 34.83472222,
+    "lon": 138.16583333
+   },
+   "wikipedia": {
+    "lat": 34.832792,
+    "lon": 138.175934
+   }
+  },
+  {
+   "seq": 23,
+   "number": 24,
+   "ja": "金谷宿",
+   "article": "金谷宿",
+   "qid": "Q3069848",
+   "en": "Kanaya-juku",
+   "wikidata": {
+    "lat": 34.8227,
+    "lon": 138.128741
+   },
+   "wikipedia": {
+    "lat": 34.82,
+    "lon": 138.13
+   }
+  },
+  {
+   "seq": 24,
+   "number": 25,
+   "ja": "日坂宿",
+   "article": "日坂宿",
+   "qid": "Q956512",
+   "en": "Nissaka-shuku",
+   "wikidata": {
+    "lat": 34.80277778,
+    "lon": 138.07583333
+   },
+   "wikipedia": {
+    "lat": 34.8028,
+    "lon": 138.0758
+   }
+  },
+  {
+   "seq": 25,
+   "number": 26,
+   "ja": "掛川宿",
+   "article": "掛川宿",
+   "qid": "Q3070229",
+   "en": "Kakegawa-juku",
+   "wikidata": {
+    "lat": 34.772927,
+    "lon": 138.015895
+   },
+   "wikipedia": {
+    "lat": 34.77,
+    "lon": 138.02
+   }
+  },
+  {
+   "seq": 26,
+   "number": 27,
+   "ja": "袋井宿",
+   "article": "袋井宿",
+   "qid": "Q3070629",
+   "en": "Fukuroi-juku",
+   "wikidata": {
+    "lat": 34.747516,
+    "lon": 137.923326
+   },
+   "wikipedia": {
+    "lat": 34.75,
+    "lon": 137.92
+   }
+  },
+  {
+   "seq": 27,
+   "number": 28,
+   "ja": "見付宿",
+   "article": "見附宿",
+   "qid": "Q782144",
+   "en": "Mitsuke-juku",
+   "wikidata": {
+    "lat": 34.726838,
+    "lon": 137.857
+   },
+   "wikipedia": {
+    "lat": 34.73,
+    "lon": 137.86
+   }
+  },
+  {
+   "seq": 28,
+   "number": 29,
+   "ja": "浜松宿",
+   "article": "浜松宿",
+   "qid": "Q3069885",
+   "en": "Hamamatsu-juku",
+   "wikidata": {
+    "lat": 34.706018,
+    "lon": 137.728045
+   },
+   "wikipedia": {
+    "lat": 34.706018,
+    "lon": 137.728045
+   }
+  },
+  {
+   "seq": 29,
+   "number": 30,
+   "ja": "舞阪宿",
+   "article": "舞阪宿",
+   "qid": "Q3032831",
+   "en": "Maisaka-juku",
+   "wikidata": {
+    "lat": 34.684626,
+    "lon": 137.608976
+   },
+   "wikipedia": {
+    "lat": 34.684626,
+    "lon": 137.608976
+   }
+  },
+  {
+   "seq": 30,
+   "number": 31,
+   "ja": "新居宿",
+   "article": "新居宿",
+   "qid": "Q2859456",
+   "en": "Arai-juku",
+   "wikidata": {
+    "lat": 34.69472,
+    "lon": 137.56133
+   },
+   "wikipedia": {
+    "lat": 34.69472,
+    "lon": 137.56133
+   }
+  },
+  {
+   "seq": 31,
+   "number": 32,
+   "ja": "白須賀宿",
+   "article": "白須賀宿",
+   "qid": "Q3032808",
+   "en": "Shirasuka-juku",
+   "wikidata": {
+    "lat": 34.68858,
+    "lon": 137.500845
+   },
+   "wikipedia": {
+    "lat": 34.69,
+    "lon": 137.5
+   }
+  },
+  {
+   "seq": 32,
+   "number": 33,
+   "ja": "二川宿",
+   "article": "二川宿",
+   "qid": "Q3033349",
+   "en": "Futagawa-juku",
+   "wikidata": {
+    "lat": 34.72329,
+    "lon": 137.44982
+   },
+   "wikipedia": {
+    "lat": 34.72329,
+    "lon": 137.44982
+   }
+  },
+  {
+   "seq": 33,
+   "number": 34,
+   "ja": "吉田宿",
+   "article": "吉田宿",
+   "qid": "Q3032813",
+   "en": "Yoshida-juku",
+   "wikidata": {
+    "lat": 34.766647,
+    "lon": 137.389618
+   },
+   "wikipedia": {
+    "lat": 34.766647,
+    "lon": 137.389618
+   }
+  },
+  {
+   "seq": 34,
+   "number": 35,
+   "ja": "御油宿",
+   "article": "御油宿",
+   "qid": "Q657939",
+   "en": "Goyu-shuku",
+   "wikidata": {
+    "lat": 34.8126,
+    "lon": 137.3165
+   },
+   "wikipedia": {
+    "lat": 34.844969,
+    "lon": 137.317339
+   }
+  },
+  {
+   "seq": 35,
+   "number": 36,
+   "ja": "赤坂宿",
+   "article": "赤坂宿 (東海道)",
+   "qid": "Q2828947",
+   "en": "Akasaka-juku",
+   "wikidata": {
+    "lat": 34.857,
+    "lon": 137.308
+   },
+   "wikipedia": {
+    "lat": 34.855752,
+    "lon": 137.308214
+   }
+  },
+  {
+   "seq": 36,
+   "number": 37,
+   "ja": "藤川宿",
+   "article": "藤川宿",
+   "qid": "Q3033386",
+   "en": "Fujikawa-shuku",
+   "wikidata": {
+    "lat": 34.911,
+    "lon": 137.223
+   },
+   "wikipedia": {
+    "lat": 34.911291,
+    "lon": 137.222143
+   }
+  },
+  {
+   "seq": 37,
+   "number": 38,
+   "ja": "岡崎宿",
+   "article": "岡崎宿",
+   "qid": "Q3069775",
+   "en": "Okazaki-shuku",
+   "wikidata": {
+    "lat": 34.957956,
+    "lon": 137.169232
+   }
+  },
+  {
+   "seq": 38,
+   "number": 39,
+   "ja": "池鯉鮒宿",
+   "article": "池鯉鮒宿",
+   "qid": "Q2963997",
+   "en": "Chiryū-juku",
+   "wikidata": {
+    "lat": 35.008,
+    "lon": 137.041
+   }
+  },
+  {
+   "seq": 39,
+   "number": 40,
+   "ja": "鳴海宿",
+   "article": "鳴海宿",
+   "qid": "Q3033344",
+   "en": "Narumi-juku",
+   "wikidata": {
+    "lat": 35.080497222,
+    "lon": 136.949755555
+   },
+   "wikipedia": {
+    "lat": 35.080497,
+    "lon": 136.949756
+   }
+  },
+  {
+   "seq": 40,
+   "number": 41,
+   "ja": "宮宿",
+   "article": "宮宿",
+   "qid": "Q3033374",
+   "en": "Miya-juku",
+   "wikidata": {
+    "lat": 35.1289,
+    "lon": 136.9143
+   },
+   "wikipedia": {
+    "lat": 35.120359,
+    "lon": 136.906903
+   }
+  },
+  {
+   "seq": 41,
+   "number": 42,
+   "ja": "桑名宿",
+   "article": "桑名宿",
+   "qid": "Q3069785",
+   "en": "Kuwana-juku",
+   "wikidata": {
+    "lat": 35.06841,
+    "lon": 136.696094
+   }
+  },
+  {
+   "seq": 42,
+   "number": 43,
+   "ja": "四日市宿",
+   "article": "四日市宿",
+   "qid": "Q3070200",
+   "en": "Yokkaichi-juku",
+   "wikidata": {
+    "lat": 34.970538,
+    "lon": 136.625487
+   },
+   "wikipedia": {
+    "lat": 34.970538,
+    "lon": 136.625487
+   }
+  },
+  {
+   "seq": 43,
+   "number": 44,
+   "ja": "石薬師宿",
+   "article": "石薬師宿",
+   "qid": "Q3033356",
+   "en": "Ishiyakushi-juku",
+   "wikidata": {
+    "lat": 34.89666667,
+    "lon": 136.55055556
+   },
+   "wikipedia": {
+    "lat": 34.904342,
+    "lon": 136.54808
+   }
+  },
+  {
+   "seq": 44,
+   "number": 45,
+   "ja": "庄野宿",
+   "article": "庄野宿",
+   "qid": "Q3033358",
+   "en": "Shōno-juku",
+   "wikidata": {
+    "lat": 34.89209722,
+    "lon": 136.52578889
+   },
+   "wikipedia": {
+    "lat": 34.883344,
+    "lon": 136.524741
+   }
+  },
+  {
+   "seq": 45,
+   "number": 46,
+   "ja": "亀山宿",
+   "article": "亀山宿",
+   "qid": "Q777826",
+   "en": "Kameyama-juku",
+   "wikidata": {
+    "lat": 34.854765,
+    "lon": 136.454365
+   },
+   "wikipedia": {
+    "lat": 34.85,
+    "lon": 136.45
+   }
+  },
+  {
+   "seq": 46,
+   "number": 47,
+   "ja": "関宿",
+   "article": "関宿",
+   "qid": "Q3033351",
+   "en": "Seki-juku",
+   "wikidata": {
+    "lat": 34.85166389,
+    "lon": 136.40035278
+   }
+  },
+  {
+   "seq": 47,
+   "number": 48,
+   "ja": "坂下宿",
+   "article": "坂下宿",
+   "qid": "Q3033376",
+   "en": "Sakashita-juku",
+   "wikidata": {
+    "lat": 34.888588,
+    "lon": 136.354073
+   },
+   "wikipedia": {
+    "lat": 34.888588,
+    "lon": 136.354073
+   }
+  },
+  {
+   "seq": 48,
+   "number": 49,
+   "ja": "土山宿",
+   "article": "土山宿",
+   "qid": "Q338084",
+   "en": "Tsuchiyama-juku",
+   "wikidata": {
+    "lat": 34.934838,
+    "lon": 136.282336
+   },
+   "wikipedia": {
+    "lat": 34.934838,
+    "lon": 136.282336
+   }
+  },
+  {
+   "seq": 49,
+   "number": 50,
+   "ja": "水口宿",
+   "article": "水口宿",
+   "qid": "Q3069768",
+   "en": "Minakuchi-juku",
+   "wikidata": {
+    "lat": 34.966188,
+    "lon": 136.182085
+   }
+  },
+  {
+   "seq": 50,
+   "number": 51,
+   "ja": "石部宿",
+   "article": "石部宿",
+   "qid": "Q3155270",
+   "en": "Ishibe-juku",
+   "wikidata": {
+    "lat": 35.010129,
+    "lon": 136.054554
+   },
+   "wikipedia": {
+    "lat": 35.010129,
+    "lon": 136.054554
+   }
+  },
+  {
+   "seq": 51,
+   "number": 52,
+   "ja": "草津宿",
+   "article": "草津宿",
+   "qid": "Q3200642",
+   "en": "Kusatsu-juku",
+   "wikidata": {
+    "lat": 35.01766667,
+    "lon": 135.96047222
+   },
+   "wikipedia": {
+    "lat": 35.01766667,
+    "lon": 135.96047222
+   }
+  },
+  {
+   "seq": 52,
+   "number": 53,
+   "ja": "大津宿",
+   "article": "大津宿",
+   "qid": "Q3069765",
+   "en": "Ōtsu-juku",
+   "wikidata": {
+    "lat": 35.00597222,
+    "lon": 135.86141667
+   },
+   "wikipedia": {
+    "lat": 35.00597222,
+    "lon": 135.86141667
+   }
+  },
+  {
+   "seq": 53,
+   "number": 53,
+   "ja": "大津宿"
+  },
+  {
+   "seq": 54,
+   "number": 54,
+   "ja": "伏見宿",
+   "article": "伏見宿 (京街道)",
+   "qid": "Q3091119",
+   "en": "Fushimi-juku"
+  },
+  {
+   "seq": 55,
+   "number": 55,
+   "ja": "淀宿",
+   "article": "淀",
+   "qid": "Q3572390",
+   "en": "Yodo"
+  },
+  {
+   "seq": 56,
+   "number": 56,
+   "ja": "枚方宿",
+   "article": "枚方宿",
+   "qid": "Q3136195",
+   "en": "Hirakata-juku",
+   "wikidata": {
+    "lat": 34.81222222,
+    "lon": 135.63416667
+   }
+  },
+  {
+   "seq": 57,
+   "number": 57,
+   "ja": "守口宿",
+   "article": "守口宿",
+   "qid": "Q672756",
+   "en": "Moriguchi-juku",
+   "wikidata": {
+    "lat": 34.73805556,
+    "lon": 135.56555556
+   },
+   "wikipedia": {
+    "lat": 34.73527778,
+    "lon": 135.56361111
+   }
+  }
+ ]
+}

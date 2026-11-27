@@ -1,0 +1,640 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "甲州街道",
+ "revid": 110173722,
+ "fetchedAt": "2026-11-26",
+ "note": "The rendered article's numbered post-town rows (\"1. 品川宿\"), in page order, each with its linked article's Wikidata item, English label and positions. The build keeps those on its 五街道 line.",
+ "items": [
+  {
+   "seq": 0,
+   "number": 1,
+   "ja": "内藤新宿",
+   "article": "内藤新宿",
+   "qid": "Q11394514",
+   "en": "Naitō-shinjuku",
+   "wikidata": {
+    "lat": 35.688806,
+    "lon": 139.709417
+   },
+   "wikipedia": {
+    "lat": 35.688806,
+    "lon": 139.709417
+   }
+  },
+  {
+   "seq": 1,
+   "number": 2,
+   "ja": "下高井戸宿",
+   "article": "高井戸宿",
+   "qid": "Q11668698",
+   "en": "Takaido-shuku",
+   "wikidata": {
+    "lat": 35.671903,
+    "lon": 139.610124
+   },
+   "wikipedia": {
+    "lat": 35.671903,
+    "lon": 139.610124
+   }
+  },
+  {
+   "seq": 2,
+   "number": 3,
+   "ja": "上高井戸宿",
+   "article": "高井戸宿",
+   "qid": "Q11668698",
+   "en": "Takaido-shuku",
+   "wikidata": {
+    "lat": 35.671903,
+    "lon": 139.610124
+   },
+   "wikipedia": {
+    "lat": 35.671903,
+    "lon": 139.610124
+   }
+  },
+  {
+   "seq": 3,
+   "number": 4,
+   "ja": "国領宿",
+   "article": "布田五宿",
+   "qid": "Q28690549"
+  },
+  {
+   "seq": 4,
+   "number": 5,
+   "ja": "下布田宿",
+   "article": "布田五宿",
+   "qid": "Q28690549"
+  },
+  {
+   "seq": 5,
+   "number": 6,
+   "ja": "上布田宿",
+   "article": "布田五宿",
+   "qid": "Q28690549"
+  },
+  {
+   "seq": 6,
+   "number": 7,
+   "ja": "下石原宿",
+   "article": "布田五宿",
+   "qid": "Q28690549"
+  },
+  {
+   "seq": 7,
+   "number": 8,
+   "ja": "上石原宿",
+   "article": "布田五宿",
+   "qid": "Q28690549"
+  },
+  {
+   "seq": 8,
+   "number": 9,
+   "ja": "府中宿",
+   "article": "府中宿 (甲州街道)",
+   "qid": "Q11486027",
+   "wikidata": {
+    "lat": 35.66998,
+    "lon": 139.475
+   },
+   "wikipedia": {
+    "lat": 35.66998,
+    "lon": 139.475
+   }
+  },
+  {
+   "seq": 9,
+   "number": 10,
+   "ja": "日野宿",
+   "article": "日野宿",
+   "qid": "Q11510578",
+   "wikidata": {
+    "lat": 35.6783,
+    "lon": 139.39961
+   },
+   "wikipedia": {
+    "lat": 35.6783,
+    "lon": 139.39961
+   }
+  },
+  {
+   "seq": 10,
+   "number": 11,
+   "ja": "八王子宿",
+   "article": "八王子宿",
+   "qid": "Q11391569",
+   "wikidata": {
+    "lat": 35.66043,
+    "lon": 139.33115
+   },
+   "wikipedia": {
+    "lat": 35.66043,
+    "lon": 139.33115
+   }
+  },
+  {
+   "seq": 11,
+   "number": 12,
+   "ja": "駒木野宿",
+   "article": "裏高尾町",
+   "qid": "Q17217798",
+   "wikidata": {
+    "lat": 35.64065,
+    "lon": 139.254586
+   }
+  },
+  {
+   "seq": 12,
+   "number": 13,
+   "ja": "小原宿",
+   "article": "小原宿",
+   "qid": "Q17226104",
+   "wikidata": {
+    "lat": 35.6224,
+    "lon": 139.2002
+   },
+   "wikipedia": {
+    "lat": 35.6224,
+    "lon": 139.2002
+   }
+  },
+  {
+   "seq": 13,
+   "number": 14,
+   "ja": "与瀬宿",
+   "article": "与瀬町",
+   "qid": "Q11361922",
+   "en": "Yose",
+   "wikidata": {
+    "lat": 35.614555555,
+    "lon": 139.188944444
+   }
+  },
+  {
+   "seq": 14,
+   "number": 15,
+   "ja": "吉野宿",
+   "article": "吉野町 (神奈川県)",
+   "qid": "Q11414488",
+   "en": "Yoshino",
+   "wikidata": {
+    "lat": 35.614,
+    "lon": 139.166694444
+   },
+   "wikipedia": {
+    "lat": 35.614,
+    "lon": 139.16669
+   }
+  },
+  {
+   "seq": 15,
+   "number": 16,
+   "ja": "関野宿",
+   "article": "小淵村",
+   "qid": "Q11462656",
+   "en": "Obuchi",
+   "wikidata": {
+    "lat": 35.615083333,
+    "lon": 139.155194444
+   },
+   "wikipedia": {
+    "lat": 35.61508,
+    "lon": 139.15519
+   }
+  },
+  {
+   "seq": 16,
+   "number": 17,
+   "ja": "上野原宿",
+   "article": "上野原町",
+   "qid": "Q7877463",
+   "en": "Uenohara",
+   "wikidata": {
+    "lat": 35.632222222,
+    "lon": 139.109277777
+   },
+   "wikipedia": {
+    "lat": 35.63222,
+    "lon": 139.10928
+   }
+  },
+  {
+   "seq": 17,
+   "number": 18,
+   "ja": "鶴川宿",
+   "article": "大鶴村 (山梨県)",
+   "qid": "Q11442003",
+   "en": "Ōtsuru",
+   "wikidata": {
+    "lat": 35.636027777,
+    "lon": 139.093694444
+   },
+   "wikipedia": {
+    "lat": 35.63603,
+    "lon": 139.09369
+   }
+  },
+  {
+   "seq": 18,
+   "number": 19,
+   "ja": "野田尻宿",
+   "article": "野田尻宿",
+   "qid": "Q21654126",
+   "wikidata": {
+    "lat": 35.63444444,
+    "lon": 139.06472222
+   },
+   "wikipedia": {
+    "lat": 35.63,
+    "lon": 139.06
+   }
+  },
+  {
+   "seq": 19,
+   "number": 20,
+   "ja": "犬目宿",
+   "article": "犬目宿",
+   "qid": "Q109364624",
+   "en": "Inume-juku",
+   "wikidata": {
+    "lat": 35.62656,
+    "lon": 139.0343
+   },
+   "wikipedia": {
+    "lat": 35.62656,
+    "lon": 139.0343
+   }
+  },
+  {
+   "seq": 20,
+   "number": 21,
+   "ja": "下鳥沢宿",
+   "article": "富浜村",
+   "qid": "Q11457123",
+   "en": "Tomihama",
+   "wikidata": {
+    "lat": 35.609027777,
+    "lon": 139.003111111
+   },
+   "wikipedia": {
+    "lat": 35.60903,
+    "lon": 139.00311
+   }
+  },
+  {
+   "seq": 21,
+   "number": 22,
+   "ja": "上鳥沢宿",
+   "article": "富浜村",
+   "qid": "Q11457123",
+   "en": "Tomihama",
+   "wikidata": {
+    "lat": 35.609027777,
+    "lon": 139.003111111
+   },
+   "wikipedia": {
+    "lat": 35.60903,
+    "lon": 139.00311
+   }
+  },
+  {
+   "seq": 22,
+   "number": 23,
+   "ja": "猿橋宿",
+   "article": "猿橋",
+   "qid": "Q4329112",
+   "en": "Saruhashi Bridge",
+   "wikidata": {
+    "lat": 35.61572222,
+    "lon": 138.98022222
+   },
+   "wikipedia": {
+    "lat": 35.61572222,
+    "lon": 138.98022222
+   }
+  },
+  {
+   "seq": 23,
+   "number": 24,
+   "ja": "駒橋宿",
+   "article": "大月町 (山梨県)",
+   "qid": "Q11435845",
+   "en": "Ōtsuki",
+   "wikidata": {
+    "lat": 35.610472222,
+    "lon": 138.940055555
+   },
+   "wikipedia": {
+    "lat": 35.61047,
+    "lon": 138.94006
+   }
+  },
+  {
+   "seq": 24,
+   "number": 25,
+   "ja": "大月宿",
+   "article": "大月町 (山梨県)",
+   "qid": "Q11435845",
+   "en": "Ōtsuki",
+   "wikidata": {
+    "lat": 35.610472222,
+    "lon": 138.940055555
+   },
+   "wikipedia": {
+    "lat": 35.61047,
+    "lon": 138.94006
+   }
+  },
+  {
+   "seq": 25,
+   "number": 26,
+   "ja": "下花咲宿",
+   "article": "大月町 (山梨県)",
+   "qid": "Q11435845",
+   "en": "Ōtsuki",
+   "wikidata": {
+    "lat": 35.610472222,
+    "lon": 138.940055555
+   },
+   "wikipedia": {
+    "lat": 35.61047,
+    "lon": 138.94006
+   }
+  },
+  {
+   "seq": 26,
+   "number": 27,
+   "ja": "上花咲宿",
+   "article": "大月町 (山梨県)",
+   "qid": "Q11435845",
+   "en": "Ōtsuki",
+   "wikidata": {
+    "lat": 35.610472222,
+    "lon": 138.940055555
+   },
+   "wikipedia": {
+    "lat": 35.61047,
+    "lon": 138.94006
+   }
+  },
+  {
+   "seq": 27,
+   "number": 28,
+   "ja": "下初狩宿",
+   "article": "初狩村",
+   "qid": "Q11396535",
+   "en": "Hatsukari",
+   "wikidata": {
+    "lat": 35.597388888,
+    "lon": 138.8805
+   },
+   "wikipedia": {
+    "lat": 35.59739,
+    "lon": 138.8805
+   }
+  },
+  {
+   "seq": 28,
+   "number": 29,
+   "ja": "中初狩宿",
+   "article": "初狩村",
+   "qid": "Q11396535",
+   "en": "Hatsukari",
+   "wikidata": {
+    "lat": 35.597388888,
+    "lon": 138.8805
+   },
+   "wikipedia": {
+    "lat": 35.59739,
+    "lon": 138.8805
+   }
+  },
+  {
+   "seq": 29,
+   "number": 30,
+   "ja": "白野宿",
+   "article": "笹子村 (山梨県)",
+   "qid": "Q11602525",
+   "en": "Sasago",
+   "wikidata": {
+    "lat": 35.60375,
+    "lon": 138.827583333
+   },
+   "wikipedia": {
+    "lat": 35.60375,
+    "lon": 138.82758
+   }
+  },
+  {
+   "seq": 30,
+   "number": 31,
+   "ja": "阿弥陀海道宿",
+   "article": "笹子村 (山梨県)",
+   "qid": "Q11602525",
+   "en": "Sasago",
+   "wikidata": {
+    "lat": 35.60375,
+    "lon": 138.827583333
+   },
+   "wikipedia": {
+    "lat": 35.60375,
+    "lon": 138.82758
+   }
+  },
+  {
+   "seq": 31,
+   "number": 32,
+   "ja": "黒野田宿",
+   "article": "笹子村 (山梨県)",
+   "qid": "Q11602525",
+   "en": "Sasago",
+   "wikidata": {
+    "lat": 35.60375,
+    "lon": 138.827583333
+   },
+   "wikipedia": {
+    "lat": 35.60375,
+    "lon": 138.82758
+   }
+  },
+  {
+   "seq": 32,
+   "number": 33,
+   "ja": "駒飼宿",
+   "article": "大和村 (山梨県)",
+   "qid": "Q3508441",
+   "en": "Yamato",
+   "wikidata": {
+    "lat": 35.638694444,
+    "lon": 138.778555555
+   },
+   "wikipedia": {
+    "lat": 35.63869,
+    "lon": 138.77856
+   }
+  },
+  {
+   "seq": 33,
+   "number": 34,
+   "ja": "鶴瀬宿",
+   "article": "鶴瀬村 (山梨県)",
+   "qid": "Q11676064",
+   "en": "Tsuruze",
+   "wikidata": {
+    "lat": 35.648805555,
+    "lon": 138.772916666
+   },
+   "wikipedia": {
+    "lat": 35.64881,
+    "lon": 138.77292
+   }
+  },
+  {
+   "seq": 34,
+   "number": 35,
+   "ja": "勝沼宿",
+   "article": "勝沼町",
+   "qid": "Q3194244",
+   "en": "Katsunuma",
+   "wikidata": {
+    "lat": 35.665638888,
+    "lon": 138.723555555
+   },
+   "wikipedia": {
+    "lat": 35.66564,
+    "lon": 138.72356
+   }
+  },
+  {
+   "seq": 35,
+   "number": 36,
+   "ja": "栗原宿",
+   "article": "栗原宿",
+   "qid": "Q11535829",
+   "en": "Kurihara resort",
+   "wikidata": {
+    "lat": 35.66518,
+    "lon": 138.69742
+   },
+   "wikipedia": {
+    "lat": 35.66518,
+    "lon": 138.69742
+   }
+  },
+  {
+   "seq": 36,
+   "number": 37,
+   "ja": "石和宿",
+   "article": "石和温泉",
+   "qid": "Q11585331",
+   "en": "Isawa Onsen",
+   "wikidata": {
+    "lat": 35.657861,
+    "lon": 138.646
+   },
+   "wikipedia": {
+    "lat": 35.657861,
+    "lon": 138.646
+   }
+  },
+  {
+   "seq": 37,
+   "number": 38,
+   "ja": "甲府柳町宿",
+   "article": "甲府柳町宿",
+   "qid": "Q135261410",
+   "wikidata": {
+    "lat": 35.66066,
+    "lon": 138.57248
+   }
+  },
+  {
+   "seq": 38,
+   "number": 38,
+   "ja": "甲府柳町宿"
+  },
+  {
+   "seq": 39,
+   "number": 39,
+   "ja": "韮崎宿",
+   "article": "韮崎宿"
+  },
+  {
+   "seq": 40,
+   "number": 40,
+   "ja": "台ヶ原宿",
+   "article": "台ヶ原宿",
+   "qid": "Q48748610",
+   "en": "Daigahara-shuku",
+   "wikidata": {
+    "lat": 35.808056,
+    "lon": 138.343611
+   },
+   "wikipedia": {
+    "lat": 35.808056,
+    "lon": 138.343611
+   }
+  },
+  {
+   "seq": 41,
+   "number": 41,
+   "ja": "教来石宿",
+   "article": "教来石宿",
+   "qid": "Q135261479",
+   "wikidata": {
+    "lat": 35.84002,
+    "lon": 138.30296
+   },
+   "wikipedia": {
+    "lat": 35.84002,
+    "lon": 138.30296
+   }
+  },
+  {
+   "seq": 42,
+   "number": 42,
+   "ja": "蔦木宿",
+   "article": "蔦木宿",
+   "qid": "Q85883511",
+   "wikidata": {
+    "lat": 35.8687,
+    "lon": 138.2748
+   },
+   "wikipedia": {
+    "lat": 35.8687,
+    "lon": 138.2748
+   }
+  },
+  {
+   "seq": 43,
+   "number": 43,
+   "ja": "金沢宿",
+   "article": "金沢宿 (甲州街道)",
+   "qid": "Q85884096",
+   "wikidata": {
+    "lat": 35.94778,
+    "lon": 138.18826
+   },
+   "wikipedia": {
+    "lat": 35.94778,
+    "lon": 138.18826
+   }
+  },
+  {
+   "seq": 44,
+   "number": 44,
+   "ja": "上諏訪宿",
+   "article": "上諏訪宿",
+   "qid": "Q17228167",
+   "wikidata": {
+    "lat": 36.0442,
+    "lon": 138.119
+   },
+   "wikipedia": {
+    "lat": 36.0442,
+    "lon": 138.119
+   }
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+# Line endings: LF in the repository and in the working tree, on every platform.
+* text=auto eol=lf
+
+# Binary files: never converted, never diffed as text.
+*.xlsx binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.sqlite binary
+
+# The lockfile is generated: keep it out of language statistics and fold it in diffs.
+pnpm-lock.yaml linguist-generated=true -diff
+
+# Reference lists are data built by `pnpm jam lists build`, some of them over a megabyte:
+# fold them in pull requests and leave them out of language statistics.
+lists/**/*.geojson linguist-generated=true
+lists/*.geojson linguist-generated=true
+lists/index.json linguist-generated=true
+lists/review.md linguist-generated=true
+
+# Downloaded source files are third-party data, kept as fetched.
+lists/sources/** linguist-vendored=true
+lists/sources/**/SOURCE.md linguist-vendored=false linguist-documentation=true
+
+# Documentation
+docs/** linguist-documentation=true

@@ -1,0 +1,40 @@
+{
+  "import": {
+    // First and last day to fetch, inclusive (YYYY-MM-DD). Leave out for all history up to today.
+    // "from": "2024-01-01",
+    // "to": "2026-12-31",
+    // Activity types to keep. Strava filters by date only, so this is applied after fetching.
+    "activityTypes": ["hike", "walk", "run", "trail_run", "ride"],
+    // Also fetch activities set to "Only You". This needs wider Strava access, so run
+    // `pnpm jam strava auth` again after turning it on. Turning it off removes them on the next sync.
+    "includePrivate": false
+  },
+  // After each pull, fetch full GPS samples (heights and times) for up to this many activities in
+  // Japan that only have the list's simplified track, newest first, one request each. 0 turns it
+  // off. `pnpm jam sync strava --streams missing --limit 400` does a bigger batch (Japan first).
+  "fullTracksPerSync": 80,
+  // Strava sport type -> project activity type. Sport types not listed here are skipped and reported.
+  "sportTypeMap": {
+    "Hike": "hike",
+    "Walk": "walk",
+    "Run": "run",
+    "TrailRun": "trail_run",
+    "Ride": "ride",
+    "GravelRide": "ride",
+    // "EBikeRide": "ride",
+    "MountainBikeRide": "ride"
+  },
+  // The weekly job skips the pull when the last one is newer than this many days.
+  "staleAfterDays": 7,
+  "api": {
+    // Strava's addresses. Strava announced a move to https://api-v3.strava.com during 2027;
+    // change baseUrl here when it happens.
+    "baseUrl": "https://www.strava.com/api/v3",
+    "oauthUrl": "https://www.strava.com/oauth",
+    // Local port for the sign-in redirect. Your Strava app's Authorization Callback Domain
+    // must be "localhost".
+    "redirectPort": 8723,
+    // Activities per page when listing; Strava allows up to 200.
+    "pageSize": 200
+  }
+}

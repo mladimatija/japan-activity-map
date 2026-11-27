@@ -1,0 +1,18 @@
+{
+  // Manual control over grouped routes (`pnpm jam routes`). Activities are named by their Strava id
+  // or, for sheet rows, their act_ id; `pnpm jam routes` lists both. Everything here survives
+  // `strava wipe` and `routes regroup`.
+
+  // A name for the route that contains this activity. Replaces the automatic name.
+  "names": {
+    // "12345678901": "Tamagawa riverside loop"
+  },
+  // Each entry: activities whose routes become one route.
+  "merge": [
+    // [12345678901, 12345678902]
+  ],
+  // Each entry: activities that leave their route and form a route of their own.
+  "split": [
+    // [12345678903]
+  ]
+}

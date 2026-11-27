@@ -1,0 +1,287 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "日光街道",
+ "revid": 109439205,
+ "fetchedAt": "2026-11-26",
+ "note": "The rendered article's numbered post-town rows (\"1. 品川宿\"), in page order, each with its linked article's Wikidata item, English label and positions. The build keeps those on its 五街道 line.",
+ "items": [
+  {
+   "seq": 0,
+   "number": 1,
+   "ja": "千住宿",
+   "article": "千住宿",
+   "qid": "Q11405343",
+   "wikidata": {
+    "lat": 35.75069,
+    "lon": 139.802313
+   },
+   "wikipedia": {
+    "lat": 35.75069,
+    "lon": 139.802313
+   }
+  },
+  {
+   "seq": 1,
+   "number": 2,
+   "ja": "草加宿",
+   "article": "草加宿",
+   "qid": "Q11618087",
+   "en": "Sōka-shuku",
+   "wikidata": {
+    "lat": 35.835336,
+    "lon": 139.80647
+   },
+   "wikipedia": {
+    "lat": 35.835336,
+    "lon": 139.80647
+   }
+  },
+  {
+   "seq": 2,
+   "number": 3,
+   "ja": "越ヶ谷宿",
+   "article": "越ヶ谷宿",
+   "qid": "Q11636368",
+   "en": "Koshigaya-juku",
+   "wikidata": {
+    "lat": 35.896628,
+    "lon": 139.783114
+   },
+   "wikipedia": {
+    "lat": 35.896628,
+    "lon": 139.783114
+   }
+  },
+  {
+   "seq": 3,
+   "number": 4,
+   "ja": "粕壁宿",
+   "article": "粕壁宿",
+   "qid": "Q24898728",
+   "wikidata": {
+    "lat": 35.98301,
+    "lon": 139.75349
+   }
+  },
+  {
+   "seq": 4,
+   "number": 5,
+   "ja": "杉戸宿",
+   "article": "杉戸宿",
+   "qid": "Q11522010",
+   "wikidata": {
+    "lat": 36.0268691,
+    "lon": 139.7332959
+   }
+  },
+  {
+   "seq": 5,
+   "number": 6,
+   "ja": "幸手宿",
+   "article": "幸手宿",
+   "qid": "Q11483989",
+   "en": "Satte-juku",
+   "wikidata": {
+    "lat": 36.14244,
+    "lon": 139.702595
+   },
+   "wikipedia": {
+    "lat": 36.14244,
+    "lon": 139.702595
+   }
+  },
+  {
+   "seq": 6,
+   "number": 7,
+   "ja": "栗橋宿",
+   "article": "栗橋宿",
+   "qid": "Q11536017",
+   "en": "Kurihashi-juku",
+   "wikidata": {
+    "lat": 36.142073,
+    "lon": 139.702477
+   },
+   "wikipedia": {
+    "lat": 36.142073,
+    "lon": 139.702477
+   }
+  },
+  {
+   "seq": 7,
+   "number": 8,
+   "ja": "中田宿",
+   "article": "中田宿",
+   "qid": "Q11366688",
+   "wikidata": {
+    "lat": 36.142389,
+    "lon": 139.7025
+   }
+  },
+  {
+   "seq": 8,
+   "number": 9,
+   "ja": "古河宿",
+   "article": "古河宿",
+   "qid": "Q11411372",
+   "en": "Koga-juku",
+   "wikidata": {
+    "lat": 36.1965,
+    "lon": 139.7061
+   },
+   "wikipedia": {
+    "lat": 36.1965,
+    "lon": 139.7061
+   }
+  },
+  {
+   "seq": 9,
+   "number": 10,
+   "ja": "野木宿",
+   "article": "野木宿",
+   "qid": "Q11645489",
+   "wikidata": {
+    "lat": 36.23325,
+    "lon": 139.74072
+   }
+  },
+  {
+   "seq": 10,
+   "number": 11,
+   "ja": "間々田宿",
+   "article": "間々田宿",
+   "qid": "Q11655356",
+   "wikidata": {
+    "lat": 36.26817,
+    "lon": 139.76806
+   }
+  },
+  {
+   "seq": 11,
+   "number": 12,
+   "ja": "小山宿",
+   "article": "小山宿",
+   "qid": "Q11459843",
+   "en": "Oyamashuku",
+   "wikidata": {
+    "lat": 36.31461,
+    "lon": 139.80017
+   },
+   "wikipedia": {
+    "lat": 36.31461,
+    "lon": 139.80017
+   }
+  },
+  {
+   "seq": 12,
+   "number": 13,
+   "ja": "新田宿",
+   "article": "新田宿",
+   "qid": "Q11503713",
+   "wikidata": {
+    "lat": 36.35918,
+    "lon": 139.83081
+   }
+  },
+  {
+   "seq": 13,
+   "number": 14,
+   "ja": "小金井宿",
+   "article": "小金井宿",
+   "qid": "Q11464317",
+   "wikidata": {
+    "lat": 36.387178,
+    "lon": 139.841969
+   },
+   "wikipedia": {
+    "lat": 36.387178,
+    "lon": 139.841969
+   }
+  },
+  {
+   "seq": 14,
+   "number": 15,
+   "ja": "石橋宿",
+   "article": "石橋宿",
+   "qid": "Q11586647",
+   "wikidata": {
+    "lat": 36.4365,
+    "lon": 139.8636
+   }
+  },
+  {
+   "seq": 15,
+   "number": 16,
+   "ja": "雀宮宿",
+   "article": "雀宮宿",
+   "qid": "Q11659118",
+   "wikidata": {
+    "lat": 36.4938,
+    "lon": 139.8729
+   }
+  },
+  {
+   "seq": 16,
+   "number": 17,
+   "ja": "宇都宮宿",
+   "article": "宇都宮宿",
+   "qid": "Q11449738",
+   "wikidata": {
+    "lat": 36.5618,
+    "lon": 139.8772
+   }
+  },
+  {
+   "seq": 17,
+   "number": 18,
+   "ja": "徳次郎宿",
+   "article": "徳次郎宿",
+   "qid": "Q11490329",
+   "wikidata": {
+    "lat": 36.650526,
+    "lon": 139.843948
+   },
+   "wikipedia": {
+    "lat": 36.650526,
+    "lon": 139.843948
+   }
+  },
+  {
+   "seq": 18,
+   "number": 19,
+   "ja": "大沢宿",
+   "article": "大沢宿",
+   "qid": "Q11436947",
+   "wikidata": {
+    "lat": 36.69,
+    "lon": 139.764
+   }
+  },
+  {
+   "seq": 19,
+   "number": 20,
+   "ja": "今市宿",
+   "article": "今市宿 (下野国)",
+   "qid": "Q11376960",
+   "wikidata": {
+    "lat": 36.716666666,
+    "lon": 139.683333333
+   },
+   "wikipedia": {
+    "lat": 36.7167,
+    "lon": 139.6833
+   }
+  },
+  {
+   "seq": 20,
+   "number": 21,
+   "ja": "鉢石宿",
+   "article": "鉢石宿",
+   "qid": "Q11649866",
+   "en": "Hatsuishi-juku",
+   "wikidata": {
+    "lat": 36.751,
+    "lon": 139.608
+   }
+  }
+ ]
+}

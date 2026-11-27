@@ -1,0 +1,4387 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-25T15:26:06Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 27421,
+  "tags": {
+    "name": "한강 자전거길",
+    "name:en": "Hangang (Riv.) Bicycle Path",
+    "name:ko": "한강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2097384,
+  "tags": {
+    "name": "九州自然歩道 (Kyushu Nature Trail)",
+    "name:en": "Kyushu Nature Trail",
+    "name:ja": "九州自然歩道",
+    "network": "rwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2136806,
+  "tags": {
+    "distance": "9.4",
+    "from": "南平橋",
+    "name": "関東ふれあいの道 - 神奈川9 - 弘法大師とサクラのみち",
+    "name:en": "KFT - K9 - Kouboudaishi to sakura no michi",
+    "network": "nwn",
+    "ref": "神9",
+    "route": "hiking",
+    "to": "坪ノ内バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2196328,
+  "tags": {
+    "distance": "8.9",
+    "from": "月京",
+    "name": "関東ふれあいの道 - 神奈川8 - 鷹取山・里のみち",
+    "name:en": "KFT - K8 - Takatoriyama sato no michi",
+    "network": "nwn",
+    "ref": "神8",
+    "route": "hiking",
+    "to": "南平橋",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2236106,
+  "tags": {
+    "name": "しまなみ海道サイクリングロード",
+    "name:en": "Shimanami Kaido Cycling Route",
+    "name:ja": "しまなみ海道サイクリングロード",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route",
+    "wikidata": "Q67603142",
+    "wikipedia": "ja:しまなみ海道サイクリングロード"
+  }
+},
+{
+  "type": "relation",
+  "id": 2474181,
+  "tags": {
+    "distance": "7.6",
+    "name": "関東ふれあいの道 - 神奈川7 - 大磯・高麗山のみち",
+    "name:en": "KFT - K7 - Ooiso Komayama no michi",
+    "network": "nwn",
+    "ref": "神7",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2621582,
+  "tags": {
+    "description": "連絡区間",
+    "distance": "0.6",
+    "name": "関東ふれあいの道 - 連絡区間",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2630642,
+  "tags": {
+    "distance": "10.2",
+    "name": "関東ふれあいの道 - 神奈川6 - 湘南海岸・砂浜のみち",
+    "name:en": "KFT - K6 - Syounankaigan sunahama no michi",
+    "network": "nwn",
+    "ref": "神6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2653926,
+  "tags": {
+    "distance": "8.5",
+    "from": "坪ノ内バス停",
+    "name": "関東ふれあいの道 - 神奈川10 - 太田道灌・日向薬師のみち",
+    "name:en": "KFT - K10 - Ootadoukan Hinatayakushi no michi",
+    "network": "nwn",
+    "ref": "神10",
+    "route": "hiking",
+    "to": "日向薬師バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2849430,
+  "tags": {
+    "name": "Nakdonggang",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 3406460,
+  "tags": {
+    "distance": "8.7",
+    "from": "蓑毛バス停",
+    "name": "関東ふれあいの道 - 神奈川16 - 大山参り蓑毛のみち",
+    "name:en": "KFT - K16 - Ooyamamairi Youmou no michi",
+    "network": "nwn",
+    "ref": "神16",
+    "route": "hiking",
+    "to": "日向薬師バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 3424425,
+  "tags": {
+    "distance": "8.8",
+    "from": "日向薬師バス停",
+    "name": "関東ふれあいの道 - 神奈川11 - 順礼峠のみち",
+    "name:en": "KFT - K11 - Jyunreitouge no michi",
+    "name:ja": "関東ふれあいの道 - 神奈川11 - 順礼峠のみち",
+    "network": "nwn",
+    "ref": "神11",
+    "route": "hiking",
+    "to": "御門橋バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 3480661,
+  "tags": {
+    "distance": "11.3",
+    "from": "坂下バス停",
+    "name": "関東ふれあいの道 - 神奈川12 - 丹沢山塊東辺のみち",
+    "name:en": "KFT - K12 - Tannzawa sannkai touhenn no michi",
+    "network": "nwn",
+    "ref": "神12",
+    "route": "hiking",
+    "to": "半原バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 3480686,
+  "tags": {
+    "distance": "16.2",
+    "from": "坂尻バス停",
+    "name": "関東ふれあいの道 - 神奈川17 - 北条武田合戦場のみち",
+    "name:en": "KFT - K17 - Houjyou Takeda kassenn no michi",
+    "network": "nwn",
+    "ref": "神17",
+    "route": "hiking",
+    "to": "韮尾根バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 3868090,
+  "tags": {
+    "from": "담양댐 인증센터",
+    "name": "영산강 자전거길",
+    "name:en": "Yeongsangang (riv.) Bicycle Path",
+    "name:ko": "영산강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "to": "영산강 하구둑 인증센터",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5692631,
+  "tags": {
+    "cycle_network": "TW:Cycle No 1",
+    "distance": "939.5",
+    "name": "環島1號線 (逆時針)",
+    "name:en": "Cycling Route No. 1",
+    "name:zh": "環島1號線 (逆時針)",
+    "ncn_ref": "1",
+    "network": "ncn",
+    "network:type": "rcn",
+    "operator": "交通部運輸研究所",
+    "ref": "環島1",
+    "route": "bicycle",
+    "type": "route",
+    "website": "http://itaiwanbike.iot.gov.tw/",
+    "wikidata": "Q20063888",
+    "wikipedia": "zh:環島1號線"
+  }
+},
+{
+  "type": "relation",
+  "id": 5706427,
+  "tags": {
+    "name": "関東ふれあいの道 - 神奈川1 - 三浦・岩礁のみち",
+    "name:en": "KFT - K1 - Miura gansyou no michi",
+    "network": "lwn",
+    "ref": "神1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5731860,
+  "tags": {
+    "name": "関東ふれあいの道 - 神奈川2 - 油壺・入江のみち",
+    "name:en": "KFT - K2 - Aburatubo irie no michi",
+    "network": "nwn",
+    "ref": "神2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5752808,
+  "tags": {
+    "cycle_network": "TW:Cycle No 1",
+    "distance": "939.5",
+    "name": "環島1號線 (順時針)",
+    "name:en": "Cycling Route No. 1",
+    "name:zh": "環島1號線 (順時針)",
+    "ncn_ref": "環島1",
+    "network": "ncn",
+    "network:type": "rcn",
+    "operator": "交通部運輸研究所",
+    "ref": "環島1",
+    "route": "bicycle",
+    "type": "route",
+    "website": "http://itaiwanbike.iot.gov.tw/",
+    "wikidata": "Q20063888",
+    "wikipedia": "zh:環島1號線"
+  }
+},
+{
+  "type": "relation",
+  "id": 5817430,
+  "tags": {
+    "name": "関東ふれあいの道 - 神奈川4 - 佐島・大楠山のみち",
+    "name:en": "KFT - K4 - Sashima Ookusuyama no michi",
+    "network": "nwn",
+    "ref": "神4",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5817704,
+  "tags": {
+    "name": "関東ふれあいの道 - 神奈川3 - 荒崎・潮騒のみち",
+    "name:en": "KFT - K3 - Araiso shiosai no michi",
+    "network": "nwn",
+    "ref": "神3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5846637,
+  "tags": {
+    "name": "関東ふれあいの道 - 神奈川5 - 稲村ケ崎・磯づたいのみち",
+    "name:en": "KFT - K5 - Inamuragasaki iso zutai no michi",
+    "network": "nwn",
+    "ref": "神5",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5854325,
+  "tags": {
+    "name": "KFT - TK2 - Tori no michi",
+    "name:en": "KFT - TK2 - Tori no michi",
+    "name:ja": "関東ふれあいの道 - 東京2 - 鳥のみち",
+    "network": "nwn",
+    "ref": "東2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5867261,
+  "tags": {
+    "name": "KFT - TK3 - Fujimi no michi",
+    "name:en": "KFT - TK3 - Fujimi no michi",
+    "name:ja": "関東ふれあいの道 - 東京3 - 富士見のみち",
+    "network": "nwn",
+    "ref": "東3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5868009,
+  "tags": {
+    "name": "KFT - TK6 - Sugi no kokage no michi",
+    "name:en": "KFT - TK6 - Sugi no kokage no michi",
+    "name:ja": "関東ふれあいの道 - 東京6 - 杉の木陰のみち",
+    "network": "nwn",
+    "ref": "東6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5868015,
+  "tags": {
+    "name": "KFT - TK7 - Yamakusa no michi",
+    "name:en": "KFT - TK7 - Yamakusa no michi",
+    "name:ja": "関東ふれあいの道 - 東京7 - 山草のみち",
+    "network": "nwn",
+    "ref": "東7",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5868060,
+  "tags": {
+    "name": "KFT - S1 - Suigen no michi",
+    "name:en": "KFT - S1 - Suigen no michi",
+    "name:ja": "関東ふれあいの道 - 埼玉1 - 水源のみち",
+    "network": "nwn",
+    "ref": "埼1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5872343,
+  "tags": {
+    "name": "KFT - TK1 - Mizuumi no michi",
+    "name:en": "KFT - TK1 - Mizuumi no michi",
+    "name:ja": "関東ふれあいの道 - 東京1 - 湖のみち",
+    "network": "nwn",
+    "ref": "東1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5926300,
+  "tags": {
+    "name": "KFT - S5 - Ookiriyama he noboru michi",
+    "name:en": "KFT - S5 - Ookiriyama he noboru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉5 - 大霧山に登るみち",
+    "network": "nwn",
+    "ref": "埼5",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 5926319,
+  "tags": {
+    "name": "KFT - S6 - Binoyama kouen wo otozureru michi",
+    "name:en": "KFT - S6 - Binoyama kouen wo otozureru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉6 - 美の山公園を訪ねるみち",
+    "network": "nwn",
+    "ref": "埼6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6019790,
+  "tags": {
+    "name": "KFT - T26-1- Soba to mikan no sato wo aruku michi",
+    "name:en": "KFT - T26-1- Soba to mikan no sato wo aruku michi",
+    "name:ja": "関東ふれあいの道 - 栃木26-1 - そばとみかんの里を歩くみち",
+    "network": "nwn",
+    "ref": "栃26-1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6019791,
+  "tags": {
+    "name": "KFT - T26-2 - Tanada meguri no michi",
+    "name:en": "KFT - T26-2 - Tanada meguri no michi",
+    "name:ja": "関東ふれあいの道 - 栃木26-2 - 棚田巡りのみち",
+    "network": "nwn",
+    "ref": "栃26-2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6020354,
+  "tags": {
+    "name": "KFT - T27- Ishidan to tutuji no saku touge no michi",
+    "name:en": "KFT - T27- Ishidan to tutuji no saku touge no michi",
+    "name:ja": "関東ふれあいの道 - 栃木27 - 石段とツツジ咲く峠のみち",
+    "network": "nwn",
+    "ref": "栃27",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6020502,
+  "tags": {
+    "name": "KFT - T28- Yamaagesai no sato wo meguru michi",
+    "name:en": "KFT - T28- Yamaagesai no sato wo meguru michi",
+    "name:ja": "関東ふれあいの道 - 栃木28 - 山あげ祭の里をめぐるみち",
+    "network": "nwn",
+    "ref": "栃28",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6020530,
+  "tags": {
+    "name": "KFT - S8 - Chichibu bonchi wo nagameru michi",
+    "name:en": "KFT - S8 - Chichibu bonchi wo nagameru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉8 - 秩父盆地を眺めるみち",
+    "network": "nwn",
+    "ref": "埼8",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6061744,
+  "tags": {
+    "name": "KFT - T29- Nakagawa no tutumi wo aruku michi",
+    "name:en": "KFT - T29- Nakagawa no tutumi wo aruku michi",
+    "name:ja": "関東ふれあいの道 - 栃木29 - 那珂川の堤を歩くみち",
+    "network": "nwn",
+    "ref": "栃29",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6061766,
+  "tags": {
+    "name": "KFT - T31-1- Onsen to ehon no oka wo tazuneru michi",
+    "name:en": "KFT - T31-1- Onsen to ehon no oka wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 栃木31-1 - 温泉と絵本の丘を訪ねるみち",
+    "network": "nwn",
+    "ref": "栃31-1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6061767,
+  "tags": {
+    "name": "KFT - T31-2- Nasu fuudoki no oka wo meguru michi",
+    "name:en": "KFT - T31-2- Nasu fuudoki no oka wo meguru michi",
+    "name:ja": "関東ふれあいの道 - 栃木31-2 - 那須風土記の丘をめぐるみち",
+    "network": "nwn",
+    "ref": "栃31-2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6061811,
+  "tags": {
+    "name": "KFT - T32 - Mukashi wo shinobu kofun no michi",
+    "name:en": "KFT - T32 - Mukashi wo shinobu kofun no michi",
+    "name:ja": "関東ふれあいの道 - 栃木32 - 昔をしのぶ古墳のみち",
+    "network": "nwn",
+    "ref": "栃32",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064016,
+  "tags": {
+    "name": "KFT - T10 - Kakashi no sato budou no michi",
+    "name:en": "KFT - T10 - Kakashi no sato budou no michi",
+    "name:ja": "関東ふれあいの道 - 栃木10 - かかしの里・ブドウのみち",
+    "network": "nwn",
+    "ref": "栃10",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064030,
+  "tags": {
+    "name": "KFT - T11 - Sakura saku panorama no michi",
+    "name:en": "KFT - T11 - Sakura saku panorama no michi",
+    "name:ja": "関東ふれあいの道 - 栃木11 - 桜咲くパノラマのみち",
+    "network": "nwn",
+    "ref": "栃11",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064031,
+  "tags": {
+    "name": "KFT - T25 - Ryousen wo tadoru michi",
+    "name:en": "KFT - T25 - Ryousen wo tadoru michi",
+    "name:ja": "関東ふれあいの道 - 栃木25 - 稜線をたどるみち",
+    "network": "nwn",
+    "ref": "栃25",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064037,
+  "tags": {
+    "name": "KFT - T7 - Rekishi no machi wo nozomu michi",
+    "name:en": "KFT - T7 - Rekishi no machi wo nozomu michi",
+    "name:ja": "関東ふれあいの道 - 栃木7 - 歴史のまちを望むみち",
+    "network": "nwn",
+    "ref": "栃7",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064060,
+  "tags": {
+    "name": "KFT - T33-2 - Takadachi jyoushi no michi",
+    "name:en": "KFT - T33-2 - Takadachi jyoushi no michi",
+    "name:ja": "関東ふれあいの道 - 栃木33-2 - 高館城址へのみち",
+    "network": "nwn",
+    "ref": "栃33-2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064061,
+  "tags": {
+    "name": "KFT - T33-1 - Kurobasho no michi",
+    "name:en": "KFT - T33-1 - Kurobasho no michi",
+    "name:ja": "関東ふれあいの道 - 栃木33-1 - 黒羽芭蕉のみち",
+    "network": "nwn",
+    "ref": "栃33-1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064102,
+  "tags": {
+    "name": "KFT - (T12) - Connection route",
+    "name:en": "KFT - (T12) - Connection route",
+    "name:ja": "関東ふれあいの道 - (栃木12) - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064125,
+  "tags": {
+    "name": "KFT - T15 - Yuugao no michi",
+    "name:en": "KFT - T15 - Yuugao no michi",
+    "name:ja": "関東ふれあいの道 - 栃木15 - ゆうがおのみち",
+    "network": "nwn",
+    "ref": "栃15",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064136,
+  "tags": {
+    "name": "KFT - T16 - Asi soyogu misube no michi",
+    "name:en": "KFT - T16 - Asi soyogu misube no michi",
+    "name:ja": "関東ふれあいの道 - 栃木16 - アシそよぐ水辺のみち",
+    "network": "nwn",
+    "ref": "栃16",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064138,
+  "tags": {
+    "name": "関東ふれあいの道 - 栃木17 - 名刹と旧跡をたずねるみち",
+    "name:en": "KFT - T17 - Meisatsu to kyuuseki wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 栃木17 - 名刹と旧跡をたずねるみち",
+    "network": "nwn",
+    "ref": "栃17",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6064160,
+  "tags": {
+    "name": "KFT - T18 - Kumonagareru ouka no michi",
+    "name:en": "KFT - T18 - Kumonagareru ouka no michi",
+    "name:ja": "関東ふれあいの道 - 栃木18 - 雲ながれる桜花のみち",
+    "network": "nwn",
+    "ref": "栃18",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068639,
+  "tags": {
+    "name": "KFT - T20 - Kaze kaoru yamazato no michi",
+    "name:en": "KFT - T20 - Kaze kaoru yamazato no michi",
+    "name:ja": "関東ふれあいの道 - 栃木20 - 風薫る山里のみち",
+    "network": "nwn",
+    "ref": "栃20",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068645,
+  "tags": {
+    "name": "KFT - T21 - Koi to yamaai no michi",
+    "name:en": "KFT - T21 - Koi to yamaai no michi",
+    "name:ja": "関東ふれあいの道 - 栃木21 - 鯉と山あいのみち",
+    "network": "nwn",
+    "ref": "栃21",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068760,
+  "tags": {
+    "name": "KFT - T22 - Ayu odoru seiryuu no michi",
+    "name:en": "KFT - T22 - Ayu odoru seiryuu no michi",
+    "name:ja": "関東ふれあいの道 - 栃木22 - アユおどる清流のみち",
+    "network": "nwn",
+    "ref": "栃22",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068761,
+  "tags": {
+    "name": "KFT - I1 - Seinen ryokoumura no aru michi",
+    "name:en": "KFT - I1 - Seinen ryokoumura no aru michi",
+    "name:ja": "関東ふれあいの道 - 茨城1 - 青少年旅行村のあるみち",
+    "network": "nwn",
+    "ref": "茨1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068770,
+  "tags": {
+    "name": "KFT - I2 - Suginamiki no utukusii michi",
+    "name:en": "KFT - I2 - Suginamiki no utukusii michi",
+    "name:ja": "関東ふれあいの道 - 茨城2 - 杉並み木の美しいみち",
+    "network": "nwn",
+    "ref": "茨2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068787,
+  "tags": {
+    "name": "KFT - I3 - Dennsetu no yama to souhei yukari no michi",
+    "name:en": "KFT - I3 - Dennsetu no yama to souhei yukari no michi",
+    "name:ja": "関東ふれあいの道 - 茨城3 - 伝説の山と僧兵ゆかりのみち",
+    "network": "nwn",
+    "ref": "茨3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068788,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068792,
+  "tags": {
+    "name": "KFT - I4 - Yakimono to Oinari san heno michi",
+    "name:en": "KFT - I4 - Yakimono to Oinari san heno michi",
+    "name:ja": "関東ふれあいの道 - 茨城4 - 焼物とお稲荷さんへのみち",
+    "network": "nwn",
+    "ref": "茨4",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6068796,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076084,
+  "tags": {
+    "name": "KFT - I6 - Kannonn sama wo tazuneru michi",
+    "name:en": "KFT - I6 - Kannonn sama wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 茨城6 - 観音さまを訪ねるみち",
+    "network": "nwn",
+    "ref": "茨6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076085,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076105,
+  "tags": {
+    "name": "KFT - S2 - Okumusashi no kosatsu wo tazuneru michi",
+    "name:en": "KFT - S2 - Okumusashi no kosatsu wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉2 - 奥武蔵の古刹を訪ねるみち",
+    "network": "nwn",
+    "ref": "埼2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076106,
+  "tags": {
+    "alt_name": "接続コース",
+    "name": "関東ふれあいの道",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076183,
+  "tags": {
+    "name": "KFT - G1 - Sanbasekikyo no michi",
+    "name:en": "KFT - G1 - Sanbasekikyo no michi",
+    "name:ja": "関東ふれあいの道 - 群馬1 - 三波石峡のみち",
+    "network": "nwn",
+    "ref": "群1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076184,
+  "tags": {
+    "name": "KFT - G34 - Sakurayama no michi",
+    "name:en": "KFT - G34 - Sakurayama no michi",
+    "name:ja": "関東ふれあいの道 - 群馬34 - 桜山のみち",
+    "network": "nwn",
+    "ref": "群34",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076341,
+  "tags": {
+    "name": "KFT - G6 - Shiroginu kannon meguri no michi",
+    "name:en": "KFT - G6 - Shiroginu kannon meguri no michi",
+    "name:ja": "関東ふれあいの道 - 群馬6 - 白衣観音めぐりのみち",
+    "network": "nwn",
+    "ref": "群6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076375,
+  "tags": {
+    "name": "KFT - G7 - Rekishi wo tazuneru michi",
+    "name:en": "KFT - G7 - Rekishi wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 群馬7 - 歴史を尋ねるみち",
+    "network": "nwn",
+    "ref": "群7",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6076810,
+  "tags": {
+    "name": "KFT - G8 - Kyuu shinsyuu kaidou no michi",
+    "name:en": "KFT - G8 - Kyuu shinsyuu kaidou no michi",
+    "name:ja": "関東ふれあいの道 - 群馬8 - 旧信州街道のみち",
+    "network": "nwn",
+    "ref": "群8",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6077319,
+  "tags": {
+    "name": "KFT - G13 - Sansai no michi",
+    "name:en": "KFT - G13 - Sansai no michi",
+    "name:ja": "関東ふれあいの道 - 群馬13 - 山菜のみち",
+    "network": "nwn",
+    "ref": "群13",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6077320,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6078762,
+  "tags": {
+    "name": "KFT - G14 - Dousojin no michi",
+    "name:en": "KFT - G14 - Dousojin no michi",
+    "name:ja": "関東ふれあいの道 - 群馬14 - 道祖神のみち",
+    "network": "nwn",
+    "ref": "群14",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6078763,
+  "tags": {
+    "name": "KFT - G15 - Harunasan he no michi",
+    "name:en": "KFT - G15 - Harunasan he no michi",
+    "name:ja": "関東ふれあいの道 - 群馬15 - 榛名山へのみち",
+    "network": "nwn",
+    "ref": "群15",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6078764,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6078765,
+  "tags": {
+    "name": "KFT - G16 - Harunasan kara Mizusawa he no michi",
+    "name:en": "KFT - G16 - Harunasan kara Mizusawa he no michi",
+    "name:ja": "関東ふれあいの道 - 群馬16 - 榛名山から水沢へのみち",
+    "network": "nwn",
+    "ref": "群16",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6078766,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6080119,
+  "tags": {
+    "name": "KFT - G17 - Shibukawa no michi",
+    "name:en": "KFT - G17 - Shibukawa no michi",
+    "name:ja": "関東ふれあいの道 - 群馬17 - しぶかわのみち",
+    "network": "nwn",
+    "ref": "群17",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6081698,
+  "tags": {
+    "name": "KFT - G18 - Takayama kougen bokujyo no michi",
+    "name:en": "KFT - G18 - Takayama kougen bokujyo no michi",
+    "name:ja": "関東ふれあいの道 - 群馬18 - たかやま高原牧場のみち",
+    "network": "nwn",
+    "ref": "群18",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6081699,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6081707,
+  "tags": {
+    "name": "KFT - G19 - Komochiyama wakoudo no michi",
+    "name:en": "KFT - G19 - Komochiyama wakoudo no michi",
+    "name:ja": "関東ふれあいの道 - 群馬19 - 子持山若人のみち",
+    "network": "nwn",
+    "ref": "群19",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6081708,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6084169,
+  "tags": {
+    "name": "KFT - G21 - Karamatu to kumazasa no michi",
+    "name:en": "KFT - G21 - Karamatu to kumazasa no michi",
+    "name:ja": "関東ふれあいの道 - 群馬21 - カラマツと熊笹のみち",
+    "network": "nwn",
+    "ref": "群21",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6084170,
+  "tags": {
+    "name": "KFT - G22 - Tutuji no michi",
+    "name:en": "KFT - G22 - Tutuji no michi",
+    "name:ja": "関東ふれあいの道 - 群馬22 - ツツジのみち",
+    "network": "nwn",
+    "ref": "群22",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6084171,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6086232,
+  "tags": {
+    "name": "KFT - G23 - Yamazato no ideyu no michi",
+    "name:en": "KFT - G23 - Yamazato no ideyu no michi",
+    "name:ja": "関東ふれあいの道 - 群馬23 - 山里のいで湯のみち",
+    "network": "nwn",
+    "ref": "群23",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6086233,
+  "tags": {
+    "name": "KFT - G24 - Akagi nannmenn youkou no michi",
+    "name:en": "KFT - G24 - Akagi nannmenn youkou no michi",
+    "name:ja": "関東ふれあいの道 - 群馬24 - 赤城南面陽光のみち",
+    "network": "nwn",
+    "ref": "群24",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6086234,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6086404,
+  "tags": {
+    "name": "KFT - G25 - Nashiki he no michi",
+    "name:en": "KFT - G25 - Nashiki he no michi",
+    "name:ja": "関東ふれあいの道 - 群馬25 - 梨木へのみち",
+    "network": "nwn",
+    "ref": "群25",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088623,
+  "tags": {
+    "name": "KFT - G26 - Zouki no yamaji",
+    "name:en": "KFT - G26 - Zouki no yamaji",
+    "name:ja": "関東ふれあいの道 - 群馬26 - 雑木の山路",
+    "network": "nwn",
+    "ref": "群26",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088624,
+  "tags": {
+    "name": "KFT - G27 - Hanamigahara hiking course",
+    "name:en": "KFT - G27 - Hanamigahara hiking course",
+    "name:ja": "関東ふれあいの道 - 群馬27 - 花見ヶ原高原ハイキングコース",
+    "network": "nwn",
+    "ref": "群27",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088625,
+  "tags": {
+    "name": "KFT - G35 - Kurobisan kara hanamigahara he no michi",
+    "name:en": "KFT - G35 - Kurobisan kara hanamigahara he no michi",
+    "name:ja": "関東ふれあいの道 - 群馬35 - 黒檜山から花見が原へのみち",
+    "network": "nwn",
+    "ref": "群35",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088647,
+  "tags": {
+    "name": "KFT - I11 - Tukuba santyou meguri kara kyuu sandou he no michi",
+    "name:en": "KFT - I11 - Tukuba santyou meguri kara kyuu sandou he no michi",
+    "name:ja": "関東ふれあいの道 - 茨城11 - 筑波山頂めぐりから旧参道へのみち",
+    "network": "nwn",
+    "ref": "茨11",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088657,
+  "tags": {
+    "name": "KFT - I12 - Kajyuen no michi",
+    "name:en": "KFT - I12 - Kajyuen no michi",
+    "name:ja": "関東ふれあいの道 - 茨城12 - 果樹園のみち",
+    "network": "nwn",
+    "ref": "茨12",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088658,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6088659,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6093819,
+  "tags": {
+    "name": "KFT - G28 - Douyou no furusato wo tazuneru michi",
+    "name:en": "KFT - G28 - Douyou no furusato wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 群馬28 - 童謡のふるさとを尋ねるのみち",
+    "network": "nwn",
+    "ref": "群28",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6093820,
+  "tags": {
+    "name": "KFT - G29 - Ootaki he no michi",
+    "name:en": "KFT - G29 - Ootaki he no michi",
+    "name:ja": "関東ふれあいの道 - 群馬29 - 大滝へのみち",
+    "network": "nwn",
+    "ref": "群29",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6093821,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6093822,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6093871,
+  "tags": {
+    "name": "KFT - I14 - Jisha meguri to dennenn fuukei no michi",
+    "name:en": "KFT - I14 - Jisha meguri to dennenn fuukei no michi",
+    "name:ja": "関東ふれあいの道 - 茨城14 - 寺社めぐりと田園風景のみち",
+    "network": "nwn",
+    "ref": "茨14",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6093872,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6097198,
+  "tags": {
+    "name": "KFT - G30 - Nesyaka no michi",
+    "name:en": "KFT - G30 - Nesyaka no michi",
+    "name:ja": "関東ふれあいの道 - 群馬30 - 寝釈迦のみち",
+    "network": "nwn",
+    "ref": "群30",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6097199,
+  "tags": {
+    "name": "KFT - G31 - Kusakiko wo tazuneru michi",
+    "name:en": "KFT - G31 - Kusakiko wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 群馬31 - 草木湖をたずねるみち",
+    "network": "nwn",
+    "ref": "群31",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6097240,
+  "tags": {
+    "name": "KFT - T23 - Yashio saku Koushin no michi",
+    "name:en": "KFT - T23 - Yashio saku Koushin no michi",
+    "name:ja": "関東ふれあいの道 - 栃木23 - ヤシオさく庚申のみち",
+    "network": "nwn",
+    "ref": "23",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6097241,
+  "tags": {
+    "name": "KFT - T24 - Oyama meguri no michi",
+    "name:en": "KFT - T24 - Oyama meguri no michi",
+    "name:ja": "関東ふれあいの道 - 栃木24 - お山巡りのみち",
+    "network": "nwn",
+    "ref": "24",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6099242,
+  "tags": {
+    "name": "KFT - I15 - Gakuen toshi no michi",
+    "name:en": "Kanto Fureai no Michi-Ibaraki 15 - Academic City Road",
+    "name:ja": "関東ふれあいの道 - 茨城15 - 学園都市のみち",
+    "network": "nwn",
+    "ref": "茨15",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6100909,
+  "tags": {
+    "name": "KFT - I16 - Yokaren yukari no michi",
+    "name:en": "KFT - I16 - Yokaren yukari no michi",
+    "name:ja": "関東ふれあいの道 - 茨城16 - 予科練ゆかりのみち",
+    "network": "nwn",
+    "ref": "茨16",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6100910,
+  "tags": {
+    "name": "KFT - I17 - Mizu no megumi wo shiru michi",
+    "name:en": "KFT - I17 - Mizu no megumi wo shiru michi",
+    "name:ja": "関東ふれあいの道 - 茨城17 - 水の恵みを知るみち",
+    "network": "nwn",
+    "ref": "茨17",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6106335,
+  "tags": {
+    "name": "KFT - I18 - Mizu no megumi to suiden chitai no michi",
+    "name:en": "KFT - I18 - Mizu no megumi to suiden chitai no michi",
+    "name:ja": "関東ふれあいの道 - 茨城18 - 水の恵みと水田地帯のみち",
+    "network": "nwn",
+    "ref": "茨18",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6115227,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6115362,
+  "tags": {
+    "name": "KFT - G33 - Azumayama kara shizen kansatu no mori heno michi",
+    "name:en": "KFT - G33 - Azumayama kara shizen kansatu no mori heno michi",
+    "name:ja": "関東ふれあいの道 - 群馬33 - 吾妻山から自然観察の森へのみち",
+    "network": "nwn",
+    "ref": "群33",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6115363,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6132680,
+  "tags": {
+    "name": "KFT - T6 - Yamanami no michi",
+    "name:en": "KFT - T6 - Yamanami no michi",
+    "name:ja": "関東ふれあいの道 - 栃木6 - 山なみのみち",
+    "network": "nwn",
+    "ref": "栃6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6132699,
+  "tags": {
+    "name": "KFT - T8 - Mansaku no Hanasaku michi",
+    "name:en": "KFT - T8 - Mansaku no Hanasaku michi",
+    "name:ja": "関東ふれあいの道 - 栃木8 - マンサクの花咲くみち",
+    "network": "nwn",
+    "ref": "栃8",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6132747,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6132769,
+  "tags": {
+    "name": "KFT - C3 - Kofun wo tazuneru michi",
+    "name:en": "KFT - C3 - Kofun wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 千葉3 - 古墳をたずねるみち",
+    "network": "nwn",
+    "ref": "千3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6133849,
+  "tags": {
+    "name": "KFT - C27 - Kawa to numa wo tunagu michi",
+    "name:en": "KFT - C27 - Kawa to numa wo tunagu michi",
+    "name:ja": "関東ふれあいの道 - 千葉27 - 川と沼をつなぐみち",
+    "network": "nwn",
+    "ref": "千27",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6133850,
+  "tags": {
+    "name": "KFT - C28 - Numa meguri no michi",
+    "name:en": "KFT - C28 - Numa meguri no michi",
+    "name:ja": "関東ふれあいの道 - 千葉28 - 沼めぐりのみち",
+    "network": "nwn",
+    "ref": "千28",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6136525,
+  "tags": {
+    "name": "KFT - C4 - Mizudori no michi",
+    "name:en": "KFT - C4 - Mizudori no michi",
+    "name:ja": "関東ふれあいの道 - 千葉4 - 水鳥のみち",
+    "network": "nwn",
+    "ref": "千4",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6137331,
+  "tags": {
+    "name": "KFT - C6 - Sanbu sugi no michi",
+    "name:en": "KFT - C6 - Sanbu sugi no michi",
+    "name:ja": "関東ふれあいの道 - 千葉6 - 山武杉のみち",
+    "network": "nwn",
+    "ref": "千6",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6137392,
+  "tags": {
+    "name": "KFT - C29 - Jyousi wo tazuneru michi",
+    "name:en": "KFT - C29 - Jyousi wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 千葉29 - 城址をたずねるみち",
+    "network": "nwn",
+    "ref": "千29",
+    "route": "hiking",
+    "type": "route",
+    "website": "https://www.pref.chiba.lg.jp/shizen/choubou/fureai/michi-29.html"
+  }
+},
+{
+  "type": "relation",
+  "id": 6142784,
+  "tags": {
+    "name": "KFT - C10 - Yamazato michi",
+    "name:en": "KFT - C10 - Yamazato michi",
+    "name:ja": "関東ふれあいの道 - 千葉10 - 山里のみち",
+    "network": "nwn",
+    "ref": "千10",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6149550,
+  "tags": {
+    "name": "KFT - C12 - Kannon sama no michi",
+    "name:en": "KFT - C12 - Kannon sama no michi",
+    "name:ja": "関東ふれあいの道 - 千葉12 - 観音様のみち",
+    "network": "nwn",
+    "ref": "千12",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6149564,
+  "tags": {
+    "highway": "residential",
+    "name": "KFT - C14 -Oounabara wo nozomeru michi",
+    "name:en": "KFT - C14 -Oounabara wo nozomeru michi",
+    "name:ja": "関東ふれあいの道 - 千葉14 - 大海原を望めるみち",
+    "network": "nwn",
+    "ref": "千14",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6151788,
+  "tags": {
+    "name": "KFT - C15 - Kujyuukuri no suna wo fumisimete aruku michi",
+    "name:en": "KFT - C15 - Kujyuukuri no suna wo fumisimete aruku michi",
+    "name:ja": "関東ふれあいの道 - 千葉15 - 九十九里の砂をふみしめて歩くみち",
+    "network": "nwn",
+    "ref": "千15",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6151789,
+  "tags": {
+    "name": "KFT - C16 - Kurosiono siosai wo kiku michi",
+    "name:en": "KFT - C16 - Kurosiono siosai wo kiku michi",
+    "name:ja": "関東ふれあいの道 - 千葉16 - 黒潮の潮騒をきくみち",
+    "network": "nwn",
+    "ref": "千16",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6154333,
+  "tags": {
+    "name": "KFT - C17 - Onjyuku kaigan wo aruku michi",
+    "name:en": "KFT - C17 - Onjyuku kaigan wo aruku michi",
+    "name:ja": "関東ふれあいの道 - 千葉17 - 御宿海岸を歩くみち",
+    "network": "nwn",
+    "ref": "千17",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6154335,
+  "tags": {
+    "name": "KFT - C18 - Araiso no michi",
+    "name:en": "KFT - C18 - Araiso no michi",
+    "name:ja": "関東ふれあいの道 - 千葉18 - 荒磯のみち",
+    "network": "nwn",
+    "ref": "千18",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6155550,
+  "tags": {
+    "name": "KFT - C19 - Risoukyou wo tazuneru michi",
+    "name:en": "KFT - C19 - Risoukyou wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 千葉19 - 理想郷をたずねるみち",
+    "network": "nwn",
+    "ref": "千19",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6157564,
+  "tags": {
+    "name": "KFT - C20 - Umi to Mori wo tunagu michi",
+    "name:en": "KFT - C20 - Umi to Mori wo tunagu michi",
+    "name:ja": "関東ふれあいの道 - 千葉20 - 海と森をつなぐみち",
+    "network": "nwn",
+    "ref": "千20",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6157895,
+  "tags": {
+    "name": "KFT - C21 - Ajisai no michi",
+    "name:en": "KFT - C21 - Ajisai no michi",
+    "name:ja": "関東ふれあいの道 - 千葉21 - アジサイのみち",
+    "network": "nwn",
+    "ref": "千21",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6157907,
+  "tags": {
+    "name": "KFT - C23 - Taki no aru michi",
+    "name:en": "KFT - C23 - Taki no aru michi",
+    "name:ja": "関東ふれあいの道 - 千葉23 - 滝のあるみち",
+    "network": "nwn",
+    "ref": "千23",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6157908,
+  "tags": {
+    "name": "KFT - C24 - Nihonzaru to deau michi",
+    "name:en": "KFT - C24 - Nihonzaru to deau michi",
+    "name:ja": "関東ふれあいの道 - 千葉24 - ニホンザルと出会うみち",
+    "network": "nwn",
+    "ref": "千24",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6172132,
+  "tags": {
+    "name": "KFT - G11 - Kyudou uramyougi no mich",
+    "name:en": "KFT - G11 - Kyudou uramyougi no mich",
+    "name:ja": "関東ふれあいの道 - 群馬11 - 旧道裏妙義のみち",
+    "network": "nwn",
+    "ref": "群11",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6172135,
+  "tags": {
+    "name": "KFT - G10 - Sakura no sato to sekimon no mich",
+    "name:en": "KFT - G10 - Sakura no sato to sekimon no mich",
+    "name:ja": "関東ふれあいの道 - 群馬10 - さくらの里と石門のみち",
+    "network": "nwn",
+    "ref": "群10",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6172136,
+  "tags": {
+    "name": "KFT - G9 - Oogeta yama tozan course",
+    "name:en": "KFT - G9 - Oogeta yama tozan course",
+    "name:ja": "関東ふれあいの道 - 群馬9 - 大桁山登山コース",
+    "network": "nwn",
+    "ref": "群9",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6172137,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6186649,
+  "tags": {
+    "name": "KFT - T35-1 - Ashino no sato he no michi",
+    "name:en": "KFT - T35-1 - Ashino no sato he no michi",
+    "name:ja": "関東ふれあいの道 - 栃木35-1 - 芦野の里へのみち",
+    "network": "nwn",
+    "ref": "栃35-1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6241720,
+  "tags": {
+    "name": "富山湾岸サイクリングコース",
+    "name:en": "Toyama Coastal Cycling Route",
+    "network": "rcn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6246737,
+  "tags": {
+    "name": "KFT - S11 - Yoshitune densetu to taki no aru michi",
+    "name:en": "KFT - S11 - Yoshitune densetu to taki no aru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉11 - 義経伝説と滝のあるみち",
+    "network": "nwn",
+    "ref": "埼11",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6246770,
+  "tags": {
+    "name": "KFT - S12 - Greenline ni sotta michi",
+    "name:en": "KFT - S12 - Greenline ni sotta michi",
+    "name:ja": "関東ふれあいの道 - 埼玉12 - グリーンラインに沿ったみち",
+    "network": "nwn",
+    "ref": "埼12",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6287750,
+  "tags": {
+    "name": "KFT - I5 - Shizenrin wo aruku michi",
+    "name:en": "KFT - I5 - Shizenrin wo aruku michi",
+    "name:ja": "関東ふれあいの道 - 茨城5 - 自然林を歩くみち",
+    "network": "nwn",
+    "ref": "茨5",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6360568,
+  "tags": {
+    "distance": "10.3",
+    "from": "韮尾根バス停",
+    "name": "関東ふれあいの道 - 神奈川13 - 山里から津久井湖へのみち",
+    "name:en": "KFT - K13 - Yamazato kara Tukuiko heno michi",
+    "network": "nwn",
+    "ref": "神13",
+    "route": "hiking",
+    "to": "城山高校前バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6360571,
+  "tags": {
+    "name": "関東ふれあいの道 - 神奈川14 - 峰の薬師へのみち",
+    "name:en": "KFT - K14 - Mine no Yakushi heno michi",
+    "network": "nwn",
+    "ref": "神14",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6374513,
+  "tags": {
+    "description": "https://bike.go.kr/nation/72_1",
+    "from": "섬진강생활체육공원 (강진교)",
+    "name": "섬진강 자전거길",
+    "name:en": "Seomjingang (Riv.) Bicycle Path",
+    "name:ko": "섬진강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "to": "배알도 수변공원",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6435575,
+  "tags": {
+    "name": "KFT - Connection route",
+    "name:en": "KFT - Connection route",
+    "name:ja": "関東ふれあいの道 - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6736508,
+  "tags": {
+    "name": "KFT - C5 - Haniwa to asobu michi",
+    "name:en": "KFT - C5 - Haniwa to asobu michi",
+    "name:ja": "関東ふれあいの道 - 千葉5 - 埴輪と遊ぶみち",
+    "network": "nwn",
+    "ref": "千5",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6739088,
+  "tags": {
+    "name": "KFT - C7 - Ikou Sachio no michi",
+    "name:en": "KFT - C7 - Ikou Sachio no michi",
+    "name:ja": "関東ふれあいの道 - 千葉7 - 伊藤左千夫のみち",
+    "network": "nwn",
+    "ref": "千7",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6821945,
+  "tags": {
+    "name": "KFT - C8 - Sakura wo mederu michi",
+    "name:en": "KFT - C8 - Sakura wo mederu michi",
+    "name:ja": "関東ふれあいの道 - 千葉8 - 桜をめでるみち",
+    "network": "nwn",
+    "ref": "千8",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6824398,
+  "tags": {
+    "name": "KFT - T13 - Mugibue no michi",
+    "name:en": "KFT - T13 - Mugibue no michi",
+    "name:ja": "関東ふれあいの道 - 栃木13 - 麦笛のみち",
+    "network": "nwn",
+    "ref": "栃13",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6824400,
+  "tags": {
+    "name": "KFT - T14 - Fudoki no michi",
+    "name:en": "KFT - T14 - Fudoki no michi",
+    "name:ja": "関東ふれあいの道 - 栃木14 - 風土記のみち",
+    "network": "nwn",
+    "ref": "栃14",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6836556,
+  "tags": {
+    "name": "KFT - C2 - Sizen to rekishi wo tadoru michi",
+    "name:en": "KFT - C2 - Sizen to rekishi wo tadoru michi",
+    "name:ja": "関東ふれあいの道 - 千葉2 - 自然と歴史をたどるみち",
+    "network": "nwn",
+    "ref": "千2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6836574,
+  "tags": {
+    "name": "KFT - C1 - Bandou tarou no michi",
+    "name:en": "KFT - C1 - Bandou tarou no michi",
+    "name:ja": "関東ふれあいの道 - 千葉1 - 坂東太郎のみち",
+    "network": "nwn",
+    "ref": "千1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 6948961,
+  "tags": {
+    "name": "KFT - T19 - Yakimono to shii no ki no michi",
+    "name:en": "KFT - T19 - Yakimono to shii no ki no michi",
+    "name:ja": "関東ふれあいの道 - 栃木19 - 焼き物としいの木のみち",
+    "network": "nwn",
+    "ref": "栃19",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7092961,
+  "tags": {
+    "name": "KFT - C13 - Senjyuumin no aruita michi",
+    "name:en": "KFT - C13 - Senjyuumin no aruita michi",
+    "name:ja": "関東ふれあいの道 - 千葉13 - 先住民のあるいたみち",
+    "network": "nwn",
+    "ref": "千13",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7170587,
+  "tags": {
+    "name": "KFT - S4 - Touge no rekishi wo shinobu michi",
+    "name:en": "KFT - S4 - Touge no rekishi wo shinobu michi",
+    "name:ja": "関東ふれあいの道 - 埼玉4 - 峠の歴史をしのぶみち",
+    "network": "nwn",
+    "ref": "埼4",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7175180,
+  "tags": {
+    "distance": "8.6",
+    "from": "南平橋バス停",
+    "name": "関東ふれあいの道 - 神奈川15 - 弘法大師と丹沢へのみち",
+    "name:en": "KFT - K15 - Kouboudaishi to Tanzawa he no michi",
+    "network": "nwn",
+    "ref": "神15",
+    "route": "hiking",
+    "to": "小蓑毛バス停",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7175181,
+  "tags": {
+    "description": "連絡区間",
+    "name": "関東ふれあいの道 - 連絡区間",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7184370,
+  "tags": {
+    "name": "KFT - T35-2 - Yoshitune dennsetsu no michi",
+    "name:en": "KFT - T35-2 - Yoshitune dennsetsu no michi",
+    "name:ja": "関東ふれあいの道 - 栃木35-2 - 義経伝説のみち",
+    "network": "nwn",
+    "ref": "栃35-2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7184371,
+  "tags": {
+    "name": "KFT - (I34) - Connection route",
+    "name:en": "KFT - (I34) - Connection route",
+    "name:ja": "関東ふれあいの道 - (茨城34) - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7184411,
+  "tags": {
+    "name": "KFT - (I36-1) - Connection route",
+    "name:en": "KFT - (I36-1) - Connection route",
+    "name:ja": "関東ふれあいの道 - (茨城36-1) - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7184412,
+  "tags": {
+    "name": "KFT - (I36-2) - Connection route",
+    "name:en": "KFT - (I36-2) - Connection route",
+    "name:ja": "関東ふれあいの道 - (茨城36-2) - 連絡コース",
+    "network": "nwn",
+    "ref": "連絡",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7190299,
+  "tags": {
+    "name": "KFT - S13 - Kougen bokujyou wo touru michi",
+    "name:en": "KFT - S13 - Kougen bokujyou wo touru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉13 - 高原牧場を通るみち",
+    "network": "nwn",
+    "ref": "埼13",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7190383,
+  "tags": {
+    "name": "KFT - Ibaragi",
+    "name:en": "KFT - Ibaragi",
+    "name:ja": "関東ふれあいの道 - 茨城",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route",
+    "website": "https://www.pref.ibaraki.jp/seikatsukankyo/kansei/shizen/kanto-fureai.html"
+  }
+},
+{
+  "type": "relation",
+  "id": 7241861,
+  "tags": {
+    "name": "KFT - S3 - Izugadake wo koeru michi",
+    "name:en": "KFT - S3 - Izugadake wo koeru michi",
+    "name:ja": "関東ふれあいの道 - 埼玉3 - 伊豆ヶ岳を越えるみち",
+    "network": "nwn",
+    "ref": "埼3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7255679,
+  "tags": {
+    "name": "KFT - T9 - Matsukaze no michi",
+    "name:en": "KFT - T9 - Matsukaze no michi",
+    "name:ja": "関東ふれあいの道 - 栃木9 - 松風のみち",
+    "network": "nwn",
+    "ref": "栃9",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7346925,
+  "tags": {
+    "name": "KFT - T4 - Situgen to seseragi no michi",
+    "name:en": "KFT - T4 - Situgen to seseragi no michi",
+    "name:ja": "関東ふれあいの道 - 栃木4 - 湿原とせせらぎのみち",
+    "network": "nwn",
+    "ref": "栃3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7346926,
+  "tags": {
+    "name": "KFT - T3 - Kougen to bokujyou no michi",
+    "name:en": "KFT - T3 - Kougen to bokujyou no michi",
+    "name:ja": "関東ふれあいの道 - 栃木3 - 高原と牧場のみち",
+    "network": "nwn",
+    "ref": "栃3",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7346927,
+  "tags": {
+    "name": "KFT - T2 - Syugen gyoujya no michi",
+    "name:en": "KFT - T2 - Syugen gyoujya no michi",
+    "name:ja": "関東ふれあいの道 - 栃木2 - 修験行者のみち",
+    "network": "nwn",
+    "ref": "栃2",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7580954,
+  "tags": {
+    "name": "KFT - T1 - Akagane no michi",
+    "name:en": "KFT - T1 - Akagane no michi",
+    "name:ja": "関東ふれあいの道 - 栃木1 - 赤金のみち",
+    "network": "nwn",
+    "ref": "栃1",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7623983,
+  "tags": {
+    "name": "KFT - T30- Ukiyoe to shiseki wo meguru sato no michi",
+    "name:en": "KFT - T30- Ukiyoe to shiseki wo meguru sato no michi",
+    "name:ja": "関東ふれあいの道 - 栃木30 - 浮世絵と史跡を見る里のみち",
+    "network": "nwn",
+    "ref": "栃30",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7723066,
+  "tags": {
+    "name": "富山湾岸サイクリングコース",
+    "name:en": "Toyama Coastal Cycling Route",
+    "name:ja": "富山湾岸サイクリングコース",
+    "network": "rcn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7756282,
+  "tags": {
+    "name": "富山湾岸サイクリングコース",
+    "network": "rcn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7788001,
+  "tags": {
+    "name": "富山湾岸・田園連絡サイクリングコース",
+    "network": "rcn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 7814708,
+  "tags": {
+    "name": "KFT - I13 - Kajyu no michi",
+    "name:en": "KFT - I13 - Kajyu no michi",
+    "name:ja": "関東ふれあいの道 - 茨城13 - 果樹の里のみち",
+    "network": "nwn",
+    "ref": "茨13",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8212646,
+  "tags": {
+    "name": "KFT - C11 - Mori to Mori wo tunagu michi",
+    "name:en": "KFT - C11 - Mori to Mori wo tunagu michi",
+    "name:ja": "関東ふれあいの道 - 千葉11 - 森と森をつなぐみち",
+    "network": "nwn",
+    "ref": "千11",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8212647,
+  "tags": {
+    "name": "KFT - C9 - Syouwa no mori wo tazuneru michi",
+    "name:en": "KFT - C9 - Syouwa no mori wo tazuneru michi",
+    "name:ja": "関東ふれあいの道 - 千葉9 - 昭和の森をたずねるみち",
+    "network": "nwn",
+    "ref": "千9",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8257210,
+  "tags": {
+    "name": "KFT - G20 - Inishie no bunka no michi",
+    "name:en": "KFT - G20 - Inishie no bunka no michi",
+    "name:ja": "関東ふれあいの道 - 群馬20 - いにしえの文化のみち",
+    "network": "nwn",
+    "ref": "群20",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8280682,
+  "tags": {
+    "from": "아라한강갑문",
+    "name": "한강 종주 자전거길 (서울 구간)",
+    "name:en": "Hangang (riv.) Bicycle Path (Seoul Selection)",
+    "name:ko": "한강 종주 자전거길 (서울 구간)",
+    "network": "ncn",
+    "route": "bicycle",
+    "to": "팔당대교",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8280693,
+  "tags": {
+    "from": "팔당대교",
+    "int_name": "Namhangang (riv.) Bicycle Path",
+    "name": "남한강 자전거길",
+    "name:en": "Namhangang (riv.) Bicycle Path",
+    "name:ko": "남한강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "source": "www.bike.go.kr",
+    "to": "충주 탄금대",
+    "type": "route",
+    "wikidata": "Q31179520",
+    "wikipedia": "ko:남한강 자전거길"
+  }
+},
+{
+  "type": "relation",
+  "id": 8281515,
+  "tags": {
+    "from": "충주 탄금대",
+    "int_name": "Saejae Bicycle Path",
+    "name": "새재 자전거길",
+    "name:en": "Saejae Bicycle Path",
+    "name:ko": "새재 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "source": "www.bike.go.kr",
+    "to": "상주 상풍교",
+    "type": "route",
+    "wikidata": "Q31179503",
+    "wikipedia": "ko:새재 자전거길"
+  }
+},
+{
+  "type": "relation",
+  "id": 8283141,
+  "tags": {
+    "int_name": "Nakdonggang Bicycle Path",
+    "name": "낙동강 자전거길",
+    "name:en": "Nakdonggang (riv.) Bicycle Path",
+    "name:ko": "낙동강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8286939,
+  "tags": {
+    "from": "밝은광장",
+    "int_name": "Buckhangang Bicycle Path",
+    "name": "북한강 자전거길",
+    "name:en": "Bukhangang (riv.) Bicycle Path",
+    "name:ko": "북한강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "to": "신매대교",
+    "type": "route",
+    "wikidata": "Q12599127",
+    "wikipedia": "ko:북한강_자전거길"
+  }
+},
+{
+  "type": "relation",
+  "id": 8288695,
+  "tags": {
+    "int_name": "Ocheon Bicycle Path",
+    "name": "오천 자전거길",
+    "name:en": "Ocheon Bicycle Path",
+    "name:ko": "오천 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "source": "www.bike.go.kr",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8288722,
+  "tags": {
+    "int_name": "Geumgang Bicycle Path",
+    "name": "금강 자전거길",
+    "name:en": "Geumgang (Riv.) Bicycle Path",
+    "name:ko": "금강 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route",
+    "wikidata": "Q12586376",
+    "wikipedia": "ko:금강 자전거길"
+  }
+},
+{
+  "type": "relation",
+  "id": 8374627,
+  "tags": {
+    "int_name": "Jeju Fantasy Bike Path",
+    "name": "제주환상자전거길",
+    "name:en": "Jeju Circular Bike Path",
+    "name:ko": "제주환상자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8377469,
+  "tags": {
+    "from": "통일전망대",
+    "int_name": "Donghaean Bicycle Path (Gangwun)",
+    "name": "동해안 자전거길 (강원)",
+    "name:en": "Donghaean Bicycle Path (Gangwon)",
+    "name:ko": "동해안 자전거길 (강원)",
+    "network": "ncn",
+    "route": "bicycle",
+    "to": "고포마을",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8381725,
+  "tags": {
+    "int_name": "Donghaean Bicycle Path ( Kyungbuk)",
+    "name": "동해안 자전거 길(경북)",
+    "name:en": "East Seaside Bicycle Path (Gyungbuk)",
+    "name:ko": "동해안 자전거 길(경북)",
+    "name:ko-Latn": "Donghaean Jajeongeo Gil (Gyungbuk)",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8383106,
+  "tags": {
+    "int_name": "Kyeongchun-line Bicycle path",
+    "name": "경춘선 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 8659962,
+  "tags": {
+    "int_name": "Youngsangang-Seomjingang connection Bicycleway",
+    "name": "영산강-섬진강 연결 자전거길",
+    "network": "ncn",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 12533307,
+  "tags": {
+    "name": "関東ふれあいの道　東京湾を望むみち",
+    "network": "rwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13634172,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 12番札所焼山寺~13番札所大日寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13653653,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 11番札所藤井寺~12番札所焼山寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13653654,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 1番札所霊山寺~2番札所極楽寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13656407,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 10番札所切幡寺~11番札所藤井寺",
+    "name:en": "Shikoku Pilgrimage, temples 10-11",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13656408,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 13番札所大日寺~14番札所常楽寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669292,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 18番札所恩山寺~19番札所立江寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669293,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 8番札所熊谷寺~9番札所法輪寺",
+    "name:en": "Shikoku Pilgrimage, temples 8-9",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669295,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 17番札所井戸寺~18番札所恩山寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669296,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 16番札所観音寺~18番札所恩山寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669297,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 16番札所観音寺~17番札所井戸寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669298,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 15番札所阿波国分寺~16番札所観音寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669299,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 9番札所法輪寺~10番札所切幡寺",
+    "name:en": "Shikoku Pilgrimage, temples 9-10",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13669300,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 14番札所常楽寺~15番札所阿波国分寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676979,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 21番札所太龍寺~22番札所平等寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676980,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 20番札所鶴林寺~21番札所太龍寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676981,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 2番札所極楽寺~3番札所金泉寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676982,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 3番札所金泉寺~4番札所大日寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676983,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 4番札所大日寺~5番札所地蔵寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676984,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 5番札所地蔵寺~6番札所安楽寺",
+    "name:en": "Shikoku Pilgrimage, temples 5-6",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676985,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 6番札所安楽寺~7番札所十楽寺",
+    "name:en": "Shikoku Pilgrimage, temples 6-7",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676986,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 19番札所立江寺~20番札所鶴林寺",
+    "name:en": "Shikoku Pilgrimage",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13676987,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 7番札所十楽寺~8番札所熊谷寺",
+    "name:en": "Shikoku Pilgrimage, temples 7-8",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13692101,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 24番札所最御崎寺~25番札所津照寺",
+    "name:en": "Shikoku Pilgrimage 24th Hotsumisaki-ji - 25th Shinshō-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13692104,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 23番札所薬王寺~24番札所最御崎寺",
+    "name:en": "Shikoku Pilgrimage 23rd Yakuo-ji - 24th Hotsumisaki-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13692105,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 22番札所平等寺~23番札所薬王寺",
+    "name:en": "Shikoku Pilgrimage 22nd Byodo-ji - 23rd Yakuo-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13697425,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 30番札所善楽寺~31番札所竹林寺",
+    "name:en": "Shikoku Pilgrimage 30th Zenraku-ji - 31st Chikurin-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13697426,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 29番札所土佐国分寺~30番札所善楽寺",
+    "name:en": "Shikoku Pilgrimage 29th Tosa Kokubun-ji - 30th Zenraku-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13697427,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 28番札所大日寺~29番札所土佐国分寺",
+    "name:en": "Shikoku Pilgrimage 28th Dainichi-ji - 29th Tosa Kokubun-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13697428,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 27番札所神峰寺~28番札所大日寺",
+    "name:en": "Shikoku Pilgrimage 27th Kōnomine-ji - 28th Dainichi-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13697429,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 26番札所金剛頂寺~27番札所神峰寺",
+    "name:en": "Shikoku Pilgrimage 26th Kongōchō-ji - 27th Kōnomine-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13697430,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 25番札所津照寺~26番札所金剛頂寺",
+    "name:en": "Shikoku Pilgrimage 25th Shinshō-ji - 26th Kongōchō-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13698053,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 34番札所種間寺~35番札所清滝寺",
+    "name:en": "Shikoku Pilgrimage 34th Tanema-ji - 35th Kiyotaki-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13698054,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 33番札所雪蹊寺~34番札所種間寺",
+    "name:en": "Shikoku Pilgrimage 33rd Sekkei-ji - 34th Tanema-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13698055,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 32番札所禅師峰寺~33番札所雪蹊寺",
+    "name:en": "Shikoku Pilgrimage 32nd Zenjibu-ji - 33rd Sekkei-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13698056,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 31番札所竹林寺~32番札所禅師峰寺",
+    "name:en": "Shikoku Pilgrimage 31st Chikurin-ji - 32nd Zenjibu-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13702898,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 36番札所青竜寺~37番札所岩本寺",
+    "name:en": "Shikoku Pilgrimage 36th Shōryū-ji - 37th Iwamoto-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13702899,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 35番札所清滝寺~36番札所青竜寺",
+    "name:en": "Shikoku Pilgrimage 35th Kiyotaki-ji - 36th Shōryū-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13714394,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 38番札所金剛福寺~39番札所延光寺",
+    "name:en": "Shikoku Pilgrimage 38th Kongōfuku-ji - 39th Enkōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13714395,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 37番札所岩本寺~38番札所金剛福寺",
+    "name:en": "Shikoku Pilgrimage 37th Iwamoto-ji - 38th Kongōfuku-ji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13718606,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 39番札所延光寺~40番札所観自在寺",
+    "name:en": "Shikoku Pilgrimage 39th Enkōji - 40th Kanjizaiji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13725237,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 44番札所大宝寺~45番札所岩屋寺",
+    "name:en": "Shikoku Pilgrimage 44th Daihōji - 45th Iwayaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13725238,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 43番札所明石寺~44番札所大宝寺",
+    "name:en": "Shikoku Pilgrimage 43rd Meisekiji - 44th Daihōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13725239,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 42番札所佛木寺~43番札所明石寺",
+    "name:en": "Shikoku Pilgrimage 42nd Butsumokuji - 43rd Meisekiji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13725240,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 41番札所竜光寺~42番札所佛木寺",
+    "name:en": "Shikoku Pilgrimage 41st Ryūkōji - 42nd Butsumokuji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13725241,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 40番札所観自在寺~41番札所竜光寺",
+    "name:en": "Shikoku Pilgrimage 40th Kanjizaiji - 41st Ryūkōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13727639,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 45番札所岩屋寺~46番札所浄瑠璃寺",
+    "name:en": "Shikoku Pilgrimage 45th Iwayaji - 46th Jōruriji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13728611,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 49番札所浄土寺~50番札所繁多寺",
+    "name:en": "Shikoku Pilgrimage 49th Jōdoji - 50th Hantaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13728612,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 48番札所西林寺~49番札所浄土寺",
+    "name:en": "Shikoku Pilgrimage 48th Sairinji - 49th Jōdoji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13728613,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 47番札所八坂寺~48番札所西林寺",
+    "name:en": "Shikoku Pilgrimage 47th Yasakaji - 48th Sairinji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13728614,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 46番札所浄瑠璃寺~47番札所八坂寺",
+    "name:en": "Shikoku Pilgrimage 46th Jōruriji - 47th Yasakaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13733021,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 53番札所圓明寺~54番札所延命寺",
+    "name:en": "Shikoku Pilgrimage 53rd Enmyōji - 54th Enmeiji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13733022,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 52番札所太山寺~53番札所圓明寺",
+    "name:en": "Shikoku Pilgrimage 52nd Taisanji - 53rd Enmyōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13733023,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 51番札所石手寺~52番札所太山寺",
+    "name:en": "Shikoku Pilgrimage 51st Ishiteji - 52nd Taisanji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13733024,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 50番札所繁多寺~51番札所石手寺",
+    "name:en": "Shikoku Pilgrimage 50th Hantaji - 51st Ishiteji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13737899,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 57番札所栄福寺~58番札所仙遊寺",
+    "name:en": "Shikoku Pilgrimage 57th Eifukuji - 58th Senyūji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13737900,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 56番札所泰山寺~57番札所栄福寺",
+    "name:en": "Shikoku Pilgrimage 56th Taisanji - 57th Eifukuji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13737901,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 55番札所南光坊~56番札所泰山寺",
+    "name:en": "Shikoku Pilgrimage 55th Nankōbō - 56th Taisanji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13737902,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 54番札所延命寺~55番札所南光坊",
+    "name:en": "Shikoku Pilgrimage 54th Enmeiji - 55th Nankōbō",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13740799,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 63番札所吉祥寺~64番札所前神寺",
+    "name:en": "Shikoku Pilgrimage 63rd Kichijōji - 64th Maegamiji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13740800,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 62番札所宝寿寺~63番札所吉祥寺",
+    "name:en": "Shikoku Pilgrimage 62nd Hōjuji - 63rd Kichijōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13740801,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 61番札所香園寺~62番札所宝寿寺",
+    "name:en": "Shikoku Pilgrimage 61st Kōonji - 62nd Hōjuji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13740802,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 60番札所横峰寺~61番札所香園寺",
+    "name:en": "Shikoku Pilgrimage 60th Yokomineji - 61st Kōonji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13740803,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 59番札所伊予国分寺~60番札所横峰寺",
+    "name:en": "Shikoku Pilgrimage 59th Iyo Kokubunji - 60th Yokomineji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13740804,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 58番札所仙遊寺~59番札所伊予国分寺",
+    "name:en": "Shikoku Pilgrimage 58th Senyūji - 59th Iyo Kokubunji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13744787,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 66番札所雲辺寺~67番札所大興寺",
+    "name:en": "Shikoku Pilgrimage 66th Unpenji - 67th Daikōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13744788,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 65番札所三角寺~66番札所雲辺寺",
+    "name:en": "Shikoku Pilgrimage 65th Sankakuji - 66th Unpenji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13744789,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 64番札所前神寺~65番札所三角寺",
+    "name:en": "Shikoku Pilgrimage 64th Maegamiji - 65th Sankakuji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13748780,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 70番札所本山寺~71番札所弥谷寺",
+    "name:en": "Shikoku Pilgrimage 70th Motoyamaji - 71st Iyadaniji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13748781,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 69番札所観音寺~70番札所本山寺",
+    "name:en": "Shikoku Pilgrimage 69th Kannonji - 70th Motoyamaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13748782,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 68番札所神恵院~69番札所観音寺",
+    "name:en": "Shikoku Pilgrimage 68th Jinnein - 69th Kannonji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13748783,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 67番札所大興寺~68番札所神恵院",
+    "name:en": "Shikoku Pilgrimage 67th Daikōji - 68th Jinnein",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13752019,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 75番札所善通寺~76番札所金倉寺",
+    "name:en": "Shikoku Pilgrimage 75th Zentsūji - 76th Konzōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13752020,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 73番札所出釈迦寺~74番札所甲山寺",
+    "name:en": "Shikoku Pilgrimage 73rd Shusshakaji - 74th Kōyamaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13752021,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 74番札所甲山寺~75番札所善通寺",
+    "name:en": "Shikoku Pilgrimage 74th Kōyamaji - 75th Zentsūji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13752022,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 72番札所曼荼羅寺~73番札所出釈迦寺",
+    "name:en": "Shikoku Pilgrimage 72nd Mandaraji - 73rd Shusshakaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13752023,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 71番札所弥谷寺~72番札所曼荼羅寺",
+    "name:en": "Shikoku Pilgrimage 71st Iyadaniji - 72nd Mandaraji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13753044,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 77番札所道隆寺~78番札所郷照寺",
+    "name:en": "Shikoku Pilgrimage 77th Dōryūji - 78th Gōshōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13753045,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 76番札所金倉寺~77番札所道隆寺",
+    "name:en": "Shikoku Pilgrimage 76th Konzōji - 77th Dōryūji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13754534,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 80番札所讃岐国分寺~81番札所白峯寺",
+    "name:en": "Shikoku Pilgrimage 80th Sanuki Kokubunji - 81st Shiromineji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13754535,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 79番札所天皇寺~80番札所讃岐国分寺",
+    "name:en": "Shikoku Pilgrimage 79th Tennōji - 80th Sanuki Kokubunji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13754536,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 78番札所郷照寺~79番札所天皇寺",
+    "name:en": "Shikoku Pilgrimage 78th Gōshōji - 79th Tennōji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763097,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 83番札所一宮寺~84番札所屋島寺",
+    "name:en": "Shikoku Pilgrimage 83rd Ichinomiyaji - 84th Yashimaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763098,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 82番札所根香寺~83番札所一宮寺",
+    "name:en": "Shikoku Pilgrimage 82nd Negoroji - 83rd Ichinomiyaji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763099,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 81番札所白峯寺~82番札所根香寺",
+    "name:en": "Shikoku Pilgrimage 81st Shiromineji - 82nd Negoroji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763344,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 87番札所長尾寺~88番札所大窪寺",
+    "name:en": "Shikoku Pilgrimage 87th Nagaoji - 88th Ōkuboji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763345,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 86番札所志度寺~87番札所長尾寺",
+    "name:en": "Shikoku Pilgrimage 86th Shidoji - 87th Nagaoji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763346,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 85番札所八栗寺~86番札所志度寺",
+    "name:en": "Shikoku Pilgrimage 85th Yakuriji - 86th Shidoji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13763347,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 84番札所屋島寺~85番札所八栗寺",
+    "name:en": "Shikoku Pilgrimage 84th Yashimaji - 85th Yakuriji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13766029,
+  "tags": {
+    "alt_name": "遍路道",
+    "name": "四国遍路 88番札所大窪寺~1番札所霊山寺",
+    "name:en": "Shikoku Pilgrimage 88th Ōkuboji - 1st Ryōzenji",
+    "network": "nwn",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 14033539,
+  "tags": {
+    "colour": "yellow",
+    "cycle_network": "JP:prefectural",
+    "from": "岩瀬駅",
+    "name": "w",
+    "name:en": "Tsukuba-Kasumigaura Ring-Ring Road",
+    "name:ja": "つくば霞ヶ浦りんりんロード 霞ヶ浦コース",
+    "network": "rcn",
+    "ref": "505",
+    "route": "bicycle",
+    "type": "route",
+    "website": "https://www.ringringroad.com/"
+  }
+},
+{
+  "type": "relation",
+  "id": 15074516,
+  "tags": {
+    "from": "口之津港",
+    "name": "九州オルレ 南島原コース",
+    "operator": "南島原市",
+    "route": "foot",
+    "to": "口之津歴史民俗資料館分館",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 15537716,
+  "tags": {
+    "distance": "1487",
+    "from": "銚子市",
+    "name": "太平洋岸自転車道",
+    "name:en": "Pacific Cycling Road",
+    "network": "ncn",
+    "ref": "PCR",
+    "roundtrip": "no",
+    "route": "bicycle",
+    "to": "和歌山市",
+    "type": "route",
+    "website": "https://www.kkr.mlit.go.jp/road/pcr/index.html",
+    "wikidata": "Q11443973",
+    "wikipedia": "ja:太平洋岸自転車道"
+  }
+},
+{
+  "type": "relation",
+  "id": 16238701,
+  "tags": {
+    "name": "ビワイチ",
+    "network": "ncn",
+    "network:type": "rcn",
+    "ref": "ビワイチ",
+    "route": "bicycle",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17094646,
+  "tags": {
+    "distance": "36",
+    "from": "滝尻バス停",
+    "name": "熊野古道 中辺路",
+    "name:en": "Kumano Kodo - Nakahechi",
+    "network": "rwn",
+    "osmc:symbol": "blue:white:white_rectangle:熊古中辺:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "to": "熊野本宮大社",
+    "tourism": "yes",
+    "type": "route",
+    "wikidata": "Q30074932",
+    "wikipedia": "ja:中辺路"
+  }
+},
+{
+  "type": "relation",
+  "id": 17095001,
+  "tags": {
+    "distance": "15",
+    "from": "那智駅",
+    "name": "熊野古道 中辺路 大雲取越",
+    "name:en": "Kumanokodō - Nakahechi - Ōkumotorigoe",
+    "name:fr": "Kumanokodō - Nakahechi - Ōkumotorigoe",
+    "name:ja-Hira": "くまのこどおなかへちおおくもとりごえ",
+    "name:ja-Latn": "Kumanokodō - Nakahechi - Ōkumotorigoe",
+    "network": "rwn",
+    "note": "不完全",
+    "osmc:symbol": "blue:white:white_rectangle:熊古中大:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "to": "小口郵便局",
+    "tourism": "yes",
+    "type": "route",
+    "wikidata": "Q30074932",
+    "wikipedia": "ja:中辺路"
+  }
+},
+{
+  "type": "relation",
+  "id": 17097762,
+  "tags": {
+    "distance": "7.8",
+    "from": "請川バス停",
+    "name": "熊野古道 中辺路 湯峰温泉",
+    "name:en": "Kumano Kodo - Nakahechi - Yunomine Onsen",
+    "network": "rwn",
+    "osmc:symbol": "blue:white:white_rectangle:熊古中温:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "to": "湯峰温泉",
+    "tourism": "yes",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17097854,
+  "tags": {
+    "distance": "13.0",
+    "from": "小口郵便局",
+    "name": "熊野古道 中辺路 小雲取越",
+    "name:en": "Kumano Kodo - Nakahechi - Kokumotorigoe",
+    "network": "rwn",
+    "osmc:symbol": "blue:white:white_rectangle:熊古中小:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "to": "請川バス停",
+    "tourism": "yes",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17130940,
+  "tags": {
+    "from": "湯峰温泉",
+    "name": "熊野古道 中辺路 大日越",
+    "name:en": "Kumano Kodo - Nakahechi - Dainichigoshi",
+    "network": "rwn",
+    "osmc:symbol": "blue:white:white_rectangle:熊古中日:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "to": "熊野本宮大社",
+    "tourism": "yes",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17130941,
+  "tags": {
+    "name": "熊野古道 中辺路 赤木越",
+    "name:en": "Kumano Kodo - Nakahechi - Akagi-goe",
+    "network": "rwn",
+    "osmc:symbol": "blue:white:white_rectangle:熊古中赤:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "tourism": "yes",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17131166,
+  "tags": {
+    "from": "高野山",
+    "name": "熊野古道 小辺路",
+    "name:en": "Kumano Kodo - Kohechi",
+    "network": "rwn",
+    "osmc:symbol": "blue:white:white_rectangle:熊古小辺:black",
+    "pilgrimage": "yes",
+    "roundtrip": "no",
+    "route": "hiking",
+    "to": "熊野古道中辺路",
+    "tourism": "yes",
+    "type": "route",
+    "wikidata": "Q11463835",
+    "wikipedia": "ja:小辺路"
+  }
+},
+{
+  "type": "relation",
+  "id": 17492163,
+  "tags": {
+    "colour": "yellow",
+    "cycle_network": "JP:prefectural",
+    "from": "岩瀬駅",
+    "name": "w",
+    "name:en": "Tsukuba-Kasumigaura Ring-Ring Road",
+    "name:ja": "つくば霞ヶ浦りんりんロード",
+    "network": "rcn",
+    "ref": "505",
+    "route": "bicycle",
+    "type": "route",
+    "website": "https://www.ringringroad.com/"
+  }
+},
+{
+  "type": "relation",
+  "id": 17492164,
+  "tags": {
+    "cycle_network": "JP:prefectural",
+    "from": "岩瀬駅",
+    "name": "w",
+    "name:en": "Tsukuba-Kasumigaura Ring-Ring Road",
+    "name:ja": "つくば霞ヶ浦りんりんロード 旧つくば鉄道コース",
+    "network": "rcn",
+    "ref": "505",
+    "route": "bicycle",
+    "type": "route",
+    "website": "https://www.ringringroad.com/"
+  }
+},
+{
+  "type": "relation",
+  "id": 19047964,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル",
+    "name:en": "Michinoku Coastal Trail",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "superroute",
+    "wikidata": "Q107571118",
+    "wikipedia": "en:Michinoku Coastal Trail"
+  }
+},
+{
+  "type": "relation",
+  "id": 19317787,
+  "tags": {
+    "description": "高潮時",
+    "description:en": "At high tide",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19317788,
+  "tags": {
+    "description": "高潮時",
+    "description:en": "At high tide",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19317961,
+  "tags": {
+    "description": "増水時",
+    "description:en": "At high water",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19318602,
+  "tags": {
+    "name": "みちのく潮風トレイル（横沼展望所へ）",
+    "name:en": "Michinoku Coastal Trail (To Yokonuma Viewpoint)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19318605,
+  "tags": {
+    "description": "高波時",
+    "description:en": "At high waves",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19318954,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（八戸市ルート）",
+    "name:en": "Michinoku Coastal Trail (Hachinohe Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19319086,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（階上町ルート）",
+    "name:en": "Michinoku Coastal Trail (Hashikami Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19319117,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（洋野町ルート）",
+    "name:en": "Michinoku Coastal Trail (Hirono Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19319133,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（久慈市ルート）",
+    "name:en": "Michinoku Coastal Trail (Kuji Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321178,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（野田村ルート）",
+    "name:en": "Michinoku Coastal Trail (Noda Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321179,
+  "tags": {
+    "description": "高潮時",
+    "description:en": "At high tide",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321377,
+  "tags": {
+    "description": "増水時",
+    "description:en": "At high water",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321378,
+  "tags": {
+    "description": "高波時",
+    "description:en": "At high waves",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321379,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（普代村ルート）",
+    "name:en": "Michinoku Coastal Trail (Fudai Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321380,
+  "tags": {
+    "name": "みちのく潮風トレイル（黒崎展望所へ）",
+    "name:en": "Michinoku Coastal Trail (To Kurosaki Viewpoint)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321953,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（田野畑村ルート）",
+    "name:en": "Michinoku Coastal Trail (Tanohata Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321954,
+  "tags": {
+    "name": "みちのく潮風トレイル（第3展望台へ）",
+    "name:en": "Michinoku Coastal Trail (To 3rd Observation Platform)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19321955,
+  "tags": {
+    "name": "みちのく潮風トレイル（第2展望台へ）",
+    "name:en": "Michinoku Coastal Trail (To 2nd Observation Platform)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19322246,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（岩泉町ルート）",
+    "name:en": "Michinoku Coastal Trail (Iwaizumi Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19322249,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（宮古市の北部ルート）",
+    "name:en": "Michinoku Coastal Trail (Northern Miyako Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19322250,
+  "tags": {
+    "name": "みちのく潮風トレイル（蛸の浜展望所へ）",
+    "name:en": "Michinoku Coastal Trail (To Takonohama Beach Viewpoint)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19323291,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（大船渡市の南部ルート）",
+    "name:en": "Michinoku Coastal Trail (Southern Ōfunato Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19323294,
+  "tags": {
+    "name": "みちのく潮風トレイル（穴通磯へ）",
+    "name:en": "Michinoku Coastal Trail (To Anatoshi-iso Rocks)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19323295,
+  "tags": {
+    "name": "みちのく潮風トレイル（雷岩･乱曝谷展望台へ）",
+    "name:en": "Michinoku Coastal Trail (To Kaminariiwa Rock · Ranboya Gorge Observation Deck)",
+    "network": "lwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "state": "excursion",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19327807,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（大槌町ルート）",
+    "name:en": "Michinoku Coastal Trail (Ōtsuchi Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19327863,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（山田町ルート）",
+    "name:en": "Michinoku Coastal Trail (Yamada Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19328049,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（宮古市の南部ルート）",
+    "name:en": "Michinoku Coastal Trail (Southern Miyako Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19328328,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（釜石市ルート）",
+    "name:en": "Michinoku Coastal Trail (Kamaishi Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19329070,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（大船渡市の北部ルート）",
+    "name:en": "Michinoku Coastal Trail (Northern Ōfunato Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19330618,
+  "tags": {
+    "description": "通行止め",
+    "description:en": "During road closure",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "rwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 19330619,
+  "tags": {
+    "description": "高波時",
+    "description:en": "At high waves",
+    "name": "みちのく潮風トレイル（迂回路）",
+    "name:en": "Michinoku Coastal Trail (Detour)",
+    "network": "lwn",
+    "osmc:symbol": "yellow:white::𝄽:green",
+    "route": "hiking",
+    "state": "alternate",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 20052330,
+  "tags": {
+    "colour": "#005555",
+    "name": "みちのく潮風トレイル（綾里峠ルート）",
+    "name:en": "Michinoku Coastal Trail (Ryōri Pass Section)",
+    "network": "nwn",
+    "osmc:symbol": "green:white::𝄽:green",
+    "route": "hiking",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 20663531,
+  "tags": {
+    "description": "자전거보행자겸용도로",
+    "distance": "4.14",
+    "from": "경기도 남양주시 삼봉리 184-3",
+    "name": "북한강 자전거도로6",
+    "network": "ncn",
+    "operator": "서울지방국토관리청",
+    "route": "bicycle",
+    "to": "경기도 남양주시 금남리 산47-21",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 20663532,
+  "tags": {
+    "description": "자전거보행자겸용도로",
+    "distance": "2.8",
+    "from": "경기도 남양주시 금남리 산47-21",
+    "name": "북한강 자전거도로7",
+    "network": "ncn",
+    "operator": "서울지방국토관리청",
+    "route": "bicycle",
+    "to": "경기도 남양주시 금남리 188-4",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 20664007,
+  "tags": {
+    "description": "자전거보행자겸용도로",
+    "distance": "1.2",
+    "from": "경기도 남양주시 광전리 168-4",
+    "name": "송산로3R",
+    "network": "ncn",
+    "operator": "서울지방국토관리청",
+    "route": "bicycle",
+    "to": "경기도 남양주시 광전리 326-2",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 20664008,
+  "tags": {
+    "description": "자전거보행자겸용도로",
+    "distance": "1.8",
+    "from": "경기도 남양주시 광전리 328-4",
+    "name": "송산로3L",
+    "network": "ncn",
+    "operator": "서울지방국토관리청",
+    "route": "bicycle",
+    "to": "경기도 남양주시 광전리 산76",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21181493,
+  "tags": {
+    "distance": "163",
+    "from": "道の駅朝霧高原",
+    "name": "フジイチ",
+    "name:en": "Fujiichi",
+    "network": "ncn",
+    "roundtrip": "yes",
+    "route": "bicycle",
+    "to": "道の駅朝霧高原",
+    "type": "route",
+    "website": "https://www.yamanashi-kankou.jp/fujiichi/"
+  }
+},
+{
+  "type": "relation",
+  "id": 21181787,
+  "tags": {
+    "distance": "152",
+    "from": "ＪＲ東浜駅",
+    "name": "鳥取うみなみロード",
+    "name:en": "Tottori Uminami Road",
+    "network": "ncn",
+    "roundtrip": "no",
+    "route": "bicycle",
+    "to": "ＪＲ境港駅",
+    "type": "route",
+    "website": "https://www.pref.tottori.lg.jp/282838.htm"
+  }
+},
+{
+  "type": "relation",
+  "id": 21182757,
+  "tags": {
+    "name": "いしかわ里山里海サイクリングルート",
+    "name:en": "Ishikawa Satoyama-Satoumi Cycling Route",
+    "network": "ncn",
+    "roundtrip": "no",
+    "route": "bicycle",
+    "type": "route",
+    "website": "https://www.pref.ishikawa.jp/michi/cycling/cycling-web/cycling.html"
+  }
+},
+{
+  "type": "relation",
+  "id": 21187378,
+  "tags": {
+    "name": "ふくしま浜通りサイクルルート",
+    "name:en": "FUKUSHIMA HAMADORI CYCLE ROUTE",
+    "network": "ncn",
+    "roundtrip": "no",
+    "route": "bicycle",
+    "type": "route",
+    "website": "https://hamadori-cycle.jp/"
+  }
+},
+{
+  "type": "relation",
+  "id": 21223721,
+  "tags": {
+    "distance": "403",
+    "name": "トカプチ400",
+    "name:en": "Tokapuchi400",
+    "network": "ncn",
+    "roundtrip": "yes",
+    "route": "bicycle",
+    "type": "route",
+    "website": "https://www.ctjguide.com/"
+  }
+}
+
+  ]
+}

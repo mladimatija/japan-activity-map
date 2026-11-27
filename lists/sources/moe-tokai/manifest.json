@@ -1,0 +1,17 @@
+{
+ "source": "Ministry of the Environment (環境省)",
+ "page": "https://www.env.go.jp/nature/long-trail.html",
+ "zip": "https://www.env.go.jp/content/000304454.zip",
+ "fetchedAt": "2026-11-25",
+ "licence": "公共データ利用規約 (第1.0版), PDL1.0",
+ "files": [
+  {
+   "file": "東海自然歩道_全線_250331.gpx",
+   "entry": "東海自然歩道_全線_250331.gpx",
+   "bytes": 8455466
+  }
+ ],
+ "notExtracted": [
+  "東海自然歩道_全線_250331_データについて.txt"
+ ]
+}

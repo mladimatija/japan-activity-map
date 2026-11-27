@@ -1,0 +1,55 @@
+name: Feature request
+description: An idea for the map, the pages, the lists or the command line
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please don't include personal data: nothing from `data/`, no secrets, no privacy zones,
+        no coordinates of private places.
+
+        Some things are left out on purpose: other activity sources such as Garmin or YAMAP,
+        social features, weather, photos. A request for one of those is still welcome; say what
+        you would use it for.
+
+        A new list is the most likely thing to be accepted: it needs a source with an open
+        licence, or one that can be fetched by each user.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do
+      description: The situation and what is in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you would like
+      description: How it could work. A sketch or an example from another site helps.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Other ways you considered
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Reference lists (a new list or source)
+        - The map (pins, tracks, layers, filters, search)
+        - The pages (Statistics, Repeats, Compare, Goals)
+        - Activity sources (Strava, the sheet, another service)
+        - Privacy (zones, what is published)
+        - Setup wizard or demo data
+        - Deploy, hosting or the weekly run
+        - Command line (jam)
+        - Docs
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Data source and licence
+      description: For a new list or dataset, where the data comes from and its licence (lists/LICENSE.md shows the ones in use). Non-commercial or unclear licences can't be committed (see lists/README.md); a book's selection with no open list can't be built at all.

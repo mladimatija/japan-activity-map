@@ -1,0 +1,83 @@
+{
+  "site": {
+    "title": "Japan Activity Map",
+    // Public address of the site, used for links and the share image. Leave out until deployed.
+    // "baseUrl": "https://map.example.com",
+    "description": ""
+  },
+  "map": {
+    // Any MapLibre style. OpenFreeMap needs no key but is provided as-is, so keep this swappable.
+    // Positron is muted, so your data is the only colour; Liberty and Bright show more streets.
+    "styleUrl": "https://tiles.openfreemap.org/styles/positron",
+    // The style for viewers whose system is set to dark. Left out, OpenFreeMap's Dark (the dark
+    // sibling of Positron); null gives everyone styleUrl.
+    // "darkStyleUrl": "https://tiles.openfreemap.org/styles/dark",
+    // Elevation tiles for the map's terrain and hillshade switch. Either a TileJSON address, which
+    // carries its own encoding and credit, or a tile address with its encoding and credit. The
+    // commented example is free and needs no key: Mapzen's Terrain Tiles on AWS Open Data.
+    // Uncomment sourceUrl alone, or tiles with the lines after it, then set enabled to true.
+    "terrain": {
+      // "sourceUrl": "https://.../tiles.json",
+      // "tiles": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+      // "encoding": "terrarium",
+      // "tileSize": 256,
+      // "maxzoom": 15,
+      // "attribution": "<a href=\"https://github.com/tilezen/joerd/blob/master/docs/attribution.md\">Mapzen Terrain Tiles</a>",
+      "enabled": false
+    }
+  },
+  // Saved views offered in a dropdown at the top of the filter panel, in order: a name, and the
+  // part of a site address after #, as the panel writes it (set the filters, then copy it from the
+  // address bar). Leave this out for the built-in ones (progress on the open list, this year, new
+  // ground, big days, long runs, races, a heatmap, prefectures still to visit); set it to replace
+  // them, or to [] for none. Visitors can also save their own views in their browser.
+  // "views": [
+  //   { "name": "Races, all years", "query": "view=activities&tag=race" },
+  //   { "name": "Hikes in Kanto this year", "query": "view=activities&type=hike&year=2026&pref=08,09,10,11,12,13,14" }
+  // ],
+  // Publishing with `pnpm jam deploy` (docs/deploy.md). Tokens go in secrets.jsonc, never here.
+  "deploy": {
+    // Where: "cloudflare" (Cloudflare Pages), "netlify" or "github" (GitHub Pages).
+    "host": "cloudflare",
+    // Cloudflare Pages and Netlify: the project's name; the site is at <name>.pages.dev or
+    // <name>.netlify.app. Leave out until you deploy.
+    // "projectName": "my-japan-map",
+    // Cloudflare Pages: the project's production branch. Any other branch is a preview.
+    "branch": "main",
+    // Netlify: the team's slug, when the account has more than one team.
+    // "team": "my-team",
+    // GitHub Pages: the repository the site is pushed to, and the branch that holds the site and
+    // nothing else (replaced on every deploy; never a branch with code on it).
+    // "repository": "owner/name",
+    "pagesBranch": "gh-pages",
+    // More addresses the page may load from, besides the map style's own, which deploy looks up.
+    "extraHosts": []
+  },
+  "output": {
+    // Published tracks are simplified so no point moves more than this many metres.
+    "simplifyM": 5,
+    // Decimals kept in published coordinates; 5 is about 1 m.
+    "decimals": 5,
+    // Budget for the files the site loads at start, gzip-compressed.
+    "startBudgetKB": 1024
+  },
+  "publish": {
+    // Build a link to each Strava activity into the public site. The link is always kept locally.
+    "stravaLinks": false,
+    // Publish activities set to "Only You" on Strava (only if they were imported; see strava.jsonc).
+    "includeOnlyMeActivities": false,
+    // Publish activities without GPS (treadmill, gym, manual entries with no coordinates). Only
+    // those whose time zone is Asia/Tokyo are included, since they cannot be placed otherwise.
+    // They count in totals and statistics but never appear on the map.
+    "activitiesWithoutGps": false,
+    // Publish activity names. When off, each activity gets a generic label such as "Hike".
+    "activityNames": true,
+    // Publish the time of day. When off, only the date is published.
+    "timeOfDay": false,
+    // Publish the seconds at each point of a track, for pace by kilometre in an activity's detail.
+    // They count from the start of each stretch: no time of day, nothing about time inside a zone.
+    "paceAlongTracks": true,
+    // Include commutes in the track heatmap.
+    "commutesInHeatmap": false
+  }
+}

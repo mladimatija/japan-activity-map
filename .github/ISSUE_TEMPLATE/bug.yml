@@ -1,0 +1,88 @@
+name: Bug report
+description: Something doesn't work as the docs say it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this.
+
+        **Before you write anything, read this:** never attach or paste anything from `data/`
+        (the store, logs, backups, review files, the Strava sign-in file), `config/secrets.jsonc`
+        (Strava, Cloudflare or Netlify credentials) or `config/privacy-zones.jsonc`, and no
+        coordinates, tracks or screenshots that show where you live or work. Log files in
+        `data/logs` contain file paths and activity names: copy only the lines that matter and
+        remove anything personal. The address of the setup page carries a token: leave it out.
+
+        The safest report is one that shows the problem on the demo: `pnpm jam demo`, then
+        `pnpm demo:web`. Everything in it is made up, so screenshots of it are fine.
+
+        A way for private data to reach the published site isn't a bug report: see SECURITY.md.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Strava sync or the activity sheet
+        - Matching, routes or the build (jam match, routes, build)
+        - Privacy zones or the audit
+        - The map (pins, tracks, layers, filters, search)
+        - The pages (Statistics, Repeats, Compare, Goals)
+        - Setup wizard (jam setup, terminal or page)
+        - Demo data (jam demo)
+        - Deploy or the weekly run (jam deploy, update, schedule)
+        - Reference lists (a wrong place, name or position)
+        - Docs
+        - Tooling or CI
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands, or the clicks and the address (the part after `#`) for the web app.
+      placeholder: |
+        1. pnpm jam ...
+        2. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: demo
+    attributes:
+      label: Does it happen on the demo data?
+      description: '`pnpm jam demo`, then `pnpm demo:web` (or the published demo site).'
+      options:
+        - 'Yes'
+        - 'No, only with my own data'
+        - Not tried
+        - Does not apply (command line, lists, docs)
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Error output
+      description: The message or stack, with personal paths, names and coordinates removed.
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: The commit (`git rev-parse --short HEAD`), `node -v` and `pnpm -v`, your operating system, the browser for web problems, and the host for deploy problems.
+      placeholder: a1b2c3d, Node 26.13.1, pnpm 12.21.0, macOS 26, Firefox 150, Cloudflare Pages
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: This report contains nothing from `data/`, no secrets, no privacy zones and no home or work locations.
+          required: true

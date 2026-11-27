@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+# Read-only: no job here writes to the repository, opens issues or publishes anything.
+permissions:
+  contents: read
+
+# A newer push to the same branch or pull request replaces the run in progress.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Format, lint, types, lists, web build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Actions are pinned to a commit; the comment names the release. Dependabot keeps both in step.
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The pnpm version comes from "packageManager" in package.json.
+      - name: Set up pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      # The Node.js version comes from .node-version (the same as engines.node in package.json).
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Oxfmt, Oxlint and TypeScript in one pass (vp check).
+      - name: Format, lint and type check
+        run: pnpm check
+
+      # Fast tests of the pure logic, on Node's own test runner: no extra dependency.
+      - name: Unit tests
+        run: pnpm test
+
+      # Reads made-up Wikipedia pages and the committed list sources: no network, no data/.
+      - name: Reference list checks
+        run: pnpm check:lists
+
+      # The app builds without dist/data; the data files are fetched in the browser.
+      - name: Build the web app
+        run: pnpm web:build
+
+      # Made-up activities in a temporary folder; never data/. The 五街道 route files are not
+      # committed, so the checks use a stand-in 東海道 (packages/cli/dev/harness.ts).
+      - name: Matching checks
+        run: pnpm check:match
+
+      - name: Route grouping checks
+        run: pnpm check:routes
+
+      - name: Privacy checks
+        run: pnpm check:privacy
+
+      - name: Build output checks
+        run: pnpm check:build
+
+      # Against a fake Strava server on localhost.
+      - name: Strava sync checks
+        run: pnpm check:strava
+
+      # A made-up history through the whole pipeline, in a temporary folder.
+      - name: Demo data checks
+        run: pnpm check:demo
+
+      # The web check, against a demo build: every pane and page, both languages, both units.
+      - name: Web checks (on demo data)
+        run: pnpm check:web:demo
+
+      # Deploy, the weekly run and the schedule, against stand-ins for each host: nothing is uploaded.
+      - name: Deploy checks
+        run: pnpm check:deploy
+
+      - name: Setup wizard checks
+        run: pnpm check:setup
+
+      - name: Setup server checks
+        run: pnpm check:setup-web
+
+      - name: Setup page checks
+        run: pnpm check:setup-ui

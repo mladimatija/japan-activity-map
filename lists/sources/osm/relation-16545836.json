@@ -1,0 +1,62 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-21T01:34:20Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 16545836,
+  "bounds": {
+    "minlat": 33.2942110,
+    "minlon": 129.8464891,
+    "maxlat": 33.3017126,
+    "maxlon": 129.8532569
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 163438585,
+      "role": "",
+      "geometry": [
+         { "lat": 33.3009568, "lon": 129.8466337 },
+         { "lat": 33.3014409, "lon": 129.8467600 },
+         { "lat": 33.3014797, "lon": 129.8467594 },
+         { "lat": 33.3015120, "lon": 129.8467393 },
+         { "lat": 33.3016647, "lon": 129.8464891 },
+         { "lat": 33.3017126, "lon": 129.8465120 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 163438054,
+      "role": "",
+      "geometry": [
+         { "lat": 33.2942110, "lon": 129.8532569 },
+         { "lat": 33.2942112, "lon": 129.8531938 },
+         { "lat": 33.2942334, "lon": 129.8531427 },
+         { "lat": 33.2956385, "lon": 129.8513262 },
+         { "lat": 33.2958782, "lon": 129.8510706 },
+         { "lat": 33.2965627, "lon": 129.8504464 },
+         { "lat": 33.3000637, "lon": 129.8473712 },
+         { "lat": 33.3004603, "lon": 129.8470229 },
+         { "lat": 33.3008881, "lon": 129.8466471 },
+         { "lat": 33.3009237, "lon": 129.8466324 },
+         { "lat": 33.3009568, "lon": 129.8466337 }
+      ]
+    }
+  ],
+  "tags": {
+    "name": "夢りんりんロード",
+    "route": "bicycle",
+    "type": "route",
+    "wikidata": "Q11570410",
+    "wikipedia": "ja:牧島りんりんロード"
+  }
+}
+
+  ]
+}

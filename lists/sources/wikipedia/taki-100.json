@@ -1,0 +1,1289 @@
+{
+ "source": "Japanese Wikipedia",
+ "page": "日本の滝百選",
+ "revid": 111064369,
+ "fetchedAt": "2026-11-26",
+ "note": "Membership from the rendered article (numbered table): each entry's number and its linked article. wikidata: P625 of the linked article's item; wikipedia: the linked article's primary coordinates.",
+ "items": [
+  {
+   "order": 1,
+   "ja": "羽衣の滝",
+   "article": "羽衣の滝",
+   "qid": "Q11610358",
+   "en": "Hagoromo Falls",
+   "wikidata": {
+    "lat": 43.626336,
+    "lon": 142.786811
+   }
+  },
+  {
+   "order": 2,
+   "ja": "インクラの滝",
+   "article": "インクラの滝",
+   "qid": "Q11287327",
+   "en": "Inkura Falls",
+   "wikidata": {
+    "lat": 42.637828,
+    "lon": 141.336386
+   }
+  },
+  {
+   "order": 3,
+   "ja": "\"飛竜\"賀老の滝",
+   "article": "賀老の滝",
+   "qid": "Q11634928",
+   "en": "Garō Falls",
+   "wikidata": {
+    "lat": 42.597167,
+    "lon": 139.996139
+   }
+  },
+  {
+   "order": 4,
+   "ja": "流星・銀河の滝",
+   "article": "層雲峡",
+   "qid": "Q3511708",
+   "en": "Sounkyo",
+   "wikidata": {
+    "lat": 43.7284,
+    "lon": 142.95
+   },
+   "wikipedia": {
+    "lat": 43.71905556,
+    "lon": 142.97716667
+   }
+  },
+  {
+   "order": 5,
+   "ja": "アシリベツの滝",
+   "article": "アシリベツの滝",
+   "qid": "Q17191314",
+   "en": "Ashiribetsu Falls",
+   "wikidata": {
+    "lat": 42.917014,
+    "lon": 141.372389
+   }
+  },
+  {
+   "order": 6,
+   "ja": "オシンコシンの滝",
+   "article": "オシンコシンの滝",
+   "qid": "Q11291936",
+   "en": "Oshinkoshin Falls",
+   "wikidata": {
+    "lat": 44.038194444,
+    "lon": 144.935361111
+   }
+  },
+  {
+   "order": 7,
+   "ja": "くろくまの滝",
+   "article": "くろくまの滝",
+   "qid": "Q11265725",
+   "en": "Kurokuma Falls",
+   "wikidata": {
+    "lat": 40.6295,
+    "lon": 140.11047222
+   },
+   "wikipedia": {
+    "lat": 40.6295,
+    "lon": 140.11047222
+   }
+  },
+  {
+   "order": 8,
+   "ja": "松見の滝",
+   "article": "松見の滝",
+   "qid": "Q11532270",
+   "en": "Matsumi Falls",
+   "wikidata": {
+    "lat": 40.558611111,
+    "lon": 140.906388888
+   }
+  },
+  {
+   "order": 9,
+   "ja": "不動の滝",
+   "article": "不動の滝 (八幡平市)",
+   "qid": "Q11361582",
+   "en": "Fudō Falls",
+   "wikidata": {
+    "lat": 40.0645,
+    "lon": 141.061
+   },
+   "wikipedia": {
+    "lat": 40.06447222,
+    "lon": 141.06063889
+   }
+  },
+  {
+   "order": 10,
+   "ja": "秋保大滝",
+   "article": "秋保大滝",
+   "qid": "Q4701257",
+   "en": "Akiu Great Falls",
+   "wikidata": {
+    "lat": 38.274916666,
+    "lon": 140.602916666
+   },
+   "wikipedia": {
+    "lat": 38.27491667,
+    "lon": 140.60291667
+   }
+  },
+  {
+   "order": 11,
+   "ja": "三階の滝",
+   "article": "三階の滝",
+   "qid": "Q11358292",
+   "en": "Sankai Falls",
+   "wikidata": {
+    "lat": 38.1345,
+    "lon": 140.529
+   },
+   "wikipedia": {
+    "lat": 38.13169444,
+    "lon": 140.52222222
+   }
+  },
+  {
+   "order": 12,
+   "ja": "七滝",
+   "article": "七滝",
+   "qid": "Q10864690",
+   "en": "Nanataki Falls",
+   "wikidata": {
+    "lat": 40.35611111,
+    "lon": 140.78361111
+   },
+   "wikipedia": {
+    "lat": 40.35611111,
+    "lon": 140.78361111
+   }
+  },
+  {
+   "order": 13,
+   "ja": "茶釜の滝",
+   "article": "茶釜の滝",
+   "qid": "Q11618041",
+   "en": "Chagama Falls",
+   "wikidata": {
+    "lat": 40.01111111,
+    "lon": 140.5575
+   },
+   "wikipedia": {
+    "lat": 40.01111111,
+    "lon": 140.74083333
+   }
+  },
+  {
+   "order": 14,
+   "ja": "法体の滝",
+   "article": "法体の滝",
+   "qid": "Q11555021",
+   "en": "Hottai Falls",
+   "wikidata": {
+    "lat": 39.10508333,
+    "lon": 140.16269444
+   },
+   "wikipedia": {
+    "lat": 39.10791667,
+    "lon": 140.15933333
+   }
+  },
+  {
+   "order": 15,
+   "ja": "安の滝",
+   "article": "安の滝",
+   "qid": "Q11450153",
+   "en": "Yasu Falls",
+   "wikidata": {
+    "lat": 39.9441,
+    "lon": 140.614
+   },
+   "wikipedia": {
+    "lat": 39.94411111,
+    "lon": 140.61391667
+   }
+  },
+  {
+   "order": 16,
+   "ja": "滑川大滝",
+   "article": "滑川大滝",
+   "qid": "Q11565006",
+   "en": "Namekawa Great Falls",
+   "wikidata": {
+    "lat": 37.778888888,
+    "lon": 140.220833333
+   }
+  },
+  {
+   "order": 17,
+   "ja": "白糸の滝",
+   "article": "白糸の滝 (山形県)",
+   "qid": "Q11580292",
+   "en": "Shiraito Falls",
+   "wikidata": {
+    "lat": 38.7675,
+    "lon": 140.056944444
+   }
+  },
+  {
+   "order": 18,
+   "ja": "七ツ滝",
+   "article": "七ツ滝",
+   "qid": "Q11353357",
+   "en": "Nanatsu Falls",
+   "wikidata": {
+    "lat": 38.5633,
+    "lon": 139.929
+   }
+  },
+  {
+   "order": 19,
+   "ja": "乙字ケ滝",
+   "article": "乙字ケ滝",
+   "qid": "Q11369924",
+   "en": "Otsuji Falls",
+   "wikidata": {
+    "lat": 37.247777777,
+    "lon": 140.391666666
+   }
+  },
+  {
+   "order": 20,
+   "ja": "三条の滝",
+   "article": "三条の滝",
+   "qid": "Q11355802",
+   "en": "Sanjō Falls",
+   "wikidata": {
+    "lat": 36.965555555,
+    "lon": 139.250277777
+   },
+   "wikipedia": {
+    "lat": 36.96555556,
+    "lon": 139.25027778
+   }
+  },
+  {
+   "order": 21,
+   "ja": "銚子ケ滝",
+   "article": "銚子ケ滝",
+   "qid": "Q11650209",
+   "en": "Chōshi Falls",
+   "wikidata": {
+    "lat": 37.581111,
+    "lon": 140.268056
+   }
+  },
+  {
+   "order": 22,
+   "ja": "袋田の滝",
+   "article": "袋田の滝",
+   "qid": "Q37321",
+   "en": "Fukuroda Falls",
+   "wikidata": {
+    "lat": 36.764194444,
+    "lon": 140.407361111
+   },
+   "wikipedia": {
+    "lat": 36.76419444,
+    "lon": 140.40736111
+   }
+  },
+  {
+   "order": 23,
+   "ja": "華厳滝",
+   "article": "華厳滝",
+   "qid": "Q37580",
+   "en": "Kegon Falls",
+   "wikidata": {
+    "lat": 36.737888888,
+    "lon": 139.502
+   },
+   "wikipedia": {
+    "lat": 36.73791667,
+    "lon": 139.50197222
+   }
+  },
+  {
+   "order": 24,
+   "ja": "霧降の滝",
+   "article": "霧降の滝",
+   "qid": "Q11660918",
+   "en": "Kirifuri Falls",
+   "wikidata": {
+    "lat": 36.776972,
+    "lon": 139.627167
+   }
+  },
+  {
+   "order": 25,
+   "ja": "吹割の滝",
+   "article": "吹割の滝",
+   "qid": "Q11416484",
+   "en": "Fukiware Falls",
+   "wikidata": {
+    "lat": 36.702167,
+    "lon": 139.207417
+   }
+  },
+  {
+   "order": 26,
+   "ja": "常布の滝",
+   "article": "常布の滝",
+   "qid": "Q38276689",
+   "en": "Jōfu Falls",
+   "wikidata": {
+    "lat": 36.645,
+    "lon": 138.56355556
+   },
+   "wikipedia": {
+    "lat": 36.645,
+    "lon": 138.56355556
+   }
+  },
+  {
+   "order": 27,
+   "ja": "棚下の不動滝",
+   "article": "棚下不動滝",
+   "qid": "Q11538993",
+   "en": "Tanashita Fudo Waterfalls",
+   "wikidata": {
+    "lat": 36.571639,
+    "lon": 139.059083
+   },
+   "wikipedia": {
+    "lat": 36.57163889,
+    "lon": 139.05908333
+   }
+  },
+  {
+   "order": 28,
+   "ja": "丸神の滝",
+   "article": "丸神の滝",
+   "qid": "Q11368412",
+   "en": "Marugami Falls",
+   "wikidata": {
+    "lat": 35.994161,
+    "lon": 138.882092
+   },
+   "wikipedia": {
+    "lat": 35.99105556,
+    "lon": 138.88197222
+   }
+  },
+  {
+   "order": 29,
+   "ja": "払沢の滝",
+   "article": "払沢の滝",
+   "qid": "Q11497279",
+   "en": "Hossawa Falls",
+   "wikidata": {
+    "lat": 35.727222,
+    "lon": 139.138611
+   },
+   "wikipedia": {
+    "lat": 35.72722222,
+    "lon": 139.13861111
+   }
+  },
+  {
+   "order": 30,
+   "ja": "早戸大滝",
+   "article": "早戸大滝",
+   "qid": "Q38389",
+   "en": "Hayato Great Falls",
+   "wikidata": {
+    "lat": 35.487777777,
+    "lon": 139.160833333
+   }
+  },
+  {
+   "order": 31,
+   "ja": "洒水の滝",
+   "article": "洒水の滝",
+   "qid": "Q38154",
+   "en": "Shasui Falls",
+   "wikidata": {
+    "lat": 35.3525,
+    "lon": 139.061666666
+   },
+   "wikipedia": {
+    "lat": 35.35222222,
+    "lon": 139.06166667
+   }
+  },
+  {
+   "order": 32,
+   "ja": "七ツ釜五段の滝",
+   "article": "西沢渓谷と東沢渓谷",
+   "qid": "Q11628996",
+   "wikidata": {
+    "lat": 35.86455556,
+    "lon": 138.73202778
+   },
+   "wikipedia": {
+    "lat": 35.86455556,
+    "lon": 138.73202778
+   }
+  },
+  {
+   "order": 33,
+   "ja": "北精進ケ滝",
+   "article": "北精進ケ滝",
+   "qid": "Q6417893",
+   "en": "Kitashōji Falls",
+   "wikidata": {
+    "lat": 35.73122778,
+    "lon": 138.35497222
+   },
+   "wikipedia": {
+    "lat": 35.72944444,
+    "lon": 138.32555556
+   }
+  },
+  {
+   "order": 34,
+   "ja": "仙娥滝",
+   "article": "仙娥滝",
+   "qid": "Q11378112",
+   "en": "Senga Falls",
+   "wikidata": {
+    "lat": 35.74950833,
+    "lon": 138.56618333
+   },
+   "wikipedia": {
+    "lat": 35.74950833,
+    "lon": 138.56618333
+   }
+  },
+  {
+   "order": 35,
+   "ja": "鈴ヶ滝",
+   "article": "鈴ヶ滝",
+   "qid": "Q11648347",
+   "en": "Suzuga Falls",
+   "wikidata": {
+    "lat": 38.34388889,
+    "lon": 139.66519444
+   },
+   "wikipedia": {
+    "lat": 38.34388889,
+    "lon": 139.66519444
+   }
+  },
+  {
+   "order": 36,
+   "ja": "苗名滝",
+   "article": "苗名滝",
+   "qid": "Q11616112",
+   "en": "Naena Falls",
+   "wikidata": {
+    "lat": 36.850083333,
+    "lon": 138.133083333
+   },
+   "wikipedia": {
+    "lat": 36.84552778,
+    "lon": 138.13786111
+   }
+  },
+  {
+   "order": 37,
+   "ja": "惣滝",
+   "article": "惣滝",
+   "qid": "Q11492968",
+   "en": "Sō Falls",
+   "wikidata": {
+    "lat": 36.904889,
+    "lon": 138.137139
+   }
+  },
+  {
+   "order": 38,
+   "ja": "称名滝",
+   "article": "称名滝",
+   "qid": "Q731954",
+   "en": "Shōmyō Falls",
+   "wikidata": {
+    "lat": 36.575277777,
+    "lon": 137.523333333
+   }
+  },
+  {
+   "order": 39,
+   "ja": "姥ケ滝",
+   "article": "姥ケ滝",
+   "qid": "Q11447335",
+   "en": "Uba Falls",
+   "wikidata": {
+    "lat": 36.254833333,
+    "lon": 136.798666666
+   },
+   "wikipedia": {
+    "lat": 36.25472222,
+    "lon": 136.79861111
+   }
+  },
+  {
+   "order": 40,
+   "ja": "龍双ケ滝",
+   "article": "龍双ケ滝",
+   "qid": "Q11679211",
+   "en": "Ryūsō Falls",
+   "wikidata": {
+    "lat": 35.922778,
+    "lon": 136.420833
+   }
+  },
+  {
+   "order": 41,
+   "ja": "米子大瀑布",
+   "article": "米子大瀑布",
+   "qid": "Q11604079",
+   "en": "Yonako Falls",
+   "wikidata": {
+    "lat": 36.566667,
+    "lon": 138.405833
+   }
+  },
+  {
+   "order": 42,
+   "ja": "三本滝",
+   "article": "三本滝",
+   "qid": "Q11355746",
+   "en": "Sanbon Waterfalls",
+   "wikidata": {
+    "lat": 36.118556,
+    "lon": 137.593639
+   }
+  },
+  {
+   "order": 43,
+   "ja": "田立の滝",
+   "article": "田立の滝",
+   "qid": "Q11577218",
+   "wikidata": {
+    "lat": 35.629231,
+    "lon": 137.546922
+   }
+  },
+  {
+   "order": 44,
+   "ja": "根尾の滝",
+   "article": "根尾の滝",
+   "qid": "Q11536285",
+   "en": "Neo Falls",
+   "wikidata": {
+    "lat": 35.932222222,
+    "lon": 137.370833333
+   }
+  },
+  {
+   "order": 45,
+   "ja": "平湯大滝",
+   "article": "平湯大滝",
+   "qid": "Q11483228",
+   "en": "Hirayu Falls",
+   "wikidata": {
+    "lat": 36.176944,
+    "lon": 137.559444
+   }
+  },
+  {
+   "order": 46,
+   "ja": "養老の滝",
+   "article": "養老の滝",
+   "qid": "Q3695472",
+   "en": "Yōrō Falls",
+   "wikidata": {
+    "lat": 35.28,
+    "lon": 136.534
+   }
+  },
+  {
+   "order": 47,
+   "ja": "阿弥陀ケ滝",
+   "article": "阿弥陀ケ滝",
+   "qid": "Q11657413",
+   "en": "Amidaga Falls",
+   "wikidata": {
+    "lat": 35.95965,
+    "lon": 136.817717
+   },
+   "wikipedia": {
+    "lat": 35.95965,
+    "lon": 136.81771667
+   }
+  },
+  {
+   "order": 48,
+   "ja": "安倍の大滝",
+   "article": "安倍の大滝",
+   "qid": "Q37476",
+   "en": "Abe Great Falls",
+   "wikidata": {
+    "lat": 35.299722222,
+    "lon": 138.351666666
+   },
+   "wikipedia": {
+    "lat": 35.30030468,
+    "lon": 138.35169151
+   }
+  },
+  {
+   "order": 49,
+   "ja": "浄蓮の滝",
+   "article": "浄蓮の滝",
+   "qid": "Q38148",
+   "en": "Jōren Falls",
+   "wikidata": {
+    "lat": 34.871805555,
+    "lon": 138.922144444
+   },
+   "wikipedia": {
+    "lat": 34.87186111,
+    "lon": 138.92216667
+   }
+  },
+  {
+   "order": 50,
+   "ja": "白糸の滝",
+   "article": "白糸の滝 (静岡県)",
+   "qid": "Q38411",
+   "en": "Shiraito Falls",
+   "wikidata": {
+    "lat": 35.3125,
+    "lon": 138.588888888
+   },
+   "wikipedia": {
+    "lat": 35.312939,
+    "lon": 138.587343
+   }
+  },
+  {
+   "order": 51,
+   "ja": "阿寺の七滝",
+   "article": "阿寺の七滝",
+   "qid": "Q11657385",
+   "en": "Atera Seven Falls",
+   "wikidata": {
+    "lat": 34.950246,
+    "lon": 137.645589
+   },
+   "wikipedia": {
+    "lat": 34.94716667,
+    "lon": 137.64844444
+   }
+  },
+  {
+   "order": 52,
+   "ja": "布引の滝",
+   "article": "布引の滝 (三重県熊野市)",
+   "qid": "Q17214215",
+   "en": "Nunobiki Falls",
+   "wikidata": {
+    "lat": 33.84333,
+    "lon": 135.92139
+   }
+  },
+  {
+   "order": 53,
+   "ja": "赤目四十八滝",
+   "article": "赤目四十八滝",
+   "qid": "Q11635843",
+   "en": "Akame 48 Waterfalls",
+   "wikidata": {
+    "lat": 34.559167,
+    "lon": 136.091667
+   },
+   "wikipedia": {
+    "lat": 34.55916667,
+    "lon": 136.09166667
+   }
+  },
+  {
+   "order": 54,
+   "ja": "七ツ釜滝",
+   "article": "七ツ釜滝",
+   "qid": "Q11353358",
+   "en": "Nanatsugama Falls",
+   "wikidata": {
+    "lat": 34.209166666,
+    "lon": 136.152777777
+   }
+  },
+  {
+   "order": 55,
+   "ja": "八ツ淵の滝",
+   "article": "八ツ淵の滝",
+   "qid": "Q107630322",
+   "wikidata": {
+    "lat": 35.268694444,
+    "lon": 135.918916666
+   },
+   "wikipedia": {
+    "lat": 35.26869,
+    "lon": 135.91892
+   }
+  },
+  {
+   "order": 56,
+   "ja": "金引の滝",
+   "article": "金引の滝",
+   "qid": "Q11647083",
+   "en": "Kanabiki Falls",
+   "wikidata": {
+    "lat": 35.529444444,
+    "lon": 135.1825
+   }
+  },
+  {
+   "order": 57,
+   "ja": "箕面滝",
+   "article": "箕面滝",
+   "qid": "Q11603215",
+   "en": "Minoh Falls",
+   "wikidata": {
+    "lat": 34.853888888,
+    "lon": 135.471944444
+   }
+  },
+  {
+   "order": 58,
+   "ja": "原不動滝",
+   "article": "原不動滝",
+   "qid": "Q11409374",
+   "en": "Harafudou Falls",
+   "wikidata": {
+    "lat": 35.197983,
+    "lon": 134.501839
+   }
+  },
+  {
+   "order": 59,
+   "ja": "猿尾滝",
+   "article": "猿尾滝",
+   "qid": "Q11572094",
+   "en": "Saruo Falls",
+   "wikidata": {
+    "lat": 35.433889,
+    "lon": 134.614444
+   }
+  },
+  {
+   "order": 60,
+   "ja": "天滝",
+   "article": "天滝渓谷",
+   "qid": "Q11442860",
+   "en": "Tendaki Ravine",
+   "wikidata": {
+    "lat": 35.335277777,
+    "lon": 134.6075
+   },
+   "wikipedia": {
+    "lat": 35.33527778,
+    "lon": 134.6075
+   }
+  },
+  {
+   "order": 61,
+   "ja": "布引の滝",
+   "article": "布引の滝 (兵庫県)",
+   "qid": "Q3695449",
+   "en": "Nunobiki Falls",
+   "wikidata": {
+    "lat": 34.709722222,
+    "lon": 135.193888888
+   },
+   "wikipedia": {
+    "lat": 34.70972222,
+    "lon": 135.19361111
+   }
+  },
+  {
+   "order": 62,
+   "ja": "双門の滝",
+   "article": "双門の滝",
+   "qid": "Q48752228",
+   "en": "Sōmon Falls",
+   "wikidata": {
+    "lat": 34.19927778,
+    "lon": 135.89247222
+   },
+   "wikipedia": {
+    "lat": 34.19927778,
+    "lon": 135.89247222
+   }
+  },
+  {
+   "order": 63,
+   "ja": "不動七重の滝",
+   "article": "不動七重の滝",
+   "qid": "Q11361589",
+   "en": "Fudō-nanae Falls",
+   "wikidata": {
+    "lat": 34.096278,
+    "lon": 135.954028
+   }
+  },
+  {
+   "order": 64,
+   "ja": "笹の滝",
+   "article": "笹の滝",
+   "qid": "Q11602463",
+   "en": "Sasa Falls",
+   "wikidata": {
+    "lat": 34.060555555,
+    "lon": 135.859444444
+   }
+  },
+  {
+   "order": 65,
+   "ja": "中の滝",
+   "article": "中の滝",
+   "qid": "Q97278076",
+   "en": "Naka Falls",
+   "wikipedia": {
+    "lat": 34.18341667,
+    "lon": 136.080675
+   }
+  },
+  {
+   "order": 66,
+   "ja": "那智滝",
+   "article": "那智滝",
+   "qid": "Q1365882",
+   "en": "Nachi Falls",
+   "wikidata": {
+    "lat": 33.672,
+    "lon": 135.891
+   },
+   "wikipedia": {
+    "lat": 33.67527778,
+    "lon": 135.8875
+   }
+  },
+  {
+   "order": 67,
+   "ja": "桑ノ木の滝",
+   "article": "桑ノ木の滝",
+   "qid": "Q17216692",
+   "en": "Kuwanoki Falls",
+   "wikidata": {
+    "lat": 33.722222,
+    "lon": 135.936
+   }
+  },
+  {
+   "order": 68,
+   "ja": "八草の滝",
+   "article": "八草の滝",
+   "qid": "Q11391733",
+   "en": "Haso Falls",
+   "wikidata": {
+    "lat": 33.646111111,
+    "lon": 135.478611111
+   },
+   "wikipedia": {
+    "lat": 33.64611111,
+    "lon": 135.47861111
+   }
+  },
+  {
+   "order": 69,
+   "ja": "大山滝",
+   "article": "大山滝",
+   "qid": "Q11434653",
+   "en": "Daisen Falls",
+   "wikidata": {
+    "lat": 35.374444,
+    "lon": 133.595
+   }
+  },
+  {
+   "order": 70,
+   "ja": "雨滝",
+   "article": "雨滝",
+   "qid": "Q11659756",
+   "en": "Ame Falls",
+   "wikidata": {
+    "lat": 35.478333333,
+    "lon": 134.404166666
+   }
+  },
+  {
+   "order": 71,
+   "ja": "壇鏡の滝",
+   "article": "壇鏡の滝",
+   "qid": "Q11429459",
+   "en": "Dangyo Falls",
+   "wikidata": {
+    "lat": 36.240556,
+    "lon": 133.236111
+   }
+  },
+  {
+   "order": 72,
+   "ja": "龍頭八重滝",
+   "article": "龍頭八重滝",
+   "qid": "Q11679434",
+   "en": "Ryuzu Yaedaki Waterfalls",
+   "wikidata": {
+    "lat": 35.195278,
+    "lon": 132.784444
+   }
+  },
+  {
+   "order": 73,
+   "ja": "神庭の滝",
+   "article": "神庭の滝",
+   "qid": "Q11589686",
+   "en": "Kanba Falls",
+   "wikidata": {
+    "lat": 35.118611,
+    "lon": 133.678778
+   },
+   "wikipedia": {
+    "lat": 35.11861111,
+    "lon": 133.67877778
+   }
+  },
+  {
+   "order": 74,
+   "ja": "常清滝",
+   "article": "常清滝",
+   "qid": "Q11481440",
+   "en": "Josei Falls",
+   "wikidata": {
+    "lat": 34.863055555,
+    "lon": 132.726388888
+   }
+  },
+  {
+   "order": 75,
+   "ja": "寂地峡五竜の滝",
+   "article": "寂地峡",
+   "qid": "Q11455668",
+   "en": "Jakuchikyō",
+   "wikidata": {
+    "lat": 34.43071389,
+    "lon": 132.05551111
+   },
+   "wikipedia": {
+    "lat": 34.43071389,
+    "lon": 132.05551111
+   }
+  },
+  {
+   "order": 76,
+   "ja": "大釜の滝",
+   "article": "大釜の滝",
+   "qid": "Q1109022",
+   "en": "Ogama Falls",
+   "wikidata": {
+    "lat": 33.882222222,
+    "lon": 134.281944444
+   },
+   "wikipedia": {
+    "lat": 33.88222222,
+    "lon": 134.28194444
+   }
+  },
+  {
+   "order": 77,
+   "ja": "轟九十九滝",
+   "article": "轟九十九滝",
+   "qid": "Q11637784",
+   "en": "Todoroki 99 Waterfalls",
+   "wikidata": {
+    "lat": 33.697806,
+    "lon": 134.254303
+   },
+   "wikipedia": {
+    "lat": 33.69780556,
+    "lon": 134.25430278
+   }
+  },
+  {
+   "order": 78,
+   "ja": "雨乞の滝",
+   "article": "雨乞の滝",
+   "qid": "Q3695481",
+   "en": "Amagoi Falls",
+   "wikidata": {
+    "lat": 33.950555555,
+    "lon": 134.335277777
+   }
+  },
+  {
+   "order": 79,
+   "ja": "雪輪の滝",
+   "article": "雪輪の滝",
+   "qid": "Q11659948",
+   "en": "Yukiwa Falls",
+   "wikidata": {
+    "lat": 33.200328,
+    "lon": 132.647697
+   }
+  },
+  {
+   "order": 80,
+   "ja": "御来光の滝",
+   "article": "御来光の滝",
+   "qid": "Q11489131",
+   "en": "Goraikō Falls",
+   "wikidata": {
+    "lat": 33.760556,
+    "lon": 133.111667
+   },
+   "wikipedia": {
+    "lat": 33.76055556,
+    "lon": 133.11166667
+   }
+  },
+  {
+   "order": 81,
+   "ja": "龍王の滝",
+   "article": "龍王の滝",
+   "qid": "Q11679302",
+   "en": "Ryuo Falls",
+   "wikidata": {
+    "lat": 33.768231,
+    "lon": 133.761228
+   }
+  },
+  {
+   "order": 82,
+   "ja": "轟の滝",
+   "article": "轟の滝 (高知県)",
+   "qid": "Q11637780",
+   "en": "Todoro Falls",
+   "wikidata": {
+    "lat": 33.711975,
+    "lon": 133.834177777
+   }
+  },
+  {
+   "order": 83,
+   "ja": "大樽の滝",
+   "article": "大樽の滝",
+   "qid": "Q11436522",
+   "en": "Ōtaru Falls",
+   "wikidata": {
+    "lat": 33.517264,
+    "lon": 133.244033
+   }
+  },
+  {
+   "order": 84,
+   "ja": "観音の滝",
+   "article": "観音の滝 (佐賀県)",
+   "qid": "Q11630584",
+   "en": "Kannon Falls",
+   "wikidata": {
+    "lat": 33.435555555,
+    "lon": 130.129722222
+   }
+  },
+  {
+   "order": 85,
+   "ja": "見帰りの滝",
+   "article": "見帰りの滝",
+   "qid": "Q11630184",
+   "en": "Mikaeri Falls",
+   "wikidata": {
+    "lat": 33.367777777,
+    "lon": 130.039722222
+   }
+  },
+  {
+   "order": 86,
+   "ja": "四十三万滝",
+   "article": "菊池渓谷",
+   "qid": "Q11619820",
+   "en": "Kikuchi Valley",
+   "wikidata": {
+    "lat": 33.005,
+    "lon": 130.940944
+   },
+   "wikipedia": {
+    "lat": 33.00315556,
+    "lon": 130.94645833
+   }
+  },
+  {
+   "order": 87,
+   "ja": "栴檀轟の滝",
+   "article": "栴檀轟の滝",
+   "qid": "Q11536189",
+   "en": "Sendan-todoro no Taki",
+   "wikidata": {
+    "lat": 32.52317,
+    "lon": 130.89296
+   }
+  },
+  {
+   "order": 88,
+   "ja": "数鹿流ヶ滝",
+   "article": "数鹿流ヶ滝",
+   "qid": "Q11499646",
+   "en": "Sgaru Falls",
+   "wikidata": {
+    "lat": 32.888111111,
+    "lon": 130.989
+   }
+  },
+  {
+   "order": 89,
+   "ja": "鹿目の滝",
+   "article": "鹿目の滝",
+   "qid": "Q11677247",
+   "en": "Kaname Falls",
+   "wikidata": {
+    "lat": 32.193888888,
+    "lon": 130.694444444
+   },
+   "wikipedia": {
+    "lat": 32.19416667,
+    "lon": 130.69477778
+   }
+  },
+  {
+   "order": 90,
+   "ja": "東椎屋の滝",
+   "article": "東椎屋の滝",
+   "qid": "Q11527419",
+   "en": "Higashishiiya Falls",
+   "wikidata": {
+    "lat": 33.359444444,
+    "lon": 131.384166666
+   }
+  },
+  {
+   "order": 91,
+   "ja": "原尻の滝",
+   "article": "原尻の滝",
+   "qid": "Q3127241",
+   "en": "Harajiri Falls",
+   "wikidata": {
+    "lat": 32.963889,
+    "lon": 131.451111
+   },
+   "wikipedia": {
+    "lat": 32.96388889,
+    "lon": 131.45111111
+   }
+  },
+  {
+   "order": 92,
+   "ja": "震動の滝",
+   "article": "震動の滝",
+   "qid": "Q11660657",
+   "en": "Shindō Falls",
+   "wikidata": {
+    "lat": 33.169139,
+    "lon": 131.225556
+   }
+  },
+  {
+   "order": 93,
+   "ja": "西椎屋の滝",
+   "article": "西椎屋の滝",
+   "qid": "Q11628825",
+   "en": "Nishishiiya Falls",
+   "wikidata": {
+    "lat": 33.355,
+    "lon": 131.250556
+   }
+  },
+  {
+   "order": 94,
+   "ja": "関之尾滝",
+   "article": "関之尾滝",
+   "qid": "Q11655547",
+   "en": "Sekinoo Falls",
+   "wikidata": {
+    "lat": 31.761111,
+    "lon": 130.987222
+   },
+   "wikipedia": {
+    "lat": 31.76111111,
+    "lon": 130.98722222
+   }
+  },
+  {
+   "order": 95,
+   "ja": "矢研の滝",
+   "article": "矢研の滝",
+   "qid": "Q11584230",
+   "en": "Yatogi Falls",
+   "wikidata": {
+    "lat": 32.293055555,
+    "lon": 131.470555555
+   }
+  },
+  {
+   "order": 96,
+   "ja": "行縢（むかばき）の滝",
+   "article": "むかばきの滝",
+   "qid": "Q11279537",
+   "wikidata": {
+    "lat": 32.625278,
+    "lon": 131.581111
+   }
+  },
+  {
+   "order": 97,
+   "ja": "真名井の滝",
+   "article": "高千穂峡",
+   "qid": "Q2027215",
+   "en": "Takachihokyo",
+   "wikidata": {
+    "lat": 32.700833,
+    "lon": 131.300556
+   },
+   "wikipedia": {
+    "lat": 32.70816667,
+    "lon": 131.29894444
+   }
+  },
+  {
+   "order": 98,
+   "ja": "龍門滝",
+   "article": "龍門滝",
+   "qid": "Q11679423",
+   "en": "Ryumon Falls",
+   "wikidata": {
+    "lat": 31.7525,
+    "lon": 130.668611
+   }
+  },
+  {
+   "order": 99,
+   "ja": "大川の滝",
+   "article": "大川の滝",
+   "qid": "Q11435119",
+   "en": "Ōko Falls",
+   "wikidata": {
+    "lat": 30.299986,
+    "lon": 130.414136
+   }
+  },
+  {
+   "order": 100,
+   "ja": "マリユドゥの滝",
+   "article": "マリユドゥの滝",
+   "qid": "Q11341090",
+   "en": "Mariyudu Falls",
+   "wikidata": {
+    "lat": 24.357194,
+    "lon": 123.803194
+   },
+   "wikipedia": {
+    "lat": 24.35719444,
+    "lon": 123.80319444
+   }
+  }
+ ]
+}

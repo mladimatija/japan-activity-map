@@ -1,0 +1,320 @@
+// Hand corrections applied by `jam lists build`. Source files in lists/sources/ are never edited.
+{
+  // Highest point of each prefecture, keyed by prefecture code. The point itself comes from
+  // GSI's table (lists/sources/gsi-highpoints); this only adds English names for the four rows
+  // that are not named summits, and notes.
+  "prefectureHighpoints": {
+    "05": {
+      "en": "Chokaizan, east flank",
+      "note": "On the eastern slope of 鳥海山. The summit, 新山 (2,236 m), is in Yamagata."
+    },
+    "18": {
+      "en": "Sannomine, south top",
+      "note": "The southern top of 三ノ峰, on the Fukui side. The main summit is outside Fukui."
+    },
+    "27": {
+      "en": "Kongozan, south-east top",
+      "note": "A top south-east of 金剛山's summit. The summit (1,125 m) is in Nara."
+    },
+    "30": {
+      "note": "Named in 2009, next to 護摩壇山 (1,372 m)."
+    },
+    "40": {
+      "en": "Shakadake, south-west top",
+      "note": "The south-western top of 釈迦岳. The summit (1,231 m) is in Ōita."
+    }
+  },
+  // Corrections to the prefecture column of GSI's mountain list, keyed by GSI row number.
+  "gsiPrefectures": {
+    // 櫛形山 (南アルプス市): the 2026-03-31 edition adds 長野県; the summit is 15 km from it.
+    "588": ["19"]
+  },
+  // Notes added to single list items, keyed by item id.
+  "itemNotes": {
+    "nihyakumeizan-078": "Sakurajima's summit is closed because of volcanic activity. The list counts the 湯之平 observation point instead."
+  },
+  // Positions checked by hand for list items no source places, keyed by item id.
+  "itemCoordinates": {
+    // Not in GSI's list or OpenStreetMap; the Wikipedia article has no coordinates. YAMAP's
+    // summit (1,357 m) and the EXIF position of a summit photo agree to within 20 m.
+    "yamanashi-hyakumeizan-056": {
+      "lat": 35.60961,
+      "lon": 138.74247,
+      "note": "Placed by hand at the summit as hiking maps (YAMAP) show it; no open source gives its position."
+    },
+    // The list's 1,235 m is the triangulation point 春日沢ノ頭; the signed summit, which the
+    // prefecture's own grading table lists, is the 1,158 m top.
+    "yamanashi-hyakumeizan-060": {
+      "lat": 35.56557,
+      "lon": 138.65754,
+      "elevationM": 1158,
+      "note": "Placed by hand at the signed 1,158 m summit. The 1,235 m the list gives is 春日沢ノ頭, the triangulation point on the same ridge."
+    },
+    // 続日本100名城's row links only 台場, the general article on coastal batteries. The castle is
+    // 品川台場; its remaining part on land is 第三台場, now 台場公園 (position from that article).
+    "zoku-nihon-100-meijo-124": {
+      "lat": 35.6334944,
+      "lon": 139.7718833,
+      "ja": "品川台場",
+      "en": "Shinagawa Daiba",
+      "note": "Placed at 第三台場 (台場公園), the battery that can be visited; 第六台場 is closed to the public."
+    },
+    // 花の百名山, 関東百名山, 関西百名山: summits with no position on Wikidata or in their
+    // Wikipedia article. Each was looked up by name in OpenStreetMap (Nominatim, 2026-11-27)
+    // and the hit in the right prefecture taken; same-named mountains elsewhere are noted.
+    "hana-no-hyakumeizan-009": {
+      "lat": 34.8048,
+      "lon": 138.9954,
+      "en": "Misujiyama",
+      "note": "Position from OpenStreetMap (node 2159454049): 東伊豆町, Shizuoka."
+    },
+    "hana-no-hyakumeizan-064": {
+      "lat": 36.8711,
+      "lon": 138.6984,
+      "en": "Kirinoto",
+      "note": "Position from OpenStreetMap (node 5630398786): 十日町市, Niigata, north of 苗場山."
+    },
+    "hana-no-hyakumeizan-079": {
+      "lat": 36.3998,
+      "lon": 138.4571,
+      "en": "Takamineyama",
+      "note": "Position from OpenStreetMap (node 1595896378): 小諸市, Nagano, above 高峰高原; the others of this name are elsewhere."
+    },
+    "kanto-hyakumeizan-012": {
+      "lat": 36.1865,
+      "lon": 138.6429,
+      "en": "Tateiwa",
+      "note": "Position from OpenStreetMap (node 9387618997): 南牧村, Gunma."
+    },
+    "kanto-hyakumeizan-013": {
+      "lat": 36.2065,
+      "lon": 138.7247,
+      "en": "Kanatake",
+      "note": "Position from OpenStreetMap (node 9387345032): 下仁田町, Gunma."
+    },
+    "kanto-hyakumeizan-042": {
+      "lat": 37.0388,
+      "lon": 139.793,
+      "en": "Hirugatake",
+      "note": "Position from OpenStreetMap (node 4309380553): 那須塩原市, Tochigi."
+    },
+    "kanto-hyakumeizan-059": {
+      "lat": 36.1345,
+      "lon": 139.1809,
+      "en": "Kanetsukidoyama",
+      "note": "Position from OpenStreetMap (node 3718486520): 寄居町, Saitama; the other of this name is in Aomori."
+    },
+    "kanto-hyakumeizan-081": {
+      "lat": 35.7201,
+      "lon": 139.1023,
+      "en": "Sengenrei",
+      "note": "Position from OpenStreetMap (node 2169884485): 檜原村, Tokyo."
+    },
+    "kansai-hyakumeizan-003": {
+      "lat": 35.5863,
+      "lon": 136.2173,
+      "en": "Nanazugadake",
+      "note": "Position from OpenStreetMap (node 7801282730): 長浜市, Shiga."
+    },
+    "kansai-hyakumeizan-015": {
+      "lat": 35.3204,
+      "lon": 135.9286,
+      "en": "Jatanigamine",
+      "note": "Position from OpenStreetMap (node 6392004834): 高島市, Shiga."
+    },
+    "kansai-hyakumeizan-018": {
+      "lat": 34.9167,
+      "lon": 135.9843,
+      "en": "Tanakamiyama",
+      "note": "Position from OpenStreetMap (node 5792703846): 大津市, Shiga."
+    },
+    "kansai-hyakumeizan-022": {
+      "lat": 35.1785,
+      "lon": 135.7648,
+      "en": "Kumotoriyama",
+      "note": "Position from OpenStreetMap (node 10898715095): 京都市, Kyoto; not the 雲取山 of Tokyo and Saitama."
+    },
+    "kansai-hyakumeizan-033": {
+      "lat": 35.3911,
+      "lon": 135.3781,
+      "en": "Misensan",
+      "note": "Position from OpenStreetMap (node 7466984978): 綾部市, Kyoto."
+    },
+    "kansai-hyakumeizan-035": {
+      "lat": 35.5021,
+      "lon": 135.2634,
+      "en": "Yuragatake",
+      "note": "Position from OpenStreetMap (node 13787011410): the east peak (640 m), the higher of the two, 宮津市 and 舞鶴市, Kyoto."
+    },
+    "kansai-hyakumeizan-053": {
+      "lat": 34.6656,
+      "lon": 135.1083,
+      "en": "Yokooyama",
+      "note": "Position from OpenStreetMap (node 6283028156): 神戸市須磨区, Hyōgo; the others of this name are elsewhere."
+    },
+    "kansai-hyakumeizan-061": {
+      "lat": 34.5052,
+      "lon": 136.1524,
+      "en": "Kogoyama",
+      "note": "Position from OpenStreetMap (node 7611027899): 曽爾村, Nara."
+    },
+    "kansai-hyakumeizan-065": {
+      "lat": 34.5097,
+      "lon": 136.0863,
+      "en": "Sumitsukayama",
+      "note": "Position from OpenStreetMap (node 7611027889): 曽爾村, Nara."
+    },
+    "kansai-hyakumeizan-066": {
+      "lat": 34.5288,
+      "lon": 136.1302,
+      "en": "Yoroidake",
+      "note": "Position from OpenStreetMap (node 7611027892): 曽爾村, Nara; not the 鎧岳 of Yamagata."
+    },
+    "kansai-hyakumeizan-068": {
+      "lat": 34.4775,
+      "lon": 135.8872,
+      "en": "Otowayama",
+      "note": "Position from OpenStreetMap (node 7505279117): 桜井市 and 宇陀市, Nara; not the 音羽山 of Kyoto."
+    },
+    "kansai-hyakumeizan-095": {
+      "lat": 33.7277,
+      "lon": 135.5972,
+      "en": "Hansamine",
+      "note": "Position from OpenStreetMap (node 12135889073): 田辺市, Wakayama."
+    },
+    // Four more, found on a second pass (GSI's place-name search, Wikidata, a pass in
+    // OpenStreetMap), 2026-11-27.
+    "kanto-hyakumeizan-035": {
+      "lat": 36.6505,
+      "lon": 139.5015,
+      "en": "Kobugahara",
+      "note": "Placed at 古峰ヶ原峠, the pass on the plateau (OpenStreetMap node 1314854342), 鹿沼市, Tochigi; the name is the highland, not one summit."
+    },
+    "kanto-hyakumeizan-040": {
+      "lat": 36.3799,
+      "lon": 139.4367,
+      "en": "Gyodosan",
+      "note": "Position from GSI's place-name search (自然地名 行道山), 足利市, Tochigi; the other of this name is in Ehime."
+    },
+    "kansai-hyakumeizan-076": {
+      "lat": 34.36389,
+      "lon": 136.11194,
+      "en": "Hinokizuka",
+      "note": "Placed at 桧塚奥峰 (1,420 m), the higher top beside 桧塚 (1,402 m), from Wikidata Q6921201; 松阪市, Mie."
+    },
+    "kansai-hyakumeizan-096": {
+      "lat": 33.5452,
+      "lon": 135.713,
+      "en": "Dakenomoriyama",
+      "note": "Position from GSI's place-name search (自然地名 嶽ノ森山), 古座川町, Wakayama."
+    },
+    // The same lists: three summits no source names with a position, placed at the highest cell
+    // of GSI's 10 m elevation model (dem_png, read 2026-11-27). The first is where GSI's map
+    // prints the name. The other two are on no GSI map by name: each is the only top of the
+    // listed height on the ridge the list's description puts it on.
+    "kansai-hyakumeizan-093": {
+      "lat": 33.9325,
+      "lon": 135.35555,
+      "en": "Yahazudake",
+      "note": "Placed at the 811 m top in 日高川町, Wakayama, where GSI's map prints 矢筈岳 (やはずだけ)."
+    },
+    "kanto-hyakumeizan-014": {
+      "lat": 36.03449,
+      "lon": 138.75445,
+      "en": "Chozukeyama",
+      "note": "Placed at the 1,619 m top 1.4 km south-west of 天丸山 in 上野村, Gunma, from GSI's elevation model. GSI's map does not print the name; the height and the ridge from 天丸山 identify it."
+    },
+    "kansai-hyakumeizan-087": {
+      "lat": 33.88755,
+      "lon": 135.80333,
+      "en": "Godaisondake",
+      "note": "Placed at the 825 m top on the 大峯奥駈道 ridge between 大森山 and 山在峠, from GSI's elevation model. GSI's map does not print the name; it is the only top of that height on that stretch."
+    },
+    // The same lists: summits that are rows of GSI's mountain list, matched by name and
+    // prefecture by hand (the list's article gives no position to match them with).
+    "kanto-hyakumeizan-027": {
+      "lat": 36.88278,
+      "lon": 139.37167,
+      "gsi": 288,
+      "en": "Kinunumayama",
+      "note": "GSI's 鬼怒沼山 (栃木県, 群馬県, 2141 m)."
+    },
+    "kansai-hyakumeizan-073": {
+      "lat": 34.35,
+      "lon": 136.2075,
+      "gsi": 749,
+      "en": "Mayoidake",
+      "note": "GSI's 迷岳 (三重県, 1309 m)."
+    },
+    "kansai-hyakumeizan-074": {
+      "lat": 34.31611,
+      "lon": 136.12944,
+      "gsi": 751,
+      "en": "Ikegoyayama",
+      "note": "GSI's 池木屋山 (三重県, 奈良県, 1396 m)."
+    },
+    "kansai-hyakumeizan-085": {
+      "lat": 33.98278,
+      "lon": 135.89833,
+      "gsi": 761,
+      "en": "Kasasuteyama",
+      "note": "GSI's 笠捨山 (奈良県, 1353 m)."
+    },
+    "kansai-hyakumeizan-094": {
+      "lat": 33.72583,
+      "lon": 135.66528,
+      "gsi": 773,
+      "en": "Hoshiyama",
+      "note": "GSI's 法師山 (和歌山県, 1121 m)."
+    },
+    "kansai-hyakumeizan-098": {
+      "lat": 33.89917,
+      "lon": 135.65278,
+      "gsi": 771,
+      "en": "Hiyamizuyama",
+      "note": "GSI's 冷水山 (奈良県, 1262 m)."
+    },
+    "kansai-hyakumeizan-099": {
+      "lat": 33.79444,
+      "lon": 135.93056,
+      "gsi": 764,
+      "en": "Nenotomariyama",
+      "note": "GSI's 子ノ泊山 (三重県, 907 m)."
+    },
+    "kansai-hyakumeizan-100": {
+      "lat": 33.69611,
+      "lon": 135.90083,
+      "gsi": 774,
+      "en": "Eboshiyama",
+      "note": "GSI's 那智山<烏帽子山> (和歌山県, 910 m)."
+    }
+  },
+  // English names for Wikipedia list items with no English label on Wikidata: the usual reading,
+  // romanised like the other lists. Positions stay with the sources.
+  "itemNames": {
+    "hana-no-hyakumeizan-018": { "en": "Keichozan" },
+    "hana-no-hyakumeizan-021": { "en": "Shotosan" },
+    "hana-no-hyakumeizan-078": { "en": "Gozusan" },
+    "kanto-hyakumeizan-037": { "en": "Kogashiyama" },
+    "kanto-hyakumeizan-072": { "en": "Hiryusan" },
+    "kanto-hyakumeizan-085": { "en": "Shotosan" },
+    "kansai-hyakumeizan-012": { "en": "Akasakayama" },
+    "kansai-hyakumeizan-048": { "en": "Takamikurayama" },
+    "kansai-hyakumeizan-092": { "en": "Oishigamine" },
+    "taki-100-032": { "en": "Nanatsugama Godan Falls" },
+    "taki-100-043": { "en": "Tadachi Falls" },
+    "taki-100-055": { "en": "Yatsubuchi Falls" },
+    "taki-100-096": { "en": "Mukabaki Falls" }
+  },
+  // English names for OpenStreetMap route stages, keyed by relation id, where the cleaned name
+  // is still wrong: a misspelling, a non-standard romanisation, or no English name at all.
+  "routeNames": {
+    "17130940": { "en": "Nakahechi – Dainichi-goe" }, // 大日越 (OSM: "Dainichigoshi")
+    "17097854": { "en": "Nakahechi – Kogumotori-goe" }, // 小雲取越 (OSM: "Kokumotorigoe")
+    "17095001": { "en": "Nakahechi – Ōkumotori-goe" }, // 大雲取越
+    "14033539": { "en": "Kasumigaura Course" }, // 霞ヶ浦コース
+    "17492164": { "en": "Former Tsukuba Railway Course" }, // 旧つくば鉄道コース
+    "15074516": { "en": "Kyūshū Olle – Minamishimabara Course" }, // 九州オルレ 南島原コース
+    "12533307": { "en": "Tokyo-wan wo nozomu michi" } // 東京湾を望むみち, romanised like the other stages
+  }
+}

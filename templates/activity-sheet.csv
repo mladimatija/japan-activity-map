@@ -1,0 +1,11 @@
+row_id,date,end_date,time_zone,activity_type,event_tags,name,place,status,lat,lon,distance_km,elevation_gain_m,duration,gpx_path,strava_id,show_strava_link,hide,notes
+t001,2025-05-03,,,Hike,,雲取山 from 鴨沢,雲取山,done,,,20.5,1700,9:30,,,,,Via 七ツ石山
+t002,2025-07-19T04:30,2025-07-20,,Hike,overnight,富士山 吉田ルート,hyakumeizan-072,done,,,15.2,1450,,,,,,Night at 本八合目
+t003,2025-08-11,,,Hike,group,甲斐駒ヶ岳 黒戸尾根,甲斐駒ヶ岳,DNS,,,,,,,,,,Turned back at 七丈小屋 in the rain
+t004,2025-09-14,,,Trail Run,race,Example trail race,,done,35.6251,139.2437,32,2200,5:12:30,,,,,A place in no list: lat and lon pin it
+t005,2025-10-05,,,Walk,,鎌倉 坂東札所,bando-33-001; bando-33-002; 長谷寺,done,,,,,,,,,,"長谷寺 matches three temples, so it is skipped and listed in data/sheet-review.md"
+t006,2025-11-02,,,Ride,,しまなみ海道,shimanami-kaido,done,,,75,,,,,,,
+t007,2026-01-12,,,Hike,solo,高尾山 with a track,,done,,,,,,example-track.gpx,,,,Distance and time come from the track
+t008,2026-03-20,,,Run,,Morning run,,done,,,,,,,12345678901,no,yes,"An override for a Strava activity: hidden from the public build"
+t009,2026-08-01,,,Hike,,槍ヶ岳 some day,hyakumeizan-054,want,,,,,,,,,,Wishlist: not an activity
+t010,2026-05-05,,,Hike,,雲取山 again,peak-363,repeat,,,,,,,,,,

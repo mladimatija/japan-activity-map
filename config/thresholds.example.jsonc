@@ -1,0 +1,46 @@
+{
+  "matching": {
+    // A peak, temple or castle counts as visited when a track passes within this many metres.
+    "pointRadiusM": 200,
+    // Matches this close to the radius on a low-detail track are flagged for review.
+    "uncertainMarginM": 50,
+    // Per-list radius overrides, keyed by list id, for example "bando-33": { "pointRadiusM": 100 }.
+    // Castle grounds are large and Wikidata places a castle at its keep, so a wider radius suits
+    // "nihon-100-meijo" and "zoku-nihon-100-meijo", for example { "pointRadiusM": 300 }.
+    // A waterfall is placed at the fall, often a few hundred metres from where it is seen, so
+    // "taki-100" may want the same.
+    "perList": {},
+    // Points this close to a prefecture outline count as in Japan (coastal paths, simplified coasts).
+    "japanMarginM": 2000,
+    "routes": {
+      // Covered stretches shorter than this are dropped, so crossing a route does not count.
+      "minStretchM": 300,
+      // Gaps up to this long inside a covered stretch are bridged (GPS jitter, a short detour).
+      "bridgeGapM": 100,
+      // Share of a route item that must be covered for it to count as done.
+      "completeShare": 0.95
+    }
+  },
+  "routeGrouping": {
+    "startToleranceM": 200,
+    "endToleranceM": 200,
+    "distanceTolerancePct": 10,
+    // Compare how much distinct street two tracks cover rather than their total distance, so the
+    // same route with one lap of a section or three counts as one route. false compares distance.
+    "ignoreLaps": true,
+    // Grid cell size as a web-map tile zoom level; 19 is roughly 60 m across in Japan.
+    "gridZoom": 19,
+    // Share of grid cells two tracks must share to count as the same route.
+    "minOverlapShare": 0.8
+  },
+  "privacy": {
+    // Each activity's zone radius varies by up to this many metres, so cut points do not draw a circle.
+    // Each zone's centre is moved once, at random, by up to this share of its radius, and the radius
+    // grows by the same amount. Many cut points reveal only the moved centre: the real place can be
+    // anywhere up to this share of the radius from it. Higher hides more, and cuts more track.
+    "centreShiftShare": 0.5,
+    "radiusJitterM": 50,
+    // Track fragments shorter than this are dropped after clipping.
+    "minFragmentM": 100
+  }
+}
