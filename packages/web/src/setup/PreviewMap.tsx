@@ -4,7 +4,8 @@ import { useMemo } from 'react';
 import { Layer, Map as MapGL, Source } from 'react-map-gl/maplibre';
 
 import { mapLocale } from '../i18n.ts';
-import { mapColors } from '../map/palette.ts';
+import { useSetupStyle } from '../map/baseStyle.ts';
+import { mapColors, mapDye } from '../map/palette.ts';
 import type { PreviewTracks } from './api.ts';
 
 const TRACK_COLOR = mapColors(false).accent;
@@ -42,12 +43,15 @@ const boundsOf = (tracks: PreviewTracks): [[number, number], [number, number]] |
  */
 const PreviewMap = ({ mapStyle, tracks }: { mapStyle: string; tracks: PreviewTracks }) => {
   const bounds = useMemo(() => boundsOf(tracks), [tracks]);
+  // Dyed like the site's map, with place names in Japan only.
+  const style = useSetupStyle(mapStyle, mapDye(mapStyle, false));
+  if (!style) return <div className="h-80 rounded-lg border bg-muted" />;
   return (
     <div className="h-80 overflow-hidden rounded-lg border">
       <MapGL
         workerUrl={workerUrl}
         locale={mapLocale()}
-        mapStyle={mapStyle}
+        mapStyle={style}
         initialViewState={
           bounds
             ? { bounds, fitBoundsOptions: { padding: 24 } }

@@ -9,7 +9,8 @@ import { Input } from '../components/ui/input.tsx';
 import { Slider } from '../components/ui/slider.tsx';
 import { heightText } from '../format.ts';
 import { mapLocale, t } from '../i18n.ts';
-import { statusHex, WHITE } from '../map/palette.ts';
+import { useSetupStyle } from '../map/baseStyle.ts';
+import { mapDye, statusHex, WHITE } from '../map/palette.ts';
 
 // MapLibre cannot read CSS tokens: the zone is drawn in the palette's own grey.
 const ZONE_COLOR = statusHex(false).none;
@@ -55,6 +56,8 @@ const ZonePicker = ({
   onCentre: (centre: Centre | null) => void;
   onRadius: (radiusM: number) => void;
 }) => {
+  // Dyed like the site's map, with place names in Japan only; an empty map until it is ready.
+  const style = useSetupStyle(mapStyle, mapDye(mapStyle, false));
   const shape = useMemo(() => (centre ? circle(centre, radiusM) : null), [centre, radiusM]);
   // The centre as a dot of its own: zoomed out, a zone a few hundred metres wide is under a pixel.
   const dot = useMemo<Feature | null>(
@@ -91,7 +94,7 @@ const ZonePicker = ({
           ref={map}
           workerUrl={workerUrl}
           locale={mapLocale()}
-          mapStyle={mapStyle}
+          mapStyle={style}
           initialViewState={{ longitude: 138, latitude: 37.5, zoom: 4.2 }}
           minZoom={3}
           maxZoom={18}

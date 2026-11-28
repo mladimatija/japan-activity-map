@@ -267,3 +267,76 @@ export const useBaseStyle = (
     return loaded.style ? prepareStyle(loaded.style, mask, dye) : { style: url, font: {} };
   }, [loaded, url, mask, dye]);
 };
+
+/**
+ * Japan, roughly: a hand-drawn ring that keeps every Japanese island (Yonaguni, Tsushima, the
+ * Ogasawara islands) and leaves out its neighbours. For the setup page, which has no build yet and
+ * so no exact mask: enough to keep foreign place names off its small maps.
+ */
+const ROUGH_JAPAN: GeoJSON.Polygon = {
+  type: 'Polygon',
+  coordinates: [
+    [
+      [122.7, 23.8],
+      [131.5, 23.8],
+      [143, 26],
+      [143, 31],
+      [146.5, 41],
+      [146.5, 44.6],
+      [142, 45.75],
+      [140.6, 45.75],
+      [139, 41.5],
+      [136, 38],
+      [132.5, 36.8],
+      [130.2, 35],
+      [129.1, 34.75],
+      [129, 34],
+      [128.3, 33],
+      [128.3, 32.2],
+      [126, 28.5],
+      [123, 26.2],
+      [122.7, 24.8],
+      [122.7, 23.8],
+    ],
+  ],
+};
+
+/** A base style for the setup page's maps: dyed like the site's, with place names in Japan only. */
+export const setupStyle = (style: StyleSpecification, dye?: MapDye): StyleSpecification => {
+  const within = ['within', ROUGH_JAPAN] as unknown as ExpressionSpecification;
+  return {
+    ...style,
+    layers: style.layers.map((given): LayerSpecification => {
+      const layer = dye ? dyeLayer(given, dye) : given;
+      if (layer.type !== 'symbol') return layer;
+      return {
+        ...layer,
+        filter: (layer.filter ? ['all', layer.filter, within] : within) as FilterSpecification,
+      };
+    }),
+  };
+};
+
+/**
+ * The setup page's base map style at `url`, made ready (`setupStyle`); undefined while it loads,
+ * and the address itself if it cannot be fetched here, for MapLibre to try and report.
+ */
+export const useSetupStyle = (
+  url: string,
+  dye?: MapDye,
+): StyleSpecification | string | undefined => {
+  const [loaded, setLoaded] = useState<{ url: string; style: StyleSpecification | undefined }>();
+  useEffect(() => {
+    let current = true;
+    void fetchStyle(url).then((style) => {
+      if (current) setLoaded({ url, style });
+    });
+    return () => {
+      current = false;
+    };
+  }, [url]);
+  return useMemo(() => {
+    if (loaded?.url !== url) return undefined;
+    return loaded.style ? setupStyle(loaded.style, dye) : url;
+  }, [loaded, url, dye]);
+};
