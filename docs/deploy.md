@@ -136,6 +136,10 @@ pnpm jam update
 | Build the web app                      |                                          |
 | Deploy                                 | deploying isn't set up, or `--no-deploy` |
 
+When the site is built from GPX files (`activities.source` is `gpx`, docs/gpx.md), the first step
+is "Import GPX files" instead: `pnpm jam sync gpx` on the default folder. It is skipped when that
+folder doesn't exist, or with `--no-sync`. Strava isn't asked at all then.
+
 It stops at the first step that fails, so a failed fetch or a failed audit never reaches the public
 site: the site stays as it was. It doesn't run on the demo store.
 

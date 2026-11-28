@@ -48,6 +48,15 @@ them into a temporary data folder and checks the matches. Run it with `pnpm chec
 start, a run from A to B and back, a shorter variant), imports them into a temporary data folder and
 checks the grouped routes, including the routes file. Run it with `pnpm check:routes`.
 
+## GPX import checks
+
+`check-gpx.ts` writes made-up GPX files around 東京駅 into a temporary data folder, some loose, some
+in a subfolder and some in an archive made by `zip-writer.ts` (a tiny zip writer, also used by the
+unit tests). It imports them from the folder and from an archive, twice, with `--replace` and
+through `gpx wipe`, feeds it archives that must be refused, and builds the site from Strava, from
+GPX files and from Strava again, checking the source of every published activity and route. Run it
+with `pnpm check:gpx`.
+
 ## Privacy checks
 
 `check-privacy.ts` reuses the route fixtures with a home zone at their start and an office zone on

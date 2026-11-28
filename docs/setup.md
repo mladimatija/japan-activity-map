@@ -90,7 +90,7 @@ Demo data is offered only when this version has the `demo` command; otherwise th
 | Question                              | Default            | Writes                                                                       |
 | ------------------------------------- | ------------------ | ---------------------------------------------------------------------------- |
 | Site title                            | Japan Activity Map | `site.title` in `site.jsonc`                                                 |
-| Where activities come from            | Strava             | decides the questions and commands that follow                               |
+| Where activities come from            | Strava             | decides the questions and commands that follow; see below                    |
 | Is your Strava application ready?     | yes                | nothing; explains the callback domain, the 10-athlete upgrade, subscription  |
 | Strava Client ID                      | none               | `strava.clientId` in `secrets.jsonc`                                         |
 | Strava Client Secret (typed hidden)   | none               | `strava.clientSecret` in `secrets.jsonc`                                     |
@@ -99,6 +99,13 @@ Demo data is offered only when this version has the `demo` command; otherwise th
 | Hide radius                           | 500 m              | that zone's `radiusM`                                                        |
 | What to publish                       | Recommended        | several `publish.*` switches                                                 |
 | Write these changes? / Run these now? | yes                |                                                                              |
+
+"Where activities come from" offers Strava, GPX files and a sheet you keep by hand; choose one or
+more. Choosing GPX files without Strava sets `activities.source` in `site.jsonc` to `gpx`, so the
+site is built from them (docs/gpx.md), and leaves out every Strava question and command. Choosing
+Strava without GPX files sets it to `strava`. With both chosen, one more question asks which of
+the two the site is built from. Put the files, or a `.zip` of them, in `data/activities` before
+the plan runs; the page can take a `.zip` for you (below).
 
 Everything else keeps the default in the example files. The reasons for the ones that matter:
 
@@ -118,15 +125,16 @@ Everything else keeps the default in the example files. The reasons for the ones
 "What to publish" has three presets. Recommended is the table above. More private also turns
 activity names and pace along tracks off. More open turns Strava links and the time of day on.
 
-The plan of a quick setup: download and build the missing reference lists, `strava auth`,
-`sync strava`, `sync sheet` if a sheet was chosen, `match`, `routes`, `zones`, `build`,
-`pnpm web:build`. It then prints `pnpm web:preview` rather than starting a server.
+The plan of a quick setup: download and build the missing reference lists, `strava auth` and
+`sync strava` if Strava was chosen, `sync gpx` if GPX files were, `sync sheet` if a sheet was,
+`match`, `routes`, `zones`, `build`, `pnpm web:build`. It then prints `pnpm web:preview` rather than starting a server.
 
 ## Full setup and change mode
 
 Groups, in order: `site`, `map` (light and dark style, terrain), `views`, `publish` (seven
 switches), `output`, the sources (`strava`: dates, types, sport types, full tracks, API addresses;
-`sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
+`gpx`: which of Strava and GPX files the site is built from, the type of a file that names none,
+the folder; `sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
 `matching`, `routeGrouping`, `routes` (names, merges and splits, as JSON), `deploy`.
 
 - A value in brackets is the current one; Enter keeps it. `-` empties an optional value.
@@ -143,7 +151,8 @@ switches), `output`, the sources (`strava`: dates, types, sport types, full trac
 After a change the wizard says what the change makes stale and offers to run it: a new
 `includePrivate` needs `strava auth` and a pull; types or dates need a pull; matching thresholds
 need `match`; route grouping needs `routes regroup`; zones and privacy need `zones --preview` and
-`build`; site, map, views, publish and output need `build`. A stored secret is never shown: Enter
+`build`; site, map, views, publish and output need `build`, and so does switching the site
+between Strava and GPX files (`--change gpx`). A stored secret is never shown: Enter
 keeps it.
 
 ## Secrets
@@ -171,7 +180,8 @@ An answers file is JSONC, keyed by step id. Anything left out keeps its current 
 {
   "start": "quick", // or "full", "change", "demo"
   "site.title": "My map",
-  "sources": ["strava", "sheet"],
+  "sources": ["strava", "sheet"], // any of "strava", "gpx", "sheet"
+  // "activities.source": "gpx", // with "strava" and "gpx" both chosen: which the site is built from
   "strava.includePrivate": false,
   "privacy.home": "35.6812, 139.7671",
   "privacy.radius": 500,
@@ -183,7 +193,8 @@ An answers file is JSONC, keyed by step id. Anything left out keeps its current 
 
 Step ids follow the settings: `site.title`, `map.styleUrl`, `map.terrain` (`off`, `mapzen`,
 `tilejson`, `tiles`), `publish.timeOfDay`, `output.decimals`, `strava.from`,
-`strava.activityTypes`, `sheet.path`, `privacy.zones`, `matching.pointRadiusM`,
+`strava.activityTypes`, `activities.source`, `gpx.defaultType`, `gpx.folder`, `sheet.path`,
+`privacy.zones`, `matching.pointRadiusM`,
 `routeGrouping.gridZoom`, `routes.merge`, `lists.fetch` and so on; the full table is
 `packages/cli/src/setup/steps.ts` and the files beside it. With `--change`, a file names only the
 steps to change.
@@ -212,6 +223,12 @@ The server is for you alone, on this machine:
 - It runs only the commands on a fixed list, with arguments decided on the server. It never sends
   a secret back, takes no file path from the page, and serves nothing from `data/` or `config/`
   beyond the named review files.
+- It takes one kind of file from the page: a `.zip` or `.gpx` for the GPX import, at most 512 MB,
+  under the same cookie, header and origin rules as every other change. The folder is the
+  server's (`data/activities`, or the one set in `site.jsonc`). Of the name the page sends, only
+  the last part is used, cut down to letters, digits and a few marks, never a hidden file. The
+  file is checked before it is kept: an archive the import would refuse, one without a GPX file
+  or a `.gpx` that isn't one is thrown away.
 - A privacy zone you place stays in the page's memory until you save; nothing is kept in the
   browser's storage, and no address is looked up.
 
@@ -234,6 +251,10 @@ After the run, the review screen also offers:
 
 A privacy zone can be placed by clicking the map or by typing `latitude, longitude`, which also
 works in a browser that can't draw the map.
+
+With GPX files chosen, the page has a box to drop a `.zip` or `.gpx` file on, or to choose one
+with. The file is saved in the GPX folder on your machine and imported when the plan runs
+(`sync gpx`). An export over 512 MB goes into the folder by hand.
 
 `jam audit` fails if the setup page's files ever end up in a folder that is about to be published.
 

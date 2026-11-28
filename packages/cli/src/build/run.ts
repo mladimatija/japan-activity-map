@@ -419,7 +419,7 @@ const trackStage = (
       ...(activity.startLocal ? { time: activity.startLocal.slice(11, 16) } : {}),
       type: activity.type as ActivityType,
       tags: activity.tags,
-      source: activity.source === 'sheet' ? 'sheet' : 'strava',
+      source: activity.source === 'sheet' || activity.source === 'gpx' ? activity.source : 'strava',
       name: activity.name,
       distanceM: activity.distanceM === null ? null : Math.round(activity.distanceM),
       gainM: activity.gainM === null ? null : Math.round(activity.gainM),

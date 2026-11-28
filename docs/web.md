@@ -221,7 +221,8 @@ The filter panel (the Filters button; `Esc` closes it) has a control per facet: 
 type, event, season, month, day of the week, prefecture (grouped by region), lists reached, status,
 region and the prefecture "has" and "never", where any number can be on at once and a result
 matches any of them; one-choice dropdowns for the window back from today ("When": last 30 days,
-last 12 months, this year, last year), repeated or one-off routes, the source and when a place was
+last 12 months, this year, last year), repeated or one-off routes, the source (Strava or GPX,
+whichever the site is built from, and the manual sheet; shown when the data has two) and when a place was
 first reached; a switch for new ground (activities that reached a place, a route stretch or a
 prefecture for the first time, over everything published); two-thumb sliders for years, distance,
 climb, moving time, height, visits and years since a place was last reached; and a threshold

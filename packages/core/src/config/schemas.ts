@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { ACTIVITY_TYPES, type ActivityType } from '../domain.ts';
+import { ACTIVITY_SOURCES, ACTIVITY_TYPES, type ActivityType } from '../domain.ts';
 
 const activityType = z.enum(ACTIVITY_TYPES);
 const metres = z.number().positive();
@@ -45,6 +45,24 @@ export const siteOptionsSchema = z.strictObject({
       title: z.string().min(1).default('Japan Activity Map'),
       description: z.string().default(''),
       baseUrl: z.url().optional(),
+    })
+    .prefault({}),
+  /** Which activities the site is built from (docs/gpx.md). The sheet's own rows always count. */
+  activities: z
+    .strictObject({
+      /** `strava`: what `jam sync strava` fetched. `gpx`: what `jam sync gpx` imported. */
+      source: z.enum(ACTIVITY_SOURCES).default('strava'),
+      gpx: z
+        .strictObject({
+          /** The type of a GPX file whose own `<type>` is missing or not understood. */
+          defaultType: activityType.default('hike'),
+          /**
+           * The folder `jam sync gpx` reads without a path, relative to the repository root. Unset:
+           * `activities` inside the data folder (data/activities).
+           */
+          folder: z.string().min(1).optional(),
+        })
+        .prefault({}),
     })
     .prefault({}),
   /** Where `jam deploy` publishes the site (docs/deploy.md). */

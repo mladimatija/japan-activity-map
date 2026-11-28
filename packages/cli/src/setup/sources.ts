@@ -5,7 +5,7 @@
 import { ACTIVITY_TYPES } from '@jam/core';
 
 import type { ActionId } from './actions.ts';
-import { type Ctx, type Facts, has, PULL, setting, type Step, str } from './types.ts';
+import { BUILD, type Ctx, type Facts, has, PULL, setting, type Step, str } from './types.ts';
 
 export interface Source {
   id: string;
@@ -26,6 +26,7 @@ export interface Source {
 const strava = (ctx: Ctx) => has(ctx, 'strava');
 const sheet = (ctx: Ctx) => has(ctx, 'sheet');
 const demo = (ctx: Ctx) => has(ctx, 'demo');
+const gpx = (ctx: Ctx) => has(ctx, 'gpx');
 
 const stravaSetting = (...args: Parameters<typeof setting>): Step => {
   const step = setting(...args);
@@ -215,6 +216,65 @@ const SHEET_STEPS: Step[] = [
   ),
 ];
 
+/** Strava or GPX files: which of the two the site shows. */
+const BUILT_FROM_STEP: Step = {
+  id: 'activities.source',
+  group: 'source:gpx',
+  tier: 'both',
+  kind: 'choice',
+  title: 'Which is the site built from?',
+  help: 'Strava activities and GPX activities can both be in the local store; the site shows one of the two, plus the sheet. Changing this later deletes nothing.',
+  options: [
+    { value: 'strava', label: 'Strava' },
+    { value: 'gpx', label: 'GPX files' },
+  ],
+  setting: { file: 'site', path: ['activities', 'source'] },
+  // Asked when both were chosen, and in change mode, where it is the switch.
+  when: (ctx) => ctx.mode === 'change' || (has(ctx, 'strava') && has(ctx, 'gpx')),
+  affects: BUILD,
+};
+
+const GPX_STEPS: Step[] = [
+  BUILT_FROM_STEP,
+  {
+    id: 'gpx.files',
+    group: 'source:gpx',
+    tier: 'both',
+    kind: 'info',
+    title: 'Put your GPX files, or a .zip of them, in data/activities.',
+    help: 'Any app that exports GPX will do. One file is one activity; importing a file again updates it. See docs/gpx.md.',
+    read: () => '',
+    map: () => [],
+    when: (ctx) => gpx(ctx) && ctx.mode !== 'change',
+  },
+  setting(
+    'gpx.defaultType',
+    'source:gpx',
+    'choice',
+    'Type of a GPX file that names none',
+    'site',
+    ['activities', 'gpx', 'defaultType'],
+    {
+      help: 'A file whose own type is missing or not understood counts as this.',
+      options: ACTIVITY_TYPES.map((type) => ({ value: type, label: type })),
+      when: gpx,
+    },
+  ),
+  setting(
+    'gpx.folder',
+    'source:gpx',
+    'text',
+    'Folder of GPX files',
+    'site',
+    ['activities', 'gpx', 'folder'],
+    {
+      help: 'Relative to the repository. Empty: data/activities. Put .gpx files or a .zip of them there. See docs/gpx.md.',
+      optional: true,
+      when: gpx,
+    },
+  ),
+];
+
 /** Options for `jam demo`, not settings: nothing here is written to a config file. */
 const demoOption = (step: Pick<Step, 'id' | 'kind' | 'title'> & Partial<Step>): Step => ({
   group: 'source:demo',
@@ -280,6 +340,13 @@ export const SOURCES: Source[] = [
       'sync-strava',
       ...(ctx.answers['strava.fetchAllTracks'] === true ? (['sync-strava-tracks'] as const) : []),
     ],
+  },
+  {
+    id: 'gpx',
+    label: 'GPX files',
+    help: 'A .zip of GPX files, or .gpx files in data/activities, from any app that exports them. The site is then built from these instead of Strava.',
+    steps: GPX_STEPS,
+    actions: () => ['sync-gpx'],
   },
   {
     id: 'sheet',

@@ -50,6 +50,7 @@ const api: SetupApi = {
   merges: never,
   merge: never,
   preview: never,
+  upload: never,
   shutdown: never,
 };
 const nothing = () => undefined;
@@ -80,7 +81,13 @@ const screens = (): [string, ReactElement][] => {
   ];
   for (const [name, view] of Object.entries(fixture.views)) {
     const start = (
-      name.startsWith('change') ? 'change' : name.startsWith('full') ? 'full' : name
+      name.startsWith('change')
+        ? 'change'
+        : name.startsWith('full')
+          ? 'full'
+          : name.startsWith('quick')
+            ? 'quick'
+            : name
     ) as Start;
     const pages = start === 'full' ? new Set(view.steps.map((step) => step.group)).size : 1;
     const answers = {
@@ -101,6 +108,7 @@ const screens = (): [string, ReactElement][] => {
           onPage={nothing}
           onSave={nothing}
           onBack={nothing}
+          onUpload={never}
         />,
       ]);
   }
@@ -233,6 +241,23 @@ check(
   'quick setup shows the zone picker, in both languages',
 );
 check(en('change:privacy page 1').includes('Add a zone'), 'change mode shows the zone list');
+check(
+  en('quick page 1').includes('GPX files') && ja('quick page 1').includes('GPXファイル'),
+  'GPX files are among the sources, in both languages',
+);
+check(
+  en('quickGpx page 1').includes('Drop a .zip or .gpx file here') &&
+    en('quickGpx page 1').includes('type="file"') &&
+    en('quickGpx page 1').includes('accept=".zip,.gpx"') &&
+    ja('quickGpx page 1').includes('ここにドロップ') &&
+    !en('quickGpx page 1').includes('Strava Client Secret'),
+  'with GPX files chosen the page offers a file drop, and no Strava questions',
+);
+check(
+  en('change:source:gpx page 1').includes('Which is the site built from?') &&
+    !en('change:source:gpx page 1').includes('type="file"'),
+  'change mode has the switch between Strava and GPX files',
+);
 check(en('full page 1').includes('aria-current="step"'), 'full setup goes group by group');
 check(
   en('full page 2').includes('Tile address'),

@@ -26,6 +26,7 @@ export const ACTION_IDS = [
   'sync-strava',
   'sync-strava-tracks',
   'sync-sheet',
+  'sync-gpx',
   'match',
   'routes',
   'routes-review',
@@ -136,6 +137,11 @@ export const ACTIONS: Record<ActionId, Action> = {
     title: 'Import the activity sheet',
     command: ['sync', 'sheet'],
   },
+  'sync-gpx': {
+    id: 'sync-gpx',
+    title: 'Import GPX files',
+    command: ['sync', 'gpx'],
+  },
   match: { id: 'match', title: 'Match activities to the lists', command: ['match'] },
   routes: { id: 'routes', title: 'Group repeated activities into routes', command: ['routes'] },
   'routes-review': {
@@ -216,6 +222,8 @@ export const setupPlan = (ctx: Ctx, includePrivate: boolean): PlanItem[] => {
         plan.push({ id: action, skip: 'already signed in' });
       else if (action === 'sync-sheet' && !ctx.facts.sheetExists)
         plan.push({ id: action, skip: 'the sheet file is not there yet' });
+      else if (action === 'sync-gpx' && !ctx.facts.gpxFolderExists)
+        plan.push({ id: action, skip: 'the GPX folder is not there yet' });
       else plan.push({ id: action });
     }
   plan.push(

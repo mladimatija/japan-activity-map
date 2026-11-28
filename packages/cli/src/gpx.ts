@@ -37,6 +37,58 @@ const points = (xml: string, tag: 'trkpt' | 'rtept'): GpxPoint[] => {
   return out;
 };
 
+const ENTITIES: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
+/** Text of an element as written: CDATA unwrapped, the five XML entities and numeric ones read. */
+const text = (raw: string | undefined): string | undefined => {
+  if (raw === undefined) return undefined;
+  const value = raw
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos);/gi, (whole, name: string) => {
+      if (!name.startsWith('#')) return ENTITIES[name.toLowerCase()] ?? whole;
+      const code =
+        name[1]?.toLowerCase() === 'x' ? parseInt(name.slice(2), 16) : Number(name.slice(1));
+      return Number.isInteger(code) && code > 0 && code <= 0x10ffff
+        ? String.fromCodePoint(code)
+        : whole;
+    })
+    .trim();
+  return value === '' ? undefined : value;
+};
+const element = (body: string, name: string) =>
+  text(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)</${name}>`).exec(body)?.[1]);
+
+/** What a GPX file says about itself, apart from its points. */
+export interface GpxInfo {
+  /** The file's own name: from its metadata, else its first track or route. */
+  name?: string;
+  /** The first track's `<type>`, as written. */
+  type?: string;
+  /** The time in the file's metadata, as written. */
+  time?: string;
+}
+
+/** The name, type and metadata time of a GPX file; each left out when the file has none. */
+export const gpxInfo = (xml: string): GpxInfo => {
+  // An author, link or copyright inside the metadata has a name or text of its own: not the file's.
+  const metadata = (/<metadata\b[^>]*>([\s\S]*?)<\/metadata>/.exec(xml)?.[1] ?? '').replace(
+    /<(author|link|copyright)\b[^>]*>[\s\S]*?<\/\1>/g,
+    '',
+  );
+  // A track's own elements come before its segments; looking no further keeps point data out.
+  const heads = [...xml.matchAll(/<(trk|rte)\b[^>]*>([\s\S]*?)(?:<trkseg\b|<rtept\b|<\/\1>)/g)].map(
+    (match) => match[2] ?? '',
+  );
+  // GPX 1.0 keeps the file's name and time at the top, before the first waypoint, route or track.
+  const top = /<gpx\b[^>]*>([\s\S]*?)(?:<(?:metadata|wpt|rte|trk)\b|<\/gpx>)/.exec(xml)?.[1] ?? '';
+  const name =
+    element(metadata, 'name') ??
+    element(top, 'name') ??
+    heads.map((head) => element(head, 'name')).find(Boolean);
+  const type = heads.map((head) => element(head, 'type')).find(Boolean);
+  const time = element(metadata, 'time') ?? element(top, 'time');
+  return { ...(name ? { name } : {}), ...(type ? { type } : {}), ...(time ? { time } : {}) };
+};
+
 /**
  * Reads the tracks (and routes, for files that only have those) of a GPX file. Waypoints are
  * ignored. Throws when the file has no line with at least two points.

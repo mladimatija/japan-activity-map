@@ -14,7 +14,7 @@ export interface PublishSettings {
 
 /** One activity as the public site may show it. Nothing private is in here except `stravaId`. */
 export interface PublicActivity {
-  /** From the salt and the Strava id (or the sheet row's act_ id): stable across wipes, unguessable. */
+  /** From the salt and the Strava id (or the act_ id of a sheet row or GPX file): unguessable. */
   publicId: string;
   /** Internal, for the build and the audit; never written to the output. */
   ref: string;
@@ -87,6 +87,8 @@ const parse = <T>(text: string | null, fallback: T): T =>
 const refOfRow = (row: { id: string; strava_id: number | null }) =>
   row.strava_id !== null ? `strava:${row.strava_id}` : row.id;
 
+const SOURCE_NAMES: Record<string, string> = { strava: 'Strava', gpx: 'GPX files' };
+
 const stravaLink = (id: number) => `https://www.strava.com/activities/${id}`;
 
 /**
@@ -96,6 +98,7 @@ const stravaLink = (id: number) => `https://www.strava.com/activities/${id}`;
 export const selectPublic = (db: Database, settings: PublishSettings): Selection => {
   const { site, thresholds, zones, salt } = settings;
   const publish = site.publish;
+  const chosen: string = site.activities.source;
   const overrides = new Map<string, Map<string, unknown>>();
   for (const row of db.all<{ target_id: string; field: string; value: string }>(
     `SELECT target_id, field, value FROM overrides WHERE target_kind = 'activity'`,
@@ -121,7 +124,12 @@ export const selectPublic = (db: Database, settings: PublishSettings): Selection
     const exclude = (reason: string) =>
       excluded.push({ ref, publicId: id, stravaId: row.strava_id, name: row.name, reason });
     const hasGps = Boolean(row.coordinates);
-    if (own('hide') === true) exclude('hidden in the sheet');
+    // The sheet's own rows always count; of the other sources, only the one the site is built from.
+    if (row.source !== 'sheet' && row.source !== chosen)
+      exclude(
+        `from ${SOURCE_NAMES[row.source] ?? row.source}, and the site is built from ${SOURCE_NAMES[chosen] ?? chosen} (activities.source)`,
+      );
+    else if (own('hide') === true) exclude('hidden in the sheet');
     else if (row.visibility === 'only_me' && !publish.includeOnlyMeActivities)
       exclude('Only You on Strava');
     else if (row.location === null) exclude('not matched yet (run `pnpm jam match`)');

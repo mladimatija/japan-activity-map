@@ -19,6 +19,7 @@
     "check:strava": "bash packages/cli/dev/check-strava.sh",
     "check:match": "node packages/cli/dev/check-match.ts",
     "check:routes": "node packages/cli/dev/check-routes.ts",
+    "check:gpx": "node packages/cli/dev/check-gpx.ts",
     "check:lists": "node packages/cli/dev/check-lists.ts",
     "check:privacy": "node packages/cli/dev/check-privacy.ts",
     "check:build": "node packages/cli/dev/check-build.ts",

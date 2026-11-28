@@ -91,12 +91,23 @@ export const findFacts = (configDir: string, sheetPath: string): Facts => {
       listsMissing = [];
     }
   }
+  // The folder as the site file names it now, read here so that no caller has to pass it.
+  const named = valueAt(parseText(readConfigText(configDir, 'site').text).value, [
+    'activities',
+    'gpx',
+    'folder',
+  ]);
+  const gpxDir =
+    typeof named === 'string' && named !== ''
+      ? resolve(ROOT_DIR, named)
+      : join(DATA_DIR, 'activities');
   return {
     stravaCredentials: filled('clientId') && filled('clientSecret'),
     stravaScope,
     listsMissing,
     listsBuilt,
     sheetExists: existsSync(resolve(ROOT_DIR, sheetPath)),
+    gpxFolderExists: existsSync(gpxDir),
     siteBuilt: existsSync(join(ROOT_DIR, 'dist/data/meta.json')),
     demoAvailable: findCommand(['demo']) !== undefined,
   };

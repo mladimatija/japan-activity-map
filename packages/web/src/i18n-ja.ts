@@ -305,6 +305,7 @@ export const JA: Record<string, string> = {
   'Any list or none': 'どのリストでも、またはなし',
   Source: 'データ元',
   'Manual sheet': '手入力シート',
+  GPX: 'GPX',
   Status: '状態',
   Region: '地方',
   "Narrows this list's rows and pins.": 'このリストの行とピンを絞り込みます。',

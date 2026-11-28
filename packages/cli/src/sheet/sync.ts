@@ -26,7 +26,7 @@ export interface LinkIssue {
   candidates: LinkTarget[];
 }
 
-type Columns = Record<string, SqlValue>;
+export type Columns = Record<string, SqlValue>;
 
 interface DesiredRow {
   row: SheetRow;
@@ -52,7 +52,7 @@ interface SyncPlan {
   apply(): { pullId: number };
 }
 
-const ACTIVITY_COLUMNS = [
+export const ACTIVITY_COLUMNS = [
   'source',
   'strava_id',
   'start_time',
@@ -74,7 +74,13 @@ const ACTIVITY_COLUMNS = [
   'end_lon',
   'raw',
 ] as const;
-const TRACK_COLUMNS = ['detail', 'coordinates', 'point_count', 'elevations', 'times'] as const;
+export const TRACK_COLUMNS = [
+  'detail',
+  'coordinates',
+  'point_count',
+  'elevations',
+  'times',
+] as const;
 
 const round6 = (n: number) => Math.round(n * 1e6) / 1e6;
 const json = (value: unknown) => JSON.stringify(value);
@@ -200,7 +206,7 @@ const overridesOf = (row: SheetRow, links: RowLink[], target: string): Map<strin
   return out;
 };
 
-const differs = (
+export const differs = (
   current: Record<string, SqlValue> | undefined,
   desired: Columns,
   columns: readonly string[],
@@ -459,7 +465,7 @@ export const planSync = (
   return { file, changes, unchanged, linkIssues, links: linkCount, apply };
 };
 
-const upsertActivity = (
+export const upsertActivity = (
   db: Database,
   salt: string,
   id: string,

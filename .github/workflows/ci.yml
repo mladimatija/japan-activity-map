@@ -64,6 +64,9 @@ jobs:
       - name: Route grouping checks
         run: pnpm check:routes
 
+      - name: GPX import checks
+        run: pnpm check:gpx
+
       - name: Privacy checks
         run: pnpm check:privacy
 

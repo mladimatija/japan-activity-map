@@ -3,6 +3,7 @@ import { demoCommand } from './demo.ts';
 import { deployCommand } from './deploy.ts';
 import { currentStoreMarker, demoRefusal } from '../demo/marker.ts';
 import { listsBuild, listsFetch, listsValidate } from './lists.ts';
+import { gpxWipe, syncGpx } from './gpx.ts';
 import { syncSheet } from './sheet.ts';
 import { buildCommand } from './build.ts';
 import { match, matchIgnore } from './match.ts';
@@ -67,6 +68,37 @@ export const COMMANDS: readonly Command[] = [
       ].join('\n'),
     },
     run: syncSheet,
+  },
+  {
+    name: 'sync gpx',
+    summary: 'Import GPX files from a folder or a .zip into the local store',
+    args: {
+      usage: '[path]',
+      help: [
+        'Reads a folder (subfolders and .zip archives in it included) or one .zip archive. Without a',
+        'path: data/activities, or the folder set as activities.gpx.folder in config/site.jsonc.',
+        'One file is one activity, recognised by its start time, so importing it again updates it.',
+        'A file that cannot be read is reported and skipped. See docs/gpx.md.',
+      ].join('\n'),
+    },
+    options: {
+      replace: {
+        type: 'boolean',
+        description: 'Also remove GPX activities that are not in this import (store copied first)',
+      },
+    },
+    run: syncGpx,
+  },
+  {
+    name: 'gpx wipe',
+    summary: 'Delete GPX activities from the local store, keeping everything else',
+    options: {
+      yes: {
+        type: 'boolean',
+        description: 'Really delete (the store is copied to data/backups first)',
+      },
+    },
+    run: gpxWipe,
   },
   {
     name: 'strava wipe',

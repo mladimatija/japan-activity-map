@@ -1,5 +1,6 @@
 import { ConfigError, loadConfig, type ConfigFileStatus } from '../config.ts';
 import { folderMarker, storeMarker } from '../demo/marker.ts';
+import { gpxFolder, hasGpxFolder } from '../gpx-import/files.ts';
 import { DATA_DIR, DEMO_DIR, shownPath } from '../paths.ts';
 import { canReadActivities, hasReadAll, loadToken } from '../strava/auth.ts';
 import { listBackups } from '../store/backups.ts';
@@ -62,6 +63,13 @@ const storeStatus = async ({ flags, log }: CommandContext): Promise<boolean> => 
         `    ${row.source.padEnd(7)} ${typeLabel(row.type).padEnd(10)} ${String(row.count).padStart(5)}`,
       );
     }
+    const bySource = new Map<string, number>();
+    for (const row of summary.activities)
+      bySource.set(row.source, (bySource.get(row.source) ?? 0) + row.count);
+    if (bySource.size > 0)
+      log.info(
+        `  By source: ${[...bySource].map(([source, count]) => `${source} ${count}`).join(', ')}`,
+      );
     log.info(`  Sheet rows: ${summary.sheetRows}. Grouped routes: ${summary.routes}.`);
     const lastMatch = store.db.get<{
       started_at: string;
@@ -120,6 +128,13 @@ export const status = async (context: CommandContext): Promise<number> => {
     } else {
       log.info(`Privacy zones: ${zoneCount}`);
     }
+    const fromGpx = config.site.activities.source === 'gpx';
+    log.info(
+      `Site activities: built from ${fromGpx ? 'GPX files' : 'Strava'} plus the sheet (activities.source is "${config.site.activities.source}")`,
+    );
+    log.info(
+      `GPX folder: ${shownPath(gpxFolder(config))}${hasGpxFolder(config) ? '' : ' (not there yet)'}; default type ${config.site.activities.gpx.defaultType}`,
+    );
     log.info(
       `Strava import: ${config.strava.import.activityTypes.join(', ')}; ` +
         `private activities ${config.strava.import.includePrivate ? 'included' : 'not included'}`,

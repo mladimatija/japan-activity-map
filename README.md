@@ -3,8 +3,8 @@
 A personal map of Japan that ticks off famous peaks, trails and pilgrimage routes as you hike, run
 and ride them.
 
-It reads your activities from Strava or from a spreadsheet you keep by hand, does all the work on
-your own computer, and builds a static site you can host anywhere. Your home stays off the map.
+It reads your activities from Strava, from GPX files or from a spreadsheet you keep by hand, does
+all the work on your own computer, and builds a static site you can host anywhere. Your home stays off the map.
 
 Live demo, with made-up activities: <https://mladimatija.github.io/japan-activity-map/>
 
@@ -51,6 +51,12 @@ every other time you did the same route.
 
 ![An activity: its track, figures, height profile and splits](docs/images/activity.png)
 
+### Where activities come from
+
+Strava, or GPX files from any app that exports them (YAMAP, Garmin, a watch), plus a sheet you keep
+by hand for everything else. One setting says whether the site is built from Strava or from the
+GPX files ([docs/gpx.md](docs/gpx.md)).
+
 ### Other pages
 
 - Statistics: totals by year, month, type and weekday, plus a calendar of every day.
@@ -94,7 +100,7 @@ pnpm install
 
 1. Try the demo. `pnpm jam demo`, then `pnpm demo:web`, gives you a complete site from made-up
    activities, stored separately from your own data ([docs/demo.md](docs/demo.md)).
-2. Set up. `pnpm jam setup` asks a few questions: Strava or a sheet, where home is so it can be
+2. Set up. `pnpm jam setup` asks a few questions: Strava, GPX files or a sheet, where home is so it can be
    hidden, what to publish. Then it writes the config files and runs the first sync and build.
    `pnpm jam setup --web` does the same in your browser ([docs/setup.md](docs/setup.md)).
 3. Check what gets cut. `pnpm jam zones --preview`, then `pnpm web:preview` to see the site as it
@@ -107,7 +113,7 @@ pnpm install
 Only `dist/` is ever published.
 
 More in [docs/](docs): [the site](docs/web.md), [setup](docs/setup.md), [Strava](docs/strava-setup.md),
-[privacy](docs/privacy.md), [matching](docs/matching.md), [routes](docs/routes.md),
+[GPX files](docs/gpx.md), [privacy](docs/privacy.md), [matching](docs/matching.md), [routes](docs/routes.md),
 [the build](docs/build.md), [demo data](docs/demo.md), [publishing](docs/deploy.md), and
 [the lists and their sources](lists/README.md).
 
@@ -134,6 +140,8 @@ Everything below is for working on the code.
 | `pnpm jam strava auth`    | Sign in to Strava ([setup](docs/strava-setup.md))                                    |
 | `pnpm jam sync strava`    | Fetch Strava activities since the last pull; `--streams` for full tracks             |
 | `pnpm jam strava wipe`    | Delete Strava activities from the store, keeping sheet data (`--yes`)                |
+| `pnpm jam sync gpx`       | Import GPX files from a folder or a `.zip` ([how](docs/gpx.md)); `--replace`         |
+| `pnpm jam gpx wipe`       | Delete GPX activities from the store, keeping everything else (`--yes`)              |
 | `pnpm jam match`          | Match activities to list places, routes and prefectures ([how](docs/matching.md))    |
 | `pnpm jam match ignore`   | Mark an automatic match as false                                                     |
 | `pnpm jam routes`         | Group repeated activities into routes ([how](docs/routes.md))                        |
@@ -186,6 +194,7 @@ Node.js 26, so the command-line tool has no build step.
 | `pnpm check:strava`   | The Strava sync, against a fake server                                                      |
 | `pnpm check:match`    | Matching, on made-up activities (`packages/cli/dev`)                                        |
 | `pnpm check:routes`   | Route grouping, likewise                                                                    |
+| `pnpm check:gpx`      | GPX import and the Strava or GPX switch, likewise                                           |
 | `pnpm check:privacy`  | The privacy rules, likewise                                                                 |
 | `pnpm check:build`    | The build, likewise                                                                         |
 | `pnpm check:web`      | Renders the map's pane for every list and selection, against your real build in `dist/data` |

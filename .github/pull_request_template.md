@@ -18,7 +18,7 @@ Privacy
 Checks
 
 - [ ] `pnpm check` (format, lint, types) and `pnpm test` pass.
-- [ ] The checks for what I touched pass: `pnpm check:web` (or `check:web:demo`), `check:build`, `check:privacy`, `check:routes`, `check:match`, `check:strava`, `check:lists`, `check:demo`, `check:deploy`, `check:setup`, `check:setup-web`, `check:setup-ui`.
+- [ ] The checks for what I touched pass: `pnpm check:web` (or `check:web:demo`), `check:build`, `check:privacy`, `check:routes`, `check:gpx`, `check:match`, `check:strava`, `check:lists`, `check:demo`, `check:deploy`, `check:setup`, `check:setup-web`, `check:setup-ui`.
 
 Interface (skip if `packages/web` is untouched)
 

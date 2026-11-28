@@ -4,6 +4,36 @@
  * Step titles and help are written in English in packages/cli/src/setup and looked up here.
  */
 export const SETUP_JA: Record<string, string> = {
+  'A .zip of GPX files, or .gpx files in data/activities, from any app that exports them. The site is then built from these instead of Strava.':
+    'GPXファイルをまとめた.zip、またはdata/activitiesに置いた.gpxファイル。GPXを書き出せるアプリならどれでも使えます。サイトはStravaの代わりにこれらから作られます。',
+  'A file whose own type is missing or not understood counts as this.':
+    '種類が書かれていない、または読み取れないファイルはこの種類として扱います。',
+  'Folder of GPX files': 'GPXファイルのフォルダ',
+  'GPX files': 'GPXファイル',
+  'Import GPX files': 'GPXファイルを取り込む',
+  'Relative to the repository. Empty: data/activities. Put .gpx files or a .zip of them there. See docs/gpx.md.':
+    'リポジトリからの相対パス。空欄の場合はdata/activities。.gpxファイル、またはそれらをまとめた.zipを置いてください。docs/gpx.mdを参照。',
+  'Strava activities and GPX activities can both be in the local store; the site shows one of the two, plus the sheet. Changing this later deletes nothing.':
+    'StravaのアクティビティとGPXのアクティビティは、どちらもローカルストアに置いておけます。サイトにはどちらか一方とシートが表示されます。あとで切り替えても何も削除されません。',
+  'Type of a GPX file that names none': '種類が書かれていないGPXファイルの種類',
+  'Which is the site built from?': 'サイトをどちらから作りますか？',
+  'Put your GPX files, or a .zip of them, in data/activities.':
+    'GPXファイル、またはそれらをまとめた.zipをdata/activitiesに置いてください。',
+  'Any app that exports GPX will do. One file is one activity; importing a file again updates it. See docs/gpx.md.':
+    'GPXを書き出せるアプリならどれでも使えます。1ファイルが1アクティビティになり、同じファイルをもう一度取り込むと更新されます。docs/gpx.mdを参照。',
+  'Drop a .zip or .gpx file here, or choose one.':
+    '.zipまたは.gpxファイルをここにドロップするか、選択してください。',
+  'Choose a file': 'ファイルを選択',
+  'It is saved in the GPX folder on this computer and imported when the plan runs. Up to 512 MB; put a larger export into the folder yourself.':
+    'このコンピューターのGPXフォルダに保存され、プランの実行時に取り込まれます。512 MBまで。それより大きい場合はフォルダに直接置いてください。',
+  'Sending {name}…': '{name} を送信中…',
+  'Saved {name}: {count} GPX files.': '{name} を保存しました: GPXファイル {count} 件。',
+  'The file was not taken.': 'ファイルを受け付けられませんでした。',
+  'Only a .zip or .gpx file is taken.': '.zipまたは.gpxファイルのみ受け付けます。',
+  'The file is too large.': 'ファイルが大きすぎます。',
+  'The archive holds no GPX file.': 'このアーカイブにGPXファイルがありません。',
+  'This is not a GPX file.': 'GPXファイルではありません。',
+  'the GPX folder is not there yet': 'GPXフォルダがまだありません',
   '19 is roughly 60 m across in Japan.': '19は日本ではおよそ60 m四方です。',
   '5 is about 1 m.': '5桁でおよそ1 mです。',
   'A CSV or .xlsx file of activities, with GPX tracks if you have them.':

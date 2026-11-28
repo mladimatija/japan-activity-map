@@ -397,6 +397,88 @@ const main = async () => {
 
   // Demo data: offered only when this version has the command.
   const hasDemo = spawnResult(['demo', '--help']).code === 0;
+  // GPX files instead of Strava: one made-up track by 東京駅 in the folder `sync gpx` reads.
+  {
+    const folder = join(data, 'activities');
+    mkdirSync(folder, { recursive: true });
+    const points = Array.from(
+      { length: 120 },
+      (_, i) =>
+        `<trkpt lat="${(35.69 + i * 0.0002).toFixed(6)}" lon="${(139.775 + i * 0.0002).toFixed(6)}"><time>${new Date(Date.UTC(2025, 4, 3, 0, 0, i * 10)).toISOString()}</time></trkpt>`,
+    ).join('');
+    writeFileSync(
+      join(folder, 'walk.gpx'),
+      `<?xml version="1.0"?><gpx version="1.1" creator="check-setup"><trk><name>Check walk</name><type>Walking</type><trkseg>${points}</trkseg></trk></gpx>`,
+    );
+    const gpx = answersFile('gpx', {
+      start: 'quick',
+      sources: ['gpx'],
+      skip: ['lists-fetch', 'lists-build', 'web-build'],
+    });
+    const dry = await setup(['--answers', gpx, '--yes', '--dry-run']);
+    check(
+      'choosing GPX files sets the source the site is built from',
+      dry.code === 0 &&
+        dry.text.includes('-     "source": "strava"') &&
+        dry.text.includes('+     "source": "gpx"'),
+      dry.text,
+    );
+    check(
+      '  ...and plans the GPX import instead of the Strava steps',
+      dry.text.includes('pnpm jam sync gpx') &&
+        !dry.text.includes('strava auth') &&
+        !dry.text.includes('sync strava'),
+      dry.text,
+    );
+    const run = await setup(['--answers', gpx, '--yes']);
+    const built = join(temp, 'out/data/activities.json');
+    const sources = existsSync(built)
+      ? (
+          JSON.parse(readFileSync(built, 'utf8')) as { activities: { source: string }[] }
+        ).activities.map((activity) => activity.source)
+      : [];
+    check(
+      '  ...which imports the folder and builds the site from it',
+      run.code === 0 &&
+        config('site').includes('"source": "gpx"') &&
+        sources.includes('gpx') &&
+        !sources.includes('strava'),
+      run.text.slice(-600),
+    );
+    const both = await setup(
+      [
+        '--answers',
+        answersFile('both', {
+          start: 'quick',
+          sources: ['strava', 'gpx'],
+          'activities.source': 'strava',
+          skip: ['web-build'],
+        }),
+        '--dry-run',
+      ],
+      withSecrets,
+    );
+    check(
+      'with Strava and GPX files both chosen, the answer says which the site is built from',
+      both.code === 0 &&
+        both.text.includes('+     "source": "strava"') &&
+        both.text.includes('pnpm jam sync strava') &&
+        both.text.includes('pnpm jam sync gpx'),
+      both.text.slice(0, 900),
+    );
+    const back = await setup([
+      '--change',
+      'gpx',
+      '--answers',
+      answersFile('back', { 'activities.source': 'strava' }),
+    ]);
+    check(
+      'changing the GPX group switches the site back to Strava',
+      back.code === 0 && config('site').includes('"source": "strava"'),
+      back.text,
+    );
+  }
+
   if (hasDemo) {
     // By now this sandbox has what a real setup has: a store with synced activities and config
     // files of its own. Making demo data must leave every byte of them alone.

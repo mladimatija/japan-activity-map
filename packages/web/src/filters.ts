@@ -132,6 +132,7 @@ export const REPEATS: { id: Repeat; label: string }[] = localized([
 ]);
 export const SOURCES: { id: Source; label: string }[] = localized([
   { id: 'strava', label: 'Strava' },
+  { id: 'gpx', label: 'GPX' },
   { id: 'sheet', label: 'Manual sheet' },
 ]);
 export const METRICS: { id: Metric; label: string; unit: string }[] = localized([

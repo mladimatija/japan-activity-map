@@ -7,7 +7,8 @@ import { join, resolve } from 'node:path';
 
 import { currentStoreMarker, demoRefusal } from '../demo/marker.ts';
 import { deployMissing } from '../deploy/hosts.ts';
-import { ROOT_DIR } from '../paths.ts';
+import { gpxFolder, hasGpxFolder } from '../gpx-import/files.ts';
+import { ROOT_DIR, shownPath } from '../paths.ts';
 import { PNPM, runLines } from '../process.ts';
 import { loadToken } from '../strava/auth.ts';
 import { configFor } from './config.ts';
@@ -40,7 +41,9 @@ export const updateCommand = async (
   const noSync = options['no-sync'] === true;
   // The sign-in file is only read when it will be used: a broken one must not stop a run that
   // was asked to build from what is already here.
-  const signedIn = !noSync && config.secrets.strava !== undefined && loadToken() !== undefined;
+  const fromGpx = config.site.activities.source === 'gpx';
+  const signedIn =
+    !noSync && !fromGpx && config.secrets.strava !== undefined && loadToken() !== undefined;
   const sheet = existsSync(resolve(ROOT_DIR, config.sheet.path));
   // The dev checks point the run at a folder of their own, where no web app is built.
   const sandboxDist = process.env.JAM_UPDATE_DIST
@@ -59,11 +62,22 @@ export const updateCommand = async (
     return result.code;
   };
   const steps: UpdateStep[] = [
-    {
-      title: 'Fetch new Strava activities',
-      run: own(['sync', 'strava']),
-      skip: noSync ? '--no-sync' : signedIn ? undefined : 'not signed in to Strava',
-    },
+    // One of the two, by activities.source: the other source's activities are not built from.
+    fromGpx
+      ? {
+          title: 'Import GPX files',
+          run: own(['sync', 'gpx']),
+          skip: noSync
+            ? '--no-sync'
+            : hasGpxFolder(config)
+              ? undefined
+              : `no folder at ${shownPath(gpxFolder(config))}`,
+        }
+      : {
+          title: 'Fetch new Strava activities',
+          run: own(['sync', 'strava']),
+          skip: noSync ? '--no-sync' : signedIn ? undefined : 'not signed in to Strava',
+        },
     {
       title: 'Import the activity sheet',
       run: own(['sync', 'sheet']),

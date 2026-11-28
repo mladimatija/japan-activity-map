@@ -30,6 +30,8 @@ export interface Facts {
   listsMissing: string[];
   listsBuilt: boolean;
   sheetExists: boolean;
+  /** Whether the folder `jam sync gpx` reads by default is there. */
+  gpxFolderExists: boolean;
   siteBuilt: boolean;
   /** Whether this version has the `demo` command. */
   demoAvailable: boolean;

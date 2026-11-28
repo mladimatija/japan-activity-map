@@ -14,6 +14,7 @@ import { request as httpRequest } from 'node:http';
 import { join } from 'node:path';
 
 import { sandbox } from './harness.ts';
+import { makeZip } from './zip-writer.ts';
 
 const box = sandbox('setup-web');
 const { root, temp, check } = box;
@@ -373,6 +374,121 @@ const main = async () => {
   check(
     'the state says credentials are stored, not what they are',
     state.text.includes('"stravaCredentials":true'),
+  );
+
+  // A file for the GPX import: only a .zip or .gpx, only into the import's own folder, and only
+  // from the page (cookie, header, origin), like every other change.
+  const upload = (
+    name: string,
+    bytes: Uint8Array,
+    headers: Record<string, string> = {},
+    withCookie = true,
+  ): Promise<Reply> =>
+    new Promise((resolve, reject) => {
+      const request = httpRequest(
+        {
+          host: '127.0.0.1',
+          port,
+          method: 'POST',
+          path: '/api/gpx',
+          headers: {
+            ...(withCookie ? { Cookie: cookie } : {}),
+            'Content-Type': 'application/octet-stream',
+            'X-Jam-Setup': '1',
+            'X-Jam-File-Name': encodeURIComponent(name),
+            ...headers,
+          },
+        },
+        (response) => {
+          let text = '';
+          response.setEncoding('utf8');
+          response.on('data', (chunk: string) => (text += chunk));
+          response.on('end', () => {
+            replies.push(text);
+            resolve({ status: response.statusCode ?? 0, headers: response.headers, text });
+            request.destroy();
+          });
+        },
+      );
+      request.on('error', reject);
+      // With a stated length the body is left unfinished: the server answers on the length alone.
+      if (headers['Content-Length']) request.write(bytes);
+      else request.end(bytes);
+    });
+  const gpxFolder = join(box.data, 'activities');
+  const inFolder = () => (existsSync(gpxFolder) ? readdirSync(gpxFolder).sort() : []);
+  const track = `<?xml version="1.0"?><gpx version="1.1"><trk><name>Uploaded</name><trkseg>${Array.from(
+    { length: 5 },
+    (_, i) => `<trkpt lat="${35.69 + i * 0.001}" lon="${139.775 + i * 0.001}"/>`,
+  ).join('')}</trkseg></trk></gpx>`;
+  const archive = makeZip([
+    { name: 'a/one.gpx', data: track },
+    { name: 'a/two.gpx', data: track },
+  ]);
+  const sent = await upload('my export (1).zip', archive);
+  check(
+    'a .zip dropped on the page is saved in the folder the GPX import reads',
+    sent.status === 200 &&
+      sent.text.includes('"files":2') &&
+      inFolder().join() === 'my export (1).zip' &&
+      readFileSync(join(gpxFolder, 'my export (1).zip')).equals(archive),
+    `${sent.status} ${sent.text} ${inFolder().join()}`,
+  );
+  const climbing = await upload('../../../config-page/site.zip', archive);
+  check(
+    'a name with a path in it is saved by its last part, inside that folder',
+    climbing.status === 200 &&
+      inFolder().includes('site.zip') &&
+      !existsSync(join(viaPage, 'site.zip')) &&
+      !existsSync(join(temp, 'site.zip')),
+    `${climbing.status} ${inFolder().join()}`,
+  );
+  const single = await upload('.hidden track.GPX', Buffer.from(track));
+  check(
+    'a .gpx file is taken too, never as a hidden file',
+    single.status === 200 && inFolder().includes('hidden track.gpx'),
+    `${single.status} ${inFolder().join()}`,
+  );
+  const before = inFolder().join();
+  check(
+    'any other kind of file is refused',
+    (await upload('notes.txt', Buffer.from('hello'))).status === 415 &&
+      (await upload('script.zip.sh', archive)).status === 415 &&
+      (await upload('', archive)).status === 415,
+  );
+  const fake = await upload('fake.zip', Buffer.from('not an archive at all'));
+  const locked = await upload(
+    'locked.zip',
+    makeZip([{ name: 'a.gpx', data: track, encrypted: true }]),
+  );
+  const noGpx = await upload('empty.zip', makeZip([{ name: 'readme.txt', data: 'x' }]));
+  const notGpx = await upload('page.gpx', Buffer.from('<html></html>'));
+  check(
+    'a file that is not what its name says, or that the import would refuse, is not saved',
+    fake.status === 400 &&
+      locked.status === 400 &&
+      locked.text.includes('encrypted') &&
+      noGpx.status === 400 &&
+      notGpx.status === 400,
+    [fake, locked, noGpx, notGpx].map((reply) => `${reply.status} ${reply.text}`).join(' | '),
+  );
+  const huge = await upload('huge.zip', Buffer.from('PK'), {
+    'Content-Length': String(600 * 1024 * 1024),
+  });
+  check('a file over the size cap is refused', huge.status === 413, `${huge.status} ${huge.text}`);
+  check(
+    "an upload needs the cookie, the page's header, its origin and the right content type",
+    (await upload('x.zip', archive, {}, false)).status === 403 &&
+      (await upload('x.zip', archive, { 'X-Jam-Setup': '0' })).status === 403 &&
+      (await upload('x.zip', archive, { Origin: 'http://evil.example' })).status === 403 &&
+      (await upload('x.zip', archive, { Host: 'evil.example' })).status === 403 &&
+      (await upload('x.zip', archive, { 'Content-Type': 'application/json' })).status !== 200 &&
+      (await upload('x.zip', archive, { 'Content-Type': 'text/plain' })).status === 415,
+  );
+  check(
+    '  ...and none of the refused files, nor a half-written one, is left in the folder',
+    inFolder().join() === before,
+    inFolder().join(),
   );
 
   // Leaving.

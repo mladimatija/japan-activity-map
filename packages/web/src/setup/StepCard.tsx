@@ -14,7 +14,8 @@ import { Switch } from '../components/ui/switch.tsx';
 import { Textarea } from '../components/ui/textarea.tsx';
 import { isJa, t } from '../i18n.ts';
 import { cn } from '../lib/utils.ts';
-import type { ShownStep } from './api.ts';
+import type { SetupApi, ShownStep } from './api.ts';
+import { GpxDrop } from './GpxDrop.tsx';
 import { SETUP_JA } from './i18n-ja-setup.ts';
 import { ZoneList } from './ZoneList.tsx';
 
@@ -44,6 +45,8 @@ export interface StepProps {
   error?: string;
   mapStyle: string;
   onAnswer: (id: string, value: unknown) => void;
+  /** Sends a file to the GPX folder; without it the step that offers a drop shows its text only. */
+  onUpload?: SetupApi['upload'] | undefined;
 }
 
 const Help = ({ step }: { step: ShownStep }) =>
@@ -53,10 +56,27 @@ const Problem = ({ error }: { error?: string }) =>
   error ? <FieldError>{said(error)}</FieldError> : null;
 
 /** One step as the control its kind calls for. */
-export const StepCard = ({ step, answer, answers, error, mapStyle, onAnswer }: StepProps) => {
+export const StepCard = ({
+  step,
+  answer,
+  answers,
+  error,
+  mapStyle,
+  onAnswer,
+  onUpload,
+}: StepProps) => {
   const id = useId();
   const value = answer ?? step.value;
   const set = (next: unknown) => onAnswer(step.id, next);
+
+  if (step.kind === 'info')
+    return (
+      <Field>
+        <FieldTitle>{t(step.title)}</FieldTitle>
+        <Help step={step} />
+        {step.id === 'gpx.files' && onUpload && <GpxDrop onUpload={onUpload} />}
+      </Field>
+    );
 
   if (step.kind === 'confirm')
     return (

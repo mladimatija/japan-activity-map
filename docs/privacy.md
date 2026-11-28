@@ -47,17 +47,18 @@ elevation profiles, map bounds, and start and finish markers.
 
 ## What is left out
 
-| Left out                                      | Unless                                                                                             |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Activities outside Japan                      | never                                                                                              |
-| Activities without GPS                        | `publish.activitiesWithoutGps` is on; then only those in the Asia/Tokyo time zone                  |
-| Activities set to Only You on Strava          | `publish.includeOnlyMeActivities` is on (Followers-only activities are published like public ones) |
-| Sheet rows with `hide` set to yes             | never                                                                                              |
-| Activities not yet matched (`pnpm jam match`) | they are matched                                                                                   |
-| Time of day                                   | `publish.timeOfDay` is on; hour-of-day charts use totals only                                      |
-| Seconds along tracks (for splits)             | `publish.paceAlongTracks` is on, as it is by default (see below)                                   |
-| Commutes, from the heatmap                    | `publish.commutesInHeatmap` is on                                                                  |
-| Activity names                                | when `publish.activityNames` is off, each is called by its type ("Run", "ランニング")              |
+| Left out                                           | Unless                                                                                             |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Activities of the source the site isn't built from | never; `activities.source` picks Strava or GPX files (docs/gpx.md)                                 |
+| Activities outside Japan                           | never                                                                                              |
+| Activities without GPS                             | `publish.activitiesWithoutGps` is on; then only those in the Asia/Tokyo time zone                  |
+| Activities set to Only You on Strava               | `publish.includeOnlyMeActivities` is on (Followers-only activities are published like public ones) |
+| Sheet rows with `hide` set to yes                  | never                                                                                              |
+| Activities not yet matched (`pnpm jam match`)      | they are matched                                                                                   |
+| Time of day                                        | `publish.timeOfDay` is on; hour-of-day charts use totals only                                      |
+| Seconds along tracks (for splits)                  | `publish.paceAlongTracks` is on, as it is by default (see below)                                   |
+| Commutes, from the heatmap                         | `publish.commutesInHeatmap` is on                                                                  |
+| Activity names                                     | when `publish.activityNames` is off, each is called by its type ("Run", "ランニング")              |
 
 The publish settings are in `config/site.jsonc`.
 
@@ -72,7 +73,8 @@ activity. Turn it off to publish heights only.
 `publish.stravaLinks` in `config/site.jsonc` adds a link to each Strava activity. The sheet's
 `show_strava_link` column overrides it per activity. With the link off, neither the link nor the
 Strava id is published. Every activity is identified by a public id made from the secret salt,
-which stays the same after `strava wipe` and a refetch.
+which stays the same after `strava wipe` and a refetch. Activities from GPX files never have a
+link, and keep their public id through `gpx wipe` and a fresh import.
 
 ## The audit
 
@@ -83,7 +85,8 @@ writes) and fails if it finds:
 - any coordinate pair in a JSON file inside a real zone (the real one, not the moved one);
 - a Strava id that isn't inside a published link;
 - the public id of an activity that is left out;
-- an internal act_ or route_ id, since those carry their creation time;
+- an internal act_ or route_ id, since those carry their creation time (a GPX activity's is made
+  from its start time instead, and is kept out all the same);
 - the secret salt, the Strava client secret or tokens, the Cloudflare token or the account id.
 
 Public geometry isn't a leak where it crosses a zone: a list's place, a reference route, a

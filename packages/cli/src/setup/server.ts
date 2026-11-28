@@ -16,6 +16,8 @@ import { DATA_DIR, ROOT_DIR } from '../paths.ts';
 import { authHooks, openBrowser } from '../strava/auth.ts';
 import { ACTIONS, isActionId, runAction } from './actions.ts';
 import { SetupError, writeDraft } from './engine.ts';
+import { gpxFolder } from '../gpx-import/files.ts';
+import { saveUpload, uploadName, UploadRefused } from './upload.ts';
 import { SOURCES } from './sources.ts';
 import { changeGroups, planView, stage, type Staged, type Start, viewOf } from './stage.ts';
 import { clearState, findFacts, keepable } from './state.ts';
@@ -31,6 +33,8 @@ const IDLE_MS = 30 * 60_000;
 const MAX_BODY = 256 * 1024;
 const COOKIE = 'jam_setup';
 const HEADER = 'x-jam-setup';
+const UPLOAD_PATH = '/api/gpx';
+const FILE_NAME_HEADER = 'x-jam-file-name';
 const STARTS: readonly string[] = ['demo', 'quick', 'full', 'change'];
 
 const TYPES: Record<string, string> = {
@@ -238,6 +242,18 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
       }
       if (method !== 'POST') throw new Refused(404, 'Not found.');
 
+      // A .zip or .gpx for the GPX import. The body is the file; the folder is decided here, from
+      // the config, and the name the page sent is cut down to a plain file name.
+      if (path === UPLOAD_PATH) {
+        const name = uploadName(String(request.headers[FILE_NAME_HEADER] ?? ''));
+        if (!name) throw new Refused(415, 'Only a .zip or .gpx file is taken.');
+        const folder = gpxFolder(stage(flags.configDir, 'quick', {}).ctx.config);
+        const result = await saveUpload(request, folder, name, { keep: !flags.dryRun });
+        log.debug(`setup page: took an upload of ${result.bytes} bytes`);
+        send(response, 200, { saved: result.saved, files: result.files });
+        return;
+      }
+
       const body = await readBody(request);
       if (path === '/api/answers') {
         send(response, 200, viewOf(staged(body).result));
@@ -354,8 +370,11 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
         throw new Refused(403, 'Open the address that `pnpm jam setup --web` printed.');
       if (method === 'POST') {
         if (request.headers[HEADER] !== '1') throw new Refused(403, 'Missing header.');
-        if (!(request.headers['content-type'] ?? '').startsWith('application/json'))
-          throw new Refused(415, 'Send JSON.');
+        // Every change is JSON, except the one file upload, which is the file's bytes.
+        const type = request.headers['content-type'] ?? '';
+        if (url.pathname === UPLOAD_PATH) {
+          if (!type.startsWith('application/octet-stream')) throw new Refused(415, 'Send a file.');
+        } else if (!type.startsWith('application/json')) throw new Refused(415, 'Send JSON.');
       }
 
       if (url.pathname.startsWith('/api/')) {
@@ -379,7 +398,8 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
           response.end();
           return;
         }
-        if (error instanceof Refused) send(response, error.status, { error: error.message });
+        if (error instanceof Refused || error instanceof UploadRefused)
+          send(response, error.status, { error: error.message });
         else if (error instanceof SetupError) send(response, 409, { error: error.message });
         else {
           log.debug(`setup page: ${error instanceof Error ? (error.stack ?? '') : 'error'}`);

@@ -42,10 +42,23 @@ repeated routes and the review only show routes in Japan unless you pass `--all`
 ## Stable ids
 
 Routes and their members are kept in the store, so a rerun only adds new activities and every
-route keeps its id. Members are recorded by Strava id (or the sheet row's act_ id), so after
-`strava wipe` and a full pull the activities rejoin the same routes. `pnpm jam routes regroup`
+route keeps its id. Members are recorded by Strava id (or the act_ id of a sheet row or GPX
+activity), so after `strava wipe` and a full pull the activities rejoin the same routes, and GPX
+activities do after `gpx wipe` and a fresh import. `pnpm jam routes regroup`
 regroups everything from scratch, for example after changing the tolerances; routes whose members
 are mostly the same keep their ids.
+
+## Strava and GPX activities
+
+Grouping works on everything in the store, so when the same loop is there as Strava activities and
+as GPX activities (docs/gpx.md), they share one route. The site is built from one of the two
+sources, and the build takes a route's members from the published activities only: its count,
+dates, times and line come from the chosen source and the sheet, and a route needs two published
+activities to be on the site at all. A route never shows an activity of the other source, and
+switching `activities.source` needs no regrouping. Route ids, names, merges and splits stay as
+they are across the switch.
+
+`pnpm jam routes` and its review show every member, whichever source the site is built from.
 
 ## Names
 
@@ -56,7 +69,7 @@ The site gets these as their parts and says them in its language ("東京都・�
 a name given in `config/routes.jsonc` is shown as written.
 
 Better names, and corrections, go in `config/routes.jsonc` (copy the example). Activities are named
-by Strava id, or by the act_ id for a sheet row; `data/routes-review.md` lists them for every route.
+by Strava id, or by the act_ id for a sheet row or a GPX activity; `data/routes-review.md` lists them for every route.
 
 ```jsonc
 {

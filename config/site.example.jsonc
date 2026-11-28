@@ -5,6 +5,20 @@
     // "baseUrl": "https://map.example.com",
     "description": ""
   },
+  // Which activities the site is built from (docs/gpx.md): "strava" (what `pnpm jam sync strava`
+  // fetched) or "gpx" (what `pnpm jam sync gpx` imported). The sheet's own rows count either way.
+  // Both can sit in the local store; switching and rebuilding deletes nothing.
+  "activities": {
+    "source": "strava",
+    "gpx": {
+      // The folder `pnpm jam sync gpx` reads when no path is given, relative to the repository.
+      // Left out, data/activities.
+      // "folder": "data/activities",
+      // The type of a GPX file whose own <type> is missing or not understood: "hike", "walk",
+      // "run", "trail_run" or "ride".
+      "defaultType": "hike"
+    }
+  },
   "map": {
     // Any MapLibre style. OpenFreeMap needs no key but is provided as-is, so keep this swappable.
     // Positron is muted, so your data is the only colour; Liberty and Bright show more streets.

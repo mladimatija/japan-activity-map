@@ -6,7 +6,7 @@ import { Button } from '../components/ui/button.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card.tsx';
 import { t } from '../i18n.ts';
 import { cn } from '../lib/utils.ts';
-import type { SetupState, Start, View } from './api.ts';
+import type { SetupApi, SetupState, Start, View } from './api.ts';
 import { said, StepCard } from './StepCard.tsx';
 
 export const Screen = ({
@@ -363,6 +363,7 @@ export interface StepsProps {
   onPage: (page: number) => void;
   onSave: () => void;
   onBack: () => void;
+  onUpload?: SetupApi['upload'];
 }
 
 /** The steps as cards. Full setup goes group by group; the other modes fit one page. */
@@ -377,6 +378,7 @@ export const Steps = ({
   onPage,
   onSave,
   onBack,
+  onUpload,
 }: StepsProps) => {
   const groups = [...new Set(view.steps.map((step) => step.group))];
   const paged = start === 'full';
@@ -432,6 +434,7 @@ export const Steps = ({
                   error={view.errors[step.id]}
                   mapStyle={state.mapStyle}
                   onAnswer={onAnswer}
+                  onUpload={onUpload}
                 />
               ))}
           </CardContent>

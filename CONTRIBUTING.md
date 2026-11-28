@@ -40,8 +40,8 @@ pnpm jam lists build
 ```
 
 The README lists every command; `docs/` explains each part (`web.md`, `design-system.md`,
-`build.md`, `privacy.md`, `matching.md`, `routes.md`, `strava-setup.md`, `setup.md`, `demo.md`,
-`deploy.md`). `lists/README.md` covers the reference lists and their known gaps.
+`build.md`, `privacy.md`, `matching.md`, `routes.md`, `strava-setup.md`, `gpx.md`, `setup.md`,
+`demo.md`, `deploy.md`). `lists/README.md` covers the reference lists and their known gaps.
 
 ## Where to start
 
@@ -49,7 +49,8 @@ The lists are the easiest place for a first change: a road of 日本の道100選
 four values in `lists/sources/michi-100/roads.json`, and a wrong English name one line in
 `lists/overrides.jsonc` (`lists/README.md`, "Known gaps", says what is missing). Unit tests for the
 pure logic (filters, clipping, matching) are welcome too: `pnpm test` runs what exists so far.
-Other activity sources, social features, weather and photos are left out on purpose; open an issue before building one.
+Activities come from Strava, GPX files or the sheet; other services, social features, weather
+and photos are left out on purpose, so open an issue before building one.
 
 | Path            | What lives there                                                              |
 | --------------- | ----------------------------------------------------------------------------- |
@@ -69,6 +70,7 @@ Run `pnpm check` before every commit, and the checks for what you touched:
 | `pnpm check:lists`     | Reading list sources and building place lists     | Nothing                       |
 | `pnpm check:match`     | Matching activities to places and routes          | Nothing                       |
 | `pnpm check:routes`    | Grouping repeated activities into routes          | Nothing                       |
+| `pnpm check:gpx`       | GPX import, and building from Strava or GPX files | Nothing                       |
 | `pnpm check:privacy`   | Privacy zones, publish rules and the audit        | Nothing                       |
 | `pnpm check:build`     | The build output, its schemas and its size budget | Nothing                       |
 | `pnpm check:strava`    | Strava sync against a fake local server           | `curl`                        |

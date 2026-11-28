@@ -18,7 +18,7 @@ import type { CommandContext } from './types.ts';
 const SHEET_REVIEW_FILE = join(DATA_DIR, 'sheet-review.md');
 
 /** For --dry-run: a throwaway copy of the store, so the plan is exact and nothing real changes. */
-const previewStore = async (log: Logger): Promise<{ store: Store; dispose(): void }> => {
+export const previewStore = async (log: Logger): Promise<{ store: Store; dispose(): void }> => {
   const dir = mkdtempSync(join(tmpdir(), 'jam-preview-'));
   const copy = join(dir, 'jam.sqlite');
   if (existsSync(STORE_FILE)) {

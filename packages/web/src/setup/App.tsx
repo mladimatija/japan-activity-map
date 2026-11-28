@@ -182,6 +182,7 @@ export const SetupApp = ({ api }: { api: SetupApi }) => {
                 onPage={setPage}
                 onSave={() => void save()}
                 onBack={() => setScreen('welcome')}
+                onUpload={(file) => api.upload(file)}
               />
             ) : (
               <p className="text-sm text-muted-foreground">{t('Asking the setup command…')}</p>

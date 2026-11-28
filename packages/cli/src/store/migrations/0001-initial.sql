@@ -11,7 +11,7 @@ CREATE TABLE activities (
   id TEXT PRIMARY KEY,
   -- Derived from id and the secret salt in meta; safe to publish.
   public_id TEXT NOT NULL UNIQUE,
-  source TEXT NOT NULL,                     -- strava | sheet
+  source TEXT NOT NULL,                     -- strava | sheet | gpx
   strava_id INTEGER UNIQUE,                 -- kept locally even when links are not published
   start_time TEXT NOT NULL,                 -- UTC
   start_local TEXT,                         -- wall-clock time at the start
@@ -50,7 +50,7 @@ CREATE TABLE tracks (
 
 CREATE TABLE pulls (
   id INTEGER PRIMARY KEY,
-  source TEXT NOT NULL,                     -- strava | sheet
+  source TEXT NOT NULL,                     -- strava | sheet | gpx
   started_at TEXT NOT NULL,
   finished_at TEXT,
   range_from TEXT,

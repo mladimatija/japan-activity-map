@@ -26,7 +26,15 @@ export const GROUPS: { id: string; title: string }[] = [
 ];
 
 /** Quick setup asks its few questions in this order instead. */
-const QUICK_GROUPS = ['site', 'sources', 'source:strava', 'source:sheet', 'privacy', 'publish'];
+const QUICK_GROUPS = [
+  'site',
+  'sources',
+  'source:strava',
+  'source:gpx',
+  'source:sheet',
+  'privacy',
+  'publish',
+];
 
 const FETCH_HELP: Partial<Record<(typeof FETCH_SOURCES)[number], string>> = {
   gokaido: 'The five historic highways. Not committed (non-commercial licence).',
@@ -48,11 +56,23 @@ const SOURCES_STEP: Step = {
     label,
     help,
   })),
-  read: ({ facts }) => [
-    ...(facts.stravaCredentials || !facts.sheetExists ? ['strava'] : []),
-    ...(facts.sheetExists ? ['sheet'] : []),
-  ],
-  map: () => [],
+  read: ({ facts, config }) => {
+    const fromGpx = config.site.activities.source === 'gpx';
+    return [
+      ...(!fromGpx && (facts.stravaCredentials || !facts.sheetExists) ? ['strava'] : []),
+      ...(fromGpx ? ['gpx'] : []),
+      ...(facts.sheetExists ? ['sheet'] : []),
+    ];
+  },
+  // The site is built from Strava or from GPX files. With one of the two chosen, that one; with
+  // both, the GPX group's first step asks; with neither (a sheet alone), the setting stays as it is.
+  map: (answer) => {
+    const chosen = Array.isArray(answer) ? answer.map(String) : [];
+    const [strava, gpx] = [chosen.includes('strava'), chosen.includes('gpx')];
+    return strava === gpx
+      ? []
+      : [{ file: 'site', path: ['activities', 'source'], value: gpx ? 'gpx' : 'strava' }];
+  },
   check: (answer) =>
     Array.isArray(answer) && answer.length > 0 ? undefined : 'Choose at least one source.',
   // Change mode reaches every source's settings without asking.

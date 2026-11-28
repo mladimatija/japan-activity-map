@@ -111,6 +111,8 @@ export interface SetupApi {
   merge(index: number): Promise<MergeCandidate[]>;
   /** The tracks as they would be published, cut at the zones; null before a preview is written. */
   preview(): Promise<PreviewTracks | null>;
+  /** Sends a .zip or .gpx to the folder the GPX import reads; resolves with how many files it holds. */
+  upload(file: File): Promise<{ saved: string; files: number }>;
   shutdown(finished: boolean): Promise<void>;
 }
 
@@ -185,6 +187,20 @@ export const httpApi: SetupApi = {
     const response = await fetch('/api/privacy-preview', { credentials: 'same-origin' });
     return response.ok ? ((await response.json()) as PreviewTracks) : null;
   },
+  upload: async (file) =>
+    json(
+      await fetch('/api/gpx', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/octet-stream',
+          'X-Jam-Setup': '1',
+          // Only a name: the server decides the folder and cuts the name down itself.
+          'X-Jam-File-Name': encodeURIComponent(file.name),
+        },
+        body: file,
+        credentials: 'same-origin',
+      }),
+    ),
   shutdown: async (finished) => {
     await post('/api/shutdown', { finished });
   },

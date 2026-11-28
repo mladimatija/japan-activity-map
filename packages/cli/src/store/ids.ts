@@ -1,4 +1,4 @@
-import { createHmac, randomBytes } from 'node:crypto';
+import { createHash, createHmac, randomBytes } from 'node:crypto';
 
 // Crockford base32: no I, L, O or U, so ids read and type without confusion.
 const ALPHABET = '0123456789abcdefghjkmnpqrstvwxyz';
@@ -34,6 +34,14 @@ export const newId = (kind: IdKind, now = Date.now()): string => {
   }
   return `${kind}_${base32(time)}${base32(randomBytes(10))}`;
 };
+
+/**
+ * An internal id worked out from a key instead of the clock, the same every time: for activities
+ * that are recognised by something of their own (a GPX track's start time), so they keep their id,
+ * and with it their public id and their route, through a wipe and a fresh import.
+ */
+export const keyedId = (kind: IdKind, key: string): string =>
+  `${kind}_${base32(createHash('sha256').update(key).digest().subarray(0, 16))}`;
 
 /** A fresh secret for public ids, stored only in the local database. */
 export const newSalt = (): string => randomBytes(32).toString('hex');

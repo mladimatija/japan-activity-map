@@ -19,9 +19,14 @@ size, the compressed size of the files loaded at start against the budget, and t
 
 ## What is counted
 
+The site is built from one activity source, `activities.source` in `config/site.jsonc`: `strava`
+(the default) or `gpx` (docs/gpx.md). Activities of the other one stay in the store and are listed
+under "Left out". The sheet's own rows count with either. Changing the setting and building again
+gives the other site; nothing is deleted.
+
 Everything public is worked out from the published activities only: list statuses, visits, route
-coverage, totals and charts. An activity left out (outside Japan, hidden in the sheet, Only You,
-no GPS) doesn't make a summit done on the site, though it still does in `jam match`, which is
+coverage, totals and charts. An activity left out (the other source, outside Japan, hidden in the sheet,
+Only You, no GPS) doesn't make a summit done on the site, though it still does in `jam match`, which is
 your own view. Statuses you write in the sheet (done, DNS, want) count as usual.
 
 Privacy zones apply to everything with a position: tracks, route lines, start and end points,
@@ -30,18 +35,18 @@ reached. A list place inside a zone shows its status, but not how often or when 
 
 ## Files
 
-| File                              | Holds                                                                                                                                                                                                                                                          | Loaded                          |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| `meta.json`                       | Schema version, build time, counts, track years, publish settings, saved views, map styles, shown area and terrain source, credits                                                                                                                             | at start                        |
-| `activities.json`                 | One record per activity: public id, date, type, tags, source (Strava or sheet), name, distance, climb, times, distance and climb per prefecture, places reached, reference route items covered, grouped route, link (if on), track year, bounds, start and end | at start                        |
-| `lists.json`                      | Every list and item with its status, visits, first and latest date; coverage for routes, with the covered stretches                                                                                                                                            | at start                        |
-| `prefectures.geojson`             | Simplified outlines with your totals in each                                                                                                                                                                                                                   | at start                        |
-| `mask.geojson`                    | Everything outside Japan and a 20 km band of sea, which the map covers (see docs/web.md)                                                                                                                                                                       | at start                        |
-| `stats.json`                      | Totals by type, year, month and prefecture; starts by hour and weekday, overall and per type; completion over time per list                                                                                                                                    | at start                        |
-| `routes.json`                     | Routes with two or more published activities: counts, dates, times or paces, the representative line                                                                                                                                                           | at start                        |
-| `reference-routes/<list>.geojson` | A route list's geometry and the stretches covered                                                                                                                                                                                                              | when the list is shown          |
-| `prefectures/<code>.geojson`      | One prefecture in detail, from `jam lists fetch outlines` (left out until that has run): its area (coast to about 25 m) and its land borders with its neighbours (to about 5 m)                                                                                | when the prefecture is selected |
-| `tracks/<year>.geojson`           | Tracks of that year, cut at privacy zones and simplified; heights as each point's third number, and seconds per point (`t`, from each stretch's start) with `publish.paceAlongTracks`                                                                          | when the year is shown          |
+| File                              | Holds                                                                                                                                                                                                                                                               | Loaded                          |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `meta.json`                       | Schema version, build time, counts, track years, publish settings, saved views, map styles, shown area and terrain source, credits                                                                                                                                  | at start                        |
+| `activities.json`                 | One record per activity: public id, date, type, tags, source (Strava, GPX or sheet), name, distance, climb, times, distance and climb per prefecture, places reached, reference route items covered, grouped route, link (if on), track year, bounds, start and end | at start                        |
+| `lists.json`                      | Every list and item with its status, visits, first and latest date; coverage for routes, with the covered stretches                                                                                                                                                 | at start                        |
+| `prefectures.geojson`             | Simplified outlines with your totals in each                                                                                                                                                                                                                        | at start                        |
+| `mask.geojson`                    | Everything outside Japan and a 20 km band of sea, which the map covers (see docs/web.md)                                                                                                                                                                            | at start                        |
+| `stats.json`                      | Totals by type, year, month and prefecture; starts by hour and weekday, overall and per type; completion over time per list                                                                                                                                         | at start                        |
+| `routes.json`                     | Routes with two or more published activities: counts, dates, times or paces, the representative line                                                                                                                                                                | at start                        |
+| `reference-routes/<list>.geojson` | A route list's geometry and the stretches covered                                                                                                                                                                                                                   | when the list is shown          |
+| `prefectures/<code>.geojson`      | One prefecture in detail, from `jam lists fetch outlines` (left out until that has run): its area (coast to about 25 m) and its land borders with its neighbours (to about 5 m)                                                                                     | when the prefecture is selected |
+| `tracks/<year>.geojson`           | Tracks of that year, cut at privacy zones and simplified; heights as each point's third number, and seconds per point (`t`, from each stretch's start) with `publish.paceAlongTracks`                                                                               | when the year is shown          |
 
 `lists.json` also gets a Municipalities list when `lists/sources/n03-municipalities` is there
 (`pnpm jam lists fetch municipalities`): every municipality, done when a published track passes
@@ -49,7 +54,8 @@ through it. Only the stretches outside privacy zones count, as everywhere else.
 
 Every file carries `schemaVersion`. The schemas are in `packages/core/src/output/schema.ts`; the
 build validates against them, and the web app uses the same types. A change that an older web app
-couldn't read bumps the version.
+couldn't read bumps the version. A new value an older app passes over, as `gpx` in an activity's
+`source` is (that app shows the activity and offers no filter for it), doesn't.
 
 `meta.json` also carries `"demo": true` when the store is the demo's (`pnpm jam demo`,
 docs/demo.md), and only then; the site shows a badge and the audit warns. A demo store is never

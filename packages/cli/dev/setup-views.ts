@@ -33,6 +33,8 @@ const views = {
   ),
   fullTilejson: viewOf(stage(configDir, 'full', { sources, 'map.terrain': 'tilejson' })),
   demo: viewOf(stage(configDir, 'demo', {})),
+  // GPX files instead of Strava: the step with the file drop.
+  quickGpx: viewOf(stage(configDir, 'quick', { sources: ['gpx', 'sheet'] })),
   ...Object.fromEntries(
     changeGroups().map((group) => [
       `change:${group.id}`,
