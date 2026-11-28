@@ -83,6 +83,7 @@ Run `pnpm check` before every commit, and the checks for what you touched:
 | `pnpm check:setup-ui`  | Renders every screen of the setup page            | Nothing                       |
 | `pnpm check:web:demo`  | Renders every pane and page, on a demo build      | Nothing                       |
 | `pnpm check:web`       | The same, on your own build                       | Your own build in `dist/data` |
+| `pnpm check:bundle`    | Size budget of the web app's code                 | `pnpm web:build` first        |
 
 `pnpm fix` applies automatic format and lint fixes. All checks except `check:web` use made-up
 activities in a temporary folder and never touch `data/`. None of them uses the network or uploads

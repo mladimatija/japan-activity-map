@@ -226,6 +226,7 @@ Node.js 26, so the command-line tool has no build step.
 | `pnpm check:build`    | The build, likewise                                                                         |
 | `pnpm check:web`      | Renders the map's pane for every list and selection, against your real build in `dist/data` |
 | `pnpm check:web:demo` | The same, against a demo build made in a temporary folder                                   |
+| `pnpm check:bundle`   | The size budget of the web app's code, after `pnpm web:build`                               |
 | `pnpm check:demo`     | `jam demo` itself                                                                           |
 | `pnpm check:deploy`   | Deploying to each host, against stand-ins; uploads nothing                                  |
 

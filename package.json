@@ -28,6 +28,7 @@
     "check:setup": "node packages/cli/dev/check-setup.ts",
     "check:setup-web": "node packages/cli/dev/check-setup-web.ts",
     "check:web": "sh packages/web/dev/check-web.sh",
+    "check:bundle": "node packages/web/dev/check-bundle.ts",
     "check:demo": "node packages/cli/dev/check-demo.ts",
     "check:deploy": "node packages/cli/dev/check-deploy.ts",
     "check:web:demo": "node packages/web/dev/check-web-demo.ts",

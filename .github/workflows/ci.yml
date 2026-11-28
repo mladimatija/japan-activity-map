@@ -56,6 +56,9 @@ jobs:
       - name: Build the web app
         run: pnpm web:build
 
+      - name: Size budget of the web app's code
+        run: pnpm check:bundle
+
       # Made-up activities in a temporary folder; never data/. The 五街道 route files are not
       # committed, so the checks use a stand-in 東海道 (packages/cli/dev/harness.ts).
       - name: Matching checks

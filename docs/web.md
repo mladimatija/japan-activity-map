@@ -480,6 +480,9 @@ At start the site loads `meta.json`, `activities.json`, `lists.json`, `prefectur
 `mask.geojson`, `stats.json` and `routes.json` in parallel (the build reports their compressed size against
 `output.startBudgetKB`), then the code: about 103 KB for the app and 300 KB for MapLibre, gzip, and 8 KB more when a chart
 page is opened. The compare page loads every year of tracks.
+The code has a size budget of its own: `pnpm check:bundle`, after `pnpm web:build`, fails when
+the first load, all the code together or any one chunk outgrows it, and CI runs it. The budgets
+are in `packages/web/dev/check-bundle.ts`; raise one there when an increase is meant.
 With the tracks layer on, tracks load a year at a time, newest first, and the older years once the
 page is idle; with activity filters on, only the years that have a matching track. With it off,
 selecting an activity loads only its year. A route list's geometry loads when that list is chosen. A file that fails to load shows a note in the pane; the
