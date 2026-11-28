@@ -33,6 +33,8 @@ export default defineConfig({
     outDir: OUT,
     emptyOutDir: true,
     chunkSizeWarningLimit: 1200,
+    // Fonts stay files, however small: the setup server allows fonts from its own origin only.
+    assetsInlineLimit: (file: string) => (/\.woff2?$/.test(file) ? false : undefined),
     rollupOptions: {
       input: join(ROOT, 'setup.html'),
       onwarn(warning, warn) {

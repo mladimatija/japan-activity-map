@@ -55,7 +55,9 @@ export const Facts = ({ rows, className }: { rows: [string, ReactNode][]; classN
     {rows.map(([term, value]) => (
       <div key={term} className="min-w-0 bg-background px-3 py-2.5 last:odd:col-span-2">
         <dt className="text-xs text-muted-foreground">{t(term)}</dt>
-        <dd className="mt-0.5 text-row font-semibold tabular-nums">{value}</dd>
+        <dd className="mt-0.5 font-figure text-lg leading-snug font-semibold tabular-nums">
+          {value}
+        </dd>
       </div>
     ))}
   </dl>
@@ -139,7 +141,7 @@ export const Fold = ({
 
 /** A pane's title (a list, a detail, the filters). It takes focus when its view opens. */
 export const PANE_TITLE =
-  'rounded-sm text-xl leading-tight font-bold outline-none focus-visible:ring-3 focus-visible:ring-ring/50 md:text-title';
+  'rounded-sm font-title text-xl leading-tight font-bold outline-none focus-visible:ring-3 focus-visible:ring-ring/50 md:text-title';
 
 /**
  * The chevron of a heading that folds its group away, on the right: down while folded, up while
@@ -157,10 +159,10 @@ export const GROUP_ROW = 'min-h-11 rounded-sm px-1 text-sm font-semibold hover:b
 
 /** A headline figure: how far along, out of what, and the share: "5 / 100 … 5%". */
 export const Headline = ({ value, of, share }: { value: ReactNode; of: string; share: string }) => (
-  <p className="mb-2 flex items-baseline gap-0.5 tabular-nums">
-    <strong className="text-2xl leading-none font-bold md:text-display">{value}</strong>
-    <span className="text-base text-muted-foreground"> {of}</span>
-    <span className="ml-auto text-base font-semibold">{share}</span>
+  <p className="mb-2 flex items-baseline gap-1 font-figure tabular-nums">
+    <strong className="text-3xl leading-none font-bold md:text-figure">{value}</strong>
+    <span className="text-lg text-muted-foreground"> {of}</span>
+    <span className="ml-auto text-lg font-semibold">{share}</span>
   </p>
 );
 
@@ -292,7 +294,7 @@ export const Count = ({ children }: { children: ReactNode }) => (
 
 /** Small capitals over a title. */
 export const Eyebrow = ({ children }: { children: ReactNode }) => (
-  <p className="mb-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+  <p className="mb-1 font-mono text-xs font-medium tracking-wide text-muted-foreground uppercase">
     {children}
   </p>
 );
@@ -323,7 +325,7 @@ export const NameTitle = ({
         {nameIn(name, lang)}
       </Heading>
       {sub && (
-        <p className="mt-0.5 text-muted-foreground" lang={otherLang(lang)}>
+        <p className="mt-0.5 font-title text-row text-muted-foreground" lang={otherLang(lang)}>
           {sub}
         </p>
       )}

@@ -333,7 +333,7 @@ const YearCards = ({ data, derived }: { data: Data; derived: Derived }) => {
             <li key={year} className="min-w-0">
               <Card size="sm" className="h-full min-w-0 gap-0 px-3.5 py-3">
                 <TextLink
-                  className="w-fit text-xl font-bold"
+                  className="w-fit font-figure text-2xl font-bold"
                   onClick={() =>
                     useStore.setState((state) => ({
                       page: 'map',

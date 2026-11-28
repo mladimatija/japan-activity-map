@@ -65,6 +65,9 @@ export default defineConfig({
     emptyOutDir: false,
     // Only the map library is this big (about 1.1 MB, 300 kB compressed); nothing else comes near.
     chunkSizeWarningLimit: 1200,
+    // Fonts stay files, however small: the published site allows fonts from its own origin only
+    // (font-src 'self'), which a data: URL is not.
+    assetsInlineLimit: (file: string) => (/\.woff2?$/.test(file) ? false : undefined),
     rollupOptions: {
       output: {
         // The libraries change far less often than the app, so they get a file of their own: a

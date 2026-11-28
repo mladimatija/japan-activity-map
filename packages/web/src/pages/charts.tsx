@@ -67,7 +67,7 @@ export const ChartPage = ({
 }) => (
   <article className="mx-auto max-w-260 px-3 pt-4 pb-[calc(var(--sheet-height,30vh)+24px)] md:px-6 md:pt-5 md:pb-12">
     <header className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-      <h1 tabIndex={-1} className="text-2xl font-bold outline-none">
+      <h1 tabIndex={-1} className="font-title text-3xl font-bold outline-none">
         {t(title)}
       </h1>
       {intro && (
@@ -209,7 +209,10 @@ export const Figures = ({ items, hero = false }: { items: [string, string][]; he
       >
         <dt className="text-xs text-muted-foreground">{t(label)}</dt>
         <dd
-          className={cn('font-semibold', hero && i === 0 ? 'text-display' : 'text-xl tabular-nums')}
+          className={cn(
+            'font-figure leading-tight font-semibold tabular-nums',
+            hero && i === 0 ? 'text-3xl md:text-figure' : 'text-xl',
+          )}
         >
           {value}
         </dd>

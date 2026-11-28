@@ -94,20 +94,34 @@ Status always comes with an icon or label, never colour alone.
 
 ### Type
 
-One family (the system sans). Sizes, as Tailwind classes:
+Four voices. The Latin faces ship with the site (`src/fonts.ts`, from Fontsource): a published
+site allows fonts from its own origin only, and a reader downloads only the Latin files: about
+130 kB, and up to 100 kB more where names have macrons (Tōhoku). Japanese is set in the reader's system fonts, so it costs nothing to download: a gothic
+for text and a mincho for titles and names (Hiragino, Yu, or Noto).
 
-| Class          | Size  | Use                                    |
-| -------------- | ----- | -------------------------------------- |
-| `text-axis`    | 10 px | Chart axes and labels only             |
-| `text-xs`      | 12 px | Captions, supporting lines             |
-| `text-compact` | 13 px | Tables, small headings, secondary text |
-| `text-sm`      | 14 px | Body (the default)                     |
-| `text-row`     | 15 px | A row's name, a figure's value         |
-| `text-title`   | 22 px | A pane's title                         |
-| `text-display` | 28 px | A page's headline figure               |
+| Class         | Face                                         | Use                                                                                                 |
+| ------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `font-sans`   | IBM Plex Sans; Japanese in the system gothic | Everything not below (the default)                                                                  |
+| `font-title`  | IBM Plex Sans Condensed; Japanese in mincho  | Titles and names: a pane's title (`PANE_TITLE`), a page's, a name's second language under its title |
+| `font-figure` | IBM Plex Sans Condensed; Japanese in gothic  | Figures: the headline, `Figures`, `Facts`, a count beside its total                                 |
+| `font-mono`   | IBM Plex Mono; Japanese in the system gothic | Small capitals over a title (`Eyebrow`), coordinates                                                |
 
-Weights: normal and `font-semibold`; `font-bold` for page titles. Numbers that line up in columns
-get `tabular-nums`.
+Sizes, as Tailwind classes:
+
+| Class          | Size  | Use                                                      |
+| -------------- | ----- | -------------------------------------------------------- |
+| `text-axis`    | 10 px | Chart axes and labels only                               |
+| `text-xs`      | 12 px | Captions, supporting lines                               |
+| `text-compact` | 13 px | Tables, small headings, secondary text                   |
+| `text-sm`      | 14 px | Body (the default)                                       |
+| `text-row`     | 15 px | A row's name, a figure's value                           |
+| `text-title`   | 22 px | A pane's title                                           |
+| `text-display` | 28 px | A setup step's headline                                  |
+| `text-figure`  | 44 px | A headline figure: a list's score, a page's first figure |
+
+Weights: normal and `font-semibold`; `font-bold` for titles and headline figures. The condensed
+face comes in 500 to 700, so its normal text shows at 500. Numbers that line up in columns get
+`tabular-nums`. Only names and titles go in mincho: running Japanese text stays in the gothic.
 
 ### Shape and space
 

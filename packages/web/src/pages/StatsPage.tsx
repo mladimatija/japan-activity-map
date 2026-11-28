@@ -640,10 +640,10 @@ const PrefecturesCard = ({ data, derived }: { data: Data; derived: Derived }) =>
       className="mb-0"
       note="Select a prefecture to see it on the map."
     >
-      <p className="mb-2 flex items-baseline gap-1 tabular-nums">
-        <strong className="text-2xl font-bold">{visited.size}</strong>
-        <span className="text-muted-foreground">/ {total}</span>
-        <span className="ml-auto font-semibold">{percent(visited.size, total)}</span>
+      <p className="mb-2 flex items-baseline gap-1 font-figure tabular-nums">
+        <strong className="text-3xl font-bold">{visited.size}</strong>
+        <span className="text-lg text-muted-foreground">/ {total}</span>
+        <span className="ml-auto text-lg font-semibold">{percent(visited.size, total)}</span>
       </p>
       <PrefectureMap
         data={data}

@@ -1,3 +1,4 @@
+import '../fonts.ts';
 import './setup.css';
 
 import { StrictMode } from 'react';
