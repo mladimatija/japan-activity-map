@@ -307,7 +307,8 @@ const PlaceDetail = ({ data, list, item }: { data: Data; list: List; item: ListI
         <Section title="Also in">
           <ul>
             {others.map(({ list: other, item: entry }) => (
-              <li key={other.id}>
+              // By item: a peak on a border is in the prefecture high points once per prefecture.
+              <li key={entry.id}>
                 <LinkRow
                   onClick={() => {
                     chooseList(other.id);
