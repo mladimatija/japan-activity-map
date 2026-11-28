@@ -44,13 +44,23 @@
   OpenStreetMap place of the same name (芦野宿, 芦野宿跡 or 芦野) on the line between the towns
   either side, from `../osm/post-town-places.json`. `lists/review.md` names every town placed
   this way and every town still missing.
+- An article is about its town when it is on a post town (高井戸宿 for 下高井戸宿 and 上高井戸宿)
+  or on the place the town is named after (吉野町 for 吉野宿). Many 甲州街道 towns link the
+  village they were in instead (富浜村, 大月町, 初狩村, 笹子村), so several towns would share the
+  village's point and name. Such a town sits at the OpenStreetMap place of its own name nearest
+  the village's point (a board, a stone or a bus stop, within 2.5 km), where there is one, and
+  the village's English label is not used. Towns that share an article on a post town are one
+  boundary named after it; any other towns at one place are named after each of them
+  (白野宿・阿弥陀海道宿, both at 笹子村's point).
 - A town listed twice in a row under the same number is one town: where one table ends with a
   town and the next begins with it (東海道五十三次 repeats 大津宿, unlinked, at the head of its
   京街道 table; 甲州街道 repeats 甲府柳町宿), the repeat only fills in what the first row lacks.
-- English names are the Wikidata label. A town without one is named after an OpenStreetMap
-  place of its name within 2.5 km, from the same file: one named like the town (千住宿 →
-  Senju-juku), else like the place (国領 → Kokuryō), taking its romanisation, English name or
-  romanised reading. Those are place names, since whether 宿 is read juku or shuku varies. Where
+- English names are the Wikidata label of an article about the town. A town without one is
+  named after an OpenStreetMap place of its name within 2.5 km, from the same file: one named
+  like the town (千住宿 → Senju-juku), else like the place (国領 → Kokuryō), taking its
+  romanisation, English name or romanised reading. Those are place names, since whether 宿 is
+  read juku or shuku varies. Labels that are not the town's (猿橋宿's "Saruhashi Bridge", 栗原宿's
+  "Kurihara resort" for くりばら) are corrected there too. Where
   there is none, `postTownNames` in `lists/overrides.jsonc` gives one by hand; `lists/review.md`
   names every town named from OpenStreetMap and every one still without an English name.
 

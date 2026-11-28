@@ -197,6 +197,25 @@ export const townNames = (ja: string): string[] => {
 const looksLikeName = (ja: string) =>
   /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(ja);
 
+/** An article's title without its disambiguation: 大月町 (山梨県) → 大月町. */
+const titleOf = (article: string) => article.replace(/\s*\(.*\)$/, '');
+
+/** Whether an article is on a post town (高井戸宿, 布田五宿, 見附宿), not a village or a bridge. */
+export const namesPostTown = (article: string): boolean => /宿(跡)?$/.test(titleOf(article));
+
+/**
+ * Whether the article a post town links to is about the town: one on a post town (高井戸宿 for
+ * 下高井戸宿), or on the place it is named after (吉野町 for 吉野宿, 興津 for 興津宿). Many 甲州街道
+ * towns link the village they were in instead (富浜村 for 下鳥沢宿 and 上鳥沢宿), whose
+ * coordinates and English label are the village's.
+ */
+export const articleAboutTown = (town: { ja: string; article?: string | undefined }): boolean => {
+  if (!town.article) return false;
+  const title = titleOf(town.article);
+  const base = town.ja.replace(/宿$/, '');
+  return namesPostTown(town.article) || title === base || title.replace(/[町村市]$/, '') === base;
+};
+
 /**
  * A post town listed twice in a row is one town. Where one of an article's tables ends with a
  * town and the next begins with it, the second row repeats the first, often without a link
@@ -301,19 +320,6 @@ const buildStages = (
     from,
     ...project(chain, point),
   });
-  const onLine = listed.flatMap((town) => {
-    const nearest = [
-      ...(town.wikipedia
-        ? [place(town, [town.wikipedia.lon, town.wikipedia.lat], 'wikipedia')]
-        : []),
-      ...(town.wikidata ? [place(town, [town.wikidata.lon, town.wikidata.lat], 'wikidata')] : []),
-    ].sort((a, b) => a.offM - b.offM)[0];
-    return nearest && nearest.offM <= ON_LINE_M ? [nearest] : [];
-  });
-  const { kept: ordered, dropped } = inOrder(onLine);
-
-  // Towns with no usable position (none, off the line, or out of order): an OpenStreetMap place
-  // of the same name, on the line between the towns either side of it.
   const places = new Map<string, NamedPlace[]>();
   for (const element of loadOsm(POST_TOWN_NODES)?.elements ?? []) {
     const name = element.tags.name;
@@ -324,22 +330,59 @@ const buildStages = (
       { point: [element.lon, element.lat], tags: element.tags },
     ]);
   }
+  // OpenStreetMap places of a town's name on the line that fit, best first by `order`.
+  const placesOfName = (
+    town: (typeof listed)[number],
+    fits: (entry: Placed) => boolean,
+    order: (a: Placed, b: Placed) => number,
+  ): Placed | undefined =>
+    townNames(town.ja)
+      .flatMap((name) => (places.get(name) ?? []).map((found) => place(town, found.point, 'osm')))
+      .filter((entry) => entry.offM <= ON_LINE_M && fits(entry))
+      .sort(order)[0];
+  // A town whose article is about the village it was in sits at the place of its own name
+  // nearest the village's point, where OpenStreetMap has one: 駒橋宿, 大月宿, 下花咲宿 and
+  // 上花咲宿 all link 大月町, and would otherwise be one point.
+  const moved: Placed[] = [];
+  const atVillage: Placed[] = [];
+  const onLine = listed.flatMap((town) => {
+    const nearest = [
+      ...(town.wikipedia
+        ? [place(town, [town.wikipedia.lon, town.wikipedia.lat], 'wikipedia')]
+        : []),
+      ...(town.wikidata ? [place(town, [town.wikidata.lon, town.wikidata.lat], 'wikidata')] : []),
+    ].sort((a, b) => a.offM - b.offM)[0];
+    if (nearest && !articleAboutTown(town)) {
+      const fromVillage = (entry: Placed) => distanceM(entry.point, nearest.point);
+      const own = placesOfName(
+        town,
+        (entry) => fromVillage(entry) <= NAMESAKE_M,
+        (a, b) => fromVillage(a) - fromVillage(b),
+      );
+      if (own) {
+        moved.push(own);
+        return [own];
+      }
+      if (nearest.offM <= ON_LINE_M) atVillage.push(nearest);
+    }
+    return nearest && nearest.offM <= ON_LINE_M ? [nearest] : [];
+  });
+  const { kept: ordered, dropped } = inOrder(onLine);
+
+  // Towns with no usable position (none, off the line, or out of order): an OpenStreetMap place
+  // of the same name, on the line between the towns either side of it.
   const kept = [...ordered];
   const fromOsm: Placed[] = [];
   for (const town of listed) {
     if (kept.some((entry) => entry.town === town)) continue;
     const before = kept.filter((entry) => entry.town.seq < town.seq).at(-1);
     const after = kept.find((entry) => entry.town.seq > town.seq);
-    const fits = townNames(town.ja)
-      .flatMap((name) => places.get(name) ?? [])
-      .map((found) => place(town, found.point, 'osm'))
-      .filter(
-        (entry) =>
-          entry.offM <= ON_LINE_M &&
-          entry.alongM >= (before?.alongM ?? 0) &&
-          entry.alongM <= (after?.alongM ?? chain.lengthM),
-      )
-      .sort((a, b) => a.offM - b.offM)[0];
+    const fits = placesOfName(
+      town,
+      (entry) =>
+        entry.alongM >= (before?.alongM ?? 0) && entry.alongM <= (after?.alongM ?? chain.lengthM),
+      (a, b) => a.offM - b.offM,
+    );
     if (!fits) continue;
     kept.splice(after ? kept.indexOf(after) : kept.length, 0, fits);
     fromOsm.push(fits);
@@ -358,29 +401,37 @@ const buildStages = (
     if (last && previous && entry.alongM - previous.alongM < SAME_TOWN_M) last.push(entry);
     else groups.push([entry]);
   }
-  // English names: a hand-checked one (lists/overrides.jsonc), else the Wikidata label, else an
-  // OpenStreetMap place of the town's name near it. Without any, the Japanese stays.
+  // English names: a hand-checked one (lists/overrides.jsonc), else the Wikidata label of an
+  // article about the town (not the village's), else an OpenStreetMap place of the town's name
+  // near it. Without any, the Japanese stays.
   const enFromOsm: string[] = [];
   const noEnglish: string[] = [];
   const englishOf = (entry: Placed): string => {
     const { ja } = entry.town;
     const hand = naming.overrides[ja]?.en;
     if (hand) naming.used.add(ja);
-    const en = hand ?? entry.town.en;
+    const en = hand ?? (articleAboutTown(entry.town) ? entry.town.en : undefined);
     if (en) return en;
     const osm = englishFromPlaces(ja, entry.point, places);
     if (osm) enFromOsm.push(`${ja} (${osm})`);
     else noEnglish.push(ja);
     return osm ?? ja;
   };
+  // Towns that share an article on a post town are named after it (下・上高井戸宿 are 高井戸宿);
+  // any others at one place are named after each town, not the village they were in.
   const boundaryOf = (group: Placed[]): Boundary => {
     const [first] = group;
     const articles = new Set(group.map((entry) => entry.town.article));
     const point = first?.point ?? [0, 0];
     const each = () => [...new Set(group.map(englishOf))].join(' / ');
-    if (group.length > 1 && articles.size === 1 && first?.town.article)
+    if (
+      group.length > 1 &&
+      articles.size === 1 &&
+      first?.town.article &&
+      namesPostTown(first.town.article)
+    )
       return {
-        ja: first.town.article,
+        ja: titleOf(first.town.article),
         en: first.town.en ?? each(),
         alongM: first.alongM,
         point,
@@ -448,13 +499,23 @@ const buildStages = (
       .slice(0, 8)
       .map((entry) => entry.ja)
       .join(', ') + (entries.length > 8 ? ', …' : '');
+  const placed = (entries: Placed[]) =>
+    entries.filter((entry) => kept.includes(entry)).map((entry) => entry.town);
+  const movedTowns = placed(moved);
+  const villageTowns = placed(atVillage);
   review.routes.push(
     `${definition.id}: ${items.length} stages between ${groups.length} post towns from ${towns.page}.` +
       (fromOsm.length > 0
         ? ` Placed from OpenStreetMap (no usable position in the article): ${names(fromOsm.map((entry) => entry.town))}.`
         : '') +
+      (movedTowns.length > 0
+        ? ` Placed at an OpenStreetMap place of their name (their article is about the village they were in): ${names(movedTowns)}.`
+        : '') +
+      (villageTowns.length > 0
+        ? ` At the point of the village they were in (no OpenStreetMap place of their name): ${names(villageTowns)}.`
+        : '') +
       (enFromOsm.length > 0
-        ? ` Named in English from OpenStreetMap (no English label on Wikidata): ${enFromOsm.join(', ')}.`
+        ? ` Named in English from OpenStreetMap (no English label of their own on Wikidata): ${enFromOsm.join(', ')}.`
         : '') +
       (noEnglish.length > 0
         ? ` No English name (add one to postTownNames in lists/overrides.jsonc): ${noEnglish.join(', ')}.`

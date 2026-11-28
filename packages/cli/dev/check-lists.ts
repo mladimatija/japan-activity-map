@@ -12,7 +12,13 @@ import { buildWikipediaSet, type PointContext } from '../src/lists/points.ts';
 import { LIST_DEFINITIONS } from '../src/lists/definitions.ts';
 import { placeListDocument, WIKIPEDIA_PLACE_LISTS } from '../src/lists/fetch.ts';
 import { Registry } from '../src/lists/registry.ts';
-import { type NamedPlace, englishFromPlaces, mergeRepeats } from '../src/lists/routes.ts';
+import {
+  type NamedPlace,
+  articleAboutTown,
+  englishFromPlaces,
+  mergeRepeats,
+  namesPostTown,
+} from '../src/lists/routes.ts';
 import { toGsiPlaces } from '../src/lists/gsi.ts';
 import { loadGsiList, loadPrefectureShapes } from '../src/lists/sources.ts';
 import { htmlTables, listEntries } from '../src/lists/wiki-html.ts';
@@ -307,6 +313,32 @@ check(
   'a place of the same name far away is another place: no name',
   englishFromPlaces('新田宿', kokuryo, osmPlaces) === undefined,
   englishFromPlaces('新田宿', kokuryo, osmPlaces),
+);
+
+// 9. A post town's article is about the town only when it is on a post town or on the place the
+//    town is named after; 甲州街道 links many towns to the village they were in, whose name,
+//    point and English label are the village's.
+check(
+  'towns sharing an article on a post town take its name (下・上高井戸宿 are 高井戸宿)',
+  namesPostTown('高井戸宿') &&
+    namesPostTown('府中宿 (甲州街道)') &&
+    !namesPostTown('富浜村') &&
+    !namesPostTown('大月町 (山梨県)'),
+);
+const about = (ja: string, article?: string) => articleAboutTown({ ja, article });
+check(
+  'an article on the town, or on the place it is named after, is about the town',
+  about('下高井戸宿', '高井戸宿') &&
+    about('吉野宿', '吉野町 (神奈川県)') &&
+    about('大月宿', '大月町 (山梨県)') &&
+    about('興津宿', '興津'),
+);
+check(
+  'an article on the village a town was in, or on another place, is not about the town',
+  !about('駒橋宿', '大月町 (山梨県)') &&
+    !about('下鳥沢宿', '富浜村') &&
+    !about('石和宿', '石和温泉') &&
+    !about('甲府柳町宿'),
 );
 
 console.log(failed ? 'Some checks failed.' : 'All checks passed.');
