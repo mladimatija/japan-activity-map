@@ -33,9 +33,10 @@ class MigrationError extends JamError {
  * A migration's checksum covers its statements, not its comments: rewording a comment changes
  * nothing a store applied. Stores made before that rule hold a checksum of the whole file, so a
  * file's whole-text checksum is accepted too, and so are these, the whole-text checksums of the
- * three files whose comments were reworded since.
+ * files whose comments were reworded since.
  */
 const WHOLE_TEXT_BEFORE: Record<string, string[]> = {
+  initial: ['40855656f05c5fa8e51e2ae4cc71309d2180b0bafecc4c5e6e797d946c474fa6'],
   matching: ['eefcdefe3441eaa003d15a2d944fdad68bc52c1230f2f64347500acb2c91315c'],
   'route-groups': ['5e9b805db3d9d6c9066355c52c764b106978f0d293bbd8df68da1d63a6704a53'],
   'privacy-offsets': ['6dab47cd5f2a29d8759b9c4961b0d782d39bb872efa76b265c28b085f941dc1d'],

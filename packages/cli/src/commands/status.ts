@@ -128,10 +128,18 @@ export const status = async (context: CommandContext): Promise<number> => {
     } else {
       log.info(`Privacy zones: ${zoneCount}`);
     }
-    const fromGpx = config.site.activities.source === 'gpx';
+    const builtFrom = { strava: 'Strava', gpx: 'GPX files', garmin: 'Garmin' }[
+      config.site.activities.source
+    ];
     log.info(
-      `Site activities: built from ${fromGpx ? 'GPX files' : 'Strava'} plus the sheet (activities.source is "${config.site.activities.source}")`,
+      `Site activities: built from ${builtFrom} plus the sheet (activities.source is "${config.site.activities.source}")`,
     );
+    const garminKey = process.env.JAM_GARMIN_API_KEY
+      ? 'set in the environment'
+      : config.secrets.garmin
+        ? 'stored'
+        : 'not set';
+    log.info(`Garmin personal API key: ${garminKey}`);
     log.info(
       `GPX folder: ${shownPath(gpxFolder(config))}${hasGpxFolder(config) ? '' : ' (not there yet)'}; default type ${config.site.activities.gpx.defaultType}`,
     );

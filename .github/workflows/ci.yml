@@ -67,6 +67,9 @@ jobs:
       - name: GPX import checks
         run: pnpm check:gpx
 
+      - name: Garmin sync against a stand-in server
+        run: pnpm check:garmin
+
       - name: Privacy checks
         run: pnpm check:privacy
 

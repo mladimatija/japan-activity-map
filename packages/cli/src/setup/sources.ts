@@ -27,6 +27,7 @@ const strava = (ctx: Ctx) => has(ctx, 'strava');
 const sheet = (ctx: Ctx) => has(ctx, 'sheet');
 const demo = (ctx: Ctx) => has(ctx, 'demo');
 const gpx = (ctx: Ctx) => has(ctx, 'gpx');
+const garmin = (ctx: Ctx) => has(ctx, 'garmin');
 
 const stravaSetting = (...args: Parameters<typeof setting>): Step => {
   const step = setting(...args);
@@ -216,21 +217,24 @@ const SHEET_STEPS: Step[] = [
   ),
 ];
 
-/** Strava or GPX files: which of the two the site shows. */
+/** Strava, GPX files or Garmin: which one the site shows. */
 const BUILT_FROM_STEP: Step = {
   id: 'activities.source',
   group: 'source:gpx',
   tier: 'both',
   kind: 'choice',
   title: 'Which is the site built from?',
-  help: 'Strava activities and GPX activities can both be in the local store; the site shows one of the two, plus the sheet. Changing this later deletes nothing.',
+  help: 'Strava, GPX and Garmin activities can all be in the local store; the site shows one of them, plus the sheet. Changing this later deletes nothing.',
   options: [
     { value: 'strava', label: 'Strava' },
     { value: 'gpx', label: 'GPX files' },
+    { value: 'garmin', label: 'Garmin' },
   ],
   setting: { file: 'site', path: ['activities', 'source'] },
-  // Asked when both were chosen, and in change mode, where it is the switch.
-  when: (ctx) => ctx.mode === 'change' || (has(ctx, 'strava') && has(ctx, 'gpx')),
+  // Asked when more than one was chosen, and in change mode, where it is the switch.
+  when: (ctx) =>
+    ctx.mode === 'change' ||
+    ['strava', 'gpx', 'garmin'].filter((source) => has(ctx, source)).length > 1,
   affects: BUILD,
 };
 
@@ -271,6 +275,74 @@ const GPX_STEPS: Step[] = [
       help: 'Relative to the repository. Empty: data/activities. Put .gpx files or a .zip of them there. See docs/gpx.md.',
       optional: true,
       when: gpx,
+    },
+  ),
+];
+
+const GARMIN_STEPS: Step[] = [
+  {
+    id: 'garmin.key.help',
+    group: 'source:garmin',
+    tier: 'both',
+    kind: 'info',
+    title: 'Create a personal API key on Garmin Connect.',
+    help: 'On the Garmin Connect website: Settings, Personal API Key, Create Key. It is free, needs no approval and lasts up to a year. Garmin shows the key once. See docs/garmin.md.',
+    read: () => '',
+    map: () => [],
+    when: (ctx) => garmin(ctx) && ctx.mode !== 'change',
+  },
+  {
+    id: 'garmin.apiKey',
+    group: 'source:garmin',
+    tier: 'both',
+    kind: 'secret',
+    optional: true,
+    title: 'Garmin personal API key',
+    help: 'Typed without being shown; stored in config/secrets.jsonc, readable only by you. Leave it empty to keep the one stored, or to add it later.',
+    setting: { file: 'secrets', path: ['garmin', 'apiKey'], sensitive: 'secret' },
+    when: garmin,
+  },
+  setting(
+    'garmin.includePrivate',
+    'source:garmin',
+    'confirm',
+    'Fetch Garmin activities set to Only Me?',
+    'site',
+    ['activities', 'garmin', 'includePrivate'],
+    {
+      tier: 'both',
+      help: 'Off: they are skipped. On: they are stored, and published only when "Only You" activities are published.',
+      when: garmin,
+    },
+  ),
+  setting(
+    'garmin.from',
+    'source:garmin',
+    'text',
+    'First day to fetch from Garmin (YYYY-MM-DD)',
+    'site',
+    ['activities', 'garmin', 'from'],
+    {
+      help: 'Empty: everything.',
+      optional: true,
+      when: garmin,
+      check: (answer) =>
+        !answer ||
+        (/^\d{4}-\d{2}-\d{2}$/.test(str(answer)) && !Number.isNaN(Date.parse(str(answer))))
+          ? undefined
+          : 'A date as YYYY-MM-DD.',
+    },
+  ),
+  setting(
+    'garmin.filesPerSync',
+    'source:garmin',
+    'number',
+    'Garmin recordings downloaded per run',
+    'site',
+    ['activities', 'garmin', 'filesPerSync'],
+    {
+      help: 'Each recording (the track) is one request; the next run carries on with the rest.',
+      when: garmin,
     },
   ),
 ];
@@ -347,6 +419,13 @@ export const SOURCES: Source[] = [
     help: 'A .zip of GPX files, or .gpx files in data/activities, from any app that exports them. The site is then built from these instead of Strava.',
     steps: GPX_STEPS,
     actions: () => ['sync-gpx'],
+  },
+  {
+    id: 'garmin',
+    label: 'Garmin',
+    help: 'Your activities through the Garmin Connect Personal API, with a key you create yourself. Free; needs no approval.',
+    steps: GARMIN_STEPS,
+    actions: () => ['sync-garmin'],
   },
   {
     id: 'sheet',

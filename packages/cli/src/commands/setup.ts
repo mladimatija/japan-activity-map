@@ -12,6 +12,7 @@ const SECRET_NAMES: Record<string, string> = {
   JAM_CLOUDFLARE_API_TOKEN: 'deploy.apiToken',
   JAM_CLOUDFLARE_ACCOUNT_ID: 'deploy.accountId',
   JAM_NETLIFY_TOKEN: 'deploy.netlifyToken',
+  JAM_GARMIN_API_KEY: 'garmin.apiKey',
 };
 
 const readStdin = async (): Promise<string> => {

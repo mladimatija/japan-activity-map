@@ -8,6 +8,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@garmin/fitsdk": "21.222.0",
     "@jam/core": "workspace:*",
     "jsonc-parser": "3.3.1",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",

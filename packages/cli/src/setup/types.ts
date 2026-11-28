@@ -32,6 +32,8 @@ export interface Facts {
   sheetExists: boolean;
   /** Whether the folder `jam sync gpx` reads by default is there. */
   gpxFolderExists: boolean;
+  /** Whether a Garmin personal API key is stored. Never the value. */
+  garminKey: boolean;
   siteBuilt: boolean;
   /** Whether this version has the `demo` command. */
   demoAvailable: boolean;

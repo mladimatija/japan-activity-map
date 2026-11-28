@@ -270,6 +270,32 @@ export const SETUP_JA: Record<string, string> = {
   'what the list build left open': 'リストのビルドで未解決のまま残った点',
   'Japan Activity Map setup': 'Japan Activity Map セットアップ',
   'Back to start': '最初の画面に戻る',
+  'Each recording (the track) is one request; the next run carries on with the rest.':
+    '記録（トラック）1件につきリクエスト1回です。残りは次回の実行で続きから取得します。',
+  'Empty: everything.': '空欄：すべて。',
+  'Fetch Garmin activities': 'Garminのアクティビティを取得',
+  'Fetch Garmin activities set to Only Me?':
+    '「自分のみ」に設定したGarminのアクティビティも取得しますか？',
+  'First day to fetch from Garmin (YYYY-MM-DD)': 'Garminから取得する最初の日（YYYY-MM-DD）',
+  'Garmin personal API key': 'Garmin パーソナルAPIキー',
+  'Garmin recordings downloaded per run': '1回の実行でダウンロードするGarminの記録数',
+  'Off: they are skipped. On: they are stored, and published only when "Only You" activities are published.':
+    'オフ：取得しません。オン：保存し、「自分のみ」のアクティビティを公開する設定のときだけ公開します。',
+  'Strava, GPX and Garmin activities can all be in the local store; the site shows one of them, plus the sheet. Changing this later deletes nothing.':
+    'Strava・GPX・Garminのアクティビティはすべてローカルに保存しておけます。サイトにはそのうち1つとシートを表示します。あとで切り替えても何も削除されません。',
+  'The folder, and which source the site shows': 'フォルダと、サイトに表示するソース',
+  'The key, dates, Only Me': 'キー、期間、「自分のみ」',
+  'Typed without being shown; stored in config/secrets.jsonc, readable only by you. Leave it empty to keep the one stored, or to add it later.':
+    '入力内容は表示されません。config/secrets.jsonc に保存され、読めるのはあなただけです。保存済みのキーを使う場合や、あとで追加する場合は空欄のままにしてください。',
+  'Your activities through the Garmin Connect Personal API, with a key you create yourself. Free; needs no approval.':
+    '自分で作成したキーを使い、Garmin Connect パーソナルAPIからアクティビティを取得します。無料で、審査は不要です。',
+  'Create a personal API key on Garmin Connect.':
+    'Garmin Connect でパーソナルAPIキーを作成してください。',
+  'On the Garmin Connect website: Settings, Personal API Key, Create Key. It is free, needs no approval and lasts up to a year. Garmin shows the key once. See docs/garmin.md.':
+    'Garmin Connect のウェブサイトで「設定」→「パーソナルAPIキー」→「キーを作成」。無料で審査は不要、有効期間は最長1年です。キーは一度しか表示されません。docs/garmin.md を参照。',
+  'Strava, Garmin, GPX files, a sheet': 'Strava、Garmin、GPXファイル、シート',
+  'no Garmin personal API key yet': 'Garmin パーソナルAPIキーがまだありません',
+  Garmin: 'Garmin',
   Finish: '終了',
   'Saved: {groups}': '保存しました：{groups}',
   'Change another group below if you want to. These then run once, in this order:':

@@ -108,6 +108,9 @@ export const findFacts = (configDir: string, sheetPath: string): Facts => {
     listsBuilt,
     sheetExists: existsSync(resolve(ROOT_DIR, sheetPath)),
     gpxFolderExists: existsSync(gpxDir),
+    garminKey: ((key) => typeof key === 'string' && key.length > 0)(
+      valueAt(secrets, ['garmin', 'apiKey']),
+    ),
     siteBuilt: existsSync(join(ROOT_DIR, 'dist/data/meta.json')),
     demoAvailable: findCommand(['demo']) !== undefined,
   };

@@ -477,6 +477,46 @@ const main = async () => {
       back.code === 0 && config('site').includes('"source": "strava"'),
       back.text,
     );
+
+    // Garmin: the key comes from the environment, never from the answers file, and is not printed.
+    const garmin = answersFile('garmin', {
+      start: 'quick',
+      sources: ['garmin'],
+      skip: ['lists-fetch', 'lists-build', 'web-build'],
+    });
+    const garminDry = await setup(['--answers', garmin, '--yes', '--dry-run'], {
+      ...env,
+      JAM_GARMIN_API_KEY: 'check-garmin-key',
+    });
+    check(
+      'choosing Garmin sets the source, stores the key masked, and plans the Garmin sync',
+      garminDry.code === 0 &&
+        garminDry.text.includes('+     "source": "garmin"') &&
+        garminDry.text.includes('pnpm jam sync garmin') &&
+        !garminDry.text.includes('sync strava') &&
+        !garminDry.text.includes('check-garmin-key'),
+      garminDry.text,
+    );
+    const noKey = await setup(['--answers', garmin, '--yes', '--dry-run']);
+    check(
+      '  ...and without a key the sync is in the plan as skipped',
+      noKey.code === 0 &&
+        /sync garmin[\s\S]{0,120}no Garmin personal API key yet|no Garmin personal API key yet/.test(
+          noKey.text,
+        ),
+      noKey.text,
+    );
+    const refused = await setup([
+      '--answers',
+      answersFile('garmin-secret', { start: 'quick', sources: ['garmin'], 'garmin.apiKey': 'x' }),
+      '--yes',
+      '--dry-run',
+    ]);
+    check(
+      '  ...and an answers file that holds the key is refused',
+      refused.code !== 0 && /must not hold secrets/.test(refused.text),
+      refused.text,
+    );
   }
 
   if (hasDemo) {

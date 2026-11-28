@@ -67,6 +67,7 @@ export interface SetupState {
     listsMissing: string[];
     listsBuilt: boolean;
     sheetExists: boolean;
+    garminKey?: boolean;
     siteBuilt: boolean;
     demoAvailable: boolean;
   };

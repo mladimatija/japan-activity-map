@@ -99,7 +99,7 @@ export const syncGpx = async ({ flags, log, args, options }: CommandContext): Pr
     log.info(`${summary.charAt(0).toUpperCase()}${summary.slice(1)}.`);
     if (config.site.activities.source !== 'gpx')
       log.info(
-        'The site is built from Strava. To build it from these, set activities.source to "gpx" in config/site.jsonc.',
+        `The site is built from "${config.site.activities.source}". To build it from these, set activities.source to "gpx" in config/site.jsonc.`,
       );
     return 0;
   } finally {

@@ -20,6 +20,7 @@
     "check:match": "node packages/cli/dev/check-match.ts",
     "check:routes": "node packages/cli/dev/check-routes.ts",
     "check:gpx": "node packages/cli/dev/check-gpx.ts",
+    "check:garmin": "node packages/cli/dev/check-garmin.ts",
     "check:lists": "node packages/cli/dev/check-lists.ts",
     "check:privacy": "node packages/cli/dev/check-privacy.ts",
     "check:build": "node packages/cli/dev/check-build.ts",

@@ -3,7 +3,8 @@ import { createHash } from 'node:crypto';
 
 import type { ActivityType } from '@jam/core';
 
-import { gpxInfo, type GpxPoint, parseGpx } from '../gpx.ts';
+import { parseFit } from '../fit.ts';
+import { type Gpx, gpxInfo, type GpxInfo, type GpxPoint, parseGpx } from '../gpx.ts';
 import { distanceM } from '../lists/geo.ts';
 import { parseDate, utcToLocal } from '../sheet/time.ts';
 import type { Columns } from '../sheet/sync.ts';
@@ -75,9 +76,23 @@ interface Options {
  * Reads a GPX file as one activity, however many tracks and segments it has. Throws an Error
  * whose message says why the file cannot be one (not GPX, no line, no date).
  */
-export const gpxActivity = (xml: string, file: GpxFileRef, options: Options): GpxActivity => {
-  const { segments } = parseGpx(xml);
-  const info = gpxInfo(xml);
+export const gpxActivity = (xml: string, file: GpxFileRef, options: Options): GpxActivity =>
+  trackActivity({ ...parseGpx(xml), info: gpxInfo(xml) }, file, options);
+
+/** The same for a FIT file, as watches and bike computers record them. */
+export const fitActivity = (bytes: Uint8Array, file: GpxFileRef, options: Options): GpxActivity => {
+  const track = parseFit(bytes);
+  if (track.segments.length === 0)
+    throw new Error('no track: the file has no two points with a position');
+  return trackActivity(track, file, options);
+};
+
+/** A parsed track file as one activity. */
+export const trackActivity = (
+  { segments, info }: Gpx & { info: GpxInfo },
+  file: GpxFileRef,
+  options: Options,
+): GpxActivity => {
   const points: GpxPoint[] = segments.flat();
   const coordinates = points.map(
     (point) => [round6(point.lon), round6(point.lat)] as [number, number],

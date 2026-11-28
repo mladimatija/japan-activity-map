@@ -3,8 +3,8 @@
 A personal map of Japan that ticks off famous peaks, trails and pilgrimage routes as you hike, run
 and ride them.
 
-It reads your activities from Strava, from GPX files or from a spreadsheet you keep by hand, does
-all the work on your own computer, and builds a static site you can host anywhere. Your home stays
+It reads your activities from Strava, from Garmin Connect, from GPX or FIT files, or from a
+spreadsheet you keep by hand, does all the work on your own computer, and builds a static site you can host anywhere. Your home stays
 off the map.
 
 Live demo, with made-up activities: <https://mladimatija.github.io/japan-activity-map/>
@@ -54,9 +54,10 @@ every other time you did the same route.
 
 ### Where activities come from
 
-Strava, or GPX files from any app that exports them (YAMAP, Garmin, a watch), plus a sheet you keep
-by hand for everything else. One setting says whether the site is built from Strava or from the
-GPX files ([docs/gpx.md](docs/gpx.md)).
+Strava, Garmin Connect (with your own personal API key), or GPX and FIT files from any app or
+watch that exports them (YAMAP, for one), plus a sheet you keep by hand for everything else. One
+setting says which of the three the site is built from ([docs/garmin.md](docs/garmin.md),
+[docs/gpx.md](docs/gpx.md)).
 
 ### Other pages
 
@@ -124,7 +125,7 @@ pnpm install
 Only `dist/` is ever published.
 
 More in [docs/](docs): [the site](docs/web.md), [setup](docs/setup.md), [Strava](docs/strava-setup.md),
-[GPX files](docs/gpx.md), [privacy](docs/privacy.md), [matching](docs/matching.md), [routes](docs/routes.md),
+[Garmin](docs/garmin.md), [GPX files](docs/gpx.md), [privacy](docs/privacy.md), [matching](docs/matching.md), [routes](docs/routes.md),
 [the build](docs/build.md), [demo data](docs/demo.md), [publishing](docs/deploy.md), and
 [the lists and their sources](lists/README.md).
 
@@ -151,7 +152,10 @@ Everything below is for working on the code.
 | `pnpm jam strava auth`    | Sign in to Strava ([setup](docs/strava-setup.md))                                    |
 | `pnpm jam sync strava`    | Fetch Strava activities since the last pull; `--streams` for full tracks             |
 | `pnpm jam strava wipe`    | Delete Strava activities from the store, keeping sheet data (`--yes`)                |
-| `pnpm jam sync gpx`       | Import GPX files from a folder or a `.zip` ([how](docs/gpx.md)); `--replace`         |
+| `pnpm jam sync garmin`    | Fetch Garmin Connect activities with your personal API key ([setup](docs/garmin.md)) |
+| `pnpm jam garmin check`   | Check that the Garmin key works                                                      |
+| `pnpm jam garmin wipe`    | Delete Garmin activities from the store, keeping everything else (`--yes`)           |
+| `pnpm jam sync gpx`       | Import GPX or FIT files from a folder or a `.zip` ([how](docs/gpx.md)); `--replace`  |
 | `pnpm jam gpx wipe`       | Delete GPX activities from the store, keeping everything else (`--yes`)              |
 | `pnpm jam match`          | Match activities to list places, routes and prefectures ([how](docs/matching.md))    |
 | `pnpm jam match ignore`   | Mark an automatic match as false                                                     |
@@ -206,6 +210,7 @@ Node.js 26, so the command-line tool has no build step.
 | `pnpm check:match`    | Matching, on made-up activities (`packages/cli/dev`)                                        |
 | `pnpm check:routes`   | Route grouping, likewise                                                                    |
 | `pnpm check:gpx`      | GPX import and the Strava or GPX switch, likewise                                           |
+| `pnpm check:garmin`   | The Garmin sync, against a stand-in server                                                  |
 | `pnpm check:privacy`  | The privacy rules, likewise                                                                 |
 | `pnpm check:build`    | The build, likewise                                                                         |
 | `pnpm check:web`      | Renders the map's pane for every list and selection, against your real build in `dist/data` |
@@ -220,5 +225,7 @@ The code and documentation are under the MIT licence ([LICENSE](LICENSE)). The r
 CC BY-SA, and others), listed in [lists/LICENSE.md](lists/LICENSE.md). Your own activities in
 `data/` are yours and are never part of the repository.
 
-This project is not affiliated with Strava, and uses the Strava API under your own API
-application and Strava's terms.
+This project is not affiliated with Strava or Garmin. It uses the Strava API under your own API
+application and Strava's terms, and the Garmin Connect Personal API under your own key and
+Garmin's terms. FIT files are read with Garmin's FIT SDK (`@garmin/fitsdk`), a dependency under
+Garmin's FIT Protocol License, which is not an open-source licence.

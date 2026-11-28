@@ -3,6 +3,7 @@ import { demoCommand } from './demo.ts';
 import { deployCommand } from './deploy.ts';
 import { currentStoreMarker, demoRefusal } from '../demo/marker.ts';
 import { listsBuild, listsFetch, listsValidate } from './lists.ts';
+import { garminCheck, garminWipe, syncGarmin } from './garmin.ts';
 import { gpxWipe, syncGpx } from './gpx.ts';
 import { syncSheet } from './sheet.ts';
 import { buildCommand } from './build.ts';
@@ -88,6 +89,45 @@ export const COMMANDS: readonly Command[] = [
       },
     },
     run: syncGpx,
+  },
+  {
+    name: 'sync garmin',
+    summary: 'Fetch activities from Garmin Connect with your personal API key',
+    args: {
+      usage: '',
+      help: [
+        'Lists the activities since the last pull, then downloads the recordings (the tracks) of',
+        'those that have none yet, newest first, up to activities.garmin.filesPerSync a run. The key',
+        'is garmin.apiKey in config/secrets.jsonc, or JAM_GARMIN_API_KEY. See docs/garmin.md.',
+      ].join('\n'),
+    },
+    options: {
+      full: {
+        type: 'boolean',
+        description: 'List everything in the range again; remove what Garmin no longer has',
+      },
+      files: {
+        type: 'string',
+        description: 'How many recordings to download this run: a number, or "all"',
+      },
+    },
+    run: syncGarmin,
+  },
+  {
+    name: 'garmin check',
+    summary: 'Check that the Garmin personal API key works',
+    run: garminCheck,
+  },
+  {
+    name: 'garmin wipe',
+    summary: 'Delete Garmin activities from the local store, keeping everything else',
+    options: {
+      yes: {
+        type: 'boolean',
+        description: 'Really delete (the store is copied to data/backups first)',
+      },
+    },
+    run: garminWipe,
   },
   {
     name: 'gpx wipe',

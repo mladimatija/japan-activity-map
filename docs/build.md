@@ -20,7 +20,7 @@ size, the compressed size of the files loaded at start against the budget, and t
 ## What is counted
 
 The site is built from one activity source, `activities.source` in `config/site.jsonc`: `strava`
-(the default) or `gpx` (docs/gpx.md). Activities of the other one stay in the store and are listed
+(the default), `gpx` (docs/gpx.md) or `garmin` (docs/garmin.md). Activities of the others stay in the store and are listed
 under "Left out". The sheet's own rows count with either. Changing the setting and building again
 gives the other site; nothing is deleted.
 

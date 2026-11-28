@@ -50,7 +50,10 @@ export const siteOptionsSchema = z.strictObject({
   /** Which activities the site is built from (docs/gpx.md). The sheet's own rows always count. */
   activities: z
     .strictObject({
-      /** `strava`: what `jam sync strava` fetched. `gpx`: what `jam sync gpx` imported. */
+      /**
+       * `strava`: what `jam sync strava` fetched. `gpx`: what `jam sync gpx` imported. `garmin`:
+       * what `jam sync garmin` fetched.
+       */
       source: z.enum(ACTIVITY_SOURCES).default('strava'),
       gpx: z
         .strictObject({
@@ -61,6 +64,27 @@ export const siteOptionsSchema = z.strictObject({
            * `activities` inside the data folder (data/activities).
            */
           folder: z.string().min(1).optional(),
+        })
+        .prefault({}),
+      /** What `jam sync garmin` fetches through the Garmin Connect Personal API (docs/garmin.md). */
+      garmin: z
+        .strictObject({
+          /** First and last day to fetch, YYYY-MM-DD. Left out: everything. */
+          from: z.iso.date().optional(),
+          to: z.iso.date().optional(),
+          /** Fetch activities whose privacy on Garmin Connect is "Only Me". */
+          includePrivate: z.boolean().default(false),
+          /** Activity files (the full recordings) downloaded per sync; the next sync carries on. */
+          filesPerSync: z.number().int().min(0).max(5000).default(100),
+          /** Garmin activity type keys onto the five types, in addition to the built-in ones. */
+          typeMap: z.record(z.string(), activityType).default({}),
+          api: z
+            .strictObject({
+              baseUrl: z.url().default('https://personal.connectapi.garmin.com'),
+              /** Pause between two file downloads, in milliseconds. */
+              pauseMs: z.number().int().min(0).max(60_000).default(500),
+            })
+            .prefault({}),
         })
         .prefault({}),
     })
@@ -378,6 +402,8 @@ export const sheetSchema = z.strictObject({
 
 /** secrets.jsonc: credentials. Never committed and never filled in from an example file. */
 export const secretsSchema = z.strictObject({
+  /** A Garmin Connect personal API key (docs/garmin.md). Kept like a password. */
+  garmin: z.strictObject({ apiKey: z.string().min(1) }).optional(),
   strava: z
     .strictObject({
       clientId: z.string().min(1),

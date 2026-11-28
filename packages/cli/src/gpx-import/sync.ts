@@ -6,7 +6,7 @@ import { ACTIVITY_COLUMNS, differs, TRACK_COLUMNS, upsertActivity } from '../she
 import { backupDatabase } from '../store/backups.ts';
 import type { SqlValue } from '../store/sqlite.ts';
 import type { Store } from '../store/store.ts';
-import { type GpxActivity, gpxActivity } from './activity.ts';
+import { fitActivity, type GpxActivity, gpxActivity } from './activity.ts';
 import type { GpxSource } from './files.ts';
 
 export interface SkippedFile {
@@ -29,7 +29,9 @@ export const readActivities = (
   const skipped: SkippedFile[] = [];
   for (const [index, source] of sources.entries()) {
     try {
-      const activity = gpxActivity(xmlText(source.read()), source, options);
+      const activity = /\.fit$/i.test(source.label)
+        ? fitActivity(source.read(), source, options)
+        : gpxActivity(xmlText(source.read()), source, options);
       const earlier = byId.get(activity.id);
       if (earlier)
         skipped.push({

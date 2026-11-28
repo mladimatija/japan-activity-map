@@ -49,12 +49,12 @@ const UTF8_NAME = 0x0800;
 
 const mb = (bytes: number) => `${Math.ceil(bytes / MB)} MB`;
 
-/** Whether an entry's path is one to import: a .gpx file, not hidden, not macOS's resource copies. */
+/** Whether an entry's path is one to import: a .gpx or .fit file, not hidden, not macOS's resource copies. */
 export const isGpxEntry = (name: string): boolean => {
   const parts = name.split('/').filter(Boolean);
   if (name.endsWith('/') || parts.length === 0) return false;
   if (parts.some((part) => part === '__MACOSX' || part.startsWith('.'))) return false;
-  return /\.gpx$/i.test(parts.at(-1) ?? '');
+  return /\.(gpx|fit)$/i.test(parts.at(-1) ?? '');
 };
 
 const decodeName = (raw: Uint8Array, utf8Flag: boolean): string => {

@@ -1,7 +1,7 @@
 # GPX files
 
-`pnpm jam sync gpx` imports activities from GPX files, for when you don't use Strava or don't
-want to. Any app that exports GPX will do: YAMAP's download button on an activity, Garmin Connect,
+`pnpm jam sync gpx` imports activities from GPX files, and from FIT files (what Garmin, Wahoo,
+Coros and Suunto devices record), for when you don't use Strava or don't want to. Any app that exports GPX will do: YAMAP's download button on an activity, Garmin Connect,
 Komoot or a watch's own export. Each file becomes one activity in the local
 store, with its track, heights and times, so height profiles and splits work as they do for Strava
 activities with full tracks.
@@ -20,13 +20,19 @@ pnpm jam gpx wipe                    # say what would be deleted; --yes deletes
 Give a folder or a `.zip` archive. Without a path it reads `data/activities`, which is git-ignored
 like the rest of `data/`. Set another folder as `activities.gpx.folder` in `config/site.jsonc`.
 
-- In a folder: every `.gpx` file, in subfolders too, and every `.zip` archive, which is read as
+- In a folder: every `.gpx` and `.fit` file, in subfolders too, and every `.zip` archive, which is read as
   below. Hidden files, links and other kinds of file are left alone.
-- In an archive: every `.gpx` file. Folders, `__MACOSX`, hidden files and everything else are left
+- In an archive: every `.gpx` and `.fit` file. Folders, `__MACOSX`, hidden files and everything else are left
   alone, including archives inside the archive.
 
 One file is one activity, however many tracks and segments it has. A file with only a route
 (`<rte>`) is read as a track. Waypoints are ignored.
+
+A FIT file is read with Garmin's FIT SDK: its recorded positions, heights and times, with a new
+segment where the watch was paused. Its type comes from the sport the device recorded (running,
+trail running, hiking, walking, cycling); points without a position, as at the start of an indoor
+session, are left out. FIT files have no name of their own, so the file name is the activity's.
+Fetching straight from Garmin Connect is a separate source (docs/garmin.md).
 
 | Field          | Comes from                                                                               |
 | -------------- | ---------------------------------------------------------------------------------------- |
@@ -126,7 +132,9 @@ name inside the file is published as the activity's name unless `publish.activit
   folder. A GPX file may unpack to at most 64 MB, an archive's GPX files to 2 GB in all, and an
   archive may be at most 1 GB itself.
 - Files without times have no elapsed time, no moving time and no splits.
-- Heart rate, cadence and other extensions aren't read.
+- Heart rate, cadence and other extensions aren't read, from GPX or FIT.
+- The setup page's drop area takes `.zip` and `.gpx`; put `.fit` files in a `.zip` or straight
+  into the folder.
 
 ## Trying it
 

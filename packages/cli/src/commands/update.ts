@@ -42,8 +42,14 @@ export const updateCommand = async (
   // The sign-in file is only read when it will be used: a broken one must not stop a run that
   // was asked to build from what is already here.
   const fromGpx = config.site.activities.source === 'gpx';
+  const fromGarmin = config.site.activities.source === 'garmin';
+  const garminKey = Boolean(process.env.JAM_GARMIN_API_KEY) || config.secrets.garmin !== undefined;
   const signedIn =
-    !noSync && !fromGpx && config.secrets.strava !== undefined && loadToken() !== undefined;
+    !noSync &&
+    !fromGpx &&
+    !fromGarmin &&
+    config.secrets.strava !== undefined &&
+    loadToken() !== undefined;
   const sheet = existsSync(resolve(ROOT_DIR, config.sheet.path));
   // The dev checks point the run at a folder of their own, where no web app is built.
   const sandboxDist = process.env.JAM_UPDATE_DIST
@@ -62,22 +68,28 @@ export const updateCommand = async (
     return result.code;
   };
   const steps: UpdateStep[] = [
-    // One of the two, by activities.source: the other source's activities are not built from.
-    fromGpx
+    // One of the three, by activities.source: the other sources' activities are not built from.
+    fromGarmin
       ? {
-          title: 'Import GPX files',
-          run: own(['sync', 'gpx']),
-          skip: noSync
-            ? '--no-sync'
-            : hasGpxFolder(config)
-              ? undefined
-              : `no folder at ${shownPath(gpxFolder(config))}`,
+          title: 'Fetch new Garmin activities',
+          run: own(['sync', 'garmin']),
+          skip: noSync ? '--no-sync' : garminKey ? undefined : 'no Garmin personal API key',
         }
-      : {
-          title: 'Fetch new Strava activities',
-          run: own(['sync', 'strava']),
-          skip: noSync ? '--no-sync' : signedIn ? undefined : 'not signed in to Strava',
-        },
+      : fromGpx
+        ? {
+            title: 'Import GPX files',
+            run: own(['sync', 'gpx']),
+            skip: noSync
+              ? '--no-sync'
+              : hasGpxFolder(config)
+                ? undefined
+                : `no folder at ${shownPath(gpxFolder(config))}`,
+          }
+        : {
+            title: 'Fetch new Strava activities',
+            run: own(['sync', 'strava']),
+            skip: noSync ? '--no-sync' : signedIn ? undefined : 'not signed in to Strava',
+          },
     {
       title: 'Import the activity sheet',
       run: own(['sync', 'sheet']),

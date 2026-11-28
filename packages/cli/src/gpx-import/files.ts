@@ -45,7 +45,7 @@ export interface Collected {
 /** The same order on every machine, whatever its language. */
 const byName = (a: { name: string }, b: { name: string }) =>
   a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
-const stem = (path: string) => basename(path).replace(/\.gpx$/i, '');
+const stem = (path: string) => basename(path).replace(/\.(gpx|fit)$/i, '');
 const hidden = (name: string) => name.startsWith('.') || name === '__MACOSX';
 
 const readCapped = (path: string, limits: ZipLimits): Uint8Array => {
@@ -84,7 +84,7 @@ const fromFolder = (dir: string, prefix: string, limits: ZipLimits, into: Collec
     // Links are not followed: an import reads what is in the folder, nothing it points at.
     else if (!entry.isFile()) into.ignored++;
     else if (/\.zip$/i.test(entry.name)) fromArchive(path, label, limits, into);
-    else if (/\.gpx$/i.test(entry.name))
+    else if (/\.(gpx|fit)$/i.test(entry.name))
       into.sources.push({ label, name: stem(entry.name), read: () => readCapped(path, limits) });
     else into.ignored++;
   }
@@ -100,13 +100,15 @@ export const collectGpx = (path: string, limits: ZipLimits = DEFAULT_ZIP_LIMITS)
   const stat = statSync(path);
   if (stat.isDirectory()) fromFolder(path, '', limits, into);
   else if (/\.zip$/i.test(path)) fromArchive(path, basename(path), limits, into);
-  else if (/\.gpx$/i.test(path))
+  else if (/\.(gpx|fit)$/i.test(path))
     into.sources.push({
       label: basename(path),
       name: stem(path),
       read: () => readCapped(path, limits),
     });
   else
-    throw new JamError(`${shownPath(path)} is neither a folder, a .zip archive nor a .gpx file.`);
+    throw new JamError(
+      `${shownPath(path)} is neither a folder, a .zip archive nor a .gpx or .fit file.`,
+    );
   return into;
 };

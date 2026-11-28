@@ -5,9 +5,10 @@
     // "baseUrl": "https://map.example.com",
     "description": ""
   },
-  // Which activities the site is built from (docs/gpx.md): "strava" (what `pnpm jam sync strava`
-  // fetched) or "gpx" (what `pnpm jam sync gpx` imported). The sheet's own rows count either way.
-  // Both can sit in the local store; switching and rebuilding deletes nothing.
+  // Which activities the site is built from: "strava" (what `pnpm jam sync strava` fetched), "gpx"
+  // (what `pnpm jam sync gpx` imported, docs/gpx.md) or "garmin" (what `pnpm jam sync garmin`
+  // fetched, docs/garmin.md). The sheet's own rows count either way. All can sit in the local
+  // store; switching and rebuilding deletes nothing.
   "activities": {
     "source": "strava",
     "gpx": {
@@ -17,6 +18,18 @@
       // The type of a GPX file whose own <type> is missing or not understood: "hike", "walk",
       // "run", "trail_run" or "ride".
       "defaultType": "hike"
+    },
+    // What `pnpm jam sync garmin` fetches with your Garmin personal API key (docs/garmin.md).
+    "garmin": {
+      // First and last day to fetch. Left out, everything.
+      // "from": "2024-01-01",
+      // "to": "2026-12-31",
+      // Also fetch activities whose privacy on Garmin Connect is Only Me.
+      "includePrivate": false,
+      // Recordings (the tracks) downloaded per run; the next run carries on.
+      "filesPerSync": 100
+      // Garmin activity types onto the five, beside the built-in ones.
+      // "typeMap": { "backcountry_skiing": "hike" }
     }
   },
   "map": {

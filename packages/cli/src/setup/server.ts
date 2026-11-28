@@ -171,6 +171,7 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
           : {};
       for (const id of [
         'strava.clientSecret',
+        'garmin.apiKey',
         'deploy.apiToken',
         'deploy.accountId',
         'deploy.netlifyToken',

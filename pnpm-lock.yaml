@@ -20,6 +20,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@garmin/fitsdk':
+        specifier: 21.222.0
+        version: 21.222.0
       '@jam/core':
         specifier: workspace:*
         version: link:../core
@@ -168,6 +171,9 @@ packages:
 
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
+
+  '@garmin/fitsdk@21.222.0':
+    resolution: {integrity: sha512-YIo/bPfvENuBKECsAT0wWromTy66Yxw3UqRB1FuAJIs8KMoJCkVPgqnUanFxkZwcAXgIN2qXaeFeRt7rvYlB0g==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -1847,6 +1853,8 @@ snapshots:
       react-dom: 19.3.1(react@19.3.1)
 
   '@floating-ui/utils@0.2.12': {}
+
+  '@garmin/fitsdk@21.222.0': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:

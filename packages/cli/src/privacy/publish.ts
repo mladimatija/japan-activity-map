@@ -87,7 +87,11 @@ const parse = <T>(text: string | null, fallback: T): T =>
 const refOfRow = (row: { id: string; strava_id: number | null }) =>
   row.strava_id !== null ? `strava:${row.strava_id}` : row.id;
 
-const SOURCE_NAMES: Record<string, string> = { strava: 'Strava', gpx: 'GPX files' };
+const SOURCE_NAMES: Record<string, string> = {
+  strava: 'Strava',
+  gpx: 'GPX files',
+  garmin: 'Garmin',
+};
 
 const stravaLink = (id: number) => `https://www.strava.com/activities/${id}`;
 

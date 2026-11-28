@@ -8,6 +8,9 @@ import { DEPLOY_STEPS, SITE_STEPS } from './steps-site.ts';
 import { TUNING_STEPS } from './steps-tuning.ts';
 import type { Mode, Step } from './types.ts';
 
+/** The sources the site can be built from, one at a time (the sheet always counts). */
+const BUILT_FROM = ['strava', 'gpx', 'garmin'] as const;
+
 /** The groups, in the order full setup and the change menu go through them. */
 export const GROUPS: { id: string; title: string }[] = [
   { id: 'site', title: 'Site' },
@@ -31,6 +34,7 @@ const QUICK_GROUPS = [
   'sources',
   'source:strava',
   'source:gpx',
+  'source:garmin',
   'source:sheet',
   'privacy',
   'publish',
@@ -57,21 +61,22 @@ const SOURCES_STEP: Step = {
     help,
   })),
   read: ({ facts, config }) => {
-    const fromGpx = config.site.activities.source === 'gpx';
+    const from = config.site.activities.source;
     return [
-      ...(!fromGpx && (facts.stravaCredentials || !facts.sheetExists) ? ['strava'] : []),
-      ...(fromGpx ? ['gpx'] : []),
+      ...(from === 'strava' && (facts.stravaCredentials || !facts.sheetExists) ? ['strava'] : []),
+      ...(from === 'gpx' ? ['gpx'] : []),
+      ...(from === 'garmin' ? ['garmin'] : []),
       ...(facts.sheetExists ? ['sheet'] : []),
     ];
   },
-  // The site is built from Strava or from GPX files. With one of the two chosen, that one; with
-  // both, the GPX group's first step asks; with neither (a sheet alone), the setting stays as it is.
+  // The site is built from Strava, from GPX files or from Garmin. With one of them chosen, that
+  // one; with several, a step asks which; with none (a sheet alone), the setting stays as it is.
   map: (answer) => {
     const chosen = Array.isArray(answer) ? answer.map(String) : [];
-    const [strava, gpx] = [chosen.includes('strava'), chosen.includes('gpx')];
-    return strava === gpx
-      ? []
-      : [{ file: 'site', path: ['activities', 'source'], value: gpx ? 'gpx' : 'strava' }];
+    const picked = BUILT_FROM.filter((source) => chosen.includes(source));
+    return picked.length === 1
+      ? [{ file: 'site', path: ['activities', 'source'], value: picked[0] }]
+      : [];
   },
   check: (answer) =>
     Array.isArray(answer) && answer.length > 0 ? undefined : 'Choose at least one source.',

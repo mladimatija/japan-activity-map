@@ -57,6 +57,22 @@ through `gpx wipe`, feeds it archives that must be refused, and builds the site 
 GPX files and from Strava again, checking the source of every published activity and route. Run it
 with `pnpm check:gpx`.
 
+## Garmin checks
+
+`fake-garmin.ts` stands in for the Garmin Connect Personal API: the key-for-token exchange, the
+paged activity list and each activity's file, a FIT file written by `fit-writer.ts` (Garmin's FIT
+SDK) inside a zip. `check-garmin.ts` starts it on a spare port and runs `jam sync garmin` against
+it in a temporary folder: a missing and a refused key, a dry run, the first pull and the ones
+after, a new and a renamed activity, Only Me activities, being told to slow down part of the way
+through, an expired token, `garmin wipe` with the same public ids afterwards, a full pull that
+removes what is gone, and a build from Garmin. Run it with `pnpm check:garmin`. To try it by hand:
+
+```sh
+node packages/cli/dev/fake-garmin.ts --port 8726    # accepts the key "good-key"
+```
+
+and point `activities.garmin.api.baseUrl` in a sandbox's `site.jsonc` at `http://127.0.0.1:8726`.
+
 ## Privacy checks
 
 `check-privacy.ts` reuses the route fixtures with a home zone at their start and an office zone on

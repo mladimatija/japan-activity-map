@@ -90,7 +90,7 @@ export const activityRecordSchema = z.strictObject({
   type: activityType,
   tags: z.array(z.string()),
   /** Where the activity came from: synced from Strava, a row of the manual sheet or a GPX file. */
-  source: z.enum(['strava', 'sheet', 'gpx']),
+  source: z.enum(['strava', 'sheet', 'gpx', 'garmin']),
   /** Its name; empty without one or with names not published (the site then shows its type). */
   name: z.string(),
   distanceM: metres.nullable(),

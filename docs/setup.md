@@ -94,6 +94,7 @@ Demo data is offered only when this version has the `demo` command; otherwise th
 | Is your Strava application ready?     | yes                | nothing; explains the callback domain, the 10-athlete upgrade, subscription  |
 | Strava Client ID                      | none               | `strava.clientId` in `secrets.jsonc`                                         |
 | Strava Client Secret (typed hidden)   | none               | `strava.clientSecret` in `secrets.jsonc`                                     |
+| Garmin personal API key (hidden)      | none; may be empty | `garmin.apiKey` in `secrets.jsonc`, when Garmin is chosen                    |
 | Import "Only You" activities?         | no                 | `import.includePrivate` in `strava.jsonc`, `publish.includeOnlyMeActivities` |
 | Home location to hide (lat, lon)      | none; may be empty | the first zone in `privacy-zones.jsonc`                                      |
 | Hide radius                           | 500 m              | that zone's `radiusM`                                                        |
@@ -133,8 +134,8 @@ The plan of a quick setup: download and build the missing reference lists, `stra
 
 Groups, in order: `site`, `map` (light and dark style, terrain), `views`, `publish` (seven
 switches), `output`, the sources (`strava`: dates, types, sport types, full tracks, API addresses;
-`gpx`: which of Strava and GPX files the site is built from, the type of a file that names none,
-the folder; `sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
+`gpx`: which of Strava, GPX files and Garmin the site is built from, the type of a file that names none,
+the folder; `garmin`: the key, Only Me activities, the first day, recordings per run; `sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
 `matching`, `routeGrouping`, `routes` (names, merges and splits, as JSON), `deploy`.
 
 - A value in brackets is the current one; Enter keeps it. `-` empties an optional value.
@@ -163,8 +164,8 @@ keeps it.
 
 ## Secrets
 
-- Typed hidden in a terminal, or taken from `JAM_STRAVA_CLIENT_ID` and `JAM_STRAVA_CLIENT_SECRET`,
-  or from stdin as `NAME=value` lines with `--secrets-stdin`.
+- Typed hidden in a terminal, or taken from `JAM_STRAVA_CLIENT_ID`, `JAM_STRAVA_CLIENT_SECRET` and
+  `JAM_GARMIN_API_KEY`, or from stdin as `NAME=value` lines with `--secrets-stdin`.
 - Never a flag, never in an answers file (refused), never in the log, masked in every diff, never
   in `data/setup-state.json`, never sent back by the web wizard.
 

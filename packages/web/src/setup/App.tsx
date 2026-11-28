@@ -33,7 +33,13 @@ export const mergePlans = (before: PlanAction[], added: PlanAction[]): PlanActio
 };
 
 /** Answers that must not outlive the save: typed secrets and a clicked position. */
-const SENSITIVE = ['strava.clientId', 'strava.clientSecret', 'privacy.home', 'privacy.zones'];
+const SENSITIVE = [
+  'strava.clientId',
+  'strava.clientSecret',
+  'garmin.apiKey',
+  'privacy.home',
+  'privacy.zones',
+];
 
 /**
  * The setup page. Everything it knows is in this component's state: nothing is written to the
