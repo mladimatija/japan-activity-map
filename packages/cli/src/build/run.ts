@@ -493,18 +493,26 @@ const listStage = (
   if (leftOut) log.warn(leftOut);
   const meta = new Map(index.lists.map((list) => [list.id, list]));
   const itemPrefectures = new Map<string, string[]>();
+  // From each list's own file, beside the prefectures: how its names are read, and what it is.
+  const itemKana = new Map<string, string>();
+  const descriptions = new Map<string, string>();
   for (const list of index.lists) {
     if (!list.file || list.kind === 'area') continue;
-    const features = (
-      JSON.parse(readFileSync(join(LISTS_DIR, list.file), 'utf8')) as {
-        features: { properties: { id: string; prefectures?: string[] } }[];
-      }
-    ).features;
-    for (const feature of features)
+    const file = JSON.parse(readFileSync(join(LISTS_DIR, list.file), 'utf8')) as {
+      metadata?: { description?: string };
+      features: {
+        properties: { id: string; prefectures?: string[]; name?: { kana?: string } };
+      }[];
+    };
+    if (file.metadata?.description) descriptions.set(list.id, file.metadata.description);
+    for (const feature of file.features) {
       itemPrefectures.set(
         feature.properties.id,
         [...(feature.properties.prefectures ?? [])].sort(),
       );
+      if (feature.properties.name?.kana)
+        itemKana.set(feature.properties.id, feature.properties.name.kana);
+    }
   }
   const elevation = new Map(
     (
@@ -525,6 +533,7 @@ const listStage = (
         id: item.itemId,
         order: item.order,
         name: { ja: item.name.ja, en: item.name.en },
+        ...(itemKana.has(item.itemId) ? { kana: itemKana.get(item.itemId) } : {}),
         status: item.status,
         ...(list.kind === 'point' ? { placeId: item.placeId } : {}),
         prefectures: itemPrefectures.get(item.itemId) ?? [],
@@ -547,6 +556,7 @@ const listStage = (
     return {
       id: list.id,
       title: list.title,
+      ...(descriptions.has(list.id) ? { description: descriptions.get(list.id) } : {}),
       kind: list.kind,
       theme: (info?.theme ?? 'peaks') as z.infer<typeof listsFileSchema>['lists'][number]['theme'],
       status: (info?.status ?? 'ready') as z.infer<

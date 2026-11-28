@@ -46,22 +46,50 @@ export const TextLink = ({ className, ...props }: ComponentProps<'button'>) => (
 
 /** A detail's figures, two to a row in a grid of cells: term above, value below. */
 export const Facts = ({ rows, className }: { rows: [string, ReactNode][]; className?: string }) => (
-  <dl
-    className={cn(
-      'my-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg border bg-border',
-      className,
-    )}
-  >
-    {rows.map(([term, value]) => (
-      <div key={term} className="min-w-0 bg-background px-3 py-2.5 last:odd:col-span-2">
-        <dt className="text-xs text-muted-foreground">{t(term)}</dt>
-        <dd className="mt-0.5 font-figure text-lg leading-snug font-semibold tabular-nums">
-          {value}
-        </dd>
-      </div>
-    ))}
-  </dl>
+  // No box: ruled above and below, hairlines between cells (the outer ones are clipped away).
+  <div className={cn('my-5 overflow-hidden border-y', className)}>
+    <dl className="-mt-px -ml-px grid grid-cols-2">
+      {rows.map(([term, value]) => (
+        <div
+          key={term}
+          className="min-w-0 border-t border-l py-2.5 pr-3 pl-3 odd:pl-px last:odd:col-span-2"
+        >
+          <dt className="text-xs text-muted-foreground">{t(term)}</dt>
+          <dd className="mt-0.5 font-figure text-lg leading-snug font-semibold tabular-nums">
+            <FigureValue>{value}</FigureValue>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
 );
+
+/**
+ * A figure with its units a size smaller and quieter: "10.97 km", "3 h 44 min", "20:23/km". Only
+ * text that starts with a number and is not a date; anything else is shown as it is.
+ */
+export const FigureValue = ({ children }: { children: ReactNode }) => {
+  if (
+    typeof children !== 'string' ||
+    !/^[\d−-]/.test(children) ||
+    /(^|[^\d.,])\d{4}(?![\d.,])/.test(children)
+  )
+    return <>{children}</>;
+  return (
+    <>
+      {children.split(/(\d[\d.,:]*)/).map((part, at) =>
+        at % 2 === 1 ? (
+          part
+        ) : part ? (
+          // oxlint-disable-next-line react/no-array-index-key
+          <span key={at} className="text-[0.62em] font-medium text-muted-foreground">
+            {part}
+          </span>
+        ) : null,
+      )}
+    </>
+  );
+};
 
 /** A titled part of a detail, with an optional count beside the title. */
 export const Section = ({
@@ -283,7 +311,7 @@ export const Chip = ({
     pressed={on}
     onPressedChange={onToggle}
     className={cn(
-      'h-auto min-h-8 rounded-full px-3 py-1 text-left font-normal whitespace-normal aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary/90 [&_[data-count]]:opacity-75',
+      'h-auto min-h-8 rounded-full border-transparent bg-accent px-3 py-1 text-left font-normal whitespace-normal text-accent-foreground shadow-none aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary/90 [&_[data-count]]:opacity-75',
       dim && !on && 'text-muted-foreground opacity-70',
       className,
     )}

@@ -5,6 +5,7 @@ import { contours } from '../contours.ts';
 import type { List } from '../data.ts';
 import { distanceText, percent } from '../format.ts';
 import { finishedOf, progressOf } from '../lists.ts';
+import { useLang } from '../names.tsx';
 import { t } from '../i18n.ts';
 
 /** The pattern's own box; the cover crops it to whatever shape the pane gives it. */
@@ -46,6 +47,9 @@ export const ListCover = ({ list }: { list: List }) => {
   const lines = useMemo(() => contours(list.id, BOX.width, BOX.height), [list.id]);
   const { done, total, share } = progressOf(list);
   const finished = finishedOf(list);
+  const lang = useLang();
+  // What the list is: its description's first sentence, which the list files have in English only.
+  const about = lang === 'en' ? list.description?.match(/^.*?[.!?](?=\s|$)/)?.[0] : undefined;
   return (
     <header className="relative -mx-4 grid grid-cols-[minmax(0,1fr)_auto] gap-4 overflow-hidden px-4 pt-4 pb-3 surface-cloth md:-mx-5 md:px-5">
       <svg
@@ -70,6 +74,7 @@ export const ListCover = ({ list }: { list: List }) => {
             : t('{count} places', { count: list.items.length })}
         </Eyebrow>
         <NameTitle id="list-title" name={list.title} />
+        {about && <p className="mt-1.5 text-xs text-muted-foreground">{about}</p>}
         <div className="mt-5">
           <Headline
             value={list.kind === 'route' ? distanceText(done, 1) : done}

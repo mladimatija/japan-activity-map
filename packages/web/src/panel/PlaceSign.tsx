@@ -49,6 +49,8 @@ export const PlaceSign = ({
         : null
       : t('No. {number}', { number: item.order });
   const sub = subName(item.name, lang);
+  // The first reading where a list gives several: "りしりざん（りしりふじ）", "…・…".
+  const reading = item.kana?.split(/[（(・]/)[0];
   return (
     <header>
       <div className="overflow-hidden rounded-lg border bg-card">
@@ -66,6 +68,14 @@ export const PlaceSign = ({
               {nameIn(list.title, lang)}
             </span>
           </div>
+          {reading && (
+            <p
+              lang="ja"
+              className="mt-2.5 -mb-1.5 text-center text-xs tracking-[0.2em] text-muted-foreground"
+            >
+              {reading}
+            </p>
+          )}
           <h2
             data-detail-title=""
             tabIndex={-1}

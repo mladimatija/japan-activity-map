@@ -113,6 +113,8 @@
   --text-display: 1.75rem; /* 28px: a setup step's headline */
   --text-figure: 2.75rem; /* 44px: a pane's headline figure on wider screens */
   --text-figure--line-height: 1;
+  --text-hero: 5.5rem; /* 88px: a page's one headline figure on wider screens */
+  --text-hero--line-height: 0.95;
 
   /*
    * Four voices (docs/design-system.md, Type). IBM Plex Sans, Sans Condensed and Mono ship with
@@ -368,6 +370,21 @@
     width: 44px;
     height: 44px;
   }
+}
+
+/* The map's scale as a survey map draws it: a striped bar under its figure, no box. */
+.maplibregl-ctrl-scale {
+  border: 0;
+  border-bottom: 1px solid var(--foreground);
+  padding: 0 0 6px;
+  background: linear-gradient(90deg, var(--foreground) 50%, transparent 50%) bottom left / 50% 4px
+    repeat-x;
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-shadow:
+    0 0 2px var(--background),
+    0 0 2px var(--background);
 }
 
 /*

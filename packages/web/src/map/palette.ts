@@ -60,6 +60,8 @@ const MAP_COLORS = {
     accent: '#2f3f8f',
     /** Tracks drawn as a heat of repeats. */
     heat: '#d4361b',
+    /** The graticule's lines and figures: indigo ink, quiet on paper and sea. */
+    graticule: '#7f8cb5',
     hillshade: { shadow: '#5b5f66', highlight: '#ffffff', accent: '#6b6f76' },
   },
   dark: {
@@ -69,6 +71,7 @@ const MAP_COLORS = {
     strong: '#ffffff',
     accent: '#a3aef0',
     heat: '#ffb000',
+    graticule: '#4a5a9a',
     hillshade: { shadow: '#000000', highlight: '#3a3a3c', accent: '#000000' },
   },
 } as const;

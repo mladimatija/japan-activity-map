@@ -25,6 +25,7 @@ import { useBaseStyle, useReveal } from './baseStyle.ts';
 import { useViewport } from './viewport.ts';
 import { useMapSources } from './useMapSources.ts';
 import {
+  GraticuleLayers,
   PlaceLayers,
   PrefectureLayers,
   RouteLayers,
@@ -626,6 +627,8 @@ export const MapView = ({ data, dark }: { data: Data; dark: boolean }) => {
         <NavigationControl position="top-right" />
         <ScaleControl position="bottom-right" unit={units} />
         <AttributionControl position="bottom-right" compact customAttribution={credits} />
+
+        <GraticuleLayers color={ink.graticule} halo={ink.halo} font={font} before={base.labels} />
 
         {/* Two sources from the same tiles: MapLibre works best with separate ones for 3D terrain
             and for hillshade. Their credit comes from the source and shows while they are in use. */}

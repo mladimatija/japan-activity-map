@@ -48,6 +48,36 @@ import { select, setFilters, useStore } from '../store.ts';
 import { Name, prefectureName, useLang } from '../names.tsx';
 import { t } from '../i18n.ts';
 
+const SLOT: Record<Status, string> = {
+  done: 'bg-status-done',
+  partial: 'bg-status-partial',
+  dns: 'bg-status-dns',
+  want: 'bg-status-want',
+  none: 'bg-input',
+};
+/** More places than this and a slot each is too thin to count: the plain bar instead. */
+const SLOTS_MAX = 48;
+
+/** A region's places as one slot each, done first: "1 of 9" reads as a count, not just a length. */
+const SlotBar = ({ statuses }: { statuses: Status[] }) => {
+  if (statuses.length > SLOTS_MAX)
+    return (
+      <MiniBar
+        className="w-24"
+        share={statuses.filter((status) => status === 'done').length / statuses.length}
+      />
+    );
+  const sorted = statuses.toSorted((a, b) => STATUS_ORDER.indexOf(a) - STATUS_ORDER.indexOf(b));
+  return (
+    <span aria-hidden className="flex h-1.5 w-24 flex-none gap-px">
+      {sorted.map((status, at) => (
+        // oxlint-disable-next-line react/no-array-index-key
+        <span key={at} className={cn('flex-1 rounded-[1px]', SLOT[status])} />
+      ))}
+    </span>
+  );
+};
+
 /**
  * A bar split by status, under the cover: for routes, and for lists too long for the stamp grid.
  */
@@ -388,7 +418,11 @@ export const ListOverview = ({ data }: { data: Data }) => {
                 className={cn(GROUP_ROW, 'items-center gap-3 py-0 hover:no-underline')}
               >
                 <span className="flex flex-1 items-baseline gap-2">
-                  <Name name={group} sub="text-xs font-normal text-muted-foreground" />
+                  <Name
+                    name={group}
+                    main="font-title text-row"
+                    sub="text-xs font-normal text-muted-foreground"
+                  />
                 </span>
                 {list.kind === 'point' && (
                   <span className="text-compact font-normal text-muted-foreground tabular-nums">
@@ -396,7 +430,11 @@ export const ListOverview = ({ data }: { data: Data }) => {
                   </span>
                 )}
                 {list.kind === 'point' && (
-                  <MiniBar share={group.total ? group.done / group.total : 0} />
+                  <SlotBar
+                    statuses={list.items
+                      .filter((item) => regionOf(data, item) === group.id)
+                      .map((item) => item.status)}
+                  />
                 )}
               </AccordionTrigger>
               <AccordionContent className="pb-2">

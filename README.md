@@ -11,7 +11,7 @@ Live demo, with made-up activities: <https://mladimatija.github.io/japan-activit
 
 ![The map: a list's places as pins by status, with the list and its progress beside it](docs/images/map.png)
 
-Screenshots use demo data and a simplified map. The real site has a full base map.
+Screenshots use demo data.
 
 ## What you get
 

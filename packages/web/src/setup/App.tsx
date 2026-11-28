@@ -128,7 +128,7 @@ export const SetupApp = ({ api }: { api: SetupApi }) => {
   return (
     <div lang={lang} data-app={MARKER} className="min-h-dvh bg-background text-sm text-foreground">
       <header className="flex items-center gap-3 border-b bg-card px-4 py-2.5">
-        <h1 className="flex min-w-0 flex-1 items-center gap-2.5 text-row font-bold">
+        <h1 className="flex min-w-0 flex-1 items-center gap-2.5 font-title text-lg font-bold">
           {/* The map's "done" pin, as the page's mark. */}
           <span
             aria-hidden

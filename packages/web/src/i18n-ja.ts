@@ -534,6 +534,7 @@ export const JA: Record<string, string> = {
   'Stage by stage, to scale. Tap one to open it.': '区間ごとに縮尺どおり。タップすると開きます。',
   'Before and after': '前後',
   Finished: '踏破',
+  'Climb: {times} times up Mount Fuji from the sea.': '登り：海面から富士山{times}回分。',
   'Finished on {date}': '{date}に踏破',
   '50+ years': '50年以上',
   Milestones: 'マイルストーン',

@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '../components/ui/card.tsx';
 import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group.tsx';
-import { Readout } from '../components/app.tsx';
+import { FigureValue, Readout } from '../components/app.tsx';
 import { cn } from '../lib/utils.ts';
 import { touchOnly } from '../hooks/use-mobile.ts';
 import { t } from '../i18n.ts';
@@ -200,24 +200,32 @@ export const ScaleKey = ({
  * Summary figures across the top of a page. With `hero`, the first is the page's headline: twice
  * as wide and larger, so the eye has one place to start.
  */
-export const Figures = ({ items, hero = false }: { items: [string, string][]; hero?: boolean }) => (
-  <dl className="mb-4 grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-2">
-    {items.map(([label, value], i) => (
-      <Card
-        key={label}
-        size="sm"
-        className={cn('gap-0.5 px-3.5 py-3', hero && i === 0 && 'col-span-2 justify-center')}
-      >
-        <dt className="text-xs text-muted-foreground">{t(label)}</dt>
-        <dd
-          className={cn(
-            'font-figure leading-tight font-semibold tabular-nums',
-            hero && i === 0 ? 'text-3xl md:text-figure' : 'text-xl',
-          )}
-        >
-          {value}
-        </dd>
-      </Card>
-    ))}
-  </dl>
-);
+export const Figures = ({ items, hero = false }: { items: [string, string][]; hero?: boolean }) => {
+  const first = hero ? items[0] : undefined;
+  const rest = hero ? items.slice(1) : items;
+  return (
+    <div className="mb-5">
+      {first && (
+        <dl className="mb-3">
+          <dt className="text-compact text-muted-foreground">{t(first[0])}</dt>
+          <dd className="font-figure text-5xl font-bold tabular-nums md:text-hero">
+            <FigureValue>{first[1]}</FigureValue>
+          </dd>
+        </dl>
+      )}
+      {/* No boxes: ruled above and below, hairlines between (the outer ones are clipped away). */}
+      <div className="overflow-hidden border-y">
+        <dl className="-mt-px -ml-px grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))]">
+          {rest.map(([label, value]) => (
+            <div key={label} className="border-t border-l px-3.5 py-2.5">
+              <dt className="text-xs text-muted-foreground">{t(label)}</dt>
+              <dd className="font-figure text-2xl leading-tight font-semibold tabular-nums">
+                <FigureValue>{value}</FigureValue>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  );
+};

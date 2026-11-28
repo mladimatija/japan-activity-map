@@ -15,7 +15,7 @@ import { nameIn, useLang } from '../names.tsx';
 import { StatusIcon } from '../panel/StatusIcon.tsx';
 import { usePref } from '../prefs.ts';
 import { type PrefectureFill, useStore } from '../store.ts';
-import { t } from '../i18n.ts';
+import { isJa, t } from '../i18n.ts';
 import { prefectureBreaks } from './useMapSources.ts';
 import {
   METRIC_SCALE,
@@ -190,7 +190,14 @@ export const MapKey = ({ data, className }: { data: Data; className?: string }) 
       )}
     >
       <CollapsibleTrigger className="group flex min-h-9 w-full items-center gap-2 px-3 text-left text-xs font-semibold outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50">
-        <span className="flex-1">{t('Map key')}</span>
+        <span className="flex-1">
+          {!isJa() && (
+            <span lang="ja" aria-hidden className="mr-1.5 font-title">
+              凡例
+            </span>
+          )}
+          {t('Map key')}
+        </span>
         <GroupChevron />
       </CollapsibleTrigger>
       <CollapsibleContent className="max-h-[50vh] overflow-y-auto">{groups}</CollapsibleContent>

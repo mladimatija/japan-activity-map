@@ -85,7 +85,9 @@ were checked together for colour-blind separation in both modes. In CSS as `--st
 The default base maps (OpenFreeMap's Positron and Dark) are greys, so they are dyed to match the
 page (`mapDye`, `map/dye.ts`): every fill keeps its lightness and takes the page's indigo, a cast
 on land and plainly on water, so map and pane read as one cloth in both modes. A base map of your
-own (`map.styleUrl`) keeps its colours.
+own (`map.styleUrl`) keeps its colours. Over it the map prints a graticule (`map/graticule.ts`,
+`GraticuleLayers`): even degrees always, odd ones from zoom 7, each line with its figure; and the
+scale is a striped bar, as on a survey map.
 
 | Meaning                              | Colour                                                    | Where                                 |
 | ------------------------------------ | --------------------------------------------------------- | ------------------------------------- |
@@ -125,6 +127,7 @@ Sizes, as Tailwind classes:
 | `text-title`   | 22 px | A pane's title                                           |
 | `text-display` | 28 px | A setup step's headline                                  |
 | `text-figure`  | 44 px | A headline figure: a list's score, a page's first figure |
+| `text-hero`    | 88 px | A page's one headline figure (`Figures hero`)            |
 
 Weights: normal and `font-semibold`; `font-bold` for titles and headline figures. The condensed
 face comes in 500 to 700, so its normal text shows at 500. Numbers that line up in columns get
@@ -154,11 +157,12 @@ Reach for these before writing markup. All are in `packages/web/src`.
 | One of a few options                     | `ChoiceField` (select up to 5 options, searchable from 6)                                                                                  | `panel/controls.tsx`                         |
 | On or off with a label                   | `SwitchField`                                                                                                                              | `panel/controls.tsx`                         |
 | A page of charts                         | `ChartPage`, with `Panel` for each block                                                                                                   | `pages/charts.tsx`                           |
-| Headline numbers                         | `Figures` (`hero` makes the first the headline)                                                                                            | `pages/charts.tsx`                           |
+| Headline numbers                         | `Figures`: a ruled strip, no boxes; `hero` sets the first alone at `text-hero`. `FigureValue` sets a figure's units smaller                | `pages/charts.tsx`, `components/app.tsx`     |
 | A chart that says what is pointed at     | `Panel readout`, and `data-tip` on each mark (`Readout` on its own outside a panel)                                                        | `pages/charts.tsx`, `components/app.tsx`     |
 | A titled part of a detail                | `Section`; `Fold` when it should start closed                                                                                              | `components/app.tsx`                         |
-| Term and value pairs                     | `Facts`                                                                                                                                    | `components/app.tsx`                         |
+| Term and value pairs                     | `Facts`: ruled above and below, hairlines between, no box                                                                                  | `components/app.tsx`                         |
 | A share done                             | `MiniBar` with the fraction beside it                                                                                                      | `shell/ListPicker.tsx`                       |
+| A region's places, one slot each         | `SlotBar` (up to 48 places; the plain bar beyond)                                                                                          | `panel/ListOverview.tsx`                     |
 | The top of a list                        | `ListCover`: cloth with the list's own contour lines (`contours.ts`), the title slip and the headline                                      | `panel/ListCover.tsx`                        |
 | Every place of a list at a glance        | `StampGrid`: point lists up to 120 places, in list order, in the pins' shapes; longer lists keep the bar                                   | `panel/StampGrid.tsx`                        |
 | A route at a glance                      | `RouteLine`: the stages end to end and to scale, covered stretches dyed in, breaks where a stage does not start where the last ended       | `panel/RouteLine.tsx`                        |

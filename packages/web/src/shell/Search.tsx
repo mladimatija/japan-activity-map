@@ -15,6 +15,7 @@ import {
   ComboboxList,
 } from '../components/ui/combobox.tsx';
 import { InputGroupAddon } from '../components/ui/input-group.tsx';
+import { Kbd } from '../components/ui/kbd.tsx';
 import type { Data } from '../data.ts';
 import { isMobile, useIsMobile } from '../hooks/use-mobile.ts';
 import { useLang } from '../names.tsx';
@@ -168,6 +169,14 @@ export const Search = ({ data }: { data: Data }) => {
         <InputGroupAddon>
           <SearchIcon />
         </InputGroupAddon>
+        {query.length === 0 && (
+          <InputGroupAddon
+            align="inline-end"
+            className="max-md:hidden group-has-[input:focus-visible]/input-group:hidden"
+          >
+            <Kbd className="bg-cloth text-cloth-muted-foreground">/</Kbd>
+          </InputGroupAddon>
+        )}
       </ComboboxInput>
       {/* Phones: the results take the rest of the screen under the box. */}
       <ComboboxContent className="max-h-[min(70vh,520px)] min-w-[min(320px,calc(100vw-16px))] max-md:h-(--available-height) max-md:max-h-none">

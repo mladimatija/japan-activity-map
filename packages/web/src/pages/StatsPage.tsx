@@ -737,6 +737,50 @@ const ThisYear = ({ activities }: { activities: readonly ActivityRecord[] }) => 
   );
 };
 
+const FUJI_M = 3776;
+/** More Fujis than this are not drawn one by one. */
+const FUJI_MAX = 40;
+
+/** The climb in a unit everyone here knows: so many times up 富士山 from the sea, one peak each. */
+const FujiClimb = ({ gainM }: { gainM: number }) => {
+  const times = gainM / FUJI_M;
+  if (times < 1) return null;
+  const whole = Math.min(Math.floor(times), FUJI_MAX);
+  const part = times > FUJI_MAX ? 0 : times - whole;
+  const peak = (at: number) => `${at * 13},11 ${at * 13 + 6},1 ${at * 13 + 12},11`;
+  return (
+    <p className="-mt-2 mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-compact text-muted-foreground">
+      <span>
+        {t('Climb: {times} times up Mount Fuji from the sea.', { times: times.toFixed(1) })}
+      </span>
+      <svg
+        aria-hidden
+        viewBox={`0 0 ${(whole + (part ? 1 : 0)) * 13} 12`}
+        className="h-3 max-w-full flex-none"
+        style={{ aspectRatio: `${(whole + (part ? 1 : 0)) * 13} / 12` }}
+      >
+        {Array.from({ length: whole }, (_, at) => (
+          // oxlint-disable-next-line react/no-array-index-key
+          <polygon key={at} points={peak(at)} className="fill-status-done" />
+        ))}
+        {part > 0 && (
+          <>
+            <clipPath id="fuji-part">
+              <rect x={whole * 13} y={11 - 10 * part} width="12" height={10 * part} />
+            </clipPath>
+            <polygon
+              points={peak(whole)}
+              className="fill-none stroke-status-done"
+              strokeWidth="0.75"
+            />
+            <polygon points={peak(whole)} className="fill-status-done" clipPath="url(#fuji-part)" />
+          </>
+        )}
+      </svg>
+    </p>
+  );
+};
+
 export const StatsPage = ({ data }: { data: Data }) => {
   const filters = useStore((state) => state.filters);
   const derived = derive(data, filters);
@@ -759,6 +803,7 @@ export const StatsPage = ({ data }: { data: Data }) => {
           ['Prefectures', String(derived.totals.size)],
         ]}
       />
+      <FujiClimb gainM={total.gainM} />
       <div className="mb-4 grid gap-4 wide:grid-cols-2">
         <PrefecturesCard data={data} derived={derived} />
         <ThisYear activities={derived.activities} />

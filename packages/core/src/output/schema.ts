@@ -127,6 +127,8 @@ const listItemSchema = z.strictObject({
   id: z.string(),
   order: z.int(),
   name,
+  /** How the Japanese name is read, where the list gives it: for the place's sign. */
+  kana: z.string().optional(),
   status: itemStatusSchema,
   /** Point lists: where it is, and the shared place id. */
   placeId: z.string().nullable().optional(),
@@ -151,6 +153,8 @@ export const listsFileSchema = z.strictObject({
     z.strictObject({
       id: z.string(),
       title: name,
+      /** What the list is, in a sentence, from its own file: shown on its cover (in English). */
+      description: z.string().optional(),
       kind: z.enum(LIST_KINDS),
       theme: z.enum(LIST_THEMES),
       status: z.enum(LIST_STATUSES),

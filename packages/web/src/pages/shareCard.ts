@@ -15,7 +15,10 @@ export interface YearCard {
 const token = (name: string): string =>
   getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
-const FONT = "system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif";
+/** The site's faces (index.css): the sans for labels, the condensed cut for the year and figures. */
+const REST = "'Hiragino Sans', 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', sans-serif";
+const FONT = `'IBM Plex Sans Variable', ${REST}`;
+const FIGURE = `'IBM Plex Sans Condensed', ${REST}`;
 
 /** The year as a square picture, 1080 px, for sharing: the year, the figures and the site's name. */
 const draw = ({ year, title, rows, note, demo }: YearCard): HTMLCanvasElement => {
@@ -30,7 +33,7 @@ const draw = ({ year, title, rows, note, demo }: YearCard): HTMLCanvasElement =>
   c.fillRect(0, 0, 1080, 1080);
   c.fillStyle = token('--primary');
   c.textBaseline = 'alphabetic';
-  c.font = `700 200px ${FONT}`;
+  c.font = `700 200px ${FIGURE}`;
   c.fillText(String(year), 80, 270);
   c.font = `400 40px ${FONT}`;
   c.fillStyle = quiet;
@@ -53,7 +56,7 @@ const draw = ({ year, title, rows, note, demo }: YearCard): HTMLCanvasElement =>
     c.fillStyle = quiet;
     c.textAlign = 'left';
     c.fillText(label, 80, y);
-    c.font = `600 48px ${FONT}`;
+    c.font = `600 48px ${FIGURE}`;
     c.fillStyle = ink;
     c.textAlign = 'right';
     c.fillText(value, 1000, y);
@@ -77,6 +80,12 @@ const draw = ({ year, title, rows, note, demo }: YearCard): HTMLCanvasElement =>
  * saves it as a PNG otherwise.
  */
 export const shareYear = async (card: YearCard): Promise<void> => {
+  // A canvas draws only with fonts already loaded: ask for the two it uses, and draw regardless.
+  await Promise.all([
+    document.fonts.load(`700 200px ${FIGURE}`),
+    document.fonts.load(`600 48px ${FIGURE}`),
+    document.fonts.load(`400 40px ${FONT}`),
+  ]).catch(() => undefined);
   const canvas = draw(card);
   const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
   if (!blob) return;

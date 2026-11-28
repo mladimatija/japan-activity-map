@@ -20,7 +20,7 @@ export const Screen = ({
 }) => (
   <section className="flex flex-col gap-4">
     <header>
-      <h2 className="text-title font-bold">{title}</h2>
+      <h2 className="font-title text-title font-bold">{title}</h2>
       {lead && <p className="mt-1 text-sm text-muted-foreground">{lead}</p>}
     </header>
     {children}
@@ -203,7 +203,7 @@ export const Welcome = ({
         aria-labelledby="path-quick"
         className="flex flex-col gap-3 rounded-xl border bg-card p-5 md:col-span-3"
       >
-        <h3 id="path-quick" className="text-title font-bold">
+        <h3 id="path-quick" className="font-title text-title font-bold">
           {t('Quick setup')}
         </h3>
         <p className="max-w-[52ch] text-sm text-muted-foreground">
@@ -267,7 +267,7 @@ export const Welcome = ({
   return (
     <section className="flex flex-col gap-7">
       <header className="flex flex-col gap-2">
-        <h2 className="text-display font-bold tracking-tight">
+        <h2 className="font-title text-display font-bold tracking-tight">
           {ready ? t('Your map is set up') : t('Set up your map')}
         </h2>
         <p className="max-w-[62ch] text-sm text-muted-foreground">

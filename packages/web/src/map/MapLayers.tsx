@@ -4,6 +4,8 @@ import type { FeatureCollection } from 'geojson';
 import type { ExpressionSpecification } from 'maplibre-gl';
 import { Layer, Source } from 'react-map-gl/maplibre';
 
+import { graticule } from './graticule.ts';
+
 import type { ReferenceRouteFile } from '../data.ts';
 import { tracksByYear } from '../lazy.ts';
 import type { State } from '../store.ts';
@@ -441,6 +443,57 @@ export const SelectionLayers = ({
       />
     </Source>
   </>
+);
+
+const GRATICULE = graticule();
+
+/**
+ * The graticule, over the sea and land and under place names: main lines always, the odd degrees
+ * from zoom 7, each with its figure along it.
+ */
+export const GraticuleLayers = ({
+  color,
+  halo,
+  font,
+  before,
+}: {
+  color: string;
+  halo: string;
+  font: { 'text-font'?: string[] };
+  before?: string;
+}) => (
+  <Source id="graticule" type="geojson" data={GRATICULE}>
+    <Layer
+      id="graticule-main"
+      type="line"
+      beforeId={before}
+      filter={['==', ['get', 'major'], true]}
+      paint={{ 'line-color': color, 'line-width': 0.6, 'line-opacity': 0.55 }}
+    />
+    <Layer
+      id="graticule-fine"
+      type="line"
+      beforeId={before}
+      minzoom={7}
+      filter={['==', ['get', 'major'], false]}
+      paint={{ 'line-color': color, 'line-width': 0.5, 'line-opacity': 0.4 }}
+    />
+    <Layer
+      id="graticule-figures"
+      type="symbol"
+      beforeId={before}
+      filter={['==', ['get', 'major'], true]}
+      layout={{
+        'symbol-placement': 'line',
+        'symbol-spacing': 420,
+        'text-field': ['get', 'label'],
+        'text-size': 10,
+        'text-offset': [0, -0.7],
+        ...font,
+      }}
+      paint={{ 'text-color': color, 'text-halo-color': halo, 'text-halo-width': 1 }}
+    />
+  </Source>
 );
 
 /** The list's places: clusters, pins and labels. */

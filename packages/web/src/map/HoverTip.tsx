@@ -40,6 +40,11 @@ export const PlaceTip = ({ data, list: listId, id }: { data: Data; list: string;
   const dates = visits.toReversed().map((activity) => activity.date);
   return (
     <>
+      {item.order !== undefined && (
+        <span className="mr-1.5 font-mono text-xs text-muted-foreground tabular-nums">
+          {item.order}
+        </span>
+      )}
       <TipName name={item.name} />
       <div>
         <StatusIcon status={item.status} size={13} decorative /> {STATUS_LABELS[item.status]}
@@ -147,7 +152,9 @@ const TipName = ({ name }: { name: Named }) => {
   const other = subName(name, lang);
   return (
     <>
-      <strong lang={lang}>{nameIn(name, lang)}</strong>
+      <strong className="font-title text-row" lang={lang}>
+        {nameIn(name, lang)}
+      </strong>
       {other && (
         <>
           {' '}
