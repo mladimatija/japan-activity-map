@@ -210,6 +210,8 @@ export const JA: Record<string, string> = {
     '{measure}：中央値 {median}、最速 {fastest}（丸印）',
   'One dot per run: across by date, higher is faster. Point at one to read it; click to open it.':
     '点は1回ずつ：横は日付、上ほど速い。指すと内容を表示、クリックで開きます。',
+  'One dot per run: across by date, higher is faster. Tap one to open it.':
+    '点は1回ずつ：横は日付、上ほど速い。タップで開きます。',
   '{place} · {type} {distance}': '{place}・{type} {distance}',
   '{place} · {type} {distance} loop': '{place}・{type} {distance} 周回',
   '{name}, visited': '{name}（訪問済み）',
@@ -395,8 +397,8 @@ export const JA: Record<string, string> = {
   'Every day out': '活動した日',
   'Colour days by': '日の色分け',
   Time: '時間',
-  'Click a day to see its longest activity on the map.':
-    '日をクリックすると、その日いちばん長いアクティビティを地図で表示します。',
+  'Select a day to see its longest activity on the map.':
+    '日を選ぶと、その日いちばん長いアクティビティを地図で表示します。',
   'All years': 'すべての年',
   '{year}: {count} days with activities': '{year}年: アクティビティのある日 {count}日',
   Less: '少',
@@ -416,20 +418,20 @@ export const JA: Record<string, string> = {
     'ビルド時に開始時刻から数えています（開始時刻そのものは公開していません）。',
   'Activities by start hour and weekday': '曜日と開始時刻別のアクティビティ',
   'Lists, region by region': '地方別のリスト',
-  'Done here means reached by a matching activity. Click a region to open it on the map.':
-    'ここでの達成は、一致するアクティビティで到達したことを指します。地方をクリックすると地図で開きます。',
-  'Click a list or a region to open it on the map.': 'リストや地方をクリックすると地図で開きます。',
+  'Done here means reached by a matching activity. Select a region to open it on the map.':
+    'ここでの達成は、一致するアクティビティで到達したことを指します。地方を選ぶと地図で開きます。',
+  'Select a list or a region to open it on the map.': 'リストや地方を選ぶと地図で開きます。',
   'Completed over time': '達成の推移',
-  'Places on each list, and prefectures, as they were first reached. Click a line or a name to open it.':
-    '各リストの場所と都道府県を、初めて到達した時点で数えています。線や名前をクリックすると開きます。',
+  'Places on each list, and prefectures, as they were first reached. Select a line or a name to open it.':
+    '各リストの場所と都道府県を、初めて到達した時点で数えています。線や名前を選ぶと開きます。',
   'Places and prefectures completed over time': '場所と都道府県の達成の推移',
   'Long trails and routes': 'ロングトレイルとルート',
   'Covered stretches count every published activity; lists with no matching activity on them are dimmed.':
     '踏破区間は公開されたすべてのアクティビティで数えます。一致するアクティビティがないリストは薄く表示します。',
-  'Covered stretches filled. Click a route to open it on the map.':
-    '踏破した区間を塗っています。ルートをクリックすると地図で開きます。',
+  'Covered stretches filled. Select a route to open it on the map.':
+    '踏破した区間を塗っています。ルートを選ぶと地図で開きます。',
   'Prefectures visited': '訪問した都道府県',
-  'Click a prefecture to see it on the map.': '都道府県をクリックすると地図で表示します。',
+  'Select a prefecture to see it on the map.': '都道府県を選ぶと地図で表示します。',
   '{year} so far': '{year}年（ここまで）',
   '{year} to date': '{year}年同時期',
   'All {year}': '{year}年通年',
@@ -439,8 +441,8 @@ export const JA: Record<string, string> = {
   'Most repeated': 'よく行く場所・ルート',
   'Places {count}': '場所 {count}',
   'Routes {count}': 'ルート {count}',
-  'Fastest is the shortest moving time of those activities. Click a name to see it on the map.':
-    '最速は、それらのアクティビティの最短移動時間です。名前をクリックすると地図で表示します。',
+  'Fastest is the shortest moving time of those activities. Select a name to see it on the map.':
+    '最速は、それらのアクティビティの最短移動時間です。名前を選ぶと地図で表示します。',
   Place: '場所',
   Times: '回数',
   'Show all {count}': '{count}件すべて表示',
@@ -448,8 +450,8 @@ export const JA: Record<string, string> = {
   'No routes done twice with these filters.': 'このフィルターで2回以上走ったルートはありません。',
   'No place reached twice with these filters.': 'このフィルターで2回以上到達した場所はありません。',
   'Places over time': '場所への訪問の推移',
-  'A dot per visit, coloured by activity type. Click a dot to open that activity.':
-    '訪問1回につき点1つ、色は種目です。点をクリックするとそのアクティビティを開きます。',
+  'A dot per visit, coloured by activity type. Select a dot to open that activity.':
+    '訪問1回につき点1つ、色は種目です。点を選ぶとそのアクティビティを開きます。',
   'Visits to {count} places over time': '{count}か所への訪問の推移',
   'Year against year': '年ごとの比較',
   'Comparing needs activities in at least two years.':
@@ -464,8 +466,8 @@ export const JA: Record<string, string> = {
   'New ground in {year}': '{year}年に新しく走った所',
   new: '新規',
   'Year in review': '年の振り返り',
-  'New means first time with the matching activities. Click a year to filter the map to it.':
-    '新規は、一致するアクティビティで初めてという意味です。年をクリックすると地図をその年で絞り込みます。',
+  'New means first time with the matching activities. Select a year to filter the map to it.':
+    '新規は、一致するアクティビティで初めてという意味です。年を選ぶと地図をその年で絞り込みます。',
   'New prefectures': '新しい都道府県',
   'New places': '新しい場所',
   'Longest day': '最長の日',
@@ -549,6 +551,7 @@ export const JA: Record<string, string> = {
   Roads: '道',
   // Demo data (`jam demo`)
   'Demo data': 'デモデータ',
+  'made-up activities': '架空のアクティビティ',
   'These activities are made up, to show what the site does.':
     'サイトの機能を紹介するための架空のアクティビティです。',
   'Skip to the panel': 'パネルへ移動',

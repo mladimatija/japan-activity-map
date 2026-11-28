@@ -308,7 +308,7 @@ const YearCards = ({ data, derived }: { data: Data; derived: Derived }) => {
     <Panel
       id="review"
       title="Year in review"
-      note="New means first time with the matching activities. Click a year to filter the map to it."
+      note="New means first time with the matching activities. Select a year to filter the map to it."
     >
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-2.5">
         {years.map((year) => {

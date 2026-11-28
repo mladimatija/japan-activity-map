@@ -18,7 +18,7 @@ import { TYPE_COLORS } from '../map/palette.ts';
 import { usePref } from '../prefs.ts';
 import { showOnMap, useStore } from '../store.ts';
 import { ChartPage, linear, Panel, toTime, Toggle } from './charts.tsx';
-import { activityName, Name, nameIn, routeName, useLang } from '../names.tsx';
+import { activityName, Name, nameIn, routeName, SUB_ON_WIDE, useLang } from '../names.tsx';
 import { t } from '../i18n.ts';
 
 interface Repeat {
@@ -140,7 +140,8 @@ const RepeatTable = ({ rows, what }: { rows: Repeat[]; what: string }) => {
                   className="text-left [&_[data-name=main]]:font-semibold hover:[&_[data-name=main]]:underline"
                   onClick={row.open}
                 >
-                  <Name name={row} />
+                  {/* A phone's column is too narrow for both names. */}
+                  <Name name={row} sub={SUB_ON_WIDE} />
                 </button>
               </TableHead>
               <TableCell className="text-right tabular-nums">{row.count}</TableCell>
@@ -263,7 +264,7 @@ export const RepeatsPage = ({ data }: { data: Data }) => {
             onChange={setKind}
           />
         }
-        note="Fastest is the shortest moving time of those activities. Click a name to see it on the map."
+        note="Fastest is the shortest moving time of those activities. Select a name to see it on the map."
       >
         <RepeatTable rows={kind === 'places' ? places : routes} what={kind} />
       </Panel>
@@ -271,7 +272,7 @@ export const RepeatsPage = ({ data }: { data: Data }) => {
         id="timeline"
         title="Places over time"
         readout
-        note="A dot per visit, coloured by activity type. Click a dot to open that activity."
+        note="A dot per visit, coloured by activity type. Select a dot to open that activity."
       >
         <Timeline rows={places} />
       </Panel>

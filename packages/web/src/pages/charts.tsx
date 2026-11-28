@@ -10,6 +10,7 @@ import {
 } from '../components/ui/card.tsx';
 import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group.tsx';
 import { cn } from '../lib/utils.ts';
+import { touchOnly } from '../hooks/use-mobile.ts';
 import { t } from '../i18n.ts';
 
 export { SERIES_COLORS } from '../map/palette.ts';
@@ -117,7 +118,15 @@ export const Panel = ({
     </CardHeader>
     <CardContent>
       {readout ? (
-        <Readout idle={t('Point at the chart to read a value.')}>{children}</Readout>
+        <Readout
+          idle={
+            touchOnly()
+              ? t('Tap the chart to read a value.')
+              : t('Point at the chart to read a value.')
+          }
+        >
+          {children}
+        </Readout>
       ) : (
         children
       )}

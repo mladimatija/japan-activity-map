@@ -16,7 +16,7 @@ import {
 } from '../components/ui/combobox.tsx';
 import { InputGroupAddon } from '../components/ui/input-group.tsx';
 import type { Data } from '../data.ts';
-import { useIsMobile } from '../hooks/use-mobile.ts';
+import { isMobile, useIsMobile } from '../hooks/use-mobile.ts';
 import { useLang } from '../names.tsx';
 import { buildIndex, type Entry, KIND_LABELS, search } from '../search.ts';
 import { showOnMap, useStore } from '../store.ts';
@@ -50,17 +50,63 @@ export const Search = ({ data }: { data: Data }) => {
   const opener = useRef<HTMLButtonElement>(null);
   const mobile = useIsMobile();
   const [expanded, setExpanded] = useState(false);
-  const close = () => {
+  // The open search is a history entry of its own, so a phone's Back closes it like a detail.
+  const entry = useRef(false);
+  const afterBack = useRef<(() => void) | null>(null);
+  const expand = () => {
+    // Focused in the same tap, so the phone's keyboard comes up with it.
+    flushSync(() => setExpanded(true));
+    input.current?.focus();
+    history.pushState({ jamSearch: true }, '');
+    entry.current = true;
+  };
+  const shut = () => {
     setExpanded(false);
     setQuery('');
     setOpen(false);
-    opener.current?.focus();
   };
+  /** Closes the search, then does `then`; leaving its history entry first, where it has one. */
+  const close = (then: () => void = () => opener.current?.focus()) => {
+    if (!entry.current) {
+      shut();
+      then();
+      return;
+    }
+    afterBack.current = then;
+    history.back();
+  };
+  useEffect(() => {
+    const onBack = () => {
+      if (!entry.current) return;
+      entry.current = false;
+      shut();
+      afterBack.current?.();
+      afterBack.current = null;
+    };
+    window.addEventListener('popstate', onBack);
+    return () => window.removeEventListener('popstate', onBack);
+  }, []);
   const groups = useMemo(
     () => search(index, query).map((group) => ({ value: group.kind, items: group.entries })),
     [index, query],
   );
   const showing = open && query.trim().length > 0;
+
+  // While the search covers the screen, the page under it is out of reach of Tab and of screen
+  // readers; a window widened past phone size has the box in the bar again.
+  const covering = mobile && expanded;
+  useEffect(() => {
+    if (!mobile && expanded) close(() => undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- close only uses setters and refs
+  }, [mobile, expanded]);
+  useEffect(() => {
+    const page = document.getElementById('root');
+    if (!covering || !page) return undefined;
+    page.inert = true;
+    return () => {
+      page.inert = false;
+    };
+  }, [covering]);
 
   // Esc closes the results first (the combobox does that), then the phone's search screen.
   useEffect(() => {
@@ -80,11 +126,13 @@ export const Search = ({ data }: { data: Data }) => {
       const typing = target?.closest('input, textarea, select, [contenteditable]');
       if (event.key === '/' && !typing && !event.metaKey && !event.ctrlKey) {
         event.preventDefault();
-        input.current?.focus();
+        if (isMobile() && !input.current) expand();
+        else input.current?.focus();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- expand only uses setters and refs
   }, []);
 
   const box = (
@@ -99,11 +147,8 @@ export const Search = ({ data }: { data: Data }) => {
       value={null}
       onValueChange={(entry) => {
         if (!entry) return;
-        openEntry(entry);
-        setQuery('');
-        setOpen(false);
-        setExpanded(false);
         input.current?.blur();
+        close(() => openEntry(entry));
       }}
       itemToStringLabel={(entry) => entry.title}
       isItemEqualToValue={(a, b) => a.key === b.key}
@@ -168,11 +213,7 @@ export const Search = ({ data }: { data: Data }) => {
         aria-label={t('Search')}
         aria-haspopup="dialog"
         aria-expanded={expanded}
-        onClick={() => {
-          // Focused in the same tap, so the phone's keyboard comes up with it.
-          flushSync(() => setExpanded(true));
-          input.current?.focus();
-        }}
+        onClick={expand}
       >
         <SearchIcon />
       </Button>
@@ -185,7 +226,12 @@ export const Search = ({ data }: { data: Data }) => {
             className="fixed inset-0 z-40 flex flex-col bg-background"
           >
             <div role="search" className="flex h-14 flex-none items-center gap-1 border-b px-2">
-              <Button variant="ghost" size="icon-lg" aria-label={t('Close search')} onClick={close}>
+              <Button
+                variant="ghost"
+                size="icon-lg"
+                aria-label={t('Close search')}
+                onClick={() => close()}
+              >
                 <ArrowLeftIcon />
               </Button>
               <div className="min-w-0 flex-1">{box}</div>

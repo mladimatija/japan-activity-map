@@ -1,7 +1,7 @@
 // Renders the panel for every list and every kind of selection against a real build (dist/data),
 // and checks the links between the files. Run with dev/check-web.sh.
 import { ErrorBoundary } from '../src/components/ErrorBoundary.tsx';
-import { pushed, replaced } from './shims.ts';
+import { pushed, replaced, setPhone } from './shims.ts';
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -1220,6 +1220,70 @@ check(render(empty).includes('No activities are published yet'), 'an empty build
   check(
     hex.length === 0,
     `no colour written outside map/palette.ts and index.css (${hex.join(', ')})`,
+  );
+}
+
+// The phone layout (under 768 px, touch only). A server render cannot measure widths, so this
+// holds the phone's own markup to the same rules: it renders, in both languages, with nothing
+// untranslated; search is a button, the demo strip explains itself, and the hints say "tap".
+{
+  setPhone(true);
+  untranslated.clear();
+  for (const lang of ['en', 'ja'] as const) {
+    setLang(lang);
+    useStore.setState({ list: DEFAULT_LIST, selection: null, view: 'list', filters: NO_FILTERS });
+    const draw = (label: string, make: () => string): string => {
+      try {
+        return make();
+      } catch (error) {
+        check(false, `${label} renders on a phone, ${lang} (${String(error)})`);
+        return '';
+      }
+    };
+    const bar = draw('top bar', () => renderToString(<TopBar data={data} />));
+    check(
+      bar.includes('aria-haspopup="dialog"') && !bar.includes('type="search"'),
+      `on a phone search is a button, not a box, ${lang}`,
+    );
+    check(
+      bar.includes(lang === 'ja' ? '架空のアクティビティ' : 'made-up activities') ===
+        (data.meta.demo === true),
+      `on a phone the demo strip says what it means, on demo data only, ${lang}`,
+    );
+    for (const view of ['list', 'activities', 'prefectures', 'filters'] as const) {
+      useStore.setState({ view });
+      draw(view, () => render(data));
+    }
+    useStore.setState({ view: 'list' });
+    for (const selection of selections.slice(0, 40)) {
+      useStore.setState({
+        selection,
+        ...(selection.kind === 'item' ? { list: selection.list } : {}),
+      });
+      draw(JSON.stringify(selection), () => render(data));
+    }
+    useStore.setState({ selection: null, list: DEFAULT_LIST });
+    draw('layers', () => renderToString(<LayersMenu data={data} />));
+    draw('map key', () => renderToString(<MapKey data={data} />));
+    const stats = draw('statistics', () => renderToString(<StatsPage data={data} />));
+    draw('repeats', () => renderToString(<RepeatsPage data={data} />));
+    draw('compare', () => renderToString(<ComparePage data={data} />));
+    draw('goals', () => renderToString(<GoalsPage data={data} />));
+    check(
+      stats.includes(lang === 'ja' ? 'タップ' : 'Tap the chart') &&
+        !stats.includes(lang === 'ja' ? 'グラフを指す' : 'Point at the chart'),
+      `on a phone the chart hints say tap, ${lang}`,
+    );
+  }
+  setLang('en');
+  setPhone(false);
+  const own = new Set(data.meta.views.map((view) => view.name));
+  const missing = [...untranslated].filter(
+    (text) => !own.has(text) && !/[\u3040-\u30ff\u4e00-\u9fff]/.test(text),
+  );
+  check(
+    missing.length === 0,
+    `every string the phone layout asks for has Japanese (missing: ${missing.join(' | ')})`,
   );
 }
 

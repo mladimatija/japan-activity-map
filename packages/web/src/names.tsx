@@ -51,6 +51,9 @@ export const routeName = (route: Route, lang: Lang = useStore.getState().lang): 
  * A name in the viewer's language, then the other language for reference: "Mount Fuji 富士山"
  * in English, "富士山 Mount Fuji" in Japanese. `only` shows the first alone (tight places).
  */
+/** For `Name`'s `sub` where a phone has room for one name only: the second shows from 768 px. */
+export const SUB_ON_WIDE = 'text-muted-foreground font-normal max-md:hidden';
+
 export const Name = ({
   name,
   main,

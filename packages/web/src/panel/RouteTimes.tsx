@@ -8,6 +8,7 @@ import { clock, date, distanceText, niceStep, speedText } from '../format.ts';
 import { distanceM, distanceUnit } from '../units.ts';
 import { getHover, setHover, subscribeHover } from '../hover.ts';
 import { useWidth } from '../hooks/use-width.ts';
+import { touchOnly } from '../hooks/use-mobile.ts';
 import { t } from '../i18n.ts';
 import { typeColorOf } from '../map/palette.ts';
 import { select } from '../store.ts';
@@ -284,9 +285,11 @@ export const RouteTimes = ({
               : t('Trend: {amount} slower per month', { amount: amountOf(drift) })}
           </span>
         )}
-        {t(
-          'One dot per run: across by date, higher is faster. Point at one to read it; click to open it.',
-        )}
+        {touchOnly()
+          ? t('One dot per run: across by date, higher is faster. Tap one to open it.')
+          : t(
+              'One dot per run: across by date, higher is faster. Point at one to read it; click to open it.',
+            )}
       </figcaption>
     </figure>
   );

@@ -292,3 +292,11 @@
     @apply cursor-pointer;
   }
 }
+
+/* The map's zoom buttons are 29 px as shipped: on a touch screen they get a finger's width. */
+@media (pointer: coarse) {
+  .maplibregl-ctrl-group button {
+    width: 44px;
+    height: 44px;
+  }
+}

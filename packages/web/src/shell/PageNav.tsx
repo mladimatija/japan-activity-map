@@ -89,13 +89,14 @@ export const PageNav = () => {
           render={
             <Button
               variant="outline"
-              size="icon-lg"
-              className="md:hidden"
+              size="lg"
+              className="gap-1 px-2 md:hidden"
               aria-label={t('Page: {page}', { page: t(current?.label ?? '') })}
             />
           }
         >
           {current && <current.Icon />}
+          <ChevronDownIcon className="text-muted-foreground" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-44">
           <DropdownMenuRadioGroup value={page} onValueChange={(value: Page) => go(value)}>

@@ -26,6 +26,7 @@ import { ActivityResults, PrefectureResults } from './Results.tsx';
 import { PaneResizer } from './PaneResizer.tsx';
 import { t } from '../i18n.ts';
 import { useLang } from '../names.tsx';
+import { barExtra } from '../shell/DemoBadge.tsx';
 
 const STOPS: SheetStop[] = ['peek', 'half', 'full'];
 
@@ -33,7 +34,7 @@ const STOPS: SheetStop[] = ['peek', 'half', 'full'];
 export const sheetHeight = (stop: SheetStop, windowHeight = window.innerHeight): number => {
   if (stop === 'peek') return Math.min(176, Math.round(windowHeight * 0.3));
   if (stop === 'half') return Math.round(windowHeight * 0.52);
-  return windowHeight - 64;
+  return windowHeight - 64 - barExtra();
 };
 
 const TABS: { view: PaneView; label: string }[] = [
@@ -285,7 +286,7 @@ export const Pane = ({ data }: { data: Data }) => {
         aria-label={label}
         initialFocus={false}
         finalFocus={false}
-        className="z-20 shadow-[0_-2px_16px_color-mix(in_srgb,var(--foreground)_14%,transparent)] data-[swipe-axis=y]:[--drawer-content-max-height:calc(100dvh-4rem)]"
+        className="z-20 shadow-[0_-2px_16px_color-mix(in_srgb,var(--foreground)_14%,transparent)] data-[swipe-axis=y]:[--drawer-content-max-height:calc(100dvh-4rem-var(--bar-extra,0px))]"
       >
         {/* Only the part of the sheet that is showing scrolls, so its last rows can be reached. */}
         <div

@@ -30,6 +30,7 @@ import {
   tripsOf,
 } from '../goals.ts';
 import { t } from '../i18n.ts';
+import { cn } from '../lib/utils.ts';
 import { TypeIcon } from '../icons.tsx';
 import { TYPE_COLORS } from '../map/palette.ts';
 import { activityName, Name, nameIn, useLang } from '../names.tsx';
@@ -111,15 +112,21 @@ const Milestones = ({
               <tr>
                 <th scope="col">{t('List')}</th>
                 <th scope="col">{t('Done')}</th>
-                <th scope="col">{t('Next')}</th>
-                {paced && <th scope="col">{t('Pace')}</th>}
+                <th scope="col" className="max-md:hidden">
+                  {t('Next')}
+                </th>
+                {paced && (
+                  <th scope="col" className="max-md:hidden">
+                    {t('Pace')}
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody>
               {(all ? paces : paces.slice(0, SHOWN)).map(
                 ({ list, done, total, next, lastYear, finish }) => (
                   <tr key={list.id}>
-                    <td className="max-w-56 pr-3">
+                    <td className="max-w-56 pr-3 max-md:max-w-44">
                       <TextLink
                         onClick={() =>
                           useStore.setState({
@@ -132,6 +139,12 @@ const Milestones = ({
                       >
                         <Name name={list.title} only />
                       </TextLink>
+                      {/* The "Next" column, on a phone: under the name. */}
+                      {next !== null && (
+                        <span className="block text-xs text-muted-foreground md:hidden">
+                          {t('{left} to go to {next}', { left: next - done, next })}
+                        </span>
+                      )}
                     </td>
                     {/* The same fraction and bar as the list picker and a prefecture's lists. */}
                     <td className="pr-3 whitespace-nowrap">
@@ -142,13 +155,13 @@ const Milestones = ({
                         <MiniBar share={done / total} label={percent(done, total)} />
                       </span>
                     </td>
-                    <td className="pr-3 font-semibold whitespace-nowrap">
+                    <td className="pr-3 font-semibold whitespace-nowrap max-md:hidden">
                       {next === null
                         ? t('All done')
                         : t('{left} to go to {next}', { left: next - done, next })}
                     </td>
                     {paced && (
-                      <td className="text-xs whitespace-nowrap text-muted-foreground">
+                      <td className="text-xs whitespace-nowrap text-muted-foreground max-md:hidden">
                         {done >= total || lastYear === 0 || finish === null
                           ? '–'
                           : t('{count} in 12 months · done by {year}', {
@@ -209,8 +222,9 @@ const Records = ({ activities }: { activities: readonly ActivityRecord[] }) => {
               </span>
               {typeLabel(type)}
             </h3>
-            <table className={TABLE}>
-              <tbody>
+            {/* On a phone each record is two lines: what and how much, then when. */}
+            <table className={cn(TABLE, 'max-md:block')}>
+              <tbody className="max-md:block">
                 {records
                   .filter((record) => record.type === type)
                   .sort(
@@ -219,14 +233,17 @@ const Records = ({ activities }: { activities: readonly ActivityRecord[] }) => {
                       (a.metres ?? 0) - (b.metres ?? 0),
                   )
                   .map((record) => (
-                    <tr key={record.id}>
-                      <th scope="row" className="w-2/5 pr-3 align-top">
+                    <tr
+                      key={record.id}
+                      className="max-md:grid max-md:grid-cols-[minmax(0,1fr)_auto] max-md:items-baseline max-md:gap-x-3 max-md:py-1.5 max-md:[&>*]:py-0"
+                    >
+                      <th scope="row" className="pr-3 align-top md:w-2/5">
                         {recordLabel(record)}
                       </th>
                       <td className="pr-3 font-semibold whitespace-nowrap">
                         {recordValue(record)}
                       </td>
-                      <td className="max-w-40 text-xs text-muted-foreground">
+                      <td className="text-xs text-muted-foreground max-md:col-span-2 md:max-w-40">
                         <TextLink
                           onClick={() => showOnMap({ kind: 'activity', id: record.activity.id })}
                         >

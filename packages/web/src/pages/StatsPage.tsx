@@ -31,7 +31,7 @@ import {
   toTime,
   Toggle,
 } from './charts.tsx';
-import { Name, nameIn, useLang } from '../names.tsx';
+import { Name, nameIn, SUB_ON_WIDE, useLang } from '../names.tsx';
 import { localized, t } from '../i18n.ts';
 
 const WEEKDAYS = localized(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
@@ -207,7 +207,7 @@ const Calendar = ({ activities }: { activities: readonly ActivityRecord[] }) => 
           onChange={setMetric}
         />
       }
-      note="Click a day to see its longest activity on the map."
+      note="Select a day to see its longest activity on the map."
     >
       {years.length === 0 && (
         <p className="py-2 text-muted-foreground">{t('No activities match these filters.')}</p>
@@ -325,8 +325,8 @@ const ListBars = ({ data, derived }: { data: Data; derived: Derived }) => {
       readout
       note={
         derived.activityIds
-          ? 'Done here means reached by a matching activity. Click a region to open it on the map.'
-          : 'Click a list or a region to open it on the map.'
+          ? 'Done here means reached by a matching activity. Select a region to open it on the map.'
+          : 'Select a list or a region to open it on the map.'
       }
     >
       <ul className="flex flex-col gap-2.5">
@@ -349,8 +349,9 @@ const ListBars = ({ data, derived }: { data: Data; derived: Derived }) => {
                 className="group/name mb-1 flex w-full items-baseline gap-2 text-left [&_[data-name=main]]:group-hover/name:underline"
                 onClick={() => openList(list.id)}
               >
-                <Name name={list.title} />
-                <span className="ml-auto tabular-nums">
+                {/* A phone has room for one name beside the figures. */}
+                <Name name={list.title} sub={SUB_ON_WIDE} />
+                <span className="ml-auto flex-none tabular-nums">
                   {doneCount} / {total} · {percent(doneCount, total)}
                 </span>
               </button>
@@ -473,7 +474,7 @@ const Cumulative = ({ data, derived }: { data: Data; derived: Derived }) => {
       id="cumulative"
       title="Completed over time"
       readout
-      note="Places on each list, and prefectures, as they were first reached. Click a line or a name to open it."
+      note="Places on each list, and prefectures, as they were first reached. Select a line or a name to open it."
     >
       <svg
         viewBox={`0 0 ${W} ${H}`}
@@ -558,7 +559,7 @@ const Strips = ({ data, derived }: { data: Data; derived: Derived }) => {
       note={
         derived.activityIds
           ? 'Covered stretches count every published activity; lists with no matching activity on them are dimmed.'
-          : 'Covered stretches filled. Click a route to open it on the map.'
+          : 'Covered stretches filled. Select a route to open it on the map.'
       }
     >
       <ul className="flex flex-col gap-2.5">
@@ -580,8 +581,9 @@ const Strips = ({ data, derived }: { data: Data; derived: Derived }) => {
                 className="group/name mb-1 flex w-full items-baseline gap-2 text-left [&_[data-name=main]]:group-hover/name:underline"
                 onClick={() => openList(list.id)}
               >
-                <Name name={list.title} />
-                <span className="ml-auto tabular-nums">
+                {/* A phone has room for one name beside the figures. */}
+                <Name name={list.title} sub={SUB_ON_WIDE} />
+                <span className="ml-auto flex-none tabular-nums">
                   {t('{done} of {total}', {
                     done: distanceText(covered, 1),
                     total: distanceText(length, 0),
@@ -636,7 +638,7 @@ const PrefecturesCard = ({ data, derived }: { data: Data; derived: Derived }) =>
       title="Prefectures visited"
       readout
       className="mb-0"
-      note="Click a prefecture to see it on the map."
+      note="Select a prefecture to see it on the map."
     >
       <p className="mb-2 flex items-baseline gap-1 tabular-nums">
         <strong className="text-2xl font-bold">{visited.size}</strong>
@@ -695,7 +697,8 @@ const ThisYear = ({ activities }: { activities: readonly ActivityRecord[] }) => 
           .replace(/^\d{4}年/, ''),
       })}
     >
-      <Table className="text-compact">
+      {/* On a phone the four columns fit only with tighter cells, and the change on a line of its own. */}
+      <Table className="text-compact max-md:[&_td]:px-1 max-md:[&_th]:px-1 max-md:[&_th]:whitespace-normal">
         <TableHeader>
           <TableRow>
             <TableHead scope="col">
@@ -720,7 +723,7 @@ const ThisYear = ({ activities }: { activities: readonly ActivityRecord[] }) => 
               </TableHead>
               <TableCell className="text-right font-semibold tabular-nums">
                 {show(now)}{' '}
-                <span className="text-xs font-normal text-muted-foreground">
+                <span className="text-xs font-normal text-muted-foreground max-md:block">
                   {change(value(now), value(then))}
                 </span>
               </TableCell>

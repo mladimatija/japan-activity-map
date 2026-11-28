@@ -44,7 +44,17 @@ g.history = {
     write(state, title, url);
   },
 };
+/** The check's own switch: render as a phone (narrow, touch only) or as a wide screen. */
+let phone = false;
+export const setPhone = (on: boolean): void => {
+  phone = on;
+};
 g.window = {
+  matchMedia: (query: string) => ({
+    matches: phone && /max-width: 767px|hover: none/.test(query),
+    addEventListener: () => undefined,
+    removeEventListener: () => undefined,
+  }),
   addEventListener: (name: string, listener: () => void) => listeners.set(name, listener),
   removeEventListener: (name: string) => listeners.delete(name),
   dispatch: (name: string) => listeners.get(name)?.(),

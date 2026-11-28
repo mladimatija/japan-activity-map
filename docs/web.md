@@ -17,7 +17,8 @@ pnpm check:web      # render the pane for every list and selection against dist/
 and preview servers serve the folder `JAM_WEB_DATA` names at `/data` when it is set, and
 `dist/data` otherwise. The demo is never shown unless asked for like this. While the data is a
 demo (`demo` in `meta.json`), the top bar shows a "Demo data" badge (`shell/DemoBadge.tsx`); on a
-phone, where the bar is full, it is a slim strip under the bar.
+phone, where the bar is full, it is a slim strip under the bar that also says what it means
+("Demo data · made-up activities").
 `pnpm check:web:demo` runs the web check against a demo build made in a temporary folder.
 
 `web:build` replaces only `dist/index.html` and `dist/assets`; `dist/data` belongs to `jam build`.
@@ -67,9 +68,15 @@ what it describes above it) and full. Swipe it, tap the handle, or use the arrow
 handle; a hard swipe down drops it to the lowest stop. The map's controls and its camera padding
 follow the sheet, and the first view frames the four main islands. Layers open as a sheet of
 their own, search is a button that opens over the whole screen (the box at the top, the keyboard
-up, results below, Back or `Esc` to leave), every control is at least 44 px for a
+up, results below; the back arrow, `Esc` or the phone's Back to leave; the page under it is inert
+meanwhile), every control is at least 44 px for a
 finger, and a detail steps to the next or previous item with a sideways swipe (or the ⌃ ⌄
 buttons beside Back, everywhere).
+
+The chart pages give way to the narrow screen too: tables drop to the columns that fit (a
+personal record is two lines, a list's "Next" and "Pace" are left to wider screens), a row shows
+one name, not both languages, and the hints say "tap" where there is no pointer to hover with (the rest say "select", which is
+true of a mouse and a finger).
 
 Long lists render only the rows in view (TanStack Virtual), so a 300-place list or every activity
 costs the same as a short one. In a list, the arrow keys (and Home, End) step through the rows,
@@ -549,41 +556,41 @@ means it should be the other one.
 
 ## Code
 
-| File                                                | What                                                                                                                               |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `src/App.tsx`                                       | The layout: top bar, pane, map                                                                                                     |
-| `src/data.ts`                                       | Loads and checks the start files, builds the lookups                                                                               |
-| `src/filters.ts`                                    | The filter state, its address form, and `derive`: every result                                                                     |
-| `src/store.ts`                                      | The main store (Zustand): list, selection, filters, layers, sheet stop, language                                                   |
-| `src/hover.ts`                                      | The hovered item, shared by rows and pins without re-rendering (a small store of its own)                                          |
-| `src/index.css`                                     | Tailwind, the theme's colours (light and dark), Base UI variants, MapLibre's stylesheet                                            |
-| `src/components/ui/*`                               | shadcn/ui components on Base UI (`components.json` for adding more)                                                                |
-| `src/components/app.tsx`                            | The app's rows, badges, chips, titles and sort menus                                                                               |
-| `src/components/VirtualRows.tsx`                    | Rows that render only what is in view, and bring a row into focus                                                                  |
-| `src/i18n.ts`, `src/i18n-ja.ts`                     | `t()`, `localized()` and the Japanese for every interface string                                                                   |
-| `src/hooks/use-mobile.ts`                           | Whether the window is phone-sized (the sheet, the Layers sheet)                                                                    |
-| `src/map/viewport.ts`                               | The map's bounds, for "Only what's on the map" (the switch is remembered)                                                          |
-| `src/map/LoadingLine.tsx`                           | The loading line and note over the map                                                                                             |
-| `src/map/MapKey.tsx`                                | The map key in the map's bottom-left corner                                                                                        |
-| `src/map/baseStyle.ts`                              | The base map's style, made ready for Japan before the first frame (cover, sea colour, label filters)                               |
-| `src/profile.ts`                                    | A track's points, heights, gradients and splits; where its profile and the map point along it                                      |
-| `src/panel/TrackAnalysis.tsx`                       | An activity's height profile, gradient bar, steepest parts and splits                                                              |
-| `src/goals.ts`, `src/tiles.ts`                      | Records, streaks, milestones, trips to what is left; explorer tiles and their scores                                               |
-| `src/pages/GoalsPage.tsx`                           | The Goals page                                                                                                                     |
-| `src/pages/shareCard.ts`                            | A year's figures as a picture to share                                                                                             |
-| `src/panel/RouteTimes.tsx`                          | A route's times: every run by date and speed, the median and the fastest                                                           |
-| `src/pages/PrefectureMap.tsx`                       | The small prefecture map with the Okinawa inset                                                                                    |
-| `src/url.ts`                                        | Keeps the address and the store in step, and remembers the last view                                                               |
-| `src/prefs.ts`                                      | Local storage: `usePref`, a remembered `useState`, and the storage the stores share                                                |
-| `src/lists.ts`                                      | Region groups, progress                                                                                                            |
-| `src/search.ts`                                     | The search index and matching                                                                                                      |
-| `src/lazy.ts`                                       | Loads tracks and route geometry when the view needs them                                                                           |
-| `src/shell/*`                                       | Top bar, list picker, search, Layers menu, filter chips on the map                                                                 |
-| `src/panel/Pane.tsx`                                | The pane and the phone sheet (stops, drag, focus, `Esc`)                                                                           |
-| `src/panel/*`                                       | List overview, filter panel and its controls, results, details                                                                     |
-| `src/map/MapView.tsx`                               | The map itself: hover, click priority, camera and the view lock                                                                    |
-| `src/map/MapLayers.tsx`, `src/map/useMapSources.ts` | The layer groups, and the data each one draws                                                                                      |
-| `src/map/palette.ts`                                | Status and type colours (Okabe–Ito), the status markers                                                                            |
-| `src/map/HoverTip.tsx`                              | Tooltips for places and prefectures                                                                                                |
-| `src/pages/*`                                       | The chart pages and their SVG parts, loaded on demand                                                                              |
-| `dev/check-web.tsx`                                 | The pane rendered under Node for every list, filter and selection; the spec's example queries checked against an independent count |
+| File                                                | What                                                                                                                                                         |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/App.tsx`                                       | The layout: top bar, pane, map                                                                                                                               |
+| `src/data.ts`                                       | Loads and checks the start files, builds the lookups                                                                                                         |
+| `src/filters.ts`                                    | The filter state, its address form, and `derive`: every result                                                                                               |
+| `src/store.ts`                                      | The main store (Zustand): list, selection, filters, layers, sheet stop, language                                                                             |
+| `src/hover.ts`                                      | The hovered item, shared by rows and pins without re-rendering (a small store of its own)                                                                    |
+| `src/index.css`                                     | Tailwind, the theme's colours (light and dark), Base UI variants, MapLibre's stylesheet                                                                      |
+| `src/components/ui/*`                               | shadcn/ui components on Base UI (`components.json` for adding more)                                                                                          |
+| `src/components/app.tsx`                            | The app's rows, badges, chips, titles and sort menus                                                                                                         |
+| `src/components/VirtualRows.tsx`                    | Rows that render only what is in view, and bring a row into focus                                                                                            |
+| `src/i18n.ts`, `src/i18n-ja.ts`                     | `t()`, `localized()` and the Japanese for every interface string                                                                                             |
+| `src/hooks/use-mobile.ts`                           | Whether the window is phone-sized (the sheet, the Layers sheet)                                                                                              |
+| `src/map/viewport.ts`                               | The map's bounds, for "Only what's on the map" (the switch is remembered)                                                                                    |
+| `src/map/LoadingLine.tsx`                           | The loading line and note over the map                                                                                                                       |
+| `src/map/MapKey.tsx`                                | The map key in the map's bottom-left corner                                                                                                                  |
+| `src/map/baseStyle.ts`                              | The base map's style, made ready for Japan before the first frame (cover, sea colour, label filters)                                                         |
+| `src/profile.ts`                                    | A track's points, heights, gradients and splits; where its profile and the map point along it                                                                |
+| `src/panel/TrackAnalysis.tsx`                       | An activity's height profile, gradient bar, steepest parts and splits                                                                                        |
+| `src/goals.ts`, `src/tiles.ts`                      | Records, streaks, milestones, trips to what is left; explorer tiles and their scores                                                                         |
+| `src/pages/GoalsPage.tsx`                           | The Goals page                                                                                                                                               |
+| `src/pages/shareCard.ts`                            | A year's figures as a picture to share                                                                                                                       |
+| `src/panel/RouteTimes.tsx`                          | A route's times: every run by date and speed, the median and the fastest                                                                                     |
+| `src/pages/PrefectureMap.tsx`                       | The small prefecture map with the Okinawa inset                                                                                                              |
+| `src/url.ts`                                        | Keeps the address and the store in step, and remembers the last view                                                                                         |
+| `src/prefs.ts`                                      | Local storage: `usePref`, a remembered `useState`, and the storage the stores share                                                                          |
+| `src/lists.ts`                                      | Region groups, progress                                                                                                                                      |
+| `src/search.ts`                                     | The search index and matching                                                                                                                                |
+| `src/lazy.ts`                                       | Loads tracks and route geometry when the view needs them                                                                                                     |
+| `src/shell/*`                                       | Top bar, list picker, search, Layers menu, filter chips on the map                                                                                           |
+| `src/panel/Pane.tsx`                                | The pane and the phone sheet (stops, drag, focus, `Esc`)                                                                                                     |
+| `src/panel/*`                                       | List overview, filter panel and its controls, results, details                                                                                               |
+| `src/map/MapView.tsx`                               | The map itself: hover, click priority, camera and the view lock                                                                                              |
+| `src/map/MapLayers.tsx`, `src/map/useMapSources.ts` | The layer groups, and the data each one draws                                                                                                                |
+| `src/map/palette.ts`                                | Status and type colours (Okabe–Ito), the status markers                                                                                                      |
+| `src/map/HoverTip.tsx`                              | Tooltips for places and prefectures                                                                                                                          |
+| `src/pages/*`                                       | The chart pages and their SVG parts, loaded on demand                                                                                                        |
+| `dev/check-web.tsx`                                 | The pane rendered under Node for every list, filter and selection, as a wide screen and as a phone; the example queries checked against an independent count |
