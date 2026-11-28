@@ -228,11 +228,11 @@ Items missing a number from their source.
 
 Route lists, where their geometry comes from, and any that are not built.
 
-- tokaido: 54 stages between 54 post towns from 東海道五十三次. Placed from OpenStreetMap (no usable position in the article): 興津宿, 大津宿. 4 not on this line (shared section, or no position found): 伏見宿, 淀宿, 枚方宿, 守口宿. Left out as a crossing with no line (by sea): 宮宿–桑名宿.
+- tokaido: 53 stages between 53 post towns from 東海道五十三次. Placed from OpenStreetMap (no usable position in the article): 興津宿. 4 not on this line (shared section, or no position found): 伏見宿, 淀宿, 枚方宿, 守口宿. Left out as a crossing with no line (by sea): 宮宿–桑名宿.
 - nakasendo: 68 stages between 68 post towns from 中山道六十九次. 1 not on this line (shared section, or no position found): 大津宿.
-- koshu-kaido: 36 stages between 35 post towns from 甲州街道. Placed from OpenStreetMap (no usable position in the article): 国領宿, 下布田宿, 下石原宿, 上石原宿, 韮崎宿. 2 not on this line (shared section, or no position found): 上布田宿, 甲府柳町宿.
-- nikko-kaido: 20 stages between 21 post towns from 日光街道. Placed from OpenStreetMap (no usable position in the article): 幸手宿. Left out as too short: 栗橋宿–中田宿.
-- oshu-kaido: 10 stages between 10 post towns from 奥州街道. Placed from OpenStreetMap (no usable position in the article): 鍋掛宿, 越堀宿, 芦野宿, 白坂宿, 白河宿. 104 not on this line (shared section, or no position found): 千住宿, 草加宿, 越ヶ谷宿, 粕壁宿, 杉戸宿, 幸手宿, 栗橋宿, 中田宿, ….
+- koshu-kaido: 36 stages between 35 post towns from 甲州街道. Placed from OpenStreetMap (no usable position in the article): 国領宿, 下布田宿, 下石原宿, 上石原宿, 韮崎宿. Named in English from OpenStreetMap (no English label on Wikidata): 国領宿 (Kokuryō), 下布田宿 (Shimofuda), 下石原宿 (Shimoishiwara), 上石原宿 (Kamiishiwara), 府中宿 (Fuchū), 日野宿 (Hino), 八王子宿 (Hachioji), 駒木野宿 (Komagino), 小原宿 (Obara), 野田尻宿 (Notajiri), 韮崎宿 (Nirasaki), 金沢宿 (Kanazawa), 上諏訪宿 (Kami-Suwa). 1 not on this line (shared section, or no position found): 上布田宿.
+- nikko-kaido: 20 stages between 21 post towns from 日光街道. Placed from OpenStreetMap (no usable position in the article): 幸手宿. Named in English from OpenStreetMap (no English label on Wikidata): 千住宿 (Senju-juku), 杉戸宿 (Sugito), 中田宿 (Nakada), 野木宿 (Nogi), 間々田宿 (Mamada), 小金井宿 (Koganei), 石橋宿 (Ishibashi), 雀宮宿 (Suzumenomiya), 宇都宮宿 (Utsunomiya), 徳次郎宿 (Tokujira), 大沢宿 (Osawa), 今市宿 (Imaichi). Left out as too short: 栗橋宿–中田宿.
+- oshu-kaido: 10 stages between 10 post towns from 奥州街道. Placed from OpenStreetMap (no usable position in the article): 鍋掛宿, 越堀宿, 芦野宿, 白坂宿, 白河宿. Named in English from OpenStreetMap (no English label on Wikidata): 宇都宮宿 (Utsunomiya), 白沢宿 (Shirasawa-shuku), 氏家宿 (Ujiie), 喜連川宿 (Kitsuregawa), 鍋掛宿 (Nabekake), 芦野宿 (Ashino), 白坂宿 (Shirasaka), 白河宿 (Shirakawa). 104 not on this line (shared section, or no position found): 千住宿, 草加宿, 越ヶ谷宿, 粕壁宿, 杉戸宿, 幸手宿, 栗橋宿, 中田宿, ….
 - shimanami-kaido: 1 relation(s), 72 km, OpenStreetMap data as of 2026-11-25T15:26:06Z.
 - biwaichi: 1 relation(s), 191 km, OpenStreetMap data as of 2026-11-25T15:26:06Z.
 - tsukuba-kasumigaura-ring-ring-road: 3 relation(s), 331 km, OpenStreetMap data as of 2026-11-25T15:26:06Z.
@@ -260,7 +260,7 @@ Route lists, where their geometry comes from, and any that are not built.
 - shinetsu-trail: not built. No OpenStreetMap route relation matches /信越トレイル|Shin-?etsu Trail/ (data as of 2026-11-25T15:26:06Z).
 - hokkaido-higashi-trail: not built. No OpenStreetMap route relation matches /北海道東トレイル|Hokkaido East Trail|Hokkaido Higashi Trail/ (data as of 2026-11-25T15:26:06Z).
 - kyushu-olle: 1 relation(s), 10 km, OpenStreetMap data as of 2026-11-25T15:26:06Z.
-- tokaido: 54 item(s), 489 km from the 五街道 GPX tracks.
+- tokaido: 53 item(s), 489 km from the 五街道 GPX tracks.
 - nakasendo: 68 item(s), 512 km from the 五街道 GPX tracks.
 - koshu-kaido: 36 item(s), 208 km from the 五街道 GPX tracks.
 - nikko-kaido: 20 item(s), 146 km from the 五街道 GPX tracks.

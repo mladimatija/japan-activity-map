@@ -3,6 +3,7 @@ import { type Position, type RouteItem, prefectureByCode } from '@jam/core';
 import type { ListDefinition } from './definitions.ts';
 import { distanceM } from './geo.ts';
 import { round } from './gsi.ts';
+import { kanaToRomaji } from './romaji.ts';
 import type { PrefectureIndex } from './prefecture-index.ts';
 import type { Review } from './review.ts';
 import { type NameContext, type SourceName, numberDuplicates, routeNames } from './route-names.ts';
@@ -77,6 +78,7 @@ export const buildGpxRoute = (
   review: Review,
   definition: ListDefinition,
   builder: Extract<ListDefinition['builder'], { type: 'gpx-route' }>,
+  naming: PostTownNaming,
 ): { items: RouteItem[] } | { blocked: string } => {
   const files = builder.files === 'all' ? gpxFiles(builder.source) : builder.files;
   if (files.length === 0 || !files.every((file) => gpxExists(file, builder.source)))
@@ -92,6 +94,7 @@ export const buildGpxRoute = (
       definition,
       builder,
       loaded.flatMap((gpx) => clean(gpx.lines)),
+      naming,
     );
     if (staged) return { items: staged };
   }
@@ -194,12 +197,83 @@ export const townNames = (ja: string): string[] => {
 const looksLikeName = (ja: string) =>
   /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(ja);
 
+/**
+ * A post town listed twice in a row is one town. Where one of an article's tables ends with a
+ * town and the next begins with it, the second row repeats the first, often without a link
+ * (東海道五十三次 lists 大津宿 again at the head of its 京街道 table). The repeat only fills in
+ * what the first row lacks.
+ */
+export const mergeRepeats = <T extends { ja: string; number: number }>(towns: T[]): T[] => {
+  const merged: T[] = [];
+  for (const town of towns) {
+    const last = merged.at(-1);
+    if (last && last.ja === town.ja && last.number === town.number)
+      merged[merged.length - 1] = { ...town, ...last };
+    else merged.push(town);
+  }
+  return merged;
+};
+
+/** An OpenStreetMap place: where it is, and its tags. */
+export interface NamedPlace {
+  point: Position;
+  tags: Record<string, string>;
+}
+
+/** Places of a post town's name further than this from it are another place of that name. */
+const NAMESAKE_M = 2500;
+
+const LATIN = /^[\p{Script=Latin}][\p{Script=Latin}' -]*$/u;
+
+/** A place's name in Latin letters: its romanisation, else its English name, else its reading. */
+const latinName = (tags: Record<string, string>): string | undefined => {
+  const written = [tags['name:ja_rm'], tags['name:ja-Latn'], tags['name:en']]
+    .map((name) => name?.trim())
+    .find((name) => name !== undefined && LATIN.test(name));
+  if (written) return written;
+  const kana = tags['name:ja-Hira'] ?? tags['name:ja-Kana'];
+  return kana ? kanaToRomaji(kana) || undefined : undefined;
+};
+
+/**
+ * An English name for a post town that has no English label, from an OpenStreetMap place of its
+ * name near it: one named like the town itself (千住宿 → "Senju-juku"), else one named like
+ * the place (国領 → "Kokuryō", a station). The place's name says nothing about whether the
+ * town's 宿 is read juku or shuku, so that one is the place's name alone.
+ */
+export const englishFromPlaces = (
+  ja: string,
+  point: Position,
+  places: ReadonlyMap<string, NamedPlace[]>,
+): string | undefined => {
+  const nearest = (name: string) =>
+    (places.get(name) ?? [])
+      .map((place) => ({ en: latinName(place.tags), m: distanceM(place.point, point) }))
+      .filter((place): place is { en: string; m: number } => !!place.en && place.m <= NAMESAKE_M)
+      .sort((a, b) => a.m - b.m)[0]?.en;
+  const base = ja.replace(/宿$/, '');
+  // "Shirasawashuku" → "Shirasawa-shuku".
+  const town = nearest(ja)?.replace(/(?<=\p{Ll})(j|sh)uku$/u, '-$1uku');
+  const named = town ?? (base !== ja ? nearest(base) : undefined);
+  return named ? named.charAt(0).toUpperCase() + named.slice(1) : undefined;
+};
+
+/** Hand-checked English names for post towns, by Japanese name (lists/overrides.jsonc). */
+export interface PostTownNaming {
+  overrides: Record<string, { en: string }>;
+  /** Names whose correction was used, to report unknown ones. */
+  used: Set<string>;
+  /** Lists that were split into stages (their post towns are fetched). */
+  staged: Set<string>;
+}
+
 const buildStages = (
   index: PrefectureIndex,
   review: Review,
   definition: ListDefinition,
   builder: Extract<ListDefinition['builder'], { type: 'gpx-route' }>,
   lines: Line[],
+  naming: PostTownNaming,
 ): RouteItem[] | undefined => {
   const stages = builder.stages;
   if (!stages) return undefined;
@@ -210,9 +284,10 @@ const buildStages = (
     );
     return undefined;
   }
+  naming.staged.add(definition.id);
   const chain = chainOf(lines);
   // Rows that are not post towns ("7" from another table) are skipped.
-  const listed = towns.items.filter((town) => looksLikeName(town.ja));
+  const listed = mergeRepeats(towns.items.filter((town) => looksLikeName(town.ja)));
   type Placed = {
     town: (typeof listed)[number];
     alongM: number;
@@ -239,12 +314,15 @@ const buildStages = (
 
   // Towns with no usable position (none, off the line, or out of order): an OpenStreetMap place
   // of the same name, on the line between the towns either side of it.
-  const places = new Map<string, Position[]>();
+  const places = new Map<string, NamedPlace[]>();
   for (const element of loadOsm(POST_TOWN_NODES)?.elements ?? []) {
     const name = element.tags.name;
     if (element.type !== 'node' || !name || element.lat === undefined || element.lon === undefined)
       continue;
-    places.set(name, [...(places.get(name) ?? []), [element.lon, element.lat]]);
+    places.set(name, [
+      ...(places.get(name) ?? []),
+      { point: [element.lon, element.lat], tags: element.tags },
+    ]);
   }
   const kept = [...ordered];
   const fromOsm: Placed[] = [];
@@ -254,7 +332,7 @@ const buildStages = (
     const after = kept.find((entry) => entry.town.seq > town.seq);
     const fits = townNames(town.ja)
       .flatMap((name) => places.get(name) ?? [])
-      .map((point) => place(town, point, 'osm'))
+      .map((found) => place(town, found.point, 'osm'))
       .filter(
         (entry) =>
           entry.offM <= ON_LINE_M &&
@@ -280,20 +358,36 @@ const buildStages = (
     if (last && previous && entry.alongM - previous.alongM < SAME_TOWN_M) last.push(entry);
     else groups.push([entry]);
   }
+  // English names: a hand-checked one (lists/overrides.jsonc), else the Wikidata label, else an
+  // OpenStreetMap place of the town's name near it. Without any, the Japanese stays.
+  const enFromOsm: string[] = [];
+  const noEnglish: string[] = [];
+  const englishOf = (entry: Placed): string => {
+    const { ja } = entry.town;
+    const hand = naming.overrides[ja]?.en;
+    if (hand) naming.used.add(ja);
+    const en = hand ?? entry.town.en;
+    if (en) return en;
+    const osm = englishFromPlaces(ja, entry.point, places);
+    if (osm) enFromOsm.push(`${ja} (${osm})`);
+    else noEnglish.push(ja);
+    return osm ?? ja;
+  };
   const boundaryOf = (group: Placed[]): Boundary => {
     const [first] = group;
     const articles = new Set(group.map((entry) => entry.town.article));
     const point = first?.point ?? [0, 0];
+    const each = () => [...new Set(group.map(englishOf))].join(' / ');
     if (group.length > 1 && articles.size === 1 && first?.town.article)
       return {
         ja: first.town.article,
-        en: first.town.en ?? first.town.article,
+        en: first.town.en ?? each(),
         alongM: first.alongM,
         point,
       };
     return {
       ja: group.map((entry) => entry.town.ja).join('・'),
-      en: group.map((entry) => entry.town.en ?? entry.town.ja).join(' / '),
+      en: each(),
       alongM: first?.alongM ?? 0,
       point,
     };
@@ -358,6 +452,12 @@ const buildStages = (
     `${definition.id}: ${items.length} stages between ${groups.length} post towns from ${towns.page}.` +
       (fromOsm.length > 0
         ? ` Placed from OpenStreetMap (no usable position in the article): ${names(fromOsm.map((entry) => entry.town))}.`
+        : '') +
+      (enFromOsm.length > 0
+        ? ` Named in English from OpenStreetMap (no English label on Wikidata): ${enFromOsm.join(', ')}.`
+        : '') +
+      (noEnglish.length > 0
+        ? ` No English name (add one to postTownNames in lists/overrides.jsonc): ${noEnglish.join(', ')}.`
         : '') +
       (elsewhere.length > 0
         ? ` ${elsewhere.length} not on this line (shared section, or no position found): ${names(elsewhere)}.`

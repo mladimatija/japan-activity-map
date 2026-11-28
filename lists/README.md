@@ -83,7 +83,11 @@ What the sources couldn't settle. Each one is also in `review.md` or `index.json
 - 沖ノ鳥島 is missing from both prefecture outlines.
 - Route sections: the 五街道 are split into stages between post towns once
   `lists fetch wikipedia` has their post towns (each stage named 品川宿–川崎宿; 東海道's sea crossing
-  宮–桑名 has no stage). Cycle routes have stages only where OpenStreetMap has them.
+  宮–桑名 has no stage). Post towns whose Wikidata item has no English label (most of 甲州街道,
+  日光街道 and 奥州街道) are named in English after an OpenStreetMap place of their name, or by
+  hand in `overrides.jsonc` (`postTownNames`) where there is none: "Kokuryō", not
+  "Kokuryō-shuku", since the reading of 宿 varies. Cycle routes have stages only where
+  OpenStreetMap has them.
 - 五街道 licence: CC BY-NC-SA 4.0, so the tracks and the five route files built from them are
   not committed (`.gitignore`). `lists fetch gokaido` downloads the tracks from a pinned commit;
   on a fresh clone the five lists stay unbuilt until then.

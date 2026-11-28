@@ -40,7 +40,7 @@ import {
 import { PrefectureIndex } from './prefecture-index.ts';
 import { Registry } from './registry.ts';
 import { type Review, emptyReview, reviewText } from './review.ts';
-import { type RouteNaming, buildGpxRoute, buildOsmRoute } from './routes.ts';
+import { type PostTownNaming, type RouteNaming, buildGpxRoute, buildOsmRoute } from './routes.ts';
 import {
   LISTS_DIR,
   SOURCE_REFS,
@@ -207,6 +207,11 @@ export const buildLists = ({ dryRun }: { dryRun: boolean }): BuildSummary => {
     overrides: overrides.routeNames,
     used: new Set(),
   };
+  const postTownNaming: PostTownNaming = {
+    overrides: overrides.postTownNames,
+    used: new Set(),
+    staged: new Set(),
+  };
   for (const definition of LIST_DEFINITIONS) {
     const { builder } = definition;
     switch (builder.type) {
@@ -282,7 +287,7 @@ export const buildLists = ({ dryRun }: { dryRun: boolean }): BuildSummary => {
         });
         break;
       case 'gpx-route': {
-        const result = buildGpxRoute(index, review, definition, builder);
+        const result = buildGpxRoute(index, review, definition, builder, postTownNaming);
         if ('blocked' in result) {
           built.push({ definition, kind: 'blocked', reason: result.blocked });
           review.routes.push(`${definition.id}: not built. ${result.blocked}`);
@@ -355,6 +360,19 @@ export const buildLists = ({ dryRun }: { dryRun: boolean }): BuildSummary => {
       throw new Error(
         `overrides: routeNames refers to relation ${relation}, which no built route list has`,
       );
+  }
+  // Post-town names wait until every 五街道 is split into stages (its tracks and post towns are
+  // fetched); a name none of them used is a mistake.
+  const staged = LIST_DEFINITIONS.filter(
+    (definition) => definition.builder.type === 'gpx-route' && definition.builder.stages,
+  );
+  if (staged.every((definition) => postTownNaming.staged.has(definition.id))) {
+    for (const name of Object.keys(overrides.postTownNames)) {
+      if (!postTownNaming.used.has(name))
+        throw new Error(
+          `overrides: postTownNames refers to ${name}, which is not a post town on any built 五街道 stage`,
+        );
+    }
   }
   // A list whose source is not fetched yet is not built; its corrections wait with it.
   const waiting = built.filter((list) => list.kind === 'blocked').map((list) => list.definition.id);

@@ -60,6 +60,14 @@ export const overridesSchema = z.strictObject({
       z.strictObject({ ja: z.string().min(1).optional(), en: z.string().min(1).optional() }),
     )
     .prefault({}),
+  /**
+   * English names for 五街道 post towns, keyed by the Japanese name the highway's article lists,
+   * where neither Wikidata nor an OpenStreetMap place of that name nearby gives one. Used on
+   * every highway that lists the name, before any source.
+   */
+  postTownNames: z
+    .record(z.string().min(1), z.strictObject({ en: z.string().min(1) }))
+    .prefault({}),
 });
 
 export type Overrides = z.infer<typeof overridesSchema>;
