@@ -106,7 +106,7 @@ export const App = () => {
   }
   return (
     <TooltipProvider delay={400}>
-      <div className="grid h-full grid-cols-[minmax(0,1fr)] grid-rows-[3.5rem_minmax(0,1fr)] overflow-hidden">
+      <div className="grid h-full grid-cols-[minmax(0,1fr)] grid-rows-[auto_minmax(0,1fr)] overflow-hidden">
         <SkipLink />
         <TopBar data={data} />
         {/* The pane's width is the reader's (dragged by its edge), within what leaves the map room. */}

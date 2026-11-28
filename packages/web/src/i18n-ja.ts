@@ -25,6 +25,9 @@ export const JA: Record<string, string> = {
   'Nothing matches.': '一致するものはありません。',
   'Search peaks, places, prefectures, activities': '山・場所・都道府県・アクティビティを検索',
   'Nothing matches “{query}”.': '「{query}」に一致するものはありません。',
+  'Close search': '検索を閉じる',
+  'Places, prefectures, routes and activities, by name or date.':
+    '場所・都道府県・ルート・アクティビティを、名前や日付で探せます。',
   Places: '場所',
   'My routes': 'マイルート',
   'Names in': '名前の表示',
@@ -518,6 +521,7 @@ export const JA: Record<string, string> = {
     'リストの未達成の場所を、互いに{distance}以内のまとまり（1回の山行・旅行）ごとに近い順で表示します。距離は直線距離、シーズンは標高と緯度からの目安です。',
   Insights: '分析',
   'Point at the chart to read a value.': 'グラフを指すと値を表示します。',
+  'Tap the chart to read a value.': 'グラフをタップすると値を表示します。',
   '50+ years': '50年以上',
   Milestones: 'マイルストーン',
   'The next round number for each, and when a list is finished at the pace of the last 12 months.':

@@ -61,7 +61,7 @@ export const ListPicker = ({ data }: { data: Data }) => {
           <Button
             variant="outline"
             size="lg"
-            className="max-w-[40vw] min-w-0 flex-[0_1_auto] justify-between md:w-55 md:max-w-none md:flex-none"
+            className="min-w-0 flex-1 justify-between md:w-55 md:flex-none"
           />
         }
       >

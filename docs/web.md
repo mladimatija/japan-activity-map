@@ -16,7 +16,8 @@ pnpm check:web      # render the pane for every list and selection against dist/
 `pnpm demo:web` is `web:dev` over the demo build in `data/demo/dist/data` (docs/demo.md): the dev
 and preview servers serve the folder `JAM_WEB_DATA` names at `/data` when it is set, and
 `dist/data` otherwise. The demo is never shown unless asked for like this. While the data is a
-demo (`demo` in `meta.json`), the top bar shows a "Demo data" badge (`shell/DemoBadge.tsx`).
+demo (`demo` in `meta.json`), the top bar shows a "Demo data" badge (`shell/DemoBadge.tsx`); on a
+phone, where the bar is full, it is a slim strip under the bar.
 `pnpm check:web:demo` runs the web check against a demo build made in a temporary folder.
 
 `web:build` replaces only `dist/index.html` and `dist/assets`; `dist/data` belongs to `jam build`.
@@ -37,7 +38,7 @@ The width is remembered. Phones have a bottom sheet instead.
 - Search finds places, prefectures, routes and activities (by name or date), grouped by kind,
   five of each. It ignores case, accents, width and spacing, so `fuji`, `Fuji`, `ｆｕｊｉ` and
   `富士` all work. Arrow keys move through the results, `Enter` opens one, `Esc` closes, and `/`
-  jumps to the box from anywhere.
+  jumps to the box from anywhere. Opening a result from a chart page goes to the map.
 - Layers: list places, my tracks, my routes and prefectures as switches, plus hillshade and 3D
   relief when a terrain source is set, and the prefecture colouring.
 - Map key, in the map's bottom-left corner: what the colours and marks on the map mean, for
@@ -65,7 +66,8 @@ closes) with three stops: low (the list's progress), half (the list or a detail,
 what it describes above it) and full. Swipe it, tap the handle, or use the arrow keys on the
 handle; a hard swipe down drops it to the lowest stop. The map's controls and its camera padding
 follow the sheet, and the first view frames the four main islands. Layers open as a sheet of
-their own, search results take the rest of the screen, every control is at least 44 px for a
+their own, search is a button that opens over the whole screen (the box at the top, the keyboard
+up, results below, Back or `Esc` to leave), every control is at least 44 px for a
 finger, and a detail steps to the next or previous item with a sideways swipe (or the ⌃ ⌄
 buttons beside Back, everywhere).
 
