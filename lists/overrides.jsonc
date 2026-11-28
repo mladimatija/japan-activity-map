@@ -316,5 +316,36 @@
     "17492164": { "en": "Former Tsukuba Railway Course" }, // 旧つくば鉄道コース
     "15074516": { "en": "Kyūshū Olle – Minamishimabara Course" }, // 九州オルレ 南島原コース
     "12533307": { "en": "Tokyo-wan wo nozomu michi" } // 東京湾を望むみち, romanised like the other stages
+  },
+  // English names for 五街道 post towns, keyed by the name the highway's article lists, where
+  // Wikidata has no English label of the town's own and no OpenStreetMap place of the name is
+  // near. (A town linked to the village it was in has the village's label, which the build
+  // leaves out.) Like the names the build takes from OpenStreetMap, each is the place's name:
+  // whether 宿 is read juku or shuku varies from town to town. Readings from each town's
+  // Japanese Wikipedia article, else from the article on the village or city it is in.
+  "postTownNames": {
+    "甲府柳町宿": { "en": "Kōfu Yanagimachi" }, // こうふやなぎまちしゅく
+    "教来石宿": { "en": "Kyōraishi" }, // きょうらいししゅく
+    "蔦木宿": { "en": "Tsutaki" }, // つたきじゅく
+    "粕壁宿": { "en": "Kasukabe" }, // かすかべじゅく
+    "新田宿": { "en": "Shinden" }, // しんでんしゅく (日光街道, 小山市)
+    "佐久山宿": { "en": "Sakuyama" }, // さくやまじゅく
+    "越堀宿": { "en": "Koebori" }, // no article; English Wikipedia's 奥州街道 list has Koebori-shuku
+    // 甲州街道 towns linked to the village they were in, or with a label that is not the town's.
+    "関野宿": { "en": "Sekino" }, // せきの; links 小淵村 ("Obuchi")
+    "下鳥沢宿": { "en": "Shimotorisawa" }, // とりさわ (鳥沢駅); links 富浜村
+    "上鳥沢宿": { "en": "Kamitorisawa" }, // とりさわ (鳥沢駅); links 富浜村
+    "猿橋宿": { "en": "Saruhashi" }, // さるはし; links the bridge 猿橋 ("Saruhashi Bridge")
+    "駒橋宿": { "en": "Komahashi" }, // こまはし (大月市: 大月町駒橋); links 大月町
+    "下花咲宿": { "en": "Shimohanasaki" }, // はなさき (大月市: 大月町花咲); links 大月町
+    "上花咲宿": { "en": "Kamihanasaki" }, // はなさき (大月市: 大月町花咲); links 大月町
+    "下初狩宿": { "en": "Shimohatsukari" }, // はつかり (初狩村); links 初狩村
+    "中初狩宿": { "en": "Nakahatsukari" }, // はつかり (初狩村); links 初狩村
+    "白野宿": { "en": "Shirano" }, // しらの (大月市: 笹子町白野); links 笹子村
+    "阿弥陀海道宿": { "en": "Amidakaidō" }, // あみだかいどう; links 笹子村
+    "黒野田宿": { "en": "Kuronoda" }, // くろのだ (大月市: 笹子町黒野田); links 笹子村
+    "駒飼宿": { "en": "Komakai" }, // こまかい; links 大和村 ("Yamato")
+    "栗原宿": { "en": "Kuribara" }, // くりばらしゅく; Wikidata has "Kurihara resort"
+    "石和宿": { "en": "Isawa" } // いさわ (石和町); links 石和温泉 ("Isawa Onsen")
   }
 }

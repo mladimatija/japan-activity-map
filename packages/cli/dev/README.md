@@ -81,6 +81,18 @@ node packages/cli/dev/fake-garmin.ts --port 8726    # accepts the key "good-key"
 
 and point `activities.garmin.api.baseUrl` in a sandbox's `site.jsonc` at `http://127.0.0.1:8726`.
 
+## YAMAP checks
+
+`fake-yamap.ts` stands in for the parts of YAMAP's web API the sync uses: the paged activity list,
+an activity's details and its track as GPX, given only with the sign-in token ("good-token").
+`check-yamap.ts` starts it on a spare port and runs `jam sync yamap` against it in a temporary
+folder: no token, the first pull and the ones after, a new activity, the token expiring (the run's
+error, `jam update` going on and failing at the end, `jam status`, `yamap check`), a new token
+piped into `yamap token` with and without its cookie name, a list without start times, a list in
+the other order, a full pull, a range of days, a timeout, `yamap wipe` with the same public ids
+afterwards, and a build from YAMAP. Run it with `pnpm check:yamap`. The controls are listed at the
+top of `fake-yamap.ts`.
+
 ## Privacy checks
 
 `check-privacy.ts` reuses the route fixtures with a home zone at their start and an office zone on

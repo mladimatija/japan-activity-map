@@ -8,7 +8,7 @@ body:
         Please don't include personal data: nothing from `data/`, no secrets, no privacy zones,
         no coordinates of private places.
 
-        Some things are left out on purpose: other activity sources such as Garmin or YAMAP,
+        Some things are left out on purpose: activity sources beyond Strava, Garmin, YAMAP and files,
         social features, weather, photos. A request for one of those is still welcome; say what
         you would use it for.
 

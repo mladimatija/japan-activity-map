@@ -47,6 +47,8 @@ import { usePref } from '../prefs.ts';
 import { select, setFilters, useStore } from '../store.ts';
 import { Name, prefectureName, useLang } from '../names.tsx';
 import { t } from '../i18n.ts';
+import { RouteEstimate } from './RouteEstimate.tsx';
+import { RouteGpxButton } from './RouteGpx.tsx';
 
 const SLOT: Record<Status, string> = {
   done: 'bg-status-done',
@@ -335,7 +337,18 @@ export const ListOverview = ({ data }: { data: Data }) => {
       <div className="mt-3">
         <NextUp data={data} list={list} />
         {list.kind === 'route' ? (
-          <RouteLine list={list} />
+          <>
+            <RouteLine list={list} />
+            <RouteEstimate
+              data={data}
+              list={list}
+              lengthM={list.lengthM}
+              coveredM={list.coveredM}
+            />
+            <p className="mt-2 mb-3">
+              <RouteGpxButton data={data} list={list} />
+            </p>
+          </>
         ) : list.items.length <= STAMP_GRID_MAX ? (
           <StampGrid list={list} />
         ) : (

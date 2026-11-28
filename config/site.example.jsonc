@@ -6,8 +6,8 @@
     "description": ""
   },
   // Which activities the site is built from: "strava" (what `pnpm jam sync strava` fetched), "gpx"
-  // (what `pnpm jam sync gpx` imported, docs/gpx.md) or "garmin" (what `pnpm jam sync garmin`
-  // fetched, docs/garmin.md). The sheet's own rows count either way. All can sit in the local
+  // (what `pnpm jam sync gpx` imported, docs/gpx.md) "garmin" (what `pnpm jam sync garmin`
+  // fetched, docs/garmin.md) or "yamap" (what `pnpm jam sync yamap` fetched, docs/yamap.md). The sheet's own rows count either way. All can sit in the local
   // store; switching and rebuilding deletes nothing.
   "activities": {
     "source": "strava",
@@ -18,6 +18,17 @@
       // The type of a GPX file whose own <type> is missing or not understood: "hike", "walk",
       // "run", "trail_run" or "ride".
       "defaultType": "hike"
+    },
+    // What `pnpm jam sync yamap` fetches with your YAMAP sign-in token (docs/yamap.md).
+    "yamap": {
+      // The number in your profile address, yamap.com/users/<number>.
+      // "userId": "1234567",
+      // First and last day to fetch. Left out, everything.
+      // "from": "2024-01-01",
+      // YAMAP does not say what kind of activity a recording is: all of them get this type.
+      "defaultType": "hike",
+      // Tracks downloaded per run; the next run carries on.
+      "tracksPerSync": 100
     },
     // What `pnpm jam sync garmin` fetches with your Garmin personal API key (docs/garmin.md).
     "garmin": {

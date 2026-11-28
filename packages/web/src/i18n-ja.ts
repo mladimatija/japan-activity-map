@@ -154,6 +154,16 @@ export const JA: Record<string, string> = {
   'None yet.': 'まだありません。',
   'None.': 'なし。',
   'Loading the route…': 'ルートを読み込み中…',
+  'Download GPX': 'GPX をダウンロード',
+  '{distance} to go: about {time} moving, at the pace of your {count} rides.':
+    '残り{distance}：これまでのサイクリング{count}回のペースで、移動時間は約{time}。',
+  '{distance} to go: about {time} moving, at the pace of your {count} walks and hikes.':
+    '残り{distance}：これまでのウォーキング・ハイキング{count}回のペースで、移動時間は約{time}。',
+  'A rough figure: the climb of the route is not known.':
+    'おおよその目安です。ルートの登りは考慮していません。',
+  'Open in maps': '地図アプリで開く',
+  'Open the start in maps': '起点を地図アプリで開く',
+  'Download all as GPX': 'すべて GPX でダウンロード',
   'Loading the track…': 'トラックを読み込み中…',
   'No heights or times are published for this track.':
     'このトラックの標高と時間は公開されていません。',
@@ -308,6 +318,7 @@ export const JA: Record<string, string> = {
   'Manual sheet': '手入力シート',
   GPX: 'GPX',
   Garmin: 'Garmin',
+  YAMAP: 'YAMAP',
   Status: '状態',
   Region: '地方',
   "Narrows this list's rows and pins.": 'このリストの行とピンを絞り込みます。',

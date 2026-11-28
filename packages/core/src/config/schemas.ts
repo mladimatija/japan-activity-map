@@ -52,7 +52,7 @@ export const siteOptionsSchema = z.strictObject({
     .strictObject({
       /**
        * `strava`: what `jam sync strava` fetched. `gpx`: what `jam sync gpx` imported. `garmin`:
-       * what `jam sync garmin` fetched.
+       * what `jam sync garmin` fetched. `yamap`: what `jam sync yamap` fetched.
        */
       source: z.enum(ACTIVITY_SOURCES).default('strava'),
       gpx: z
@@ -64,6 +64,30 @@ export const siteOptionsSchema = z.strictObject({
            * `activities` inside the data folder (data/activities).
            */
           folder: z.string().min(1).optional(),
+        })
+        .prefault({}),
+      /** What `jam sync yamap` fetches from YAMAP with your own sign-in token (docs/yamap.md). */
+      yamap: z
+        .strictObject({
+          /** Your YAMAP user id: the number in the address of your profile page. */
+          userId: z
+            .string()
+            .regex(/^\d+$/, 'the number in your profile address, yamap.com/users/<number>')
+            .optional(),
+          /** First and last day to fetch, YYYY-MM-DD. Left out: everything. */
+          from: z.iso.date().optional(),
+          to: z.iso.date().optional(),
+          /** YAMAP activities carry no type: all of them get this one. */
+          defaultType: activityType.default('hike'),
+          /** Tracks downloaded per sync; the next sync carries on. */
+          tracksPerSync: z.number().int().min(0).max(5000).default(100),
+          api: z
+            .strictObject({
+              baseUrl: z.url().default('https://api.yamap.com'),
+              /** The wait between any two requests, in milliseconds; it grows when YAMAP is slow. */
+              pauseMs: z.number().int().min(0).max(60_000).default(2000),
+            })
+            .prefault({}),
         })
         .prefault({}),
       /** What `jam sync garmin` fetches through the Garmin Connect Personal API (docs/garmin.md). */
@@ -405,6 +429,11 @@ export const sheetSchema = z.strictObject({
 
 /** secrets.jsonc: credentials. Never committed and never filled in from an example file. */
 export const secretsSchema = z.strictObject({
+  /**
+   * Your YAMAP sign-in token: the `yamap_token` cookie yamap.com sets when you sign in
+   * (docs/yamap.md). Kept like a password; it stops working when YAMAP signs you out.
+   */
+  yamap: z.strictObject({ token: z.string().min(1) }).optional(),
   /** A Garmin Connect personal API key (docs/garmin.md). Kept like a password. */
   garmin: z.strictObject({ apiKey: z.string().min(1) }).optional(),
   strava: z

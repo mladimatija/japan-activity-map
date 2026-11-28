@@ -312,7 +312,7 @@
       "phase": "first",
       "status": "ready",
       "file": "routes/tokaido.geojson",
-      "itemCount": 54
+      "itemCount": 53
     },
     {
       "id": "nakasendo",
@@ -338,7 +338,7 @@
       "phase": "first",
       "status": "ready",
       "file": "routes/koshu-kaido.geojson",
-      "itemCount": 36
+      "itemCount": 42
     },
     {
       "id": "nikko-kaido",

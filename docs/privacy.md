@@ -49,7 +49,7 @@ elevation profiles, map bounds, and start and finish markers.
 
 | Left out                                           | Unless                                                                                             |
 | -------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Activities of the source the site isn't built from | never; `activities.source` picks Strava, GPX files or Garmin                                       |
+| Activities of the source the site isn't built from | never; `activities.source` picks Strava, GPX files, Garmin or YAMAP                                |
 | Activities outside Japan                           | never                                                                                              |
 | Activities without GPS                             | `publish.activitiesWithoutGps` is on; then only those in the Asia/Tokyo time zone                  |
 | Activities set to Only You on Strava               | `publish.includeOnlyMeActivities` is on (Followers-only activities are published like public ones) |

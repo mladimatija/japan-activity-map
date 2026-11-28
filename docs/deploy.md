@@ -140,7 +140,12 @@ When the site is built from GPX files (`activities.source` is `gpx`, docs/gpx.md
 is "Import GPX files" instead: `pnpm jam sync gpx` on the default folder. It is skipped when that
 folder doesn't exist, or with `--no-sync`. Strava isn't asked at all then. Built from Garmin
 (`garmin`, docs/garmin.md), the first step is "Fetch new Garmin activities", skipped without a
-personal API key.
+personal API key. Built from YAMAP (`yamap`, docs/yamap.md), it is "Fetch new YAMAP activities".
+
+One case doesn't stop the run: when YAMAP refuses the sign-in token, the new activities are still
+listed, the site is built and published with what there is, and the run then ends as a failure
+that says the token needs renewing. A scheduled job shows up as failed, and the site isn't left
+stale for it.
 
 It stops at the first step that fails, so a failed fetch or a failed audit never reaches the public
 site: the site stays as it was. It doesn't run on the demo store.

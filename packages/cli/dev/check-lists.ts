@@ -1,7 +1,7 @@
 /**
- * Checks the reading of Wikipedia list articles (`jam lists fetch wikipedia`) and the building of
- * place lists from them, on small made-up pages and positions: no network, and lists/ is not
- * written.
+ * Checks the reading of Wikipedia list articles (`jam lists fetch wikipedia`), the building of
+ * place lists from them, and the naming of 五街道 stage boundaries, on small made-up pages and
+ * positions: no network, and lists/ is not written.
  *
  *   node packages/cli/dev/check-lists.ts      (or: pnpm check:lists)
  */
@@ -12,6 +12,13 @@ import { buildWikipediaSet, type PointContext } from '../src/lists/points.ts';
 import { LIST_DEFINITIONS } from '../src/lists/definitions.ts';
 import { placeListDocument, WIKIPEDIA_PLACE_LISTS } from '../src/lists/fetch.ts';
 import { Registry } from '../src/lists/registry.ts';
+import {
+  type NamedPlace,
+  articleAboutTown,
+  englishFromPlaces,
+  mergeRepeats,
+  namesPostTown,
+} from '../src/lists/routes.ts';
 import { toGsiPlaces } from '../src/lists/gsi.ts';
 import { loadGsiList, loadPrefectureShapes } from '../src/lists/sources.ts';
 import { htmlTables, listEntries } from '../src/lists/wiki-html.ts';
@@ -241,6 +248,97 @@ check(
     context.registry.places.get('waterfall-q9')?.kind === 'waterfall' &&
     fall.name.en === 'Kegon Falls',
   JSON.stringify(fall),
+);
+
+// 8. 五街道 post towns: a town an article lists twice in a row is one stage boundary, and a town
+//    with no English label is named from an OpenStreetMap place of its name near it.
+const towns = mergeRepeats([
+  { seq: 51, number: 52, ja: '草津宿', en: 'Kusatsu-juku' },
+  { seq: 52, number: 53, ja: '大津宿', article: '大津宿', en: 'Ōtsu-juku' },
+  // The 京街道 table starts again from 大津宿, without a link.
+  { seq: 53, number: 53, ja: '大津宿' },
+  { seq: 54, number: 54, ja: '伏見宿' },
+]);
+check(
+  'a post town listed again at the head of the next table is one town, with the first row’s facts',
+  towns.map((town) => town.ja).join() === '草津宿,大津宿,伏見宿' &&
+    towns[1]?.en === 'Ōtsu-juku' &&
+    towns[1]?.seq === 52,
+  JSON.stringify(towns),
+);
+check(
+  'the same name under another number is another town (奥州街道 has two 中田宿)',
+  mergeRepeats([
+    { number: 8, ja: '中田宿' },
+    { number: 68, ja: '中田宿' },
+  ]).length === 2,
+);
+const kokuryo: [number, number] = [139.5586, 35.6503];
+const osmPlaces = new Map<string, NamedPlace[]>([
+  [
+    '国領',
+    [
+      // A station 25 km away, and one by the town.
+      { point: [139.3, 35.7], tags: { name: '国領', 'name:en': 'Somewhere' } },
+      {
+        point: [139.5587, 35.6502],
+        tags: { name: '国領', 'name:en': 'Kokuryo', 'name:ja_rm': 'Kokuryō' },
+      },
+    ],
+  ],
+  [
+    '白沢宿',
+    [{ point: [139.5586, 35.6503], tags: { name: '白沢宿', 'name:en': 'Shirasawashuku' } }],
+  ],
+  ['白沢', [{ point: [139.5586, 35.6503], tags: { name: '白沢', 'name:en': 'Shirasawa' } }]],
+  ['野木', [{ point: [139.5586, 35.6503], tags: { name: '野木', 'name:ja-Hira': 'のぎ' } }]],
+  ['新田', [{ point: [139.0, 36.0], tags: { name: '新田', 'name:en': 'Shinden' } }]],
+]);
+check(
+  'a town with no English label takes the romanised name of the nearest place of its name',
+  englishFromPlaces('国領宿', kokuryo, osmPlaces) === 'Kokuryō',
+  englishFromPlaces('国領宿', kokuryo, osmPlaces),
+);
+check(
+  'a place named like the town itself comes first, its 宿 hyphenated',
+  englishFromPlaces('白沢宿', kokuryo, osmPlaces) === 'Shirasawa-shuku',
+  englishFromPlaces('白沢宿', kokuryo, osmPlaces),
+);
+check(
+  'a kana reading alone is romanised',
+  englishFromPlaces('野木宿', kokuryo, osmPlaces) === 'Nogi',
+  englishFromPlaces('野木宿', kokuryo, osmPlaces),
+);
+check(
+  'a place of the same name far away is another place: no name',
+  englishFromPlaces('新田宿', kokuryo, osmPlaces) === undefined,
+  englishFromPlaces('新田宿', kokuryo, osmPlaces),
+);
+
+// 9. A post town's article is about the town only when it is on a post town or on the place the
+//    town is named after; 甲州街道 links many towns to the village they were in, whose name,
+//    point and English label are the village's.
+check(
+  'towns sharing an article on a post town take its name (下・上高井戸宿 are 高井戸宿)',
+  namesPostTown('高井戸宿') &&
+    namesPostTown('府中宿 (甲州街道)') &&
+    !namesPostTown('富浜村') &&
+    !namesPostTown('大月町 (山梨県)'),
+);
+const about = (ja: string, article?: string) => articleAboutTown({ ja, article });
+check(
+  'an article on the town, or on the place it is named after, is about the town',
+  about('下高井戸宿', '高井戸宿') &&
+    about('吉野宿', '吉野町 (神奈川県)') &&
+    about('大月宿', '大月町 (山梨県)') &&
+    about('興津宿', '興津'),
+);
+check(
+  'an article on the village a town was in, or on another place, is not about the town',
+  !about('駒橋宿', '大月町 (山梨県)') &&
+    !about('下鳥沢宿', '富浜村') &&
+    !about('石和宿', '石和温泉') &&
+    !about('甲府柳町宿'),
 );
 
 console.log(failed ? 'Some checks failed.' : 'All checks passed.');

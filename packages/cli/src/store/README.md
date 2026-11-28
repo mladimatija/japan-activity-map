@@ -15,16 +15,17 @@ SQLite in `data/jam.sqlite`, through Node's built-in `node:sqlite`.
   ids are an HMAC of the internal id with a secret salt kept only in `meta.id_salt`, so a
   published id says nothing about the Strava id. A GPX activity's internal id is worked out from
   its start time instead of the clock, so the same file is the same activity on every import. A
-  Garmin activity's is worked out from its Garmin id, so it survives a wipe and a fresh pull.
+  Garmin or YAMAP activity's is worked out from its id there, so it survives a wipe and a fresh
+  pull.
 
-| Table                     | Holds                                                                                                                                            |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `activities`              | One row per activity, from Strava, Garmin, the sheet or a file: times, type, tags, distance, visibility, start and end points, the source record |
-| `tracks`                  | Geometry per activity, with optional elevations and times, and whether it is the summary or full track                                           |
-| `pulls`                   | Each sync: when, range, types, private setting, counts, outcome. A pull of some days is marked so later pulls don't carry on from it             |
-| `sheet_rows`              | Rows of the manual sheet, linked to an activity where one exists                                                                                 |
-| `overrides`               | Hand corrections to an activity, place or route field                                                                                            |
-| `routes`, `route_members` | Activities grouped as the same route, with direction and variants                                                                                |
-| `build_cache`             | Cached match results per activity, keyed by a hash of the inputs                                                                                 |
-| `meta`                    | Schema version, the id salt, and later the per-zone privacy offsets                                                                              |
-| `schema_migrations`       | Which migrations were applied, when, with their checksums                                                                                        |
+| Table                     | Holds                                                                                                                                                   |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activities`              | One row per activity, from Strava, Garmin, YAMAP, the sheet or a file: times, type, tags, distance, visibility, start and end points, the source record |
+| `tracks`                  | Geometry per activity, with optional elevations and times, and whether it is the summary or full track                                                  |
+| `pulls`                   | Each sync: when, range, types, private setting, counts, outcome. A pull of some days is marked so later pulls don't carry on from it                    |
+| `sheet_rows`              | Rows of the manual sheet, linked to an activity where one exists                                                                                        |
+| `overrides`               | Hand corrections to an activity, place or route field                                                                                                   |
+| `routes`, `route_members` | Activities grouped as the same route, with direction and variants                                                                                       |
+| `build_cache`             | Cached match results per activity, keyed by a hash of the inputs                                                                                        |
+| `meta`                    | Schema version, the id salt, and later the per-zone privacy offsets                                                                                     |
+| `schema_migrations`       | Which migrations were applied, when, with their checksums                                                                                               |

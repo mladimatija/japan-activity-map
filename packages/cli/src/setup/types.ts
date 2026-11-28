@@ -25,6 +25,7 @@ export type Affects =
   | 'full-pull'
   | 'pull-strava'
   | 'pull-garmin'
+  | 'pull-yamap'
   | 'match'
   | 'regroup'
   | 'zones'
@@ -44,6 +45,10 @@ export interface Facts {
   gpxFolderExists: boolean;
   /** Whether a Garmin personal API key is stored. Never the value. */
   garminKey: boolean;
+  /** Whether a YAMAP sign-in token is stored. Never the value. */
+  yamapToken: boolean;
+  /** The day YAMAP last refused the stored token, when it has not worked since; else null. */
+  yamapTokenRefused: string | null;
   siteBuilt: boolean;
   /** Whether this version has the `demo` command. */
   demoAvailable: boolean;

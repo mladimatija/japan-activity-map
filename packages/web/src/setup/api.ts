@@ -69,6 +69,8 @@ export interface SetupState {
     listsBuilt: boolean;
     sheetExists: boolean;
     garminKey?: boolean;
+    yamapToken?: boolean;
+    yamapTokenRefused?: string | null;
     siteBuilt: boolean;
     demoAvailable: boolean;
   };

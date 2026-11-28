@@ -14,7 +14,7 @@ export const ACTIVITY_TYPE_LABELS: Record<ActivityType, string> = {
  * Where the site's activities come from, apart from the manual sheet, which always counts: one of
  * these is chosen in site.jsonc (`activities.source`).
  */
-export const ACTIVITY_SOURCES = ['strava', 'gpx', 'garmin'] as const;
+export const ACTIVITY_SOURCES = ['strava', 'gpx', 'garmin', 'yamap'] as const;
 export type ActivitySourceName = (typeof ACTIVITY_SOURCES)[number];
 
 /** Tags an activity can carry, from Strava flags or the manual sheet. */

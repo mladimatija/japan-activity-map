@@ -37,6 +37,7 @@ const SENSITIVE = [
   'strava.clientId',
   'strava.clientSecret',
   'garmin.apiKey',
+  'yamap.token',
   'privacy.home',
   'privacy.zones',
 ];

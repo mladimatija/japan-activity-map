@@ -50,6 +50,9 @@ import {
 import { PlaceSign, useNeighbours } from './PlaceSign.tsx';
 import { StatusIcon } from './StatusIcon.tsx';
 import { TrackAnalysis } from './TrackAnalysis.tsx';
+import { mapsUrl } from '../maps.ts';
+import { RouteEstimate } from './RouteEstimate.tsx';
+import { RouteGpxButton } from './RouteGpx.tsx';
 import { RouteTimes } from './RouteTimes.tsx';
 import { setHover } from '../hover.ts';
 import { t } from '../i18n.ts';
@@ -194,6 +197,36 @@ const Timeline = ({
   );
 };
 
+/** A button that opens a position in the device's maps app, in a new tab where it is a web page. */
+const OpenInMaps = ({
+  at,
+  label,
+  children,
+}: {
+  at: readonly number[] | undefined;
+  label: string;
+  children: ReactNode;
+}) => {
+  const href = mapsUrl(at, label);
+  if (!href) return null;
+  return (
+    <Button
+      variant="outline"
+      size="sm"
+      nativeButton={false}
+      // A web page opens beside the site; an app address (geo:) is the device's to handle.
+      render={
+        <a
+          href={href}
+          {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        />
+      }
+    >
+      {children} <ExternalLinkIcon data-icon="inline-end" />
+    </Button>
+  );
+};
+
 const PlaceDetail = ({ data, list, item }: { data: Data; list: List; item: ListItem }) => {
   const lang = useLang();
   const others = (item.placeId ? (data.itemsByPlace.get(item.placeId) ?? []) : []).filter(
@@ -250,6 +283,11 @@ const PlaceDetail = ({ data, list, item }: { data: Data; list: List; item: ListI
               ] as [string, ReactNode][])),
         ]}
       />
+      <p className="mb-3">
+        <OpenInMaps at={item.at} label={nameIn(item.name, lang)}>
+          {t('Open in maps')}
+        </OpenInMaps>
+      </p>
       {!hidden && visits.length > 0 && (
         // Which seasons it has been reached in: a winter ascent is a different tick.
         <ul className="mb-1 flex flex-wrap gap-1.5" aria-label={t('Seasons reached in')}>
@@ -418,6 +456,7 @@ const RouteItemDetail = ({ data, list, item }: { data: Data; list: List; item: L
             )}
           </p>
         )}
+        <RouteEstimate data={data} list={list} lengthM={item.lengthM} coveredM={item.coveredM} />
       </div>
       <Facts
         rows={[
@@ -436,6 +475,12 @@ const RouteItemDetail = ({ data, list, item }: { data: Data; list: List; item: L
         ]}
       />
       {!referenceByList.has(list.id) && <Loading>{t('Loading the route…')}</Loading>}
+      <p className="mt-3 flex flex-wrap gap-2">
+        <RouteGpxButton data={data} list={list} item={item} />
+        <OpenInMaps at={line?.[0]?.[0]} label={nameIn(item.name, lang)}>
+          {t('Open the start in maps')}
+        </OpenInMaps>
+      </p>
       <Section title="Activities on it" count={activities.length}>
         <Timeline activities={activities} empty="None yet." />
       </Section>

@@ -32,7 +32,8 @@ A FIT file is read with Garmin's FIT SDK: its recorded positions, heights and ti
 segment where the watch was paused. Its type comes from the sport the device recorded (running,
 trail running, hiking, walking, cycling); points without a position, as at the start of an indoor
 session, are left out. FIT files have no name of their own, so the file name is the activity's.
-Fetching straight from Garmin Connect is a separate source (docs/garmin.md).
+Fetching straight from Garmin Connect is a separate source (docs/garmin.md), and so is fetching
+your YAMAP activities without exporting them one by one (docs/yamap.md).
 
 | Field          | Comes from                                                                               |
 | -------------- | ---------------------------------------------------------------------------------------- |
@@ -82,7 +83,7 @@ files themselves aren't touched. No GPX command reads or changes a Strava activi
 a `.gpx` there and it is saved into `data/activities` on your computer, then imported when the
 plan runs (docs/setup.md).
 
-![The setup page with GPX files chosen: a place to drop a .zip or .gpx](images/setup-gpx.png)
+![The setup page with GPX files chosen among the sources, and a place to drop a .zip or .gpx](images/setup-gpx.png)
 
 ## Building the site from GPX files
 
@@ -121,7 +122,8 @@ name inside the file is published as the activity's name unless `publish.activit
 
 ## Moving time and GPS jumps
 
-These apply to every recording read from a file: GPX, FIT, and what `jam sync garmin` downloads.
+These apply to every recording read from a file: GPX, FIT, and what `jam sync garmin` and
+`jam sync yamap` download.
 
 Moving time is judged over stretches of at least 30 seconds, by how far each stretch got in a
 straight line. Slower than about 0.5 km/h counts as standing still, so a watch wobbling on the spot

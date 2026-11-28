@@ -536,6 +536,43 @@ const main = async () => {
         rangedChange.text.includes('pnpm jam sync strava --from 2026-05-01'),
       rangedChange.text,
     );
+    // YAMAP: the profile address gives the user id, the token comes from the environment and is
+    // tidied however it was copied, and neither the plan nor the diff shows it.
+    const yamapSetup = await setup(
+      [
+        '--answers',
+        answersFile('yamap', {
+          start: 'quick',
+          sources: ['yamap'],
+          'yamap.userId': 'https://yamap.com/users/424242',
+          'yamap.pull.from': '2026-01-01',
+          skip: ['lists-fetch', 'lists-build', 'web-build'],
+        }),
+        '--yes',
+        '--dry-run',
+      ],
+      { ...env, JAM_YAMAP_TOKEN: 'yamap_token=check-yamap-token; other=1' },
+    );
+    check(
+      'choosing YAMAP sets the source and the user id, stores the token masked, and plans its sync',
+      yamapSetup.code === 0 &&
+        yamapSetup.text.includes('+     "source": "yamap"') &&
+        /\+\s+"userId": "424242"/.test(yamapSetup.text) &&
+        yamapSetup.text.includes('pnpm jam sync yamap --from 2026-01-01') &&
+        !yamapSetup.text.includes('check-yamap-token'),
+      yamapSetup.text,
+    );
+    const yamapBad = await setup([
+      '--answers',
+      answersFile('yamap-bad', { start: 'quick', sources: ['yamap'], 'yamap.userId': 'me' }),
+      '--yes',
+      '--dry-run',
+    ]);
+    check(
+      '  ...and a profile address without a number is refused',
+      yamapBad.code !== 0 && /profile address/.test(yamapBad.text),
+      yamapBad.text,
+    );
     const noKey = await setup(['--answers', garmin, '--yes', '--dry-run']);
     check(
       '  ...and without a key the sync is in the plan as skipped',

@@ -349,6 +349,16 @@ Other things in details that help with planning:
 - A place shows the seasons it has been reached in.
 - A prefecture lists what is still to do there across every list, highest first.
 - A route section that is partly covered names its next uncovered stretch and shows it on the map.
+- A route section and a route list say what is left and about how long it would take: the
+  median moving pace of your own walks and hikes (rides, for a cycle route) over the distance
+  still uncovered. It needs three outings of the kind, of 3 km or more (10 km for rides). The
+  reference lines carry no heights, so the route's own climb isn't counted, and the note says so.
+- A place has "Open in maps", and a route section "Open the start in maps": a link to the
+  device's maps app (Apple Maps, the phone's own choice on Android, Google Maps elsewhere) for
+  directions. Nothing is asked of any maps service until the link is clicked.
+- A route section, and a whole route list, can be saved as a GPX file ("Download GPX") to follow
+  in a navigation app. On a phone it goes to the share sheet, so it can be handed straight to one.
+  The file holds the reference line and its source's credit, nothing of yours.
 - A route's chart has a trend line (least squares, with four runs or more) and can keep to one
   season.
 - Each year's card on the Compare page can be shared as a picture (the device's share sheet where
@@ -474,6 +484,9 @@ At start the site loads `meta.json`, `activities.json`, `lists.json`, `prefectur
 `mask.geojson`, `stats.json` and `routes.json` in parallel (the build reports their compressed size against
 `output.startBudgetKB`), then the code: about 103 KB for the app and 300 KB for MapLibre, gzip, and 8 KB more when a chart
 page is opened. The compare page loads every year of tracks.
+The code has a size budget of its own: `pnpm check:bundle`, after `pnpm web:build`, fails when
+the first load, all the code together or any one chunk outgrows it, and CI runs it. The budgets
+are in `packages/web/dev/check-bundle.ts`; raise one there when an increase is meant.
 With the tracks layer on, tracks load a year at a time, newest first, and the older years once the
 page is idle; with activity filters on, only the years that have a matching track. With it off,
 selecting an activity loads only its year. A route list's geometry loads when that list is chosen. A file that fails to load shows a note in the pane; the

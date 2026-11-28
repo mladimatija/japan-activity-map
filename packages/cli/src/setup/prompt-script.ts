@@ -22,7 +22,7 @@ export const readAnswers = (path: string): Record<string, unknown> => {
   const secret = Object.keys(answers).find((key) => /secret|clientid|token|apikey/i.test(key));
   if (secret)
     throw new SetupError(
-      `The answers file must not hold secrets ("${secret}"). Give them in the environment (JAM_STRAVA_CLIENT_ID, JAM_STRAVA_CLIENT_SECRET, JAM_GARMIN_API_KEY and the like), or with --secrets-stdin.`,
+      `The answers file must not hold secrets ("${secret}"). Give them in the environment (JAM_STRAVA_CLIENT_ID, JAM_STRAVA_CLIENT_SECRET, JAM_GARMIN_API_KEY, JAM_YAMAP_TOKEN and the like), or with --secrets-stdin.`,
     );
   return answers;
 };

@@ -20,7 +20,7 @@ size, the compressed size of the files loaded at start against the budget, and t
 ## What is counted
 
 The site is built from one activity source, `activities.source` in `config/site.jsonc`: `strava`
-(the default), `gpx` (docs/gpx.md) or `garmin` (docs/garmin.md). Activities of the others stay in the store and are listed
+(the default), `gpx` (docs/gpx.md), `garmin` (docs/garmin.md) or `yamap` (docs/yamap.md). Activities of the others stay in the store and are listed
 under "Left out". The sheet's own rows count with either. Changing the setting and building again
 gives the other site; nothing is deleted.
 
@@ -66,7 +66,10 @@ build.
 
 In `config/site.jsonc` under `output`:
 
-- `simplifyM` (5): tracks and route lines are simplified so no point moves more than this.
+- `simplifyM` (5): tracks and route lines are simplified so no point moves more than this. A
+  track with heights also keeps the points its profile needs: simplifying looks at a line from
+  above, so on a straight ridge it would drop the summit. The published profile is never more
+  than 5 m off the recorded one.
 - `decimals` (5): coordinates keep 5 decimals, about 1 m.
 - `startBudgetKB` (1024): the gzip-compressed size of the files loaded at start may not exceed this;
   a build over budget fails.

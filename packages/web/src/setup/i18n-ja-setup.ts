@@ -270,6 +270,45 @@ export const SETUP_JA: Record<string, string> = {
   'what the list build left open': 'リストのビルドで未解決のまま残った点',
   'Japan Activity Map setup': 'Japan Activity Map セットアップ',
   'Back to start': '最初の画面に戻る',
+  'Activity type for YAMAP activities': 'YAMAP の活動の種類',
+  'Copy your sign-in token from yamap.com.': 'yamap.com からサインイン用トークンをコピーします。',
+  'Each track is one request; the next run carries on with the rest.':
+    '軌跡1件につきリクエスト1回です。残りは次回の実行で続きから取得します。',
+  'Fetch YAMAP activities': 'YAMAP の活動を取得',
+  'First day to fetch from YAMAP (YYYY-MM-DD)': 'YAMAP から取得する最初の日（YYYY-MM-DD）',
+  'Open your profile on yamap.com and copy the address, such as https://yamap.com/users/1234567. Only the number is kept.':
+    'yamap.com で自分のプロフィールを開き、https://yamap.com/users/1234567 のようなアドレスをコピーしてください。保存されるのは数字だけです。',
+  'Paste it here; it is not shown. Stored in config/secrets.jsonc, readable only by you. Leave it empty to keep the one stored, or to add it later: the list is fetched without it, the tracks are not.':
+    'ここに貼り付けてください。表示はされません。config/secrets.jsonc に保存され、読めるのはあなただけです。空欄のままにすると、保存済みのものをそのまま使うか、あとで追加できます。一覧はトークンなしでも取得できますが、軌跡は取得できません。',
+  'Sign in at https://yamap.com. Open the browser developer tools (F12), then Application (Chrome, Edge) or Storage (Firefox, Safari), then Cookies, then https://yamap.com. Copy the value of the cookie named yamap_token. It works like a password for your YAMAP account: keep it to yourself. YAMAP has no official way to do this, and the token stops working when YAMAP signs that browser out; every command then says so. See docs/yamap.md.':
+    'https://yamap.com にサインインします。ブラウザの開発者ツール（F12）を開き、Application（Chrome、Edge）または Storage（Firefox、Safari）→ Cookies → https://yamap.com の順に進み、yamap_token という名前の Cookie の値をコピーしてください。この値は YAMAP アカウントのパスワードと同じ働きをするので、他人に渡さないでください。YAMAP 公式の方法ではなく、そのブラウザが YAMAP からサインアウトされるとトークンは使えなくなります。その場合はどのコマンドもそう知らせます。docs/yamap.md を参照してください。',
+  'Strava, GPX, Garmin and YAMAP activities can all be in the local store; the site shows one of them, plus the sheet. Changing this later deletes nothing.':
+    'Strava、GPX、Garmin、YAMAP の活動はすべてローカルのストアに置いておけます。サイトに出るのはそのうち1つと、シートの分です。あとで変更しても何も削除されません。',
+  'This time only: fetch YAMAP activities from this day (YYYY-MM-DD)':
+    '今回のみ：この日以降の YAMAP の活動を取得（YYYY-MM-DD）',
+  'This time only: fetch YAMAP activities up to this day (YYYY-MM-DD)':
+    '今回のみ：この日までの YAMAP の活動を取得（YYYY-MM-DD）',
+  'YAMAP does not say what kind of activity a recording is; all of them get this type.':
+    'YAMAP は記録がどの種類の活動かを示さないため、すべてこの種類になります。',
+  'YAMAP sign-in token (the yamap_token cookie)':
+    'YAMAP のサインイン用トークン（yamap_token という Cookie）',
+  'YAMAP tracks downloaded per run': '1回の実行でダウンロードする YAMAP の軌跡の数',
+  'Your YAMAP profile address, or the number in it':
+    'YAMAP のプロフィールのアドレス、またはその中の数字',
+  'Your own YAMAP activities and their tracks, with the sign-in token from your browser. YAMAP has no official way to do this: read docs/yamap.md first.':
+    'ブラウザのサインイン用トークンを使って、自分の YAMAP の活動と軌跡を取得します。YAMAP 公式の方法ではありません。先に docs/yamap.md を読んでください。',
+  'Your profile, the sign-in token, dates': 'プロフィール、サインイン用トークン、日付',
+  'YAMAP refused the stored sign-in token at the last sync. It has expired: paste a new one below.':
+    '前回の同期で、保存済みのサインイン用トークンが YAMAP に拒否されました。有効期限が切れています。下に新しいものを貼り付けてください。',
+  'A token stops working when YAMAP signs that browser out. Sign in at yamap.com again and copy the yamap_token cookie as described below.':
+    'そのブラウザが YAMAP からサインアウトされると、トークンは使えなくなります。yamap.com にもう一度サインインし、下の説明のとおり yamap_token の Cookie をコピーしてください。',
+  'A profile address such as https://yamap.com/users/1234567, or just the number.':
+    'https://yamap.com/users/1234567 のようなプロフィールのアドレスか、数字だけを入力してください。',
+  'That does not look like a yamap_token value: one run of letters and digits, no spaces.':
+    'yamap_token の値には見えません。空白を含まない、ひと続きの英数字のはずです。',
+  'no YAMAP user id yet': 'YAMAP のユーザー ID がまだありません',
+  'Strava, Garmin, YAMAP, GPX files, a sheet': 'Strava、Garmin、YAMAP、GPX ファイル、シート',
+  YAMAP: 'YAMAP',
   'Empty: everything new. A day here fetches only from then on, without changing the settings.':
     '空欄：新しいものすべて。日付を入れると、設定は変えずにその日以降だけを取得します。',
   'This time only: fetch Garmin activities from this day (YYYY-MM-DD)':

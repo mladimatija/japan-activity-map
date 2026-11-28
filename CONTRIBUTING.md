@@ -49,7 +49,7 @@ The lists are the easiest place for a first change: a road of 日本の道100選
 four values in `lists/sources/michi-100/roads.json`, and a wrong English name one line in
 `lists/overrides.jsonc` (`lists/README.md`, "Known gaps", says what is missing). Unit tests for the
 pure logic (filters, clipping, matching) are welcome too: `pnpm test` runs what exists so far.
-Activities come from Strava, Garmin, GPX or FIT files, or the sheet; other services, social features, weather
+Activities come from Strava, Garmin, YAMAP, GPX or FIT files, or the sheet; other services, social features, weather
 and photos are left out on purpose, so open an issue before building one.
 
 | Path            | What lives there                                                              |
@@ -72,6 +72,7 @@ Run `pnpm check` before every commit, and the checks for what you touched:
 | `pnpm check:routes`    | Grouping repeated activities into routes          | Nothing                       |
 | `pnpm check:gpx`       | GPX import, and building from Strava or GPX files | Nothing                       |
 | `pnpm check:garmin`    | Garmin sync against a fake local server           | Nothing                       |
+| `pnpm check:yamap`     | YAMAP sync against a fake local server            | Nothing                       |
 | `pnpm check:privacy`   | Privacy zones, publish rules and the audit        | Nothing                       |
 | `pnpm check:build`     | The build output, its schemas and its size budget | Nothing                       |
 | `pnpm check:strava`    | Strava sync against a fake local server           | `curl`                        |
@@ -82,6 +83,7 @@ Run `pnpm check` before every commit, and the checks for what you touched:
 | `pnpm check:setup-ui`  | Renders every screen of the setup page            | Nothing                       |
 | `pnpm check:web:demo`  | Renders every pane and page, on a demo build      | Nothing                       |
 | `pnpm check:web`       | The same, on your own build                       | Your own build in `dist/data` |
+| `pnpm check:bundle`    | Size budget of the web app's code                 | `pnpm web:build` first        |
 
 `pnpm fix` applies automatic format and lint fixes. All checks except `check:web` use made-up
 activities in a temporary folder and never touch `data/`. None of them uses the network or uploads

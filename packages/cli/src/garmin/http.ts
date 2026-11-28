@@ -7,10 +7,11 @@
  * while after the one before it, and the wait grows each time Garmin fails to answer and shrinks
  * back slowly once it answers again.
  */
-import { setTimeout as sleepFor } from 'node:timers/promises';
-
 import { errorText, JamError } from '../errors.ts';
 import type { Logger } from '../logger.ts';
+import { Pacer, pause, retryAfterMs } from '../net/pacer.ts';
+
+export { pause, retryAfterMs };
 
 /** The key is missing, wrong, deleted or past its date: fixed on Garmin Connect, not by waiting. */
 export class GarminKeyError extends JamError {
@@ -51,26 +52,8 @@ const FILE_PATH = '/download-service/files/activity/';
 export const PAGE_SIZE = 99;
 /** Waits before a second, third and fourth try, on top of the wait between any two requests. */
 const WAITS_MS = [5000, 15_000, 30_000];
-/** The wait between two requests never grows past this. */
-const LONGEST_GAP_MS = 30_000;
 /** A Retry-After longer than this is not waited for in one go; the run stops and says so. */
 const LONGEST_RETRY_AFTER_MS = 120_000;
-
-/**
- * What a Retry-After header asks for, in milliseconds: a number of seconds, or an HTTP date.
- * Undefined when there is none or it cannot be read.
- */
-export const retryAfterMs = (headers: Headers, now = Date.now()): number | undefined => {
-  const value = headers.get('Retry-After');
-  if (!value) return undefined;
-  const seconds = /^\s*\d+\s*$/.test(value) ? Number(value) : (Date.parse(value) - now) / 1000;
-  return Number.isFinite(seconds) ? Math.max(0, seconds) * 1000 : undefined;
-};
-
-/** For the checks: JAM_SLEEP_SCALE=0 skips real waiting. */
-const scale = Number(process.env.JAM_SLEEP_SCALE ?? '1');
-export const pause = (ms: number) =>
-  sleepFor(Math.max(0, ms * (Number.isFinite(scale) ? scale : 1)));
 
 const KEY_HELP =
   'Create a new one on Garmin Connect (Settings, Personal API Key) and put it in config/secrets.jsonc as garmin.apiKey. See docs/garmin.md.';
@@ -90,58 +73,27 @@ export class GarminApi {
   readonly #base: string;
   readonly #log: Logger;
   #token: string | undefined;
-  /** The wait between two requests asked for in the settings, and the one in force now. */
-  readonly #baseGap: number;
-  #gap: number;
-  /** The one request under way, or the last one: the next waits for it, then for the gap. */
-  #turn: Promise<void> = Promise.resolve();
-  /** Requests made, for the summary. */
-  requests = 0;
-  /** The longest the wait between two requests got this run, in milliseconds. */
-  longestGapMs = 0;
+  readonly #pacer: Pacer;
 
   constructor(key: string, baseUrl: string, log: Logger, pauseMs: number) {
     this.#key = key;
     this.#base = baseUrl.replace(/\/+$/, '');
     this.#log = log;
-    this.#baseGap = pauseMs;
-    this.#gap = pauseMs;
+    this.#pacer = new Pacer(pauseMs);
   }
 
-  /** The wait in force between two requests, in milliseconds. */
+  /** Requests made, for the summary. */
+  get requests(): number {
+    return this.#pacer.requests;
+  }
+
+  /** The wait in force between two requests, and the longest it got this run, in milliseconds. */
   get gapMs(): number {
-    return Math.round(this.#gap);
+    return this.#pacer.gapMs;
   }
 
-  /**
-   * One request, in its turn: after the request before it has ended and the gap has passed. The
-   * gap is a little uneven on purpose, so the requests do not arrive like a clock.
-   */
-  async #send(url: string, init: RequestInit): Promise<Response> {
-    const before = this.#turn;
-    let done: () => void = () => {};
-    this.#turn = new Promise<void>((resolve) => {
-      done = resolve;
-    });
-    await before;
-    try {
-      if (this.requests > 0) await pause(this.#gap * (0.8 + Math.random() * 0.4));
-      this.requests++;
-      const response = await fetch(url, init);
-      const throttled = response.status === 429 || response.status >= 500;
-      // Twice as slow after an answer that says "too much"; back towards the setting, a tenth at
-      // a time, with each answer that does not.
-      this.#gap = throttled
-        ? Math.min(LONGEST_GAP_MS, Math.max(this.#gap, 1000) * 2)
-        : Math.max(this.#baseGap, this.#gap * 0.9);
-      return response;
-    } catch (error) {
-      this.#gap = Math.min(LONGEST_GAP_MS, Math.max(this.#gap, 1000) * 2);
-      throw error;
-    } finally {
-      this.longestGapMs = Math.max(this.longestGapMs, this.#gap);
-      done();
-    }
+  get longestGapMs(): number {
+    return this.#pacer.longestGapMs;
   }
 
   async #fetch(path: string, init: RequestInit): Promise<Response> {
@@ -152,7 +104,7 @@ export class GarminApi {
       waited = false;
       let response: Response;
       try {
-        response = await this.#send(`${this.#base}${path}`, init);
+        response = await this.#pacer.send(`${this.#base}${path}`, init);
       } catch (error) {
         lastError = errorText(error);
         this.#log.debug(`Garmin: ${path} failed (${lastError}), attempt ${attempt + 1}`);
@@ -187,7 +139,7 @@ export class GarminApi {
       const headers = new Headers(init.headers);
       if (response.status === 406 && headers.get('Accept') !== '*/*') {
         headers.set('Accept', '*/*');
-        return this.#send(`${this.#base}${path}`, { ...init, headers });
+        return this.#pacer.send(`${this.#base}${path}`, { ...init, headers });
       }
       return response;
     }
