@@ -47,6 +47,7 @@ import { usePref } from '../prefs.ts';
 import { select, setFilters, useStore } from '../store.ts';
 import { Name, prefectureName, useLang } from '../names.tsx';
 import { t } from '../i18n.ts';
+import { RouteGpxButton } from './RouteGpx.tsx';
 
 /** Count, share and a bar split by status: the first thing a list says. */
 const Progress = ({ list }: { list: List }) => {
@@ -315,6 +316,11 @@ export const ListOverview = ({ data }: { data: Data }) => {
         <NameTitle id="list-title" name={list.title} />
       </header>
       <Progress list={list} />
+      {list.kind === 'route' && (
+        <p className="mb-3">
+          <RouteGpxButton data={data} list={list} />
+        </p>
+      )}
       <NextUp data={data} list={list} />
       <StatusChips data={data} list={list} />
       {list.kind === 'point' && (

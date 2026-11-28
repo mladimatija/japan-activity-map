@@ -153,6 +153,8 @@ export const JA: Record<string, string> = {
   'None yet.': 'まだありません。',
   'None.': 'なし。',
   'Loading the route…': 'ルートを読み込み中…',
+  'Download GPX': 'GPX をダウンロード',
+  'Download all as GPX': 'すべて GPX でダウンロード',
   'Loading the track…': 'トラックを読み込み中…',
   'No heights or times are published for this track.':
     'このトラックの標高と時間は公開されていません。',

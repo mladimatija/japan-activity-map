@@ -56,6 +56,7 @@ import {
 } from '../names.tsx';
 import { StatusIcon } from './StatusIcon.tsx';
 import { TrackAnalysis } from './TrackAnalysis.tsx';
+import { RouteGpxButton } from './RouteGpx.tsx';
 import { RouteTimes } from './RouteTimes.tsx';
 import { setHover } from '../hover.ts';
 import { t } from '../i18n.ts';
@@ -458,6 +459,9 @@ const RouteItemDetail = ({ data, list, item }: { data: Data; list: List; item: L
         ]}
       />
       {!referenceByList.has(list.id) && <Loading>{t('Loading the route…')}</Loading>}
+      <p className="mt-3 flex flex-wrap gap-2">
+        <RouteGpxButton data={data} list={list} item={item} />
+      </p>
       <Section title="Activities on it" count={activities.length}>
         <Timeline activities={activities} empty="None yet." />
       </Section>
