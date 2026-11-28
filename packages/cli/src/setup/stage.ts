@@ -161,11 +161,14 @@ export const changeGroups = (): { id: string; title: string }[] =>
   );
 
 /** A plan as a front end shows it: titles, the command as typed, and what to warn about. */
-export const planView = (plan: PlanItem[], ctx: Ctx) =>
-  plan.map((item) => {
+export const planView = (plan: PlanItem[], ctx: Ctx) => {
+  const order = Object.keys(ACTIONS);
+  return plan.map((item) => {
     const action = ACTIONS[item.id];
     return {
       id: item.id,
+      // Its place in the pipeline, so plans from several changes merge into one in the right order.
+      order: order.indexOf(item.id),
       title: action.title,
       command: shownCommand(item.id, ctx),
       network: action.network === true,
@@ -174,6 +177,7 @@ export const planView = (plan: PlanItem[], ctx: Ctx) =>
       ...(item.skip ? { skip: item.skip } : {}),
     };
   });
+};
 
 /** Everything about staged answers that may leave the machine's memory: no secret, no position. */
 export const viewOf = (result: Staged) => ({

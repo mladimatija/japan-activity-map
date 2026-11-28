@@ -37,6 +37,8 @@ export interface ShownStep {
 
 export interface PlanAction {
   id: string;
+  /** Its place in the pipeline; plans merge by it. */
+  order: number;
   title: string;
   command: string;
   network: boolean;

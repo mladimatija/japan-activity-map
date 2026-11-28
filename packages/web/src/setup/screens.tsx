@@ -6,7 +6,7 @@ import { Button } from '../components/ui/button.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card.tsx';
 import { t } from '../i18n.ts';
 import { cn } from '../lib/utils.ts';
-import type { SetupApi, SetupState, Start, View } from './api.ts';
+import type { PlanAction, SetupApi, SetupState, Start, View } from './api.ts';
 import { said, StepCard } from './StepCard.tsx';
 
 export const Screen = ({
@@ -106,9 +106,17 @@ const GROUP_HINTS: Record<string, string> = {
 export const Welcome = ({
   state,
   onStart,
+  saved = [],
+  pending = [],
+  onRun,
 }: {
   state: SetupState;
   onStart: (start: Start, group?: string) => void;
+  /** Groups saved in change mode since the last run, by title. */
+  saved?: string[];
+  /** What those changes left to run, merged. */
+  pending?: PlanAction[];
+  onRun?: () => void;
 }) => {
   const { facts } = state;
   const points: Waypoint[] = [
@@ -270,6 +278,35 @@ export const Welcome = ({
               )}
         </p>
       </header>
+      {saved.length > 0 && (
+        <section
+          aria-labelledby="saved-title"
+          className="flex flex-col gap-3 rounded-xl border border-primary/40 bg-accent/40 p-4"
+        >
+          <div>
+            <h3 id="saved-title" className="text-row font-semibold">
+              {t('Saved: {groups}', { groups: saved.map((title) => t(title)).join(', ') })}
+            </h3>
+            <p className="text-compact text-muted-foreground">
+              {pending.length > 0
+                ? t(
+                    'Change another group below if you want to. These then run once, in this order:',
+                  )
+                : t('Nothing needs to run for these changes. Change another group, or finish.')}
+            </p>
+          </div>
+          {pending.length > 0 && (
+            <ol className="list-inside list-decimal text-compact">
+              {pending.map((action) => (
+                <li key={action.id}>{t(action.title)}</li>
+              ))}
+            </ol>
+          )}
+          <Button className="self-start" onClick={onRun}>
+            {pending.length > 0 ? t('Run these now') : t('Finish')}
+          </Button>
+        </section>
+      )}
       <div className="border-y py-4">
         <Trail label={t('Where the setup stands')} points={points} />
       </div>

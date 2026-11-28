@@ -148,7 +148,9 @@ the folder; `sheet`), `privacy` (the zones, and the three privacy thresholds), `
   Unattended, they come from `JAM_CLOUDFLARE_API_TOKEN`, `JAM_CLOUDFLARE_ACCOUNT_ID` and
   `JAM_NETLIFY_TOKEN`, in the environment or through `--secrets-stdin`.
 
-After a change the wizard says what the change makes stale and offers to run it: a new
+On the page, saving a group brings you back to the first screen, where you can change another
+group; what the changes leave to run is collected, each command once and in order, and runs when
+you press "Run these now". After a change the wizard says what the change makes stale and offers to run it: a new
 `includePrivate` needs `strava auth` and a pull; types or dates need a pull; matching thresholds
 need `match`; route grouping needs `routes regroup`; zones and privacy need `zones --preview` and
 `build`; site, map, views, publish and output need `build`, and so does switching the site

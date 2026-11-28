@@ -1,3 +1,16 @@
 /* The setup page's stylesheet: the site's tokens and components, plus the classes used here. */
 @import '../index.css';
 @source './';
+
+/* The map fills the window and never scrolls; this page is a long form and has to. */
+@layer base {
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100%;
+  }
+  body {
+    overflow: auto;
+  }
+}

@@ -1,3 +1,4 @@
+import { ArrowLeftIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 import { Alert, AlertDescription } from '../components/ui/alert.tsx';
@@ -21,6 +22,16 @@ type ScreenName = 'welcome' | 'steps' | 'run' | 'review' | 'done';
 const FLOW = { steps: 'Answer', run: 'Run', review: 'Review', done: 'Done' } as const;
 const FLOW_ORDER: (keyof typeof FLOW)[] = ['steps', 'run', 'review', 'done'];
 
+/** Two plans as one: each command once, in the pipeline's order; one that must run wins over a skipped one. */
+export const mergePlans = (before: PlanAction[], added: PlanAction[]): PlanAction[] => {
+  const byId = new Map(before.map((action) => [action.id, action]));
+  for (const action of added) {
+    const had = byId.get(action.id);
+    if (!had || (had.skip && !action.skip)) byId.set(action.id, action);
+  }
+  return [...byId.values()].sort((a, b) => a.order - b.order);
+};
+
 /** Answers that must not outlive the save: typed secrets and a clicked position. */
 const SENSITIVE = ['strava.clientId', 'strava.clientSecret', 'privacy.home', 'privacy.zones'];
 
@@ -38,6 +49,10 @@ export const SetupApp = ({ api }: { api: SetupApi }) => {
   const [view, setView] = useState<View>();
   const [page, setPage] = useState(0);
   const [plan, setPlan] = useState<PlanAction[]>([]);
+  // Change mode saves one group at a time: what each change makes stale waits here, merged, until
+  // the reader has changed everything they came for and runs it once.
+  const [pending, setPending] = useState<PlanAction[]>([]);
+  const [savedGroups, setSavedGroups] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   const [closed, setClosed] = useState(false);
   const [problem, setProblem] = useState<string>();
@@ -82,8 +97,15 @@ export const SetupApp = ({ api }: { api: SetupApi }) => {
       setAnswers((before) =>
         Object.fromEntries(Object.entries(before).filter(([id]) => !SENSITIVE.includes(id))),
       );
-      setPlan(result.plan);
       await refresh();
+      if (start === 'change') {
+        setPending((before) => mergePlans(before, result.plan));
+        const title = state?.groups.find((entry) => entry.id === group)?.title ?? group ?? '';
+        setSavedGroups((before) => (before.includes(title) ? before : [...before, title]));
+        setScreen('welcome');
+        return;
+      }
+      setPlan(result.plan);
       setScreen(result.plan.length > 0 ? 'run' : 'done');
     } catch (error) {
       fail(error);
@@ -109,8 +131,9 @@ export const SetupApp = ({ api }: { api: SetupApi }) => {
           <span className="truncate">{t('Japan Activity Map setup')}</span>
         </h1>
         {screen !== 'welcome' && !closed && (
-          <Button variant="ghost" size="sm" onClick={() => setScreen('welcome')}>
-            {t('Start over')}
+          <Button variant="outline" size="sm" onClick={() => setScreen('welcome')}>
+            <ArrowLeftIcon />
+            {t('Back to start')}
           </Button>
         )}
         <div role="group" aria-label={t('Language')} className="flex gap-1">
@@ -157,7 +180,19 @@ export const SetupApp = ({ api }: { api: SetupApi }) => {
         {!state ? (
           <p className="text-sm text-muted-foreground">{t('Asking the setup command…')}</p>
         ) : screen === 'welcome' ? (
-          <Welcome state={state} onStart={begin} />
+          <Welcome
+            state={state}
+            onStart={begin}
+            saved={savedGroups}
+            pending={pending}
+            onRun={() => {
+              setStart('change');
+              setPlan(pending);
+              setPending([]);
+              setSavedGroups([]);
+              setScreen(pending.length > 0 ? 'run' : 'done');
+            }}
+          />
         ) : screen === 'steps' ? (
           <Screen
             title={

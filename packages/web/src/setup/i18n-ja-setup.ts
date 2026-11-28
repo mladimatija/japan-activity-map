@@ -269,7 +269,13 @@ export const SETUP_JA: Record<string, string> = {
   'sheet rows needing a look': '確認が必要なシートの行',
   'what the list build left open': 'リストのビルドで未解決のまま残った点',
   'Japan Activity Map setup': 'Japan Activity Map セットアップ',
-  'Start over': '最初からやり直す',
+  'Back to start': '最初の画面に戻る',
+  Finish: '終了',
+  'Saved: {groups}': '保存しました：{groups}',
+  'Change another group below if you want to. These then run once, in this order:':
+    '必要なら、下でほかのグループも変更してください。その後、次のコマンドをこの順に一度だけ実行します。',
+  'Nothing needs to run for these changes. Change another group, or finish.':
+    'この変更で実行が必要なものはありません。ほかのグループを変更するか、終了してください。',
   Language: '言語',
   'The setup command did not answer: {problem}':
     'セットアップコマンドから応答がありません: {problem}',

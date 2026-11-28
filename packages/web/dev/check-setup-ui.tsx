@@ -62,6 +62,25 @@ const screens = (): [string, ReactElement][] => {
   const all: [string, ReactElement][] = [
     ['welcome', <Welcome state={state} onStart={nothing} />],
     [
+      'welcome, with changes saved and commands waiting',
+      <Welcome
+        state={state}
+        onStart={nothing}
+        saved={state.groups.slice(0, 2).map((group) => group.title)}
+        pending={fixture.actions}
+        onRun={nothing}
+      />,
+    ],
+    [
+      'welcome, with a change saved and nothing to run',
+      <Welcome
+        state={state}
+        onStart={nothing}
+        saved={state.groups.slice(0, 1).map((group) => group.title)}
+        onRun={nothing}
+      />,
+    ],
+    [
       'welcome, signed in',
       <Welcome
         state={{
@@ -337,6 +356,13 @@ check(
   reaching.length === 0,
   `the public site imports nothing from src/setup${reaching.length ? ` (${reaching.join(', ')})` : ''}`,
 );
+// The site's stylesheet stops the page scrolling (the map fills the window); the setup page, a long
+// form, has to undo that or its lower half and its Back button are out of reach.
+check(
+  /body\s*\{[^}]*overflow:\s*auto/.test(readFileSync(join(src, 'setup', 'setup.css'), 'utf8')),
+  "the setup page scrolls (setup.css undoes the site's overflow: hidden)",
+);
+
 check(
   !readFileSync(join(src, 'i18n-ja.ts'), 'utf8').includes('セットアップ'),
   "the setup page's Japanese stays out of i18n-ja.ts",
