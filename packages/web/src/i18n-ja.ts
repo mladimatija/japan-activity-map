@@ -154,6 +154,12 @@ export const JA: Record<string, string> = {
   'None.': 'なし。',
   'Loading the route…': 'ルートを読み込み中…',
   'Download GPX': 'GPX をダウンロード',
+  '{distance} to go: about {time} moving, at the pace of your {count} rides.':
+    '残り{distance}：これまでのサイクリング{count}回のペースで、移動時間は約{time}。',
+  '{distance} to go: about {time} moving, at the pace of your {count} walks and hikes.':
+    '残り{distance}：これまでのウォーキング・ハイキング{count}回のペースで、移動時間は約{time}。',
+  'A rough figure: the climb of the route is not known.':
+    'おおよその目安です。ルートの登りは考慮していません。',
   'Open in maps': '地図アプリで開く',
   'Open the start in maps': '起点を地図アプリで開く',
   'Download all as GPX': 'すべて GPX でダウンロード',

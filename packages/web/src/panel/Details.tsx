@@ -57,6 +57,7 @@ import {
 import { StatusIcon } from './StatusIcon.tsx';
 import { TrackAnalysis } from './TrackAnalysis.tsx';
 import { mapsUrl } from '../maps.ts';
+import { RouteEstimate } from './RouteEstimate.tsx';
 import { RouteGpxButton } from './RouteGpx.tsx';
 import { RouteTimes } from './RouteTimes.tsx';
 import { setHover } from '../hover.ts';
@@ -477,6 +478,7 @@ const RouteItemDetail = ({ data, list, item }: { data: Data; list: List; item: L
             )}
           </p>
         )}
+        <RouteEstimate data={data} list={list} lengthM={item.lengthM} coveredM={item.coveredM} />
       </div>
       <Facts
         rows={[

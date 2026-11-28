@@ -349,6 +349,10 @@ Other things in details that help with planning:
 - A place shows the seasons it has been reached in.
 - A prefecture lists what is still to do there across every list, highest first.
 - A route section that is partly covered names its next uncovered stretch and shows it on the map.
+- A route section and a route list say what is left and about how long it would take: the
+  median moving pace of your own walks and hikes (rides, for a cycle route) over the distance
+  still uncovered. It needs three outings of the kind, of 3 km or more (10 km for rides). The
+  reference lines carry no heights, so the route's own climb isn't counted, and the note says so.
 - A place has "Open in maps", and a route section "Open the start in maps": a link to the
   device's maps app (Apple Maps, the phone's own choice on Android, Google Maps elsewhere) for
   directions. Nothing is asked of any maps service until the link is clicked.
