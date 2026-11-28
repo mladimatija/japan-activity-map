@@ -11,7 +11,7 @@ Each setting lives in its own JSONC file (JSON with comments).
 
 | File            | Holds                                                                         |
 | --------------- | ----------------------------------------------------------------------------- |
-| `site`          | Site title, activity source, map styles, what is shown, where it is published |
+| `site`          | Site title, activity source, GPX and Garmin import, map styles, what is shown |
 | `thresholds`    | Distances and shares used by matching, route grouping and privacy clipping    |
 | `routes`        | Route names, merges and splits, keyed by activity                             |
 | `privacy-zones` | Places whose surroundings are cut from every published track                  |

@@ -27,7 +27,8 @@ and run with `--config <that folder>` and these environment variables:
 | `JAM_SLEEP_SCALE=0` | Skip the waits for rate limits and retries (any factor works)    |
 
 Send JSON to `POST /__control` to make the server fail or change; the options are listed at the
-top of `fake-strava.ts`.
+top of `fake-strava.ts`. The checks end with a pull of one range of days: what it reports, what
+`--full` removes, and that the next plain pull is still an incremental one.
 
 ## Shared check harness
 
@@ -65,7 +66,9 @@ SDK) inside a zip. `check-garmin.ts` starts it on a spare port and runs `jam syn
 it in a temporary folder: a missing and a refused key, a dry run, the first pull and the ones
 after, a new and a renamed activity, Only Me activities, being told to slow down part of the way
 through, an expired token, `garmin wipe` with the same public ids afterwards, a full pull that
-removes what is gone, and a build from Garmin. Run it with `pnpm check:garmin`. To try it by hand:
+removes what is gone, and a build from Garmin. It also covers a pull of some days (`--from`,
+`--to`), Garmin counting days by either clock, gateway timeouts on files and on list pages, a
+token sent as plain text, a recording sent unzipped and a file Garmin refuses. Run it with `pnpm check:garmin`. To try it by hand:
 
 ```sh
 node packages/cli/dev/fake-garmin.ts --port 8726    # accepts the key "good-key"

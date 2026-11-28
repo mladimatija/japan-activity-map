@@ -59,6 +59,11 @@ watch that exports them (YAMAP, for one), plus a sheet you keep by hand for ever
 setting says which of the three the site is built from ([docs/garmin.md](docs/garmin.md),
 [docs/gpx.md](docs/gpx.md)).
 
+A sync fetches what's new since the last one. To fetch only some days, add `--from` and `--to`, or
+`--last 30d`, to `sync strava` or `sync garmin`; the setup page has the same as two date fields.
+Distances, climb and moving time of a recording read from a file are worked out from its points,
+with GPS jumps left out ([docs/gpx.md](docs/gpx.md#moving-time-and-gps-jumps)).
+
 ### Other pages
 
 - Statistics: totals by year, month, type and weekday, plus a calendar of every day.
@@ -112,7 +117,7 @@ pnpm install
 
 1. Try the demo. `pnpm jam demo`, then `pnpm demo:web`, gives you a complete site from made-up
    activities, stored separately from your own data ([docs/demo.md](docs/demo.md)).
-2. Set up. `pnpm jam setup` asks a few questions: Strava, GPX files or a sheet, where home is so it
+2. Set up. `pnpm jam setup` asks a few questions: Strava, Garmin, GPX files or a sheet, where home is so it
    can be hidden, what to publish. Then it writes the config files and runs the first sync and build.
    `pnpm jam setup --web` does the same in your browser ([docs/setup.md](docs/setup.md)).
 3. Check what gets cut. `pnpm jam zones --preview`, then `pnpm web:preview` to see the site as it
@@ -152,7 +157,7 @@ Everything below is for working on the code.
 | `pnpm jam strava auth`    | Sign in to Strava ([setup](docs/strava-setup.md))                                    |
 | `pnpm jam sync strava`    | Fetch Strava activities since the last pull; `--from`/`--to` for some days only      |
 | `pnpm jam strava wipe`    | Delete Strava activities from the store, keeping sheet data (`--yes`)                |
-| `pnpm jam sync garmin`    | Fetch Garmin Connect activities with your personal API key ([setup](docs/garmin.md)) |
+| `pnpm jam sync garmin`    | Fetch Garmin Connect activities with your own key; `--from`/`--to` work here too     |
 | `pnpm jam garmin check`   | Check that the Garmin key works                                                      |
 | `pnpm jam garmin wipe`    | Delete Garmin activities from the store, keeping everything else (`--yes`)           |
 | `pnpm jam sync gpx`       | Import GPX or FIT files from a folder or a `.zip` ([how](docs/gpx.md)); `--replace`  |

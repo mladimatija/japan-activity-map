@@ -30,6 +30,9 @@
       "filesPerSync": 100
       // Garmin activity types onto the five, beside the built-in ones.
       // "typeMap": { "backcountry_skiing": "hike" }
+      // Milliseconds between two requests. Garmin throttles: the wait doubles by itself when it
+      // stops answering. Raise this if a long first pull keeps timing out.
+      // "api": { "pauseMs": 2000 }
     }
   },
   "map": {
