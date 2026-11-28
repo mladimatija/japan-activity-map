@@ -529,6 +529,10 @@ export const JA: Record<string, string> = {
   'Tap the chart to read a value.': 'グラフをタップすると値を表示します。',
   'In list order. Point at one to read it.': 'リストの順番。指すと名前を表示します。',
   'In list order. Tap one to open it.': 'リストの順番。タップすると開きます。',
+  'Stage by stage, to scale. Point at one to read it.':
+    '区間ごとに縮尺どおり。指すと名前を表示します。',
+  'Stage by stage, to scale. Tap one to open it.': '区間ごとに縮尺どおり。タップすると開きます。',
+  'Before and after': '前後',
   '50+ years': '50年以上',
   Milestones: 'マイルストーン',
   'The next round number for each, and when a list is finished at the pace of the last 12 months.':

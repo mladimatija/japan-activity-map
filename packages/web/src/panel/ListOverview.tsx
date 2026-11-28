@@ -39,6 +39,7 @@ import { groupByRegion, progressOf, regionOf, STATUS_ORDER, visibleItems } from 
 import { STATUS_COLORS } from '../map/palette.ts';
 import { MiniBar } from '../shell/ListPicker.tsx';
 import { ListCover } from './ListCover.tsx';
+import { RouteLine } from './RouteLine.tsx';
 import { STAMP_GRID_MAX, StampGrid } from './StampGrid.tsx';
 import { derive, NO_FILTERS } from '../filters.ts';
 import type { Status } from '../map/palette.ts';
@@ -303,7 +304,9 @@ export const ListOverview = ({ data }: { data: Data }) => {
       <ListCover list={list} />
       <div className="mt-3">
         <NextUp data={data} list={list} />
-        {list.kind === 'point' && list.items.length <= STAMP_GRID_MAX ? (
+        {list.kind === 'route' ? (
+          <RouteLine list={list} />
+        ) : list.items.length <= STAMP_GRID_MAX ? (
           <StampGrid list={list} />
         ) : (
           <ProgressBar list={list} />

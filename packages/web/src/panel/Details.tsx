@@ -1,10 +1,4 @@
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronUpIcon,
-  ExternalLinkIcon,
-  TrophyIcon,
-} from 'lucide-react';
+import { ChevronLeftIcon, ExternalLinkIcon, TrophyIcon } from 'lucide-react';
 import { type ReactNode, useRef } from 'react';
 
 import {
@@ -39,7 +33,6 @@ import {
 import { TypeIcon } from '../icons.tsx';
 import { cn } from '../lib/utils.ts';
 import { referenceByList, useLoaded } from '../lazy.ts';
-import { groupByRegion, visibleItems } from '../lists.ts';
 import { TYPE_COLORS, typeColorOf } from '../map/palette.ts';
 import { MiniBar } from '../shell/ListPicker.tsx';
 import { derive, figuresOf, SEASONS, seasonOf } from '../filters.ts';
@@ -54,6 +47,7 @@ import {
   subName,
   useLang,
 } from '../names.tsx';
+import { PlaceSign, useNeighbours } from './PlaceSign.tsx';
 import { StatusIcon } from './StatusIcon.tsx';
 import { TrackAnalysis } from './TrackAnalysis.tsx';
 import { RouteTimes } from './RouteTimes.tsx';
@@ -216,16 +210,10 @@ const PlaceDetail = ({ data, list, item }: { data: Data; list: List; item: ListI
     : [];
   return (
     <>
-      <Header
-        eyebrow={
-          <>
-            <span lang={lang}>{nameIn(list.title, lang)}</span> ·{' '}
-            {t('No. {number}', { number: item.order })}
-          </>
-        }
-        title={nameIn(item.name, lang)}
-        lang={lang}
-        subtitle={subName(item.name, lang)}
+      <PlaceSign
+        data={data}
+        list={list}
+        item={item}
         badge={
           <StatusPill
             status={item.status}
@@ -394,18 +382,7 @@ const RouteItemDetail = ({ data, list, item }: { data: Data; list: List; item: L
   const gapBox = gap && line ? boxAlong(line, gap[0], gap[1]) : null;
   return (
     <>
-      <Header
-        eyebrow={
-          <>
-            <span lang={lang}>{nameIn(list.title, lang)}</span>
-            {list.items.length > 1 ? ` · ${t('Section {number}', { number: item.order })}` : ''}
-          </>
-        }
-        title={nameIn(item.name, lang)}
-        lang={lang}
-        subtitle={subName(item.name, lang)}
-        badge={<StatusPill status={item.status} />}
-      />
+      <PlaceSign data={data} list={list} item={item} badge={<StatusPill status={item.status} />} />
       <div className="mt-4 mb-3">
         <Headline
           value={distanceText(item.coveredM ?? 0, 1)}
@@ -849,16 +826,6 @@ const RouteDetail = ({ data, id }: { data: Data; id: string }) => {
  * The item before and after this one, in the order the list shows them (filters and regions as
  * in the pane), for stepping through a list without going back to it.
  */
-const useNeighbours = (data: Data, list: List | undefined, id: string | undefined) => {
-  const filters = useStore((state) => state.filters);
-  if (!list || !id) return {};
-  const order = groupByRegion(data, list, visibleItems(data, list, filters)).flatMap(
-    (group) => group.items,
-  );
-  const at = order.findIndex((entry) => entry.id === id);
-  return at < 0 ? {} : { previous: order[at - 1], next: order[at + 1] };
-};
-
 export const Details = ({ data, selection }: { data: Data; selection: Selection }) => {
   const lang = useLang();
   const listId = useStore((state) => state.list);
@@ -901,32 +868,6 @@ export const Details = ({ data, selection }: { data: Data; selection: Selection 
           </span>
           <Kbd className="max-md:hidden">Esc</Kbd>
         </Button>
-        {item && (previous || next) && (
-          <>
-            <Button
-              variant="ghost"
-              size="icon"
-              disabled={!previous}
-              aria-label={
-                previous
-                  ? t('Previous: {name}', { name: nameIn(previous.name, lang) })
-                  : t('Previous')
-              }
-              onClick={() => go(previous)}
-            >
-              <ChevronUpIcon />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              disabled={!next}
-              aria-label={next ? t('Next: {name}', { name: nameIn(next.name, lang) }) : t('Next')}
-              onClick={() => go(next)}
-            >
-              <ChevronDownIcon />
-            </Button>
-          </>
-        )}
       </div>
       {selection.kind === 'item' &&
         (list && item ? (
