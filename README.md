@@ -52,6 +52,15 @@ every other time you did the same route.
 
 ![An activity: its track, figures, height profile and splits](docs/images/activity.png)
 
+### Long routes
+
+Open a route, or one section of it, to see how much you've covered and where the next uncovered
+stretch starts. It also says what is left and about how long that would take at your own usual
+pace. The route's line downloads as a GPX file for a navigation app, and its start opens in your
+phone's maps app; so does any place on a list.
+
+![A route: the stretches covered, what is left and about how long it would take, with buttons to download it as GPX and open its start in maps](docs/images/route.png)
+
 ### Where activities come from
 
 Strava, Garmin Connect (with your own personal API key), YAMAP (with the sign-in token from your

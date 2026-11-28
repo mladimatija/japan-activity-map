@@ -83,7 +83,7 @@ files themselves aren't touched. No GPX command reads or changes a Strava activi
 a `.gpx` there and it is saved into `data/activities` on your computer, then imported when the
 plan runs (docs/setup.md).
 
-![The setup page with GPX files chosen: a place to drop a .zip or .gpx](images/setup-gpx.png)
+![The setup page with GPX files chosen among the sources, and a place to drop a .zip or .gpx](images/setup-gpx.png)
 
 ## Building the site from GPX files
 
