@@ -4,7 +4,8 @@ A personal map of Japan that ticks off famous peaks, trails and pilgrimage route
 and ride them.
 
 It reads your activities from Strava, from GPX files or from a spreadsheet you keep by hand, does
-all the work on your own computer, and builds a static site you can host anywhere. Your home stays off the map.
+all the work on your own computer, and builds a static site you can host anywhere. Your home stays
+off the map.
 
 Live demo, with made-up activities: <https://mladimatija.github.io/japan-activity-map/>
 
@@ -39,7 +40,7 @@ too.
   count.
 - Prefectures shaded by activities, distance, climb or days.
 - Explorer tiles: every map square you've been in, and the biggest solid square among them.
-- Hillshade, 3D terrain and a dark map. It works on a phone.
+- Hillshade, 3D terrain and a dark map.
 - Search for any place, route or activity. Filter by type, year, season, weekday, prefecture,
   distance, climb or time, and save a set of filters as a view with its own link.
 
@@ -68,6 +69,16 @@ GPX files ([docs/gpx.md](docs/gpx.md)).
 The site is in English and Japanese, in kilometres or miles.
 
 ![The Statistics page: totals, prefectures visited and this year against last](docs/images/statistics.png)
+
+### On a phone
+
+The list becomes a sheet you pull up over the map, search opens full screen, and the chart pages
+fit the narrow screen.
+
+<p>
+  <img src="docs/images/phone-map.png" width="260" alt="The map on a phone, with the list as a sheet at the bottom" />
+  <img src="docs/images/phone-statistics.png" width="260" alt="The Statistics page on a phone" />
+</p>
 
 ### Privacy
 
@@ -100,8 +111,8 @@ pnpm install
 
 1. Try the demo. `pnpm jam demo`, then `pnpm demo:web`, gives you a complete site from made-up
    activities, stored separately from your own data ([docs/demo.md](docs/demo.md)).
-2. Set up. `pnpm jam setup` asks a few questions: Strava, GPX files or a sheet, where home is so it can be
-   hidden, what to publish. Then it writes the config files and runs the first sync and build.
+2. Set up. `pnpm jam setup` asks a few questions: Strava, GPX files or a sheet, where home is so it
+   can be hidden, what to publish. Then it writes the config files and runs the first sync and build.
    `pnpm jam setup --web` does the same in your browser ([docs/setup.md](docs/setup.md)).
 3. Check what gets cut. `pnpm jam zones --preview`, then `pnpm web:preview` to see the site as it
    will be published ([docs/privacy.md](docs/privacy.md)).

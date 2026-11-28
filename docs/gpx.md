@@ -70,6 +70,14 @@ saying so: fix or delete the file and import again.
 `pnpm jam gpx wipe --yes` deletes every GPX activity and its track, after a copy of the store. The
 files themselves aren't touched. No GPX command reads or changes a Strava activity or a sheet row.
 
+## From the setup page
+
+`pnpm jam setup --web` offers "GPX files" under "Where activities come from". Drop a `.zip` or
+a `.gpx` there and it is saved into `data/activities` on your computer, then imported when the
+plan runs (docs/setup.md).
+
+![The setup page with GPX files chosen: a place to drop a .zip or .gpx](images/setup-gpx.png)
+
 ## Building the site from GPX files
 
 The store can hold Strava activities and GPX activities side by side. `config/site.jsonc` says
