@@ -349,6 +349,9 @@ Other things in details that help with planning:
 - A place shows the seasons it has been reached in.
 - A prefecture lists what is still to do there across every list, highest first.
 - A route section that is partly covered names its next uncovered stretch and shows it on the map.
+- A place has "Open in maps", and a route section "Open the start in maps": a link to the
+  device's maps app (Apple Maps, the phone's own choice on Android, Google Maps elsewhere) for
+  directions. Nothing is asked of any maps service until the link is clicked.
 - A route section, and a whole route list, can be saved as a GPX file ("Download GPX") to follow
   in a navigation app. On a phone it goes to the share sheet, so it can be handed straight to one.
   The file holds the reference line and its source's credit, nothing of yours.

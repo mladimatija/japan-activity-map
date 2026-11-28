@@ -154,6 +154,8 @@ export const JA: Record<string, string> = {
   'None.': 'なし。',
   'Loading the route…': 'ルートを読み込み中…',
   'Download GPX': 'GPX をダウンロード',
+  'Open in maps': '地図アプリで開く',
+  'Open the start in maps': '起点を地図アプリで開く',
   'Download all as GPX': 'すべて GPX でダウンロード',
   'Loading the track…': 'トラックを読み込み中…',
   'No heights or times are published for this track.':
