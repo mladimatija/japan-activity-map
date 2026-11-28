@@ -3,7 +3,7 @@ import { setUnits, useStore } from '../store.ts';
 import { t } from '../i18n.ts';
 import { type Units, UNITS } from '../units.ts';
 
-const UNIT_LABELS: Record<Units, { label: string; name: string }> = {
+export const UNIT_LABELS: Record<Units, { label: string; name: string }> = {
   metric: { label: 'km', name: 'Kilometres and metres' },
   imperial: { label: 'mi', name: 'Miles and feet' },
 };

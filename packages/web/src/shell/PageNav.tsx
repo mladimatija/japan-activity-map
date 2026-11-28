@@ -39,13 +39,14 @@ export const PageNav = () => {
   const current = PAGES.find((entry) => entry.page === page) ?? PAGES[0];
   const charts = PAGES.filter((entry) => entry.page !== 'map');
   const onChart = page !== 'map';
+  // Text tabs the height of the bar, the open page underlined in the cloth's ink.
   const TAB =
-    'text-muted-foreground aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground';
+    'h-14 rounded-none border-x-0 border-y-2 border-transparent px-3 aria-[current=page]:border-b-cloth-foreground aria-[current=page]:text-cloth-foreground';
   return (
     <>
-      <nav className="hidden items-center gap-1 md:flex" aria-label={t('Pages')}>
+      <nav className="hidden items-center self-stretch md:flex" aria-label={t('Pages')}>
         <Button
-          variant="ghost"
+          variant="cloth-ghost"
           size="lg"
           className={TAB}
           aria-current={page === 'map' ? 'page' : undefined}
@@ -58,7 +59,7 @@ export const PageNav = () => {
           <DropdownMenuTrigger
             render={
               <Button
-                variant="ghost"
+                variant="cloth-ghost"
                 size="lg"
                 className={TAB}
                 aria-current={onChart ? 'page' : undefined}
@@ -88,7 +89,7 @@ export const PageNav = () => {
         <DropdownMenuTrigger
           render={
             <Button
-              variant="outline"
+              variant="cloth"
               size="lg"
               className="gap-1 px-2 md:hidden"
               aria-label={t('Page: {page}', { page: t(current?.label ?? '') })}
@@ -96,7 +97,7 @@ export const PageNav = () => {
           }
         >
           {current && <current.Icon />}
-          <ChevronDownIcon className="text-muted-foreground" />
+          <ChevronDownIcon className="text-cloth-muted-foreground" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-44">
           <DropdownMenuRadioGroup value={page} onValueChange={(value: Page) => go(value)}>

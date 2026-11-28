@@ -31,6 +31,7 @@ export const JA: Record<string, string> = {
   Places: '場所',
   'My routes': 'マイルート',
   'Names in': '名前の表示',
+  'Names and units': '名前の表示と単位',
   'Names in {language}': '{language}で名前を表示',
   English: '英語',
   Japanese: '日本語',

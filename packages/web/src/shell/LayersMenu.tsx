@@ -84,12 +84,7 @@ const LayerSwitch = ({
 export const LayersMenu = ({ data }: { data: Data }) => {
   const mobile = useIsMobile();
   const trigger = (
-    <Button
-      variant="outline"
-      size="lg"
-      className="max-md:px-2.5 md:ml-auto"
-      aria-label={t('Layers')}
-    >
+    <Button variant="cloth" size="lg" className="max-md:px-2.5 md:ml-auto" aria-label={t('Layers')}>
       <LayersIcon />
       <span className="hidden md:inline">{t('Layers')}</span>
     </Button>

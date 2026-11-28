@@ -17,6 +17,11 @@ const buttonVariants = cva(
         destructive:
           'bg-destructive/10 hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/20 text-destructive focus-visible:border-destructive/40 dark:hover:bg-destructive/30',
         link: 'text-primary underline-offset-4 hover:underline',
+        // On cloth (the masthead): a filled control, and a quiet one that fills on hover.
+        cloth:
+          'bg-cloth-accent text-cloth-foreground hover:bg-[color-mix(in_oklch,var(--cloth-accent),var(--cloth-foreground)_12%)] aria-expanded:bg-[color-mix(in_oklch,var(--cloth-accent),var(--cloth-foreground)_12%)] focus-visible:border-cloth-foreground/70 focus-visible:ring-cloth-foreground/40',
+        'cloth-ghost':
+          'text-cloth-muted-foreground hover:bg-cloth-accent hover:text-cloth-foreground aria-expanded:bg-cloth-accent aria-expanded:text-cloth-foreground focus-visible:border-cloth-foreground/70 focus-visible:ring-cloth-foreground/40',
       },
       size: {
         default:

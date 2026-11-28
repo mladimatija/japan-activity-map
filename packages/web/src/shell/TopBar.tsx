@@ -5,12 +5,12 @@ import { Toggle } from '../components/ui/toggle.tsx';
 import type { Data } from '../data.ts';
 import { filterCount } from '../filters.ts';
 import { useStore } from '../store.ts';
+import { SealMark } from '../components/app.tsx';
 import { DemoBadge, DemoStrip } from './DemoBadge.tsx';
-import { LangSwitch } from './LangSwitch.tsx';
-import { UnitsSwitch } from './UnitsSwitch.tsx';
 import { LayersMenu } from './LayersMenu.tsx';
 import { ListPicker } from './ListPicker.tsx';
 import { PageNav } from './PageNav.tsx';
+import { PrefsMenu } from './PrefsMenu.tsx';
 import { Search } from './Search.tsx';
 import { t } from '../i18n.ts';
 
@@ -20,7 +20,7 @@ const FilterButton = () => {
   const count = useStore((state) => filterCount(state.filters));
   return (
     <Toggle
-      variant="outline"
+      variant="cloth"
       size="lg"
       pressed={open}
       aria-label={count ? t('Filters, {count} on', { count }) : t('Filters')}
@@ -35,7 +35,10 @@ const FilterButton = () => {
       <ListFilterIcon />
       <span className="hidden md:inline">{t('Filters')}</span>
       {count > 0 && (
-        <Badge className="tabular-nums" aria-hidden="true">
+        <Badge
+          className="bg-cloth-foreground text-cloth tabular-nums group-aria-pressed/toggle:bg-cloth group-aria-pressed/toggle:text-cloth-foreground"
+          aria-hidden="true"
+        >
           {count}
         </Badge>
       )}
@@ -43,11 +46,15 @@ const FilterButton = () => {
   );
 };
 
-/** The one bar every view shares: what you are looking at, how to find something, and the map's layers. */
+/**
+ * The one bar every view shares, on indigo cloth (the masthead): the seal and the site's name, what
+ * you are looking at, how to find something, and the map's layers.
+ */
 export const TopBar = ({ data }: { data: Data }) => (
-  <div className="relative z-10 min-w-0 bg-background">
-    <header className="flex h-14 min-w-0 items-center gap-2 border-b px-2 md:gap-3 md:pr-3 md:pl-4">
-      <h1 className="hidden w-38 truncate text-row font-semibold md:block">
+  <div className="relative z-10 min-w-0 bg-cloth text-cloth-foreground">
+    <header className="flex h-14 min-w-0 items-center gap-2 border-b border-cloth-border px-2 md:gap-3 md:pr-3 md:pl-4">
+      <SealMark className="hidden md:block" />
+      <h1 className="-ml-0.5 hidden max-w-40 truncate font-title text-lg font-semibold md:block">
         {data.meta.site.title}
       </h1>
       {data.meta.demo && <DemoBadge />}
@@ -56,9 +63,8 @@ export const TopBar = ({ data }: { data: Data }) => (
       <Search data={data} />
       <FilterButton />
       <LayersMenu data={data} />
-      {/* On a phone there is no room for it here: it moves into the layers menu. */}
-      <UnitsSwitch className="hidden md:flex" />
-      <LangSwitch className="hidden md:flex" />
+      {/* On a phone there is no room for it here: names and units are in the layers menu. */}
+      <PrefsMenu className="hidden md:inline-flex" />
     </header>
     {data.meta.demo && <DemoStrip />}
   </div>

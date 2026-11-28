@@ -9,6 +9,9 @@ const toggleVariants = cva(
       variant: {
         default: 'bg-transparent',
         outline: 'border-input hover:bg-muted border bg-transparent shadow-xs',
+        // On cloth (the masthead): pressed turns light, the way the page's chips turn indigo.
+        cloth:
+          'bg-cloth-accent text-cloth-foreground hover:bg-[color-mix(in_oklch,var(--cloth-accent),var(--cloth-foreground)_12%)] hover:text-cloth-foreground aria-pressed:bg-cloth-foreground aria-pressed:text-cloth aria-pressed:hover:bg-[color-mix(in_oklch,var(--cloth-foreground),var(--cloth)_8%)] aria-pressed:hover:text-cloth focus-visible:border-cloth-foreground/70 focus-visible:ring-cloth-foreground/40',
       },
       size: {
         default:

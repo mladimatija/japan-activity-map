@@ -9,7 +9,7 @@ const WHY = 'These activities are made up, to show what the site does.';
 export const DemoBadge = () => (
   <Badge
     variant="outline"
-    className="hidden border-input bg-muted text-foreground md:inline-flex"
+    className="hidden border-cloth-border bg-cloth-accent text-cloth-foreground md:inline-flex"
     title={t(WHY)}
   >
     {t('Demo data')}

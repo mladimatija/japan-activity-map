@@ -163,7 +163,7 @@ export const Search = ({ data }: { data: Data }) => {
         type="search"
         placeholder={t('Search peaks, places, prefectures, activities')}
         aria-label={t('Search')}
-        className="h-10 w-full bg-muted/50 has-[input:focus-visible]:bg-background [&_input]:[&::-webkit-search-cancel-button]:hidden"
+        className="h-10 w-full border-cloth-border bg-cloth-accent text-cloth-foreground shadow-none dark:bg-cloth-accent has-[input:focus-visible]:bg-background has-[input:focus-visible]:text-foreground [&_input]:placeholder:text-cloth-muted-foreground has-[input:focus-visible]:[&_input]:placeholder:text-muted-foreground [&_input]:[&::-webkit-search-cancel-button]:hidden [&_svg]:text-cloth-muted-foreground has-[input:focus-visible]:[&_svg]:text-muted-foreground"
       >
         <InputGroupAddon>
           <SearchIcon />
@@ -208,7 +208,7 @@ export const Search = ({ data }: { data: Data }) => {
     <>
       <Button
         ref={opener}
-        variant="outline"
+        variant="cloth"
         size="icon-lg"
         aria-label={t('Search')}
         aria-haspopup="dialog"

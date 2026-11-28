@@ -292,6 +292,34 @@ export const Count = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
+/**
+ * The site's mark: a square seal (印) carved with 踏, "to tread", the first character of 踏破
+ * (walking a route to its end). Seal red is for this and a finished list only.
+ */
+export const SealMark = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 32 32" aria-hidden className={cn('size-8 shrink-0 -rotate-3', className)}>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="3.5" className="fill-seal" />
+    <rect
+      x="4.5"
+      y="4.5"
+      width="23"
+      height="23"
+      rx="1.5"
+      className="fill-none stroke-seal-foreground"
+      strokeWidth="1.2"
+    />
+    <text
+      x="16"
+      y="16.5"
+      textAnchor="middle"
+      dominantBaseline="central"
+      className="fill-seal-foreground font-title text-[17px] font-bold"
+    >
+      踏
+    </text>
+  </svg>
+);
+
 /** Small capitals over a title. */
 export const Eyebrow = ({ children }: { children: ReactNode }) => (
   <p className="mb-1 font-mono text-xs font-medium tracking-wide text-muted-foreground uppercase">

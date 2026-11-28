@@ -59,21 +59,24 @@ export const ListPicker = ({ data }: { data: Data }) => {
       <DropdownMenuTrigger
         render={
           <Button
-            variant="outline"
+            variant="cloth"
             size="lg"
-            className="min-w-0 flex-1 justify-between md:w-55 md:flex-none"
+            className="min-w-0 flex-1 justify-between md:w-60 md:flex-none"
           />
         }
       >
-        <span className="truncate font-semibold" lang={list ? lang : undefined}>
+        <span
+          className="truncate font-title text-base font-semibold"
+          lang={list ? lang : undefined}
+        >
           {list ? nameIn(list.title, lang) : t('Choose a list')}
         </span>
         {list && (
-          <span className="ml-auto hidden text-compact text-muted-foreground tabular-nums md:inline">
+          <span className="ml-auto hidden font-mono text-xs text-cloth-muted-foreground tabular-nums md:inline">
             {completionText(list)}
           </span>
         )}
-        <ChevronDownIcon className="text-muted-foreground" />
+        <ChevronDownIcon className="text-cloth-muted-foreground" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         collisionAvoidance={{ fallbackAxisSide: 'none' }}

@@ -2,9 +2,10 @@ import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group.tsx'
 import { type Lang, LANGS, setLang, useStore } from '../store.ts';
 import { t } from '../i18n.ts';
 
-const LANG_LABELS: Record<Lang, { label: string; name: string }> = {
-  en: { label: 'EN', name: 'EN, English' },
-  ja: { label: '日本語', name: '日本語, Japanese' },
+/** Each language's short label, its accessible name, and its name in itself (for a menu). */
+export const LANG_LABELS: Record<Lang, { label: string; name: string; own: string }> = {
+  en: { label: 'EN', name: 'EN, English', own: 'English' },
+  ja: { label: '日本語', name: '日本語, Japanese', own: '日本語' },
 };
 
 /**

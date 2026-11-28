@@ -137,23 +137,26 @@ face comes in 500 to 700, so its normal text shows at 500. Numbers that line up 
 
 Reach for these before writing markup. All are in `packages/web/src`.
 
-| Need                                     | Use                                                                                                   | From                                         |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| A button                                 | `Button` (`variant`: default = indigo, `outline`, `ghost`, `secondary`, `link` for an action in text) | `components/ui/button.tsx`                   |
-| A name that opens something              | `TextLink`                                                                                            | `components/app.tsx`                         |
-| A filter that is on or off               | `Chip`                                                                                                | `components/app.tsx`                         |
-| One of a few options                     | `ChoiceField` (select up to 5 options, searchable from 6)                                             | `panel/controls.tsx`                         |
-| On or off with a label                   | `SwitchField`                                                                                         | `panel/controls.tsx`                         |
-| A page of charts                         | `ChartPage`, with `Panel` for each block                                                              | `pages/charts.tsx`                           |
-| Headline numbers                         | `Figures` (`hero` makes the first the headline)                                                       | `pages/charts.tsx`                           |
-| A chart that says what is pointed at     | `Panel readout`, and `data-tip` on each mark                                                          | `pages/charts.tsx`                           |
-| A titled part of a detail                | `Section`; `Fold` when it should start closed                                                         | `components/app.tsx`                         |
-| Term and value pairs                     | `Facts`                                                                                               | `components/app.tsx`                         |
-| A share done                             | `MiniBar` with the fraction beside it                                                                 | `shell/ListPicker.tsx`                       |
-| A status                                 | `StatusIcon`, `StatusBadge`                                                                           | `panel/StatusIcon.tsx`, `components/app.tsx` |
-| A place or list name in both languages   | `Name`, `nameIn`                                                                                      | `names.tsx`                                  |
-| Something loading, nothing there, a note | `Loading`, `Empty`, `Note`                                                                            | `components/app.tsx`                         |
-| A remembered choice                      | `usePref`                                                                                             | `prefs.ts`                                   |
+| Need                                     | Use                                                                                                                                        | From                                         |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
+| A button                                 | `Button` (`variant`: default = indigo, `outline`, `ghost`, `secondary`, `link` for an action in text; on cloth, `cloth` and `cloth-ghost`) | `components/ui/button.tsx`                   |
+| A button that stays pressed              | `Toggle` (`variant`: `outline`; on cloth, `cloth`, which turns light when pressed)                                                         | `components/ui/toggle.tsx`                   |
+| A name that opens something              | `TextLink`                                                                                                                                 | `components/app.tsx`                         |
+| A filter that is on or off               | `Chip`                                                                                                                                     | `components/app.tsx`                         |
+| One of a few options                     | `ChoiceField` (select up to 5 options, searchable from 6)                                                                                  | `panel/controls.tsx`                         |
+| On or off with a label                   | `SwitchField`                                                                                                                              | `panel/controls.tsx`                         |
+| A page of charts                         | `ChartPage`, with `Panel` for each block                                                                                                   | `pages/charts.tsx`                           |
+| Headline numbers                         | `Figures` (`hero` makes the first the headline)                                                                                            | `pages/charts.tsx`                           |
+| A chart that says what is pointed at     | `Panel readout`, and `data-tip` on each mark                                                                                               | `pages/charts.tsx`                           |
+| A titled part of a detail                | `Section`; `Fold` when it should start closed                                                                                              | `components/app.tsx`                         |
+| Term and value pairs                     | `Facts`                                                                                                                                    | `components/app.tsx`                         |
+| A share done                             | `MiniBar` with the fraction beside it                                                                                                      | `shell/ListPicker.tsx`                       |
+| A status                                 | `StatusIcon`, `StatusBadge`                                                                                                                | `panel/StatusIcon.tsx`, `components/app.tsx` |
+| A place or list name in both languages   | `Name`, `nameIn`                                                                                                                           | `names.tsx`                                  |
+| Something loading, nothing there, a note | `Loading`, `Empty`, `Note`                                                                                                                 | `components/app.tsx`                         |
+| A remembered choice                      | `usePref`                                                                                                                                  | `prefs.ts`                                   |
+| The site's mark                          | `SealMark` (the seal with 踏, beside the site's name)                                                                                      | `components/app.tsx`                         |
+| Names in, and units                      | `PrefsMenu` in the masthead; on phones `LangSwitch` and `UnitsSwitch` in the layers menu                                                   | `shell/PrefsMenu.tsx`                        |
 
 Patterns:
 
@@ -164,6 +167,10 @@ Patterns:
   divided by a hairline, the column that matters `font-semibold`.
 - Row that opens something: the whole row is the button, `hover:bg-muted`, at least 44 px.
 - Empty and loading: say what is missing and what to do in one sentence; never a blank.
+- Masthead: the top bar is `cloth`, with the seal and the site's name in `font-title`. Its controls
+  use the cloth variants, never `outline` or `primary`, and a focus ring in `cloth-foreground`.
+  The page tabs are text the height of the bar, the open page underlined. Settings that are set
+  once (names in, units) sit in one menu at the end, labelled with what they are ("EN · km").
 
 ## Checklist for a change
 
