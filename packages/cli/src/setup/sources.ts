@@ -108,11 +108,11 @@ const STRAVA_STEPS: Step[] = (
       when: strava,
       affects: ['strava-auth', 'full-pull', 'build'],
     },
-    stravaSetting('strava.from', '', 'text', 'First day to fetch (YYYY-MM-DD)', 'strava', [
+    stravaSetting('strava.from', '', 'date', 'First day to fetch (YYYY-MM-DD)', 'strava', [
       'import',
       'from',
     ]),
-    stravaSetting('strava.to', '', 'text', 'Last day to fetch (YYYY-MM-DD)', 'strava', [
+    stravaSetting('strava.to', '', 'date', 'Last day to fetch (YYYY-MM-DD)', 'strava', [
       'import',
       'to',
     ]),
@@ -318,7 +318,7 @@ const GARMIN_STEPS: Step[] = [
   setting(
     'garmin.from',
     'source:garmin',
-    'text',
+    'date',
     'First day to fetch from Garmin (YYYY-MM-DD)',
     'site',
     ['activities', 'garmin', 'from'],
@@ -326,11 +326,6 @@ const GARMIN_STEPS: Step[] = [
       help: 'Empty: everything.',
       optional: true,
       when: garmin,
-      check: (answer) =>
-        !answer ||
-        (/^\d{4}-\d{2}-\d{2}$/.test(str(answer)) && !Number.isNaN(Date.parse(str(answer))))
-          ? undefined
-          : 'A date as YYYY-MM-DD.',
     },
   ),
   setting(
@@ -346,6 +341,36 @@ const GARMIN_STEPS: Step[] = [
     },
   ),
 ];
+
+/**
+ * The days to pull this time: options for the sync command, not settings. Nothing is written to a
+ * config file, and the next plain sync carries on as if this pull had not happened.
+ */
+const pullRangeSteps = (
+  source: 'strava' | 'garmin',
+  name: string,
+  when: (ctx: Ctx) => boolean,
+): Step[] =>
+  (['from', 'to'] as const).map((end) => ({
+    id: `${source}.pull.${end}`,
+    group: `source:${source}`,
+    tier: 'both',
+    kind: 'date',
+    optional: true,
+    title:
+      end === 'from'
+        ? `This time only: fetch ${name} activities from this day (YYYY-MM-DD)`
+        : `This time only: fetch ${name} activities up to this day (YYYY-MM-DD)`,
+    help:
+      end === 'from'
+        ? 'Empty: everything new. A day here fetches only from then on, without changing the settings.'
+        : 'Empty: up to today.',
+    read: () => '',
+    map: () => [],
+    runOption: true,
+    when,
+    affects: [source === 'strava' ? 'pull-strava' : 'pull-garmin', 'match', 'build'],
+  }));
 
 /** Options for `jam demo`, not settings: nothing here is written to a config file. */
 const demoOption = (step: Pick<Step, 'id' | 'kind' | 'title'> & Partial<Step>): Step => ({
@@ -373,11 +398,9 @@ const DEMO_STEPS: Step[] = [
   }),
   demoOption({
     id: 'demo.until',
-    kind: 'text',
+    kind: 'date',
     title: 'Last day of the history (YYYY-MM-DD)',
     help: 'Empty: today.',
-    check: (answer) =>
-      !answer || /^\d{4}-\d{2}-\d{2}$/.test(str(answer)) ? undefined : 'A date as YYYY-MM-DD.',
   }),
   demoOption({
     id: 'demo.lang',
@@ -406,7 +429,7 @@ export const SOURCES: Source[] = [
     id: 'strava',
     label: 'Strava',
     help: 'Your activities through the Strava API. Needs a Strava API application and a subscription.',
-    steps: STRAVA_STEPS,
+    steps: [...STRAVA_STEPS, ...pullRangeSteps('strava', 'Strava', strava)],
     actions: (ctx) => [
       'strava-auth',
       'sync-strava',
@@ -424,7 +447,7 @@ export const SOURCES: Source[] = [
     id: 'garmin',
     label: 'Garmin',
     help: 'Your activities through the Garmin Connect Personal API, with a key you create yourself. Free; needs no approval.',
-    steps: GARMIN_STEPS,
+    steps: [...GARMIN_STEPS, ...pullRangeSteps('garmin', 'Garmin', garmin)],
     actions: () => ['sync-garmin'],
   },
   {

@@ -81,8 +81,11 @@ export const siteOptionsSchema = z.strictObject({
           api: z
             .strictObject({
               baseUrl: z.url().default('https://personal.connectapi.garmin.com'),
-              /** Pause between two file downloads, in milliseconds. */
-              pauseMs: z.number().int().min(0).max(60_000).default(500),
+              /**
+               * The wait between any two requests, in milliseconds. It doubles (up to 30 s) each
+               * time Garmin fails to answer, and comes back down as it answers again.
+               */
+              pauseMs: z.number().int().min(0).max(60_000).default(2000),
             })
             .prefault({}),
         })

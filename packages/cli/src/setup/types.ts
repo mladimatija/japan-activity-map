@@ -5,6 +5,8 @@ import type { JsonPath, Patch } from './jsonc.ts';
 
 export type Kind =
   | 'text'
+  /** A day as YYYY-MM-DD: typed in a terminal, picked from a calendar on the page. */
+  | 'date'
   | 'number'
   | 'confirm'
   | 'choice'
@@ -18,7 +20,15 @@ export type Kind =
 export type Mode = 'quick' | 'full' | 'change';
 
 /** What a changed setting makes stale; the wizard turns these into "run this next". */
-export type Affects = 'strava-auth' | 'full-pull' | 'match' | 'regroup' | 'zones' | 'build';
+export type Affects =
+  | 'strava-auth'
+  | 'full-pull'
+  | 'pull-strava'
+  | 'pull-garmin'
+  | 'match'
+  | 'regroup'
+  | 'zones'
+  | 'build';
 
 /** What is true on this machine, found from files rather than remembered. */
 export interface Facts {
@@ -72,6 +82,11 @@ export interface Step {
   options?: Option[];
   /** For text and number: an empty answer removes the key. */
   optional?: boolean;
+  /**
+   * An option for a command this run, not a setting: nothing is written, and answering it is what
+   * brings its `affects` into the plan.
+   */
+  runOption?: boolean;
   /** The answer shown first when the config has none. */
   default?: unknown;
   setting?: SettingRef;

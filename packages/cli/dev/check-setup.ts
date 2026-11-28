@@ -497,6 +497,45 @@ const main = async () => {
         !garminDry.text.includes('check-garmin-key'),
       garminDry.text,
     );
+    // The days to pull this time are options for the sync, not settings.
+    const rangedSetup = await setup(
+      [
+        '--answers',
+        answersFile('garmin-range', {
+          start: 'quick',
+          sources: ['garmin'],
+          'garmin.pull.from': '2026-01-01',
+          'garmin.pull.to': '2026-03-31',
+          skip: ['lists-fetch', 'lists-build', 'web-build'],
+        }),
+        '--yes',
+        '--dry-run',
+      ],
+      { ...env, JAM_GARMIN_API_KEY: 'check-garmin-key' },
+    );
+    check(
+      '  ...and days given for this time only go to the sync, not into a config file',
+      rangedSetup.code === 0 &&
+        rangedSetup.text.includes('pnpm jam sync garmin --from 2026-01-01 --to 2026-03-31') &&
+        !/^\+.*2026-01-01/m.test(rangedSetup.text),
+      rangedSetup.text,
+    );
+    const rangedChange = await setup(
+      [
+        '--change',
+        'source:strava',
+        '--answers',
+        answersFile('strava-range', { 'strava.pull.from': '2026-05-01' }),
+        '--dry-run',
+      ],
+      env,
+    );
+    check(
+      '  ...and in change mode they plan a pull of just those days',
+      rangedChange.code === 0 &&
+        rangedChange.text.includes('pnpm jam sync strava --from 2026-05-01'),
+      rangedChange.text,
+    );
     const noKey = await setup(['--answers', garmin, '--yes', '--dry-run']);
     check(
       '  ...and without a key the sync is in the plan as skipped',

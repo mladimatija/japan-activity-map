@@ -273,6 +273,9 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
         applied = {
           ...result.ctx,
           answers: {
+            // Change mode saves one group at a time before running: an earlier group's options
+            // for a command (the days to pull) must still be there when the command runs.
+            ...(start === 'change' ? applied?.answers : {}),
             ...keepable(result.ctx.answers),
             ...(start === 'demo' ? { sources: ['demo'] } : {}),
           },
@@ -300,6 +303,13 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
           .then((code) => {
             running = undefined;
             stopRunning = undefined;
+            // The days asked for "this time only" are spent once their pull has run: a later pull
+            // in the same session must not be narrowed to them without being asked.
+            const source = id === 'sync-strava' ? 'strava' : id === 'sync-garmin' ? 'garmin' : '';
+            if (source && code === 0 && applied) {
+              delete applied.answers[`${source}.pull.from`];
+              delete applied.answers[`${source}.pull.to`];
+            }
             emit('end', { id, code });
           });
         send(response, 202, { started: id });

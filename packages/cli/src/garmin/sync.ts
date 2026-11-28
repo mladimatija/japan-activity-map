@@ -6,7 +6,7 @@
  */
 import type { ActivityType, Config, EventTag } from '@jam/core';
 
-import { errorText } from '../errors.ts';
+import { errorText, JamError } from '../errors.ts';
 import { xmlText } from '../lists/zip.ts';
 import type { Logger } from '../logger.ts';
 import { looksLikeFit } from '../fit.ts';
@@ -23,8 +23,19 @@ import { backupDatabase } from '../store/backups.ts';
 import { keyedId } from '../store/ids.ts';
 import type { SqlValue } from '../store/sqlite.ts';
 import type { Store } from '../store/store.ts';
-import { type GarminApi, GarminFileError, GarminLimitError, PAGE_SIZE, pause } from './http.ts';
+import {
+  type GarminApi,
+  GarminFileError,
+  GarminLimitError,
+  GarminRequestError,
+  PAGE_SIZE,
+} from './http.ts';
 import { garminActivityType } from './types.ts';
+
+/** The smallest page the list is asked for when Garmin keeps timing out on larger ones. */
+const SMALLEST_PAGE = 12;
+/** Files in a row without an answer before the run gives up. */
+const MOST_STUMBLES = 5;
 
 /** What the list says about one activity. Only `activityId` is certain to be there. */
 interface Summary {
@@ -151,7 +162,14 @@ export interface GarminPull {
   removed: number;
   skippedTypes: Map<string, number>;
   skippedPrivate: number;
-  files: { fetched: number; withTrack: number; withoutTrack: number; left: number };
+  files: {
+    fetched: number;
+    withTrack: number;
+    withoutTrack: number;
+    /** Asked for and not answered this run; asked for again next run. */
+    unanswered: number;
+    left: number;
+  };
   /** Set when Garmin asked to slow down part of the way through. */
   limited?: string;
   backup?: string;
@@ -160,6 +178,11 @@ export interface GarminPull {
 interface Options {
   /** Ask for everything in the range again, and remove what Garmin no longer lists. */
   full: boolean;
+  /**
+   * This run only: the days to list and to fetch files for (inclusive, YYYY-MM-DD). It narrows
+   * the configured range, and the pull is not counted as one that later pulls carry on from.
+   */
+  range?: { from?: string; to?: string };
   /** Files to fetch this run; undefined for the configured number. */
   files?: number;
   dryRun: boolean;
@@ -207,15 +230,24 @@ const keptBy = (settings: Config['site']['activities']['garmin']): string =>
  * turning Only Me on, or adding a type, has to reach the old activities too.
  */
 const since = (store: Store, kept: string): string | undefined => {
-  const last = store.db.get<{ started_at: string; details: string | null }>(
-    `SELECT started_at, details FROM pulls WHERE source = 'garmin' AND outcome IN ('ok', 'partial') ORDER BY id DESC LIMIT 1`,
+  const details = (row: { details: string | null }): { kept?: string; range?: unknown } => {
+    try {
+      return JSON.parse(row.details ?? '{}') as { kept?: string; range?: unknown };
+    } catch {
+      return {};
+    }
+  };
+  // The newest good pull since the last wipe. A pull of one range says nothing about the days
+  // outside it, and a wipe starts the history over: after one, everything is listed again.
+  const history = store.db.all<{ started_at: string; outcome: string; details: string | null }>(
+    `SELECT started_at, outcome, details FROM pulls WHERE source = 'garmin' ORDER BY id DESC`,
+  );
+  const wipedAt = history.findIndex((row) => row.outcome === 'wiped');
+  const last = (wipedAt < 0 ? history : history.slice(0, wipedAt)).find(
+    (row) => (row.outcome === 'ok' || row.outcome === 'partial') && !details(row).range,
   );
   if (!last) return undefined;
-  try {
-    if ((JSON.parse(last.details ?? '{}') as { kept?: string }).kept !== kept) return undefined;
-  } catch {
-    return undefined;
-  }
+  if (details(last).kept !== kept) return undefined;
   return new Date(Date.parse(last.started_at) - 7 * 86_400_000).toISOString().slice(0, 10);
 };
 
@@ -236,28 +268,65 @@ export const pullGarmin = async (
     removed: 0,
     skippedTypes: new Map(),
     skippedPrivate: 0,
-    files: { fetched: 0, withTrack: 0, withoutTrack: 0, left: 0 },
+    files: { fetched: 0, withTrack: 0, withoutTrack: 0, unanswered: 0, left: 0 },
   };
-  const incremental = options.full ? undefined : since(store, keptBy(settings));
-  const startDate =
-    incremental && settings.from
-      ? incremental > settings.from
-        ? incremental
-        : settings.from
-      : (incremental ?? settings.from);
+  const { range } = options;
+  const later = (a: string | undefined, b: string | undefined) =>
+    a && b ? (a > b ? a : b) : (a ?? b);
+  const earlier = (a: string | undefined, b: string | undefined) =>
+    a && b ? (a < b ? a : b) : (a ?? b);
+  const incremental = options.full || range ? undefined : since(store, keptBy(settings));
+  /** The first and last day wanted at all: the settings, narrowed by this run's range. */
+  const firstDay = later(settings.from, range?.from);
+  const endDate = earlier(settings.to, range?.to);
+  if (firstDay && endDate && firstDay > endDate)
+    throw new JamError(
+      `Nothing to fetch: ${firstDay} to ${endDate} is no range of days. --from and --to narrow activities.garmin.from and to in config/site.jsonc; they do not reach outside them.`,
+    );
+  const startDate = later(incremental, firstDay);
+  // Garmin does not say whether it counts days by local time or by GMT. One day more is asked for
+  // on each side and the answer cut back to the days wanted, so that an activity early or late in
+  // a day is neither missed nor, on a full pull of a range, taken for one Garmin no longer has.
+  const shifted = (day: string | undefined, by: number) =>
+    day
+      ? new Date(Date.parse(`${day}T00:00:00Z`) + by * 86_400_000).toISOString().slice(0, 10)
+      : day;
+  const [askFrom, askTo] = [shifted(startDate, -1), shifted(endDate, 1)];
+  const wantedDay = (entry: { startTimeLocal?: string | null }): boolean => {
+    const day = /^\d{4}-\d{2}-\d{2}/.exec(entry.startTimeLocal ?? '')?.[0];
+    return !day || ((!firstDay || day >= firstDay) && (!endDate || day <= endDate));
+  };
+  /** Whether a stored activity started inside this run's range. */
+  const inRange = (startLocal: SqlValue | undefined): boolean => {
+    if (!range) return true;
+    const day = String(startLocal ?? '').slice(0, 10);
+    return (!range.from || day >= range.from) && (!range.to || day <= range.to);
+  };
 
   // The list, page by page.
   const kept: Extract<Verdict, { keep: true }>[] = [];
   /** Listed, and no longer kept: set to Only Me since, or to a type that is skipped. */
   const dropped: string[] = [];
-  for (let start = 0; ; start += PAGE_SIZE) {
-    const page = await api.list({
-      start,
-      ...(startDate ? { startDate } : {}),
-      ...(settings.to ? { endDate: settings.to } : {}),
-    });
+  // A long page can be more than Garmin's gateway waits for: when a page keeps failing, it is
+  // asked for again in halves, and the smaller size is kept for the rest of the run.
+  let limit = PAGE_SIZE;
+  for (let start = 0; ;) {
+    let page: unknown[];
+    try {
+      page = await api.list({
+        start,
+        limit,
+        ...(askFrom ? { startDate: askFrom } : {}),
+        ...(askTo ? { endDate: askTo } : {}),
+      });
+    } catch (failure) {
+      if (!(failure instanceof GarminRequestError) || limit <= SMALLEST_PAGE) throw failure;
+      limit = Math.max(SMALLEST_PAGE, Math.floor(limit / 2));
+      log.debug(`Garmin: the list did not answer; asking for ${limit} at a time`);
+      continue;
+    }
     for (const entry of page) {
-      if (!isSummary(entry)) continue;
+      if (!isSummary(entry) || !wantedDay(entry)) continue;
       result.listed++;
       const verdict = summaryColumns(entry, settings, config.sheet.timeZone);
       if (verdict.keep) kept.push(verdict);
@@ -271,7 +340,8 @@ export const pullGarmin = async (
       Math.max(result.listed, start + page.length),
       'Garmin activities listed',
     );
-    if (page.length < PAGE_SIZE) break;
+    if (page.length < limit) break;
+    start += page.length;
   }
 
   const current = new Map(
@@ -307,8 +377,11 @@ export const pullGarmin = async (
   // What was listed and is no longer kept goes on any pull: an activity set to Only Me since it
   // was fetched must not stay on the site.
   const listedIds = new Set(kept.map((entry) => entry.id));
+  // With a range, a full pull has seen everything inside it and nothing outside.
   const gone = options.full
-    ? [...current.keys()].filter((id) => !listedIds.has(id))
+    ? [...current.entries()]
+        .filter(([id, row]) => !listedIds.has(id) && inRange(row.start_local))
+        .map(([id]) => id)
     : dropped.filter((id) => current.has(id));
   result.removed = gone.length;
 
@@ -319,7 +392,11 @@ export const pullGarmin = async (
     const waiting =
       kept.filter((entry) => wanted(entry.raw, entry.id)).length +
       [...current.entries()].filter(
-        ([id, row]) => !listedIds.has(id) && !gone.includes(id) && wanted(rawOf(row), id),
+        ([id, row]) =>
+          !listedIds.has(id) &&
+          !gone.includes(id) &&
+          inRange(row.start_local) &&
+          wanted(rawOf(row), id),
       ).length;
     result.files.left = waiting;
     return result;
@@ -330,7 +407,7 @@ export const pullGarmin = async (
   const pull = db.transaction(() => {
     const started = db.run(
       `INSERT INTO pulls (source, started_at, range_from, range_to, include_private, outcome) VALUES ('garmin', ?, ?, ?, ?, 'running')`,
-      [now, startDate ?? null, settings.to ?? null, settings.includePrivate ? 1 : 0],
+      [now, startDate ?? null, endDate ?? null, settings.includePrivate ? 1 : 0],
     );
     for (const entry of kept)
       upsertActivity(db, store.salt, entry.id, entry.columns, current.get(entry.id), now);
@@ -342,20 +419,20 @@ export const pullGarmin = async (
   // The files: newest first, so a new outing has its track on the first run after it.
   const queue = db
     .all<Record<string, SqlValue>>(
-      `SELECT a.id, a.raw, a.name, a.start_time FROM activities a
+      `SELECT a.id, a.raw, a.name, a.start_time, a.start_local FROM activities a
        WHERE a.source = 'garmin' AND NOT EXISTS (SELECT 1 FROM tracks t WHERE t.activity_id = a.id)
        ORDER BY a.start_time DESC`,
     )
-    .filter((row) => wanted(rawOf(row), String(row.id)));
+    .filter((row) => inRange(row.start_local) && wanted(rawOf(row), String(row.id)));
   const batch = queue.slice(0, fileLimit);
   result.files.left = queue.length - batch.length;
   let outcome: 'ok' | 'partial' = 'ok';
   let error: string | undefined;
+  let stumbles = 0;
   try {
     for (const [index, row] of batch.entries()) {
       const raw = rawOf(row);
       if (!raw) continue;
-      if (index > 0) await pause(settings.api.pauseMs);
       let track: Columns | undefined;
       let ends: [SqlValue, SqlValue] = [null, null];
       let problem: string | undefined;
@@ -371,9 +448,26 @@ export const pullGarmin = async (
           result.files.left += batch.length - index;
           break;
         }
+        if (failure instanceof GarminRequestError) {
+          // Garmin did not answer for this one (a timeout at its gateway, usually). It is asked
+          // for again next run; the others go on, more slowly (the client widens its own gap).
+          // Several in a row end the run.
+          result.files.unanswered++;
+          stumbles++;
+          log.debug(`Garmin activity ${raw.id}: no answer (${failure.message})`);
+          if (stumbles >= MOST_STUMBLES) {
+            outcome = 'partial';
+            error = failure.message;
+            result.limited = `Garmin Connect stopped answering (${stumbles} files in a row). What was fetched is kept; run the command again later and it carries on.`;
+            result.files.left += batch.length - index - 1;
+            break;
+          }
+          continue;
+        }
         if (!(failure instanceof GarminFileError)) throw failure;
         problem = failure.message;
       }
+      stumbles = 0;
       result.files.fetched++;
       if (bytes) {
         // A file that cannot be read says so once and is not asked for on every run after.
@@ -415,12 +509,26 @@ export const pullGarmin = async (
       log.progress(index + 1, batch.length, 'Garmin files fetched');
     }
   } catch (failure) {
-    // The list is in; the run after this one carries on with the files.
-    db.run(`UPDATE pulls SET finished_at = ?, outcome = 'failed', error = ? WHERE id = ?`, [
-      new Date().toISOString(),
-      errorText(failure),
-      pull,
-    ]);
+    // The list is in, so the pull counts as one to carry on from: the run after this one lists
+    // only what is new and goes on with the files.
+    db.run(
+      `UPDATE pulls SET finished_at = ?, added = ?, updated = ?, removed = ?, outcome = 'partial', error = ?, details = ? WHERE id = ?`,
+      [
+        new Date().toISOString(),
+        result.added,
+        result.updated,
+        result.removed,
+        errorText(failure),
+        JSON.stringify({
+          listed: result.listed,
+          files: result.files,
+          full: options.full,
+          kept: keptBy(settings),
+          ...(range ? { range } : {}),
+        }),
+        pull,
+      ],
+    );
     throw failure;
   }
   db.run(
@@ -437,6 +545,7 @@ export const pullGarmin = async (
         files: result.files,
         full: options.full,
         kept: keptBy(settings),
+        ...(range ? { range } : {}),
       }),
       pull,
     ],

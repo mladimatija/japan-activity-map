@@ -4,6 +4,7 @@ import { deployCommand } from './deploy.ts';
 import { currentStoreMarker, demoRefusal } from '../demo/marker.ts';
 import { listsBuild, listsFetch, listsValidate } from './lists.ts';
 import { garminCheck, garminWipe, syncGarmin } from './garmin.ts';
+import { RANGE_OPTIONS } from './range.ts';
 import { gpxWipe, syncGpx } from './gpx.ts';
 import { syncSheet } from './sheet.ts';
 import { buildCommand } from './build.ts';
@@ -53,6 +54,11 @@ export const COMMANDS: readonly Command[] = [
         type: 'string',
         value: 'n',
         description: 'With --streams: at most this many activities (default 25)',
+      },
+      ...RANGE_OPTIONS,
+      full: {
+        type: 'boolean',
+        description: 'With --from, --to or --last: remove what Strava no longer has in that range',
       },
     },
     run: syncStrava,
@@ -104,12 +110,14 @@ export const COMMANDS: readonly Command[] = [
     options: {
       full: {
         type: 'boolean',
-        description: 'List everything in the range again; remove what Garmin no longer has',
+        description:
+          'List everything again, or everything in --from/--to; remove what Garmin no longer has',
       },
       files: {
         type: 'string',
         description: 'How many recordings to download this run: a number, or "all"',
       },
+      ...RANGE_OPTIONS,
     },
     run: syncGarmin,
   },

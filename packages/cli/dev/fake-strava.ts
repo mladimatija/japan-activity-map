@@ -10,6 +10,7 @@
  *   { "grantScope": "read,activity:read" } grant this instead of what was asked
  *   { "add": 2 }                          add new activities dated now
  *   { "rename": 123 }                     change an activity's name
+ *   { "remove": 123 }                     delete an activity
  *   { "readUsage": 98 }                   set the 15-minute read usage
  *   { "dailyUsage": 998 }                 set the daily usage
  */
@@ -151,6 +152,10 @@ const server = createServer(async (request, response) => {
     if (typeof change.add === 'number')
       for (let i = 0; i < change.add; i++)
         add(Math.floor(Date.now() / 1000) - 3600 * (i + 1), activities.length);
+    if (typeof change.remove === 'number') {
+      const at = activities.findIndex((activity) => activity.id === change.remove);
+      if (at >= 0) activities.splice(at, 1);
+    }
     if (typeof change.rename === 'number') {
       const target = activities.find((activity) => activity.id === change.rename);
       if (target) target.name += ' (renamed)';

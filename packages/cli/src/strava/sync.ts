@@ -9,7 +9,7 @@ import type { Database, SqlValue } from '../store/sqlite.ts';
 import type { Store } from '../store/store.ts';
 import { StravaAuthError, StravaDailyLimitError } from './http.ts';
 import { type ActivitySource, type SourceActivity, summaryTrack } from './source.ts';
-import { errorText } from '../errors.ts';
+import { errorText, JamError } from '../errors.ts';
 
 type Columns = Record<string, SqlValue>;
 
@@ -43,11 +43,18 @@ interface PullSettings {
   timeZone: string;
   scope: string;
   dryRun: boolean;
+  /**
+   * This run only: the days to pull (inclusive, YYYY-MM-DD, in `timeZone`). It narrows the
+   * configured range. Such a pull is not resumed, and later pulls do not carry on from it.
+   */
+  range?: { from?: string; to?: string };
+  /** With a range: remove the stored activities in it that Strava did not return. */
+  prune?: boolean;
 }
 
 interface PullReport {
   pullId?: number;
-  kind: 'full' | 'incremental' | 'resumed';
+  kind: 'full' | 'incremental' | 'resumed' | 'range';
   from: string | null;
   to: string | null;
   pages: number;
@@ -58,6 +65,10 @@ interface PullReport {
   removedPrivate: number;
   orphanedOverrides: string[];
   notReturned: number;
+  /** Of those not returned, how many a range pull with `prune` removed. */
+  removed: number;
+  /** The copy of the store made before removing. */
+  backup?: string;
   outcome: 'ok' | 'partial' | 'failed';
   error?: string;
 }
@@ -141,11 +152,21 @@ const pullsSinceWipe = (db: Database): PullRow[] => {
   const wipe = db.get<{ started_at: string }>(
     `SELECT started_at FROM pulls WHERE source = 'strava' AND outcome = 'wiped' ORDER BY started_at DESC, id DESC LIMIT 1`,
   );
-  return db.all<PullRow>(
-    `SELECT id, started_at, range_from, range_to, activity_types, include_private, outcome, cursor, added, updated, details
+  // A pull of one range (--from, --to) is left out: it says nothing about the days outside it,
+  // so nothing resumes it and nothing carries on from it.
+  return db
+    .all<PullRow>(
+      `SELECT id, started_at, range_from, range_to, activity_types, include_private, outcome, cursor, added, updated, details
        FROM pulls WHERE source = 'strava' AND outcome <> 'wiped' AND started_at > ? ORDER BY started_at DESC, id DESC`,
-    [wipe?.started_at ?? ''],
-  );
+      [wipe?.started_at ?? ''],
+    )
+    .filter((pull) => {
+      try {
+        return (JSON.parse(pull.details ?? '{}') as { kind?: string }).kind !== 'range';
+      } catch {
+        return true;
+      }
+    });
 };
 
 interface StaleCheck {
@@ -259,16 +280,19 @@ export const pullStrava = async (
   const keyOf = (pull: PullRow) =>
     (JSON.parse(pull.details ?? '{}') as { settings?: string }).settings;
   const history = pullsSinceWipe(db);
+  const { range } = settings;
   const lastOk = history.find((pull) => pull.outcome === 'ok');
-  const resumable = history.find(
-    (pull) =>
-      (pull.outcome === 'running' || pull.outcome === 'partial') &&
-      pull.cursor !== null &&
-      keyOf(pull) === settingsKey &&
-      (!lastOk || pull.started_at > lastOk.started_at),
-  );
+  const resumable = range
+    ? undefined
+    : history.find(
+        (pull) =>
+          (pull.outcome === 'running' || pull.outcome === 'partial') &&
+          pull.cursor !== null &&
+          keyOf(pull) === settingsKey &&
+          (!lastOk || pull.started_at > lastOk.started_at),
+      );
   const baseline = lastOk && keyOf(lastOk) === settingsKey ? lastOk : undefined;
-  if (lastOk && !baseline && !resumable) {
+  if (lastOk && !baseline && !resumable && !range) {
     log.info(
       'The import settings changed since the last pull (types, dates or private activities), so this is a full pull.',
     );
@@ -286,7 +310,24 @@ export const pullStrava = async (
   let added = 0;
   let updated = 0;
   let skipped: Record<string, number> = {};
-  if (resumable) {
+  if (range) {
+    kind = 'range';
+    const rangeFrom = range.from ? dayStart(range.from, timeZone) : undefined;
+    const rangeTo = range.to
+      ? new Date(dayStart(range.to, timeZone).getTime() + 86_400_000)
+      : undefined;
+    from =
+      rangeFrom && configFrom
+        ? rangeFrom > configFrom
+          ? rangeFrom
+          : configFrom
+        : (rangeFrom ?? configFrom);
+    to = rangeTo && configTo ? (rangeTo < configTo ? rangeTo : configTo) : (rangeTo ?? configTo);
+    if (from && to && from >= to)
+      throw new JamError(
+        'Nothing to fetch: those days are outside import.from and import.to in config/strava.jsonc. --from and --to narrow that range; they do not reach outside it.',
+      );
+  } else if (resumable) {
     kind = 'resumed';
     from = resumable.range_from ? new Date(resumable.range_from) : undefined;
     to = resumable.range_to ? new Date(resumable.range_to) : undefined;
@@ -342,6 +383,7 @@ export const pullStrava = async (
     removedPrivate,
     orphanedOverrides: [],
     notReturned: 0,
+    removed: 0,
     outcome: 'ok',
   };
   const seen = new Set<number>();
@@ -428,6 +470,30 @@ export const pullStrava = async (
     throw error;
   }
 
+  if (kind === 'range') {
+    // The pull saw every activity in its range, so it can tell what has gone from Strava there.
+    const lost = db
+      .all<{ id: string; strava_id: number; start_time: string }>(
+        `SELECT id, strava_id, start_time FROM activities WHERE source = 'strava' AND strava_id IS NOT NULL`,
+      )
+      .filter(
+        (row) =>
+          !seen.has(Number(row.strava_id)) &&
+          (!from || row.start_time >= from.toISOString()) &&
+          (!to || row.start_time < to.toISOString()),
+      );
+    report.notReturned = lost.length;
+    if (settings.prune && lost.length > 0) {
+      report.removed = lost.length;
+      if (!dryRun) {
+        report.backup = await backupDatabase(db, 'before-wipe-strava-range');
+        db.transaction(() => {
+          for (const row of lost)
+            db.run(`DELETE FROM activities WHERE id = ? AND source = 'strava'`, [row.id]);
+        });
+      }
+    }
+  }
   if (kind === 'full' || (kind === 'resumed' && !from)) {
     // A full pull saw every activity in range, so it can tell what has gone from Strava.
     const stored = db.all<{ strava_id: number; start_time: string }>(
@@ -508,7 +574,13 @@ const STARTS_IN_JAPAN = `json_extract(t.coordinates, '$[0][0]') BETWEEN 122 AND 
 export const fetchStreams = async (
   store: Store,
   source: ActivitySource,
-  selection: { ids?: number[]; limit: number; japanOnly?: boolean },
+  selection: {
+    ids?: number[];
+    limit: number;
+    japanOnly?: boolean;
+    /** Only activities that started on these days (local, inclusive). */
+    range?: { from?: string; to?: string };
+  },
   dryRun: boolean,
   log: Logger,
 ): Promise<StreamsReport> => {
@@ -516,12 +588,25 @@ export const fetchStreams = async (
   const where = selection.ids
     ? `a.strava_id IN (${selection.ids.map(() => '?').join(', ')})`
     : `a.has_track = 1 AND (t.detail IS NULL OR t.detail = 'summary')${selection.japanOnly ? ` AND ${STARTS_IN_JAPAN}` : ''}`;
-  const queue = db.all<{ id: string; strava_id: number; start_time: string; name: string }>(
-    `SELECT a.id, a.strava_id, a.start_time, a.name FROM activities a LEFT JOIN tracks t ON t.activity_id = a.id
+  const { range } = selection;
+  const queue = db
+    .all<{
+      id: string;
+      strava_id: number;
+      start_time: string;
+      start_local: string | null;
+      name: string;
+    }>(
+      `SELECT a.id, a.strava_id, a.start_time, a.start_local, a.name FROM activities a LEFT JOIN tracks t ON t.activity_id = a.id
       WHERE a.source = 'strava' AND ${where}
       ORDER BY CASE WHEN ${STARTS_IN_JAPAN} THEN 0 ELSE 1 END, a.start_time DESC`,
-    selection.ids ?? [],
-  );
+      selection.ids ?? [],
+    )
+    .filter((row) => {
+      if (!range || selection.ids) return true;
+      const day = (row.start_local ?? row.start_time).slice(0, 10);
+      return (!range.from || day >= range.from) && (!range.to || day <= range.to);
+    });
   const batch = queue.slice(0, selection.limit);
   if (dryRun) return { fetched: 0, missing: 0, remaining: queue.length };
   let fetched = 0;

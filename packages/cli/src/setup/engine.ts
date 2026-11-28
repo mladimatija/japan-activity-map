@@ -98,6 +98,16 @@ export const coerce = (step: Step, raw: unknown): Coerced => {
   const allowed = (value: unknown) =>
     step.options?.find((option) => str(option.value) === str(value));
   switch (step.kind) {
+    case 'date': {
+      if (typeof raw !== 'string') return bad('A date as YYYY-MM-DD.');
+      const day = raw.trim();
+      // Date.parse lets "2026-02-31" through as March: the day has to come back the same.
+      const real =
+        /^\d{4}-\d{2}-\d{2}$/.test(day) &&
+        !Number.isNaN(Date.parse(`${day}T00:00:00Z`)) &&
+        new Date(`${day}T00:00:00Z`).toISOString().slice(0, 10) === day;
+      return day === '' || real ? { ok: true, value: day } : bad('A date as YYYY-MM-DD.');
+    }
     case 'text':
     case 'secret': {
       if (typeof raw !== 'string' && typeof raw !== 'number') return bad('Expected text.');

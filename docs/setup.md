@@ -135,7 +135,8 @@ The plan of a quick setup: download and build the missing reference lists, `stra
 Groups, in order: `site`, `map` (light and dark style, terrain), `views`, `publish` (seven
 switches), `output`, the sources (`strava`: dates, types, sport types, full tracks, API addresses;
 `gpx`: which of Strava, GPX files and Garmin the site is built from, the type of a file that names none,
-the folder; `garmin`: the key, Only Me activities, the first day, recordings per run; `sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
+the folder; `garmin`: the key, Only Me activities, the first day, recordings per run; for Strava and Garmin
+also the days to fetch this time only, which go to the sync as `--from` and `--to` and are not saved; `sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
 `matching`, `routeGrouping`, `routes` (names, merges and splits, as JSON), `deploy`.
 
 - A value in brackets is the current one; Enter keeps it. `-` empties an optional value.

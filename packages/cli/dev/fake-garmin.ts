@@ -145,6 +145,11 @@ const body = (request: IncomingMessage): Promise<string> =>
   });
 
 let plain = false;
+/** Answer 504 to this many file requests, as Garmin's gateway does under load. */
+let timeOutFiles = 0;
+/** Answer 504 to a list page larger than this. */
+let largestPage = Number.POSITIVE_INFINITY;
+let gmtDays = false;
 const refused = new Set<number>();
 
 createServer((request, response) => {
@@ -174,6 +179,18 @@ createServer((request, response) => {
       }
       if (change.expireTokens === true) tokens.clear();
       if (typeof change.plain === 'boolean') plain = change.plain;
+      if (typeof change.timeOutFiles === 'number') timeOutFiles = change.timeOutFiles;
+      if (typeof change.largestPage === 'number') largestPage = change.largestPage;
+      if (typeof change.gmtDays === 'boolean') gmtDays = change.gmtDays;
+      if (typeof change.addAt === 'string')
+        activities.push({
+          id: nextId++,
+          name: 'Dawn hike',
+          typeKey: 'hiking',
+          start: Date.parse(change.addAt),
+          privacy: 'public',
+          east: 3000,
+        });
       if (typeof change.refuseFile === 'number') refused.add(change.refuseFile);
       if (typeof change.hide === 'number') {
         const found = activities.find((activity) => activity.id === change.hide);
@@ -206,9 +223,11 @@ createServer((request, response) => {
       stats.list++;
       const start = Number(url.searchParams.get('start') ?? '0');
       const limit = Number(url.searchParams.get('limit') ?? '99');
+      if (limit > largestPage) return send(response, 504, { error: 'gateway timeout' });
       const from = url.searchParams.get('startDate');
       const until = url.searchParams.get('endDate');
-      const day = (activity: Fake) => stamp(activity.start + JST).slice(0, 10);
+      // Garmin does not say which clock its days go by: the stand-in can do either.
+      const day = (activity: Fake) => stamp(activity.start + (gmtDays ? 0 : JST)).slice(0, 10);
       const matching = activities
         .filter(
           (activity) => (!from || day(activity) >= from) && (!until || day(activity) <= until),
@@ -221,6 +240,10 @@ createServer((request, response) => {
       if (limitFilesAfter !== undefined && limitFilesAfter-- <= 0)
         return send(response, 429, { error: 'too many requests' });
       stats.file++;
+      if (timeOutFiles > 0) {
+        timeOutFiles--;
+        return send(response, 504, { error: 'gateway timeout' });
+      }
       if (refused.has(Number(file[1]))) return send(response, 403, { error: 'forbidden' });
       const activity = activities.find((entry) => entry.id === Number(file[1]));
       if (!activity || activity.east === undefined)

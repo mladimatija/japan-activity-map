@@ -5,6 +5,7 @@ import { isSummary, pullGarmin, summaryColumns, wipeGarmin } from '../garmin/syn
 import { shownPath } from '../paths.ts';
 import { openStore } from '../store/store.ts';
 import { configFor } from './config.ts';
+import { pullRange, rangeText } from './range.ts';
 import { previewStore } from './sheet.ts';
 import type { CommandContext } from './types.ts';
 
@@ -36,7 +37,13 @@ export const syncGarmin = async ({ flags, log, options }: CommandContext): Promi
     if (!Number.isInteger(files) || files < 0)
       throw new JamError('--files takes a whole number, or "all".');
   }
-  const api = new GarminApi(apiKey(config.secrets.garmin?.apiKey), settings.api.baseUrl, log);
+  const range = pullRange(options, config.sheet.timeZone);
+  const api = new GarminApi(
+    apiKey(config.secrets.garmin?.apiKey),
+    settings.api.baseUrl,
+    log,
+    settings.api.pauseMs,
+  );
   await api.signIn();
   const preview = flags.dryRun ? await previewStore(log) : undefined;
   const store = preview?.store ?? (await openStore(log));
@@ -49,12 +56,13 @@ export const syncGarmin = async ({ flags, log, options }: CommandContext): Promi
         full: options.full === true,
         dryRun: flags.dryRun,
         ...(files !== undefined ? { files } : {}),
+        ...(range ? { range } : {}),
       },
       log,
     );
     const summary = `${result.added} added, ${result.updated} updated, ${result.removed} removed, ${result.unchanged} unchanged`;
     log.info(
-      `Garmin: ${plural(result.listed, 'activity', 'activities')} listed${options.full === true ? ' (full pull)' : ''}.`,
+      `Garmin: ${plural(result.listed, 'activity', 'activities')} listed${range ? `, ${rangeText(range)} only` : ''}${options.full === true ? ' (full pull)' : ''}.`,
     );
     if (result.skippedTypes.size > 0)
       log.info(
@@ -73,10 +81,14 @@ export const syncGarmin = async ({ flags, log, options }: CommandContext): Promi
     if (result.backup) log.info(`Copied the store to ${shownPath(result.backup)} before removing.`);
     log.info(`${summary.charAt(0).toUpperCase()}${summary.slice(1)}.`);
     log.info(
-      `Files: ${result.files.fetched} fetched (${result.files.withTrack} with a track, ${result.files.withoutTrack} without), ${result.files.left} still to fetch. ${api.requests} requests.`,
+      `Files: ${result.files.fetched} fetched (${result.files.withTrack} with a track, ${result.files.withoutTrack} without)${result.files.unanswered > 0 ? `, ${result.files.unanswered} Garmin did not answer for` : ''}, ${result.files.left + result.files.unanswered} still to fetch. ${api.requests} requests.`,
     );
+    if (api.longestGapMs > settings.api.pauseMs)
+      log.info(
+        `Garmin was slow to answer, so the wait between requests went up to ${Math.round(api.longestGapMs / 1000)} s. A higher activities.garmin.api.pauseMs (now ${settings.api.pauseMs}) starts slower.`,
+      );
     if (result.limited) log.warn(result.limited);
-    else if (result.files.left > 0)
+    else if (result.files.left + result.files.unanswered > 0)
       log.info(
         'Run it again for more, or `pnpm jam sync garmin --files all`. Until its file is fetched an activity has no track, and counts as one without GPS.',
       );
@@ -96,7 +108,12 @@ export const garminCheck = async ({ flags, log }: CommandContext): Promise<numbe
   const config = configFor({ flags, log });
   if (!config) return 1;
   const settings = config.site.activities.garmin;
-  const api = new GarminApi(apiKey(config.secrets.garmin?.apiKey), settings.api.baseUrl, log);
+  const api = new GarminApi(
+    apiKey(config.secrets.garmin?.apiKey),
+    settings.api.baseUrl,
+    log,
+    settings.api.pauseMs,
+  );
   await api.signIn();
   const page = await api.list({ start: 0 });
   log.info(
@@ -143,7 +160,7 @@ export const garminWipe = async ({ flags, log, options }: CommandContext): Promi
     log.info(
       `Deleted ${result.activities} Garmin activities and ${result.tracks} tracks. Copy first: ${result.backup ? shownPath(result.backup) : 'none'}.`,
     );
-    log.info('`pnpm jam sync garmin --full` fetches them again, with the same ids.');
+    log.info('`pnpm jam sync garmin` fetches them again, with the same ids.');
     return 0;
   } finally {
     store.close();

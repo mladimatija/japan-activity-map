@@ -270,6 +270,16 @@ export const SETUP_JA: Record<string, string> = {
   'what the list build left open': 'リストのビルドで未解決のまま残った点',
   'Japan Activity Map setup': 'Japan Activity Map セットアップ',
   'Back to start': '最初の画面に戻る',
+  'Empty: everything new. A day here fetches only from then on, without changing the settings.':
+    '空欄：新しいものすべて。日付を入れると、設定は変えずにその日以降だけを取得します。',
+  'This time only: fetch Garmin activities from this day (YYYY-MM-DD)':
+    '今回のみ：この日以降の Garmin アクティビティを取得（YYYY-MM-DD）',
+  'This time only: fetch Garmin activities up to this day (YYYY-MM-DD)':
+    '今回のみ：この日までの Garmin アクティビティを取得（YYYY-MM-DD）',
+  'This time only: fetch Strava activities from this day (YYYY-MM-DD)':
+    '今回のみ：この日以降の Strava アクティビティを取得（YYYY-MM-DD）',
+  'This time only: fetch Strava activities up to this day (YYYY-MM-DD)':
+    '今回のみ：この日までの Strava アクティビティを取得（YYYY-MM-DD）',
   'Each recording (the track) is one request; the next run carries on with the rest.':
     '記録（トラック）1件につきリクエスト1回です。残りは次回の実行で続きから取得します。',
   'Empty: everything.': '空欄：すべて。',

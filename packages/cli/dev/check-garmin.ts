@@ -356,6 +356,108 @@ try {
     (await stats()).file === filesSoFar,
     String(filesSoFar),
   );
+  // One range of days: only those are listed and fetched, and the next plain pull does not carry
+  // on from it. Days are local (the stand-in's activities are in Japan).
+  jamWith(withKey, 'garmin', 'wipe', '--yes');
+  const ranged = sync('--from', '2025-03-10', '--to', '2025-03-22', '--files', 'all');
+  check(
+    'a pull of one range stores only the activities in it, with their tracks',
+    ranged.code === 0 &&
+      /2025-03-10 to 2025-03-22 only/.test(ranged.text) &&
+      rows().length === 2 &&
+      rows().every((row) => row.has_track === 1 && row.start_local.slice(0, 10) >= '2025-03-10'),
+    `${ranged.text} ${JSON.stringify(rows().map((row) => row.start_local))}`,
+  );
+  const plain = sync('--files', '0');
+  check(
+    'the next plain pull lists everything: a range pull is not one to carry on from',
+    plain.code === 0 && rows().length > 6,
+    plain.text,
+  );
+  const total = rows().length;
+  const waiting = sync('--from', '2025-04-01', '--to', '2025-04-30', '--files', 'all');
+  const fetched = rows().filter((row) => row.has_track === 1);
+  check(
+    'with a range, only the recordings of that range are downloaded',
+    waiting.code === 0 &&
+      fetched.length > 2 &&
+      fetched.every(
+        (row) =>
+          row.start_local.slice(0, 7) === '2025-04' || row.start_local.slice(0, 7) === '2025-03',
+      ) &&
+      fetched.length < total,
+    `${waiting.text} ${JSON.stringify(rows().map((row) => [row.start_local, row.has_track]))}`,
+  );
+  await control({ remove: 5002 });
+  const kept = sync('--from', '2025-03-10', '--to', '2025-03-22');
+  const stillThere = rows().length === total;
+  const prunedRange = sync('--full', '--from', '2025-03-10', '--to', '2025-03-22');
+  check(
+    'a full pull of a range removes what Garmin no longer has in it, and nothing outside it',
+    kept.code === 0 && stillThere && prunedRange.code === 0 && rows().length === total - 1,
+    `${kept.text}${prunedRange.text}`,
+  );
+  // 05:00 on the 11th in Japan is still the 10th by GMT. Whichever clock Garmin counts days by,
+  // the activity is found, and a full pull of its day does not take it for gone.
+  await control({ gmtDays: true, addAt: '2025-05-10T20:00:00Z' });
+  const dawn = sync('--from', '2025-05-11', '--to', '2025-05-11');
+  const dawnFull = sync('--full', '--from', '2025-05-11', '--to', '2025-05-11');
+  check(
+    'an activity early in the day is found and kept, whether Garmin counts days by local time or GMT',
+    dawn.code === 0 &&
+      /1 added/.test(dawn.text) &&
+      dawnFull.code === 0 &&
+      /0 removed/.test(dawnFull.text) &&
+      rows().some((row) => row.name === 'Dawn hike'),
+    `${dawn.text}${dawnFull.text}`,
+  );
+  await control({ gmtDays: false });
+  site({ garmin: { from: '2025-04-01' } });
+  const outside = sync('--to', '2025-03-15');
+  check(
+    'days outside the range in the settings are refused, not sent to Garmin',
+    outside.code !== 0 && /Nothing to fetch/.test(outside.text),
+    outside.text,
+  );
+  site({});
+  // Garmin's gateway timing out: a file that gets no answer is left for the next run and the
+  // others go on; a list page that gets none is asked for again in smaller pieces.
+  jamWith(withKey, 'garmin', 'wipe', '--yes');
+  // Four tries a file: the first file asked for never answers, the rest do.
+  await control({ timeOutFiles: 4, largestPage: 30 });
+  const shaky = sync('--files', 'all');
+  const tracked = () => rows().filter((row) => row.has_track === 1).length;
+  const afterShaky = tracked();
+  check(
+    'a file Garmin times out on does not stop the run, and the list is fetched in smaller pages',
+    shaky.code === 0 &&
+      /1 Garmin did not answer for/.test(shaky.text) &&
+      afterShaky > 0 &&
+      rows().length > afterShaky,
+    shaky.text,
+  );
+  await control({ largestPage: 1000 });
+  const steady = sync('--files', 'all');
+  check(
+    '  ...and the next run fetches it, listing only what is new',
+    steady.code === 0 && tracked() === afterShaky + 1 && /1 fetched/.test(steady.text),
+    steady.text,
+  );
+  await control({ timeOutFiles: 1000 });
+  jamWith(withKey, 'garmin', 'wipe', '--yes');
+  const down = sync('--files', 'all');
+  await control({ timeOutFiles: 0 });
+  check(
+    'when Garmin stops answering altogether the run ends after a few files, keeping the list',
+    down.code === 0 && /stopped answering/.test(down.text) && rows().length > 0 && tracked() === 0,
+    down.text,
+  );
+  const badDay = sync('--from', '2025-02-31');
+  check(
+    'a day that is not in the calendar is refused',
+    badDay.code !== 0 && /not a day in the calendar/.test(badDay.text),
+    badDay.text,
+  );
   const never = `${first.text}${limited.text}${status.text}${mixed.text}`;
   check('the key is never printed', !never.includes('good-key'), '');
 } finally {

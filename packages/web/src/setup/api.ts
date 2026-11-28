@@ -6,6 +6,7 @@ export const MARKER = 'jam-setup';
 export type Start = 'demo' | 'quick' | 'full' | 'change';
 export type Kind =
   | 'text'
+  | 'date'
   | 'number'
   | 'confirm'
   | 'choice'

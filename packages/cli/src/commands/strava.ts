@@ -21,8 +21,9 @@ import {
 } from '../strava/sync.ts';
 import { openStore } from '../store/store.ts';
 import { configFor } from './config.ts';
+import { pullRange } from './range.ts';
 import type { CommandContext } from './types.ts';
-import { errorText } from '../errors.ts';
+import { errorText, JamError } from '../errors.ts';
 
 const SETUP = 'See docs/strava-setup.md.';
 
@@ -138,6 +139,11 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
   if (onDemoStore(context, 'Strava activities are not pulled into it')) return 1;
   const loaded = configFor(context);
   if (!loaded) return 1;
+  const range = pullRange(options, loaded.sheet.timeZone);
+  if (options.full === true && !range)
+    throw new JamError(
+      '--full goes with --from, --to or --last: it removes what Strava no longer has in that range.',
+    );
 
   if (typeof options['if-stale'] === 'string') {
     const days = parseAge(options['if-stale']);
@@ -198,7 +204,7 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
       const report = await fetchStreams(
         store,
         source,
-        { ...(ids ? { ids } : {}), limit },
+        { ...(ids ? { ids } : {}), limit, ...(range ? { range } : {}) },
         flags.dryRun,
         log,
       );
@@ -219,6 +225,7 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
         timeZone: loaded.sheet.timeZone,
         scope: session.token.scope,
         dryRun: flags.dryRun,
+        ...(range ? { range, prune: options.full === true } : {}),
       },
       log,
     );
@@ -226,9 +233,9 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
     // Dates in the sheet's zone; the stored end is exclusive, so show the day before it.
     const day = (iso: string, shift = 0) =>
       utcToLocal(new Date(new Date(iso).getTime() + shift), zone).slice(0, 10);
-    const range = `${report.from ? day(report.from) : 'the beginning'} to ${report.to ? day(report.to, -1) : 'now'}`;
+    const span = `${report.from ? day(report.from) : 'the beginning'} to ${report.to ? day(report.to, -1) : 'now'}`;
     log.info(
-      `${report.kind === 'full' ? 'Full' : report.kind === 'resumed' ? 'Resumed' : 'Incremental'} pull, ${range}, ${report.pages} ${report.pages === 1 ? 'page' : 'pages'}.`,
+      `${report.kind === 'full' ? 'Full' : report.kind === 'resumed' ? 'Resumed' : report.kind === 'range' ? 'One-range' : 'Incremental'} pull, ${span}, ${report.pages} ${report.pages === 1 ? 'page' : 'pages'}.`,
     );
     log.info(
       `${flags.dryRun ? 'Would be: ' : ''}${report.added} added, ${report.updated} updated, ${report.unchanged} unchanged.`,
@@ -244,7 +251,17 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
       log.info(
         `Would remove ${report.removedPrivate} stored "Only You" activities, since private activities are off.`,
       );
-    if (report.notReturned > 0)
+    if (report.removed > 0)
+      log.info(
+        flags.dryRun
+          ? `Would remove ${report.removed} stored Strava activities in this range that Strava no longer has.`
+          : `Removed ${report.removed} stored Strava activities in this range that Strava no longer has (copy first: ${report.backup ? shownPath(report.backup) : 'none'}).`,
+      );
+    else if (report.notReturned > 0 && report.kind === 'range')
+      log.warn(
+        `${report.notReturned} stored Strava activities in this range were not returned; they may have been deleted on Strava. They are kept; add --full to remove them.`,
+      );
+    else if (report.notReturned > 0)
       log.warn(
         `${report.notReturned} stored Strava activities in this range were not returned; they may have been deleted on Strava. They are kept.`,
       );
@@ -259,7 +276,7 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
       const tracks = await fetchStreams(
         store,
         source,
-        { limit: loaded.strava.fullTracksPerSync, japanOnly: true },
+        { limit: loaded.strava.fullTracksPerSync, japanOnly: true, ...(range ? { range } : {}) },
         false,
         log,
       ).catch((error: unknown) => {
@@ -280,7 +297,9 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
       log.error(
         reason.includes('resumes')
           ? `The pull stopped: ${reason}.`
-          : `The pull stopped: ${reason}. Run \`pnpm jam sync strava\` again to resume where it stopped.`,
+          : report.kind === 'range'
+            ? `The pull stopped: ${reason}. Run the same command again; a pull of some days starts over.`
+            : `The pull stopped: ${reason}. Run \`pnpm jam sync strava\` again to resume where it stopped.`,
       );
       return 1;
     }

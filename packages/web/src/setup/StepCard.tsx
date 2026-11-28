@@ -221,13 +221,25 @@ export const StepCard = ({
     );
 
   const secret = step.sensitive === 'secret';
+  // The terminal needs to be told how to type a day; a calendar does not.
+  const title =
+    step.kind === 'date' ? t(step.title).replace(/\s*[(（]YYYY-MM-DD[)）]\s*$/, '') : t(step.title);
   return (
     <Field>
-      <FieldLabel htmlFor={id}>{t(step.title)}</FieldLabel>
+      <FieldLabel htmlFor={id}>{title}</FieldLabel>
       <Help step={step} />
       <Input
         id={id}
-        type={step.kind === 'secret' ? 'password' : step.kind === 'number' ? 'number' : 'text'}
+        // A day is picked from the browser's own calendar, which also keeps it to real days.
+        type={
+          step.kind === 'secret'
+            ? 'password'
+            : step.kind === 'number'
+              ? 'number'
+              : step.kind === 'date'
+                ? 'date'
+                : 'text'
+        }
         inputMode={step.kind === 'number' ? 'decimal' : undefined}
         // A secret is typed fresh each time: the browser is asked not to keep or offer it.
         autoComplete={secret ? 'off' : undefined}

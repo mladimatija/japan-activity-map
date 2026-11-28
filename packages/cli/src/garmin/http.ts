@@ -1,6 +1,11 @@
 /**
  * The Garmin Connect Personal API: a personal key is exchanged for a token (valid a day, no
- * refresh), and the token reads the key owner's own activities. One request at a time.
+ * refresh), and the token reads the key owner's own activities.
+ *
+ * Garmin throttles: it answers a client that asks too fast with gateway timeouts (504), not with
+ * a plain "slow down". So there is never more than one request under way, every request waits a
+ * while after the one before it, and the wait grows each time Garmin fails to answer and shrinks
+ * back slowly once it answers again.
  */
 import { setTimeout as sleepFor } from 'node:timers/promises';
 
@@ -44,7 +49,10 @@ const LIST_PATH = '/activitylist-service/activities/search/activities';
 const FILE_PATH = '/download-service/files/activity/';
 /** Garmin's own default page; a larger one is not documented. */
 export const PAGE_SIZE = 99;
-const RETRIES = 3;
+/** Waits before a second, third and fourth try, on top of the wait between any two requests. */
+const WAITS_MS = [5000, 15_000, 30_000];
+/** The wait between two requests never grows past this. */
+const LONGEST_GAP_MS = 30_000;
 
 /** For the checks: JAM_SLEEP_SCALE=0 skips real waiting. */
 const scale = Number(process.env.JAM_SLEEP_SCALE ?? '1');
@@ -57,6 +65,8 @@ const KEY_HELP =
 export interface ListQuery {
   /** Zero-based offset. */
   start: number;
+  /** How many to ask for; PAGE_SIZE when left out. */
+  limit?: number;
   /** Inclusive, YYYY-MM-DD, by the activity's local start. */
   startDate?: string;
   endDate?: string;
@@ -67,23 +77,67 @@ export class GarminApi {
   readonly #base: string;
   readonly #log: Logger;
   #token: string | undefined;
+  /** The wait between two requests asked for in the settings, and the one in force now. */
+  readonly #baseGap: number;
+  #gap: number;
+  /** The one request under way, or the last one: the next waits for it, then for the gap. */
+  #turn: Promise<void> = Promise.resolve();
   /** Requests made, for the summary. */
   requests = 0;
+  /** The longest the wait between two requests got this run, in milliseconds. */
+  longestGapMs = 0;
 
-  constructor(key: string, baseUrl: string, log: Logger) {
+  constructor(key: string, baseUrl: string, log: Logger, pauseMs: number) {
     this.#key = key;
     this.#base = baseUrl.replace(/\/+$/, '');
     this.#log = log;
+    this.#baseGap = pauseMs;
+    this.#gap = pauseMs;
+  }
+
+  /** The wait in force between two requests, in milliseconds. */
+  get gapMs(): number {
+    return Math.round(this.#gap);
+  }
+
+  /**
+   * One request, in its turn: after the request before it has ended and the gap has passed. The
+   * gap is a little uneven on purpose, so the requests do not arrive like a clock.
+   */
+  async #send(url: string, init: RequestInit): Promise<Response> {
+    const before = this.#turn;
+    let done: () => void = () => {};
+    this.#turn = new Promise<void>((resolve) => {
+      done = resolve;
+    });
+    await before;
+    try {
+      if (this.requests > 0) await pause(this.#gap * (0.8 + Math.random() * 0.4));
+      this.requests++;
+      const response = await fetch(url, init);
+      const throttled = response.status === 429 || response.status >= 500;
+      // Twice as slow after an answer that says "too much"; back towards the setting, a tenth at
+      // a time, with each answer that does not.
+      this.#gap = throttled
+        ? Math.min(LONGEST_GAP_MS, Math.max(this.#gap, 1000) * 2)
+        : Math.max(this.#baseGap, this.#gap * 0.9);
+      return response;
+    } catch (error) {
+      this.#gap = Math.min(LONGEST_GAP_MS, Math.max(this.#gap, 1000) * 2);
+      throw error;
+    } finally {
+      this.longestGapMs = Math.max(this.longestGapMs, this.#gap);
+      done();
+    }
   }
 
   async #fetch(path: string, init: RequestInit): Promise<Response> {
     let lastError = '';
-    for (let attempt = 0; attempt < RETRIES; attempt++) {
-      if (attempt > 0) await pause(1000 * 2 ** attempt);
-      this.requests++;
+    for (let attempt = 0; attempt <= WAITS_MS.length; attempt++) {
+      if (attempt > 0) await pause(WAITS_MS[attempt - 1] ?? 0);
       let response: Response;
       try {
-        response = await fetch(`${this.#base}${path}`, init);
+        response = await this.#send(`${this.#base}${path}`, init);
       } catch (error) {
         lastError = errorText(error);
         this.#log.debug(`Garmin: ${path} failed (${lastError}), attempt ${attempt + 1}`);
@@ -91,14 +145,16 @@ export class GarminApi {
       }
       if (response.status >= 500) {
         lastError = `HTTP ${response.status}`;
+        this.#log.debug(
+          `Garmin: ${path} answered ${lastError}, attempt ${attempt + 1}; now ${this.gapMs} ms between requests`,
+        );
         continue;
       }
       // "Not acceptable": Garmin answers in a form other than the one asked for. Ask for any.
       const headers = new Headers(init.headers);
       if (response.status === 406 && headers.get('Accept') !== '*/*') {
         headers.set('Accept', '*/*');
-        this.requests++;
-        return fetch(`${this.#base}${path}`, { ...init, headers });
+        return this.#send(`${this.#base}${path}`, { ...init, headers });
       }
       return response;
     }
@@ -175,7 +231,7 @@ export class GarminApi {
   async list(query: ListQuery): Promise<unknown[]> {
     const params = new URLSearchParams({
       start: String(query.start),
-      limit: String(PAGE_SIZE),
+      limit: String(query.limit ?? PAGE_SIZE),
       sortBy: 'startLocal',
       sortOrder: 'asc',
     });

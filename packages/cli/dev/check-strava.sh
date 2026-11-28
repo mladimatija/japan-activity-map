@@ -68,4 +68,21 @@ check "turning private off removes them" "$(sql "SELECT COUNT(*) FROM activities
 # Pulls: first, second, interrupted+resumed (one record), after the wipe, private refused, private on, private off.
 check "every run left a pull record" "$(sql "SELECT COUNT(*) FROM pulls WHERE source = 'strava' AND outcome <> 'wiped'")" 7
 
+# One range of days: --from and --to pull only those, and nothing later carries on from them.
+day=$(sql "SELECT substr(start_local, 1, 10) FROM activities WHERE source = 'strava' ORDER BY start_time LIMIT 1 OFFSET 20")
+gone=$(sql "SELECT strava_id FROM activities WHERE source = 'strava' AND substr(start_local, 1, 10) = '$day' LIMIT 1")
+before=$(count)
+jam sync strava --from "$day" --to "$day" > "$TMP/range.log" 2>&1
+check "a pull of one range says so" "$(grep -c "^One-range pull, $day to $day" "$TMP/range.log")" 1
+check "  ...and changes nothing that was already there" "$(count)" "$before"
+ctl "{\"remove\": $gone}"
+jam sync strava --from "$day" --to "$day" > "$TMP/range-kept.log" 2>&1
+check "an activity gone from Strava in the range is reported and kept" "$(count) $(grep -c 'add --full to remove them' "$TMP/range-kept.log")" "$before 1"
+jam sync strava --from "$day" --to "$day" --full > "$TMP/range-full.log" 2>&1
+check "with --full it is removed, after a copy of the store" "$(count) $(ls "$JAM_DATA_DIR/backups" | grep -c before-wipe-strava-range)" "$((before - 1)) 1"
+jam sync strava > "$TMP/after-range.log" 2>&1
+check "the next plain pull carries on from the last plain one" "$(grep -c '^Incremental pull' "$TMP/after-range.log")" 1
+jam sync strava --last 2x > "$TMP/last.log" 2>&1; check "--last refuses an age it cannot read" "$? $(grep -c 'such as 30d' "$TMP/last.log")" "1 1"
+jam sync strava --full > "$TMP/full.log" 2>&1; check "--full alone is refused" "$?" 1
+
 [ $failed = 0 ] && echo "All checks passed." || { echo "Some checks failed; the fake server log was $TMP/fake.log."; exit 1; }

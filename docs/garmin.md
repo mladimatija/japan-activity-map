@@ -72,7 +72,16 @@ pnpm jam sync garmin --dry-run     # what would change
 pnpm jam sync garmin               # the list, then the first recordings
 pnpm jam sync garmin --files all   # every recording still missing, however many
 pnpm jam sync garmin --full        # list everything again
+pnpm jam sync garmin --from 2026-01-01 --files all   # only this year, with its recordings
+pnpm jam sync garmin --last 30d    # only the last 30 days
 ```
+
+`--from` and `--to` take a day as YYYY-MM-DD, by the activity's local start, and either works alone.
+`--last` takes `30d`, `6w`, `3m` or `1y` instead of `--from`. They apply to this run only: the
+list and the recordings are both limited to those days, the settings stay as they are, and the
+next plain sync carries on as if this pull had not happened. They narrow `from` and `to` in the
+config and never reach outside them. With `--full`, activities in those days that Garmin no longer
+has are removed, after a copy of the store; nothing outside them is touched.
 
 A pull has two halves.
 
@@ -100,9 +109,17 @@ and is left off the map.
   `publish.includeOnlyMeActivities` (docs/privacy.md). An activity you set to Only Me after it was
   fetched is removed by the next pull that lists it, which means within a week; for an older one,
   run a full pull.
-- Limits. Garmin doesn't publish its limits. Requests go one at a time with a pause between
-  downloads (`activities.garmin.api.pauseMs`); if Garmin says to slow down, the run keeps what it
-  fetched, says so, and the next run carries on.
+- Limits. Garmin doesn't publish its limits, and it throttles. There is never more than one
+  request under way, and each waits `activities.garmin.api.pauseMs` (2 seconds unless you set it)
+  after the one before. Every time Garmin fails to answer, the wait doubles, up to 30 seconds; it
+  comes back down as the answers return. If Garmin says outright to slow down, the run keeps what
+  it fetched, says so, and the next run carries on. A first pull of 1,500 recordings takes about
+  an hour at this pace.
+- Timeouts. Garmin's servers sometimes answer "gateway timeout" (HTTP 504), mostly on a long
+  first pull. Each request is tried four times. A recording that still gets no answer is left for
+  the next run and the others go on, more slowly; after five in a row the run ends, keeping what
+  it has. A list page that gets no answer is asked for again in smaller pieces. If it keeps
+  happening, raise `api.pauseMs` to 5000 or more, or pull a stretch at a time with `--from` and `--to`.
 - The key's date. A key lasts at most a year, and Garmin emails you about a week before it ends.
   When Garmin refuses the key, the command says so and how to make a new one.
 - Weekly runs. With `activities.source` set to `garmin`, `pnpm jam update` fetches from Garmin

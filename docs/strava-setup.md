@@ -89,6 +89,13 @@ pnpm jam sync strava             # later pulls start at the day of the last succ
 - Weekly runs. `pnpm jam update` does the whole run, the upload included (docs/deploy.md).
   `pnpm jam sync strava --if-stale 7d` alone does nothing when the last successful pull is newer
   than seven days.
+- Some days only. `pnpm jam sync strava --from 2026-10-01 --to 2026-10-31` pulls just those days
+  (local, either flag works alone); `--last 30d` (or `6w`, `3m`, `1y`) is the same counted back
+  from today. This applies to that run only: the settings stay as they are, the full tracks
+  fetched after it are limited to the same days, and the next plain sync carries on from the last
+  plain one. The flags narrow `import.from` and `import.to` and never reach outside them. If
+  activities stored for those days are gone from Strava, the pull says so and keeps them; add
+  `--full` to remove them, after a copy of the store.
 - Tracks. The list includes a simplified track for each activity, without heights or times,
   which is stored. Activities without GPS (treadmill, manual entries) are stored without one. After
   each pull, the sync also fetches the complete GPS samples (heights and times, for height profiles

@@ -46,6 +46,8 @@ export interface Action {
   command?: string[];
   args?: (ctx: Ctx) => string[];
   options?: Record<string, string | boolean>;
+  /** More options, from the answers: added to `options`. */
+  answered?: (ctx: Ctx) => Record<string, string>;
   /** Run as a separate process instead: the program and its arguments. */
   child?: (ctx: Ctx) => { file: string; args: string[] };
   network?: boolean;
@@ -66,6 +68,25 @@ const fetchArgs = (ctx: Ctx): string[] => {
       : [];
   return wanted.filter((source) => (FETCH_SOURCES as readonly string[]).includes(source));
 };
+
+/** `--from` and `--to` for one source's pull, from the "this run only" answers. */
+const rangeOptions =
+  (source: 'strava' | 'garmin') =>
+  (ctx: Ctx): Record<string, string> => {
+    const day = (id: string) => {
+      const value = str(ctx.answers[id] ?? '').trim();
+      return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : undefined;
+    };
+    const from = day(`${source}.pull.from`);
+    const to = day(`${source}.pull.to`);
+    return { ...(from ? { from } : {}), ...(to ? { to } : {}) };
+  };
+
+/** An action's options for this run: the fixed ones and those the answers give. */
+const optionsOf = (action: Action, ctx: Ctx): Record<string, string | boolean> => ({
+  ...action.options,
+  ...action.answered?.(ctx),
+});
 
 const demoArgs = (ctx: Ctx): string[] => {
   const args = ['demo'];
@@ -122,6 +143,7 @@ export const ACTIONS: Record<ActionId, Action> = {
     id: 'sync-strava',
     title: 'Fetch your Strava activities',
     command: ['sync', 'strava'],
+    answered: rangeOptions('strava'),
     network: true,
     slow: 'a few minutes for a long history; waits when Strava limits requests',
   },
@@ -147,6 +169,7 @@ export const ACTIONS: Record<ActionId, Action> = {
     id: 'sync-garmin',
     title: 'Fetch Garmin activities',
     command: ['sync', 'garmin'],
+    answered: rangeOptions('garmin'),
     network: true,
   },
   match: { id: 'match', title: 'Match activities to the lists', command: ['match'] },
@@ -196,7 +219,7 @@ export const shownCommand = (id: ActionId, ctx: Ctx): string => {
   const action = ACTIONS[id];
   if (id === 'web-build') return 'pnpm web:build';
   if (action.child) return `pnpm jam ${action.child(ctx).args.slice(1).join(' ')}`;
-  const options = Object.entries(action.options ?? {}).map(([name, value]) =>
+  const options = Object.entries(optionsOf(action, ctx)).map(([name, value]) =>
     value === true ? `--${name}` : `--${name} ${str(value)}`,
   );
   return ['pnpm jam', ...(action.command ?? []), ...(action.args?.(ctx) ?? []), ...options].join(
@@ -250,12 +273,14 @@ export const followUps = (affects: ReadonlySet<Affects>): ActionId[] => {
   const order: [Affects, ActionId][] = [
     ['strava-auth', 'strava-auth'],
     ['full-pull', 'sync-strava'],
+    ['pull-strava', 'sync-strava'],
+    ['pull-garmin', 'sync-garmin'],
     ['match', 'match'],
     ['regroup', 'routes-regroup'],
     ['zones', 'zones-preview'],
     ['build', 'build'],
   ];
-  return order.filter(([affect]) => affects.has(affect)).map(([, action]) => action);
+  return [...new Set(order.filter(([affect]) => affects.has(affect)).map(([, action]) => action))];
 };
 
 /** How a caller that can stop a run (the setup page) gets hold of it. */
@@ -319,7 +344,7 @@ export const runAction = async (
   }
   // The Strava sign-in stays in this process: the page needs its address, and it ends by itself.
   if (run.separate && id !== 'strava-auth') {
-    const given = Object.entries(action.options ?? {}).flatMap(([name, value]) =>
+    const given = Object.entries(optionsOf(action, ctx)).flatMap(([name, value]) =>
       value === true ? [`--${name}`] : typeof value === 'string' ? [`--${name}`, value] : [],
     );
     return runChild(
@@ -338,7 +363,7 @@ export const runAction = async (
     );
   }
   const own = Object.fromEntries(
-    Object.keys(found.command.options ?? {}).map((name) => [name, action.options?.[name]]),
+    Object.keys(found.command.options ?? {}).map((name) => [name, optionsOf(action, ctx)[name]]),
   );
   try {
     return await found.command.run({ flags, log, args: action.args?.(ctx) ?? [], options: own });

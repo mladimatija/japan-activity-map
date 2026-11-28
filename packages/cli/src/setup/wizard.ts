@@ -190,7 +190,8 @@ const askSteps = async (
       const before = JSON.stringify(draft.text);
       const problem = takeAnswer(draft, step, raw, ctx);
       if (!problem) {
-        if (JSON.stringify(draft.text) !== before)
+        // A step that writes no setting is an option for a command: answering it is what counts.
+        if (JSON.stringify(draft.text) !== before || (step.runOption === true && raw !== ''))
           for (const item of step.affects ?? []) affects.add(item);
         break;
       }
