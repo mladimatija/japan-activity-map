@@ -134,6 +134,7 @@ export const SOURCES: { id: Source; label: string }[] = localized([
   { id: 'strava', label: 'Strava' },
   { id: 'gpx', label: 'GPX' },
   { id: 'garmin', label: 'Garmin' },
+  { id: 'yamap', label: 'YAMAP' },
   { id: 'sheet', label: 'Manual sheet' },
 ]);
 export const METRICS: { id: Metric; label: string; unit: string }[] = localized([

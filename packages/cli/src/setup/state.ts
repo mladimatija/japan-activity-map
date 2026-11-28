@@ -4,6 +4,7 @@
  * holds a secret or a location.
  */
 import { existsSync, readFileSync, rmSync } from 'node:fs';
+import { tokenRefusedAt } from '../yamap/token.ts';
 import { join, resolve } from 'node:path';
 
 import { findCommand } from '../commands/index.ts';
@@ -111,6 +112,10 @@ export const findFacts = (configDir: string, sheetPath: string): Facts => {
     garminKey: ((key) => typeof key === 'string' && key.length > 0)(
       valueAt(secrets, ['garmin', 'apiKey']),
     ),
+    yamapToken: ((token) => typeof token === 'string' && token.length > 0)(
+      valueAt(secrets, ['yamap', 'token']),
+    ),
+    yamapTokenRefused: tokenRefusedAt()?.slice(0, 10) ?? null,
     siteBuilt: existsSync(join(ROOT_DIR, 'dist/data/meta.json')),
     demoAvailable: findCommand(['demo']) !== undefined,
   };

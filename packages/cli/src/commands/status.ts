@@ -1,4 +1,5 @@
 import { ConfigError, loadConfig, type ConfigFileStatus } from '../config.ts';
+import { tokenRefusedAt } from '../yamap/token.ts';
 import { folderMarker, storeMarker } from '../demo/marker.ts';
 import { gpxFolder, hasGpxFolder } from '../gpx-import/files.ts';
 import { DATA_DIR, DEMO_DIR, shownPath } from '../paths.ts';
@@ -128,7 +129,7 @@ export const status = async (context: CommandContext): Promise<number> => {
     } else {
       log.info(`Privacy zones: ${zoneCount}`);
     }
-    const builtFrom = { strava: 'Strava', gpx: 'GPX files', garmin: 'Garmin' }[
+    const builtFrom = { strava: 'Strava', gpx: 'GPX files', garmin: 'Garmin', yamap: 'YAMAP' }[
       config.site.activities.source
     ];
     log.info(
@@ -140,6 +141,20 @@ export const status = async (context: CommandContext): Promise<number> => {
         ? 'stored'
         : 'not set';
     log.info(`Garmin personal API key: ${garminKey}`);
+    const yamapRefused = tokenRefusedAt();
+    const yamapToken = process.env.JAM_YAMAP_TOKEN
+      ? 'set in the environment'
+      : config.secrets.yamap
+        ? 'stored'
+        : 'not set';
+    if (yamapRefused && yamapToken !== 'not set')
+      log.warn(
+        `YAMAP sign-in token: ${yamapToken}, but YAMAP refused it on ${yamapRefused.slice(0, 10)}. It has expired: \`pnpm jam yamap token\` stores a new one.`,
+      );
+    else
+      log.info(
+        `YAMAP sign-in token: ${yamapToken}${config.site.activities.yamap.userId ? `; user ${config.site.activities.yamap.userId}` : ''}`,
+      );
     log.info(
       `GPX folder: ${shownPath(gpxFolder(config))}${hasGpxFolder(config) ? '' : ' (not there yet)'}; default type ${config.site.activities.gpx.defaultType}`,
     );

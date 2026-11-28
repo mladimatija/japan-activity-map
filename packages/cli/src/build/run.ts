@@ -420,7 +420,10 @@ const trackStage = (
       type: activity.type as ActivityType,
       tags: activity.tags,
       source:
-        activity.source === 'sheet' || activity.source === 'gpx' || activity.source === 'garmin'
+        activity.source === 'sheet' ||
+        activity.source === 'gpx' ||
+        activity.source === 'garmin' ||
+        activity.source === 'yamap'
           ? activity.source
           : 'strava',
       name: activity.name,

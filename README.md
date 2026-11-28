@@ -3,7 +3,7 @@
 A personal map of Japan that ticks off famous peaks, trails and pilgrimage routes as you hike, run
 and ride them.
 
-It reads your activities from Strava, from Garmin Connect, from GPX or FIT files, or from a
+It reads your activities from Strava, from Garmin Connect, from YAMAP, from GPX or FIT files, or from a
 spreadsheet you keep by hand, does all the work on your own computer, and builds a static site you can host anywhere. Your home stays
 off the map.
 
@@ -54,13 +54,14 @@ every other time you did the same route.
 
 ### Where activities come from
 
-Strava, Garmin Connect (with your own personal API key), or GPX and FIT files from any app or
-watch that exports them (YAMAP, for one), plus a sheet you keep by hand for everything else. One
-setting says which of the three the site is built from ([docs/garmin.md](docs/garmin.md),
+Strava, Garmin Connect (with your own personal API key), YAMAP (with the sign-in token from your
+browser; unofficial, so read [docs/yamap.md](docs/yamap.md) first), or GPX and FIT files from any
+app or watch that exports them, plus a sheet you keep by hand for everything else. One setting
+says which of them the site is built from ([docs/garmin.md](docs/garmin.md),
 [docs/gpx.md](docs/gpx.md)).
 
 A sync fetches what's new since the last one. To fetch only some days, add `--from` and `--to`, or
-`--last 30d`, to `sync strava` or `sync garmin`; the setup page has the same as two date fields.
+`--last 30d`, to `sync strava`, `sync garmin` or `sync yamap`; the setup page has the same as two date fields.
 Distances, climb and moving time of a recording read from a file are worked out from its points,
 with GPS jumps left out ([docs/gpx.md](docs/gpx.md#moving-time-and-gps-jumps)).
 
@@ -117,7 +118,7 @@ pnpm install
 
 1. Try the demo. `pnpm jam demo`, then `pnpm demo:web`, gives you a complete site from made-up
    activities, stored separately from your own data ([docs/demo.md](docs/demo.md)).
-2. Set up. `pnpm jam setup` asks a few questions: Strava, Garmin, GPX files or a sheet, where home is so it
+2. Set up. `pnpm jam setup` asks a few questions: Strava, Garmin, YAMAP, GPX files or a sheet, where home is so it
    can be hidden, what to publish. Then it writes the config files and runs the first sync and build.
    `pnpm jam setup --web` does the same in your browser ([docs/setup.md](docs/setup.md)).
 3. Check what gets cut. `pnpm jam zones --preview`, then `pnpm web:preview` to see the site as it
@@ -130,7 +131,7 @@ pnpm install
 Only `dist/` is ever published.
 
 More in [docs/](docs): [the site](docs/web.md), [setup](docs/setup.md), [Strava](docs/strava-setup.md),
-[Garmin](docs/garmin.md), [GPX files](docs/gpx.md), [privacy](docs/privacy.md), [matching](docs/matching.md), [routes](docs/routes.md),
+[Garmin](docs/garmin.md), [YAMAP](docs/yamap.md), [GPX files](docs/gpx.md), [privacy](docs/privacy.md), [matching](docs/matching.md), [routes](docs/routes.md),
 [the build](docs/build.md), [demo data](docs/demo.md), [publishing](docs/deploy.md), and
 [the lists and their sources](lists/README.md).
 
@@ -160,6 +161,10 @@ Everything below is for working on the code.
 | `pnpm jam sync garmin`    | Fetch Garmin Connect activities with your own key; `--from`/`--to` work here too     |
 | `pnpm jam garmin check`   | Check that the Garmin key works                                                      |
 | `pnpm jam garmin wipe`    | Delete Garmin activities from the store, keeping everything else (`--yes`)           |
+| `pnpm jam sync yamap`     | Fetch your YAMAP activities with your sign-in token ([setup](docs/yamap.md))         |
+| `pnpm jam yamap token`    | Store a new YAMAP token when the old one expires: paste it, or pipe it in            |
+| `pnpm jam yamap check`    | Check that the YAMAP user id and token work                                          |
+| `pnpm jam yamap wipe`     | Delete YAMAP activities from the store, keeping everything else (`--yes`)            |
 | `pnpm jam sync gpx`       | Import GPX or FIT files from a folder or a `.zip` ([how](docs/gpx.md)); `--replace`  |
 | `pnpm jam gpx wipe`       | Delete GPX activities from the store, keeping everything else (`--yes`)              |
 | `pnpm jam match`          | Match activities to list places, routes and prefectures ([how](docs/matching.md))    |
@@ -216,6 +221,7 @@ Node.js 26, so the command-line tool has no build step.
 | `pnpm check:routes`   | Route grouping, likewise                                                                    |
 | `pnpm check:gpx`      | GPX import and the Strava or GPX switch, likewise                                           |
 | `pnpm check:garmin`   | The Garmin sync, against a stand-in server                                                  |
+| `pnpm check:yamap`    | The YAMAP sync, against a stand-in server                                                   |
 | `pnpm check:privacy`  | The privacy rules, likewise                                                                 |
 | `pnpm check:build`    | The build, likewise                                                                         |
 | `pnpm check:web`      | Renders the map's pane for every list and selection, against your real build in `dist/data` |
@@ -230,7 +236,9 @@ The code and documentation are under the MIT licence ([LICENSE](LICENSE)). The r
 CC BY-SA, and others), listed in [lists/LICENSE.md](lists/LICENSE.md). Your own activities in
 `data/` are yours and are never part of the repository.
 
-This project is not affiliated with Strava or Garmin. It uses the Strava API under your own API
-application and Strava's terms, and the Garmin Connect Personal API under your own key and
-Garmin's terms. FIT files are read with Garmin's FIT SDK (`@garmin/fitsdk`), a dependency under
+This project is not affiliated with Strava, Garmin or YAMAP. It uses the Strava API under your own
+API application and Strava's terms, and the Garmin Connect Personal API under your own key and
+Garmin's terms. YAMAP has no public API: `sync yamap` uses the web API of yamap.com with your own
+sign-in, for your own activities only, and whether that suits YAMAP's terms is for you to judge
+(docs/yamap.md). FIT files are read with Garmin's FIT SDK (`@garmin/fitsdk`), a dependency under
 Garmin's FIT Protocol License, which is not an open-source licence.

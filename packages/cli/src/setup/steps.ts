@@ -9,7 +9,7 @@ import { TUNING_STEPS } from './steps-tuning.ts';
 import type { Mode, Step } from './types.ts';
 
 /** The sources the site can be built from, one at a time (the sheet always counts). */
-const BUILT_FROM = ['strava', 'gpx', 'garmin'] as const;
+const BUILT_FROM = ['strava', 'gpx', 'garmin', 'yamap'] as const;
 
 /** The groups, in the order full setup and the change menu go through them. */
 export const GROUPS: { id: string; title: string }[] = [
@@ -35,6 +35,7 @@ const QUICK_GROUPS = [
   'source:strava',
   'source:gpx',
   'source:garmin',
+  'source:yamap',
   'source:sheet',
   'privacy',
   'publish',
@@ -66,6 +67,7 @@ const SOURCES_STEP: Step = {
       ...(from === 'strava' && (facts.stravaCredentials || !facts.sheetExists) ? ['strava'] : []),
       ...(from === 'gpx' ? ['gpx'] : []),
       ...(from === 'garmin' ? ['garmin'] : []),
+      ...(from === 'yamap' ? ['yamap'] : []),
       ...(facts.sheetExists ? ['sheet'] : []),
     ];
   },

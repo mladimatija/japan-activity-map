@@ -11,13 +11,13 @@ Each setting lives in its own JSONC file (JSON with comments).
 
 | File            | Holds                                                                         |
 | --------------- | ----------------------------------------------------------------------------- |
-| `site`          | Site title, activity source, GPX and Garmin import, map styles, what is shown |
+| `site`          | Site title, activity source, GPX, Garmin and YAMAP import, map styles, output |
 | `thresholds`    | Distances and shares used by matching, route grouping and privacy clipping    |
 | `routes`        | Route names, merges and splits, keyed by activity                             |
 | `privacy-zones` | Places whose surroundings are cut from every published track                  |
 | `strava`        | Strava import filters, including whether to fetch private activities          |
 | `sheet`         | Where the manual activity sheet is, and the time zone for its dates           |
-| `secrets`       | Strava app credentials; the Garmin key; the Cloudflare or Netlify token       |
+| `secrets`       | Strava app credentials; the Garmin key; the YAMAP token; the deploy token     |
 
 `pnpm jam setup` writes these files for you: it asks, shows a diff and changes one value where it
 stands, keeping your comments (docs/setup.md). Editing by hand stays equally valid.

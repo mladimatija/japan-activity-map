@@ -91,6 +91,7 @@ const SOURCE_NAMES: Record<string, string> = {
   strava: 'Strava',
   gpx: 'GPX files',
   garmin: 'Garmin',
+  yamap: 'YAMAP',
 };
 
 const stravaLink = (id: number) => `https://www.strava.com/activities/${id}`;

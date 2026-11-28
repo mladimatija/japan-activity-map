@@ -3,6 +3,7 @@
  * another source is one more entry and nothing else changes.
  */
 import { ACTIVITY_TYPES } from '@jam/core';
+import { cleanToken } from '../yamap/token.ts';
 
 import type { ActionId } from './actions.ts';
 import { BUILD, type Ctx, type Facts, has, PULL, setting, type Step, str } from './types.ts';
@@ -28,6 +29,7 @@ const sheet = (ctx: Ctx) => has(ctx, 'sheet');
 const demo = (ctx: Ctx) => has(ctx, 'demo');
 const gpx = (ctx: Ctx) => has(ctx, 'gpx');
 const garmin = (ctx: Ctx) => has(ctx, 'garmin');
+const yamap = (ctx: Ctx) => has(ctx, 'yamap');
 
 const stravaSetting = (...args: Parameters<typeof setting>): Step => {
   const step = setting(...args);
@@ -224,17 +226,18 @@ const BUILT_FROM_STEP: Step = {
   tier: 'both',
   kind: 'choice',
   title: 'Which is the site built from?',
-  help: 'Strava, GPX and Garmin activities can all be in the local store; the site shows one of them, plus the sheet. Changing this later deletes nothing.',
+  help: 'Strava, GPX, Garmin and YAMAP activities can all be in the local store; the site shows one of them, plus the sheet. Changing this later deletes nothing.',
   options: [
     { value: 'strava', label: 'Strava' },
     { value: 'gpx', label: 'GPX files' },
     { value: 'garmin', label: 'Garmin' },
+    { value: 'yamap', label: 'YAMAP' },
   ],
   setting: { file: 'site', path: ['activities', 'source'] },
   // Asked when more than one was chosen, and in change mode, where it is the switch.
   when: (ctx) =>
     ctx.mode === 'change' ||
-    ['strava', 'gpx', 'garmin'].filter((source) => has(ctx, source)).length > 1,
+    ['strava', 'gpx', 'garmin', 'yamap'].filter((source) => has(ctx, source)).length > 1,
   affects: BUILD,
 };
 
@@ -347,7 +350,7 @@ const GARMIN_STEPS: Step[] = [
  * config file, and the next plain sync carries on as if this pull had not happened.
  */
 const pullRangeSteps = (
-  source: 'strava' | 'garmin',
+  source: 'strava' | 'garmin' | 'yamap',
   name: string,
   when: (ctx: Ctx) => boolean,
 ): Step[] =>
@@ -369,8 +372,117 @@ const pullRangeSteps = (
     map: () => [],
     runOption: true,
     when,
-    affects: [source === 'strava' ? 'pull-strava' : 'pull-garmin', 'match', 'build'],
+    affects: [`pull-${source}`, 'match', 'build'],
   }));
+
+/** The user id in a profile address (whatever follows it), or a bare number. */
+const yamapUserId = (text: string): string | undefined =>
+  /\/users\/(\d+)/.exec(text)?.[1] ?? /^\s*(\d+)\s*$/.exec(text)?.[1];
+
+const YAMAP_STEPS: Step[] = [
+  {
+    id: 'yamap.token.refused',
+    group: 'source:yamap',
+    tier: 'both',
+    kind: 'info',
+    title:
+      'YAMAP refused the stored sign-in token at the last sync. It has expired: paste a new one below.',
+    help: 'A token stops working when YAMAP signs that browser out. Sign in at yamap.com again and copy the yamap_token cookie as described below.',
+    read: () => '',
+    map: () => [],
+    when: (ctx) => yamap(ctx) && ctx.facts.yamapToken && ctx.facts.yamapTokenRefused !== null,
+  },
+  {
+    id: 'yamap.userId',
+    group: 'source:yamap',
+    tier: 'both',
+    kind: 'text',
+    title: 'Your YAMAP profile address, or the number in it',
+    help: 'Open your profile on yamap.com and copy the address, such as https://yamap.com/users/1234567. Only the number is kept.',
+    read: ({ config }) => config.site.activities.yamap.userId ?? '',
+    map: (answer) => {
+      const id = yamapUserId(str(answer));
+      return id ? [{ file: 'site', path: ['activities', 'yamap', 'userId'], value: id }] : [];
+    },
+    check: (answer) =>
+      yamapUserId(str(answer))
+        ? undefined
+        : 'A profile address such as https://yamap.com/users/1234567, or just the number.',
+    when: yamap,
+    affects: ['pull-yamap', 'match', 'build'],
+  },
+  {
+    id: 'yamap.token.help',
+    group: 'source:yamap',
+    tier: 'both',
+    kind: 'info',
+    title: 'Copy your sign-in token from yamap.com.',
+    help: 'Sign in at https://yamap.com. Open the browser developer tools (F12), then Application (Chrome, Edge) or Storage (Firefox, Safari), then Cookies, then https://yamap.com. Copy the value of the cookie named yamap_token. It works like a password for your YAMAP account: keep it to yourself. YAMAP has no official way to do this, and the token stops working when YAMAP signs that browser out; every command then says so. See docs/yamap.md.',
+    read: () => '',
+    map: () => [],
+    when: yamap,
+  },
+  {
+    id: 'yamap.token',
+    group: 'source:yamap',
+    tier: 'both',
+    kind: 'secret',
+    optional: true,
+    title: 'YAMAP sign-in token (the yamap_token cookie)',
+    help: 'Paste it here; it is not shown. Stored in config/secrets.jsonc, readable only by you. Leave it empty to keep the one stored, or to add it later: the list is fetched without it, the tracks are not.',
+    setting: { file: 'secrets', path: ['yamap', 'token'], sensitive: 'secret' },
+    // However it was copied ("yamap_token=…", quoted, a whole Cookie line), the bare value is kept.
+    map: (answer) => {
+      const token = cleanToken(str(answer));
+      return [
+        { file: 'secrets', path: ['yamap', 'token'], value: token === '' ? undefined : token },
+      ];
+    },
+    check: (answer) => {
+      const token = cleanToken(str(answer));
+      return token === '' || (token.length >= 8 && !/\s/.test(token))
+        ? undefined
+        : 'That does not look like a yamap_token value: one run of letters and digits, no spaces.';
+    },
+    when: yamap,
+    affects: ['pull-yamap', 'match', 'build'],
+  },
+  setting(
+    'yamap.defaultType',
+    'source:yamap',
+    'choice',
+    'Activity type for YAMAP activities',
+    'site',
+    ['activities', 'yamap', 'defaultType'],
+    {
+      help: 'YAMAP does not say what kind of activity a recording is; all of them get this type.',
+      options: ACTIVITY_TYPES.map((type) => ({ value: type, label: type })),
+      when: yamap,
+      affects: ['match', 'build'],
+    },
+  ),
+  setting(
+    'yamap.from',
+    'source:yamap',
+    'date',
+    'First day to fetch from YAMAP (YYYY-MM-DD)',
+    'site',
+    ['activities', 'yamap', 'from'],
+    { help: 'Empty: everything.', optional: true, when: yamap },
+  ),
+  setting(
+    'yamap.tracksPerSync',
+    'source:yamap',
+    'number',
+    'YAMAP tracks downloaded per run',
+    'site',
+    ['activities', 'yamap', 'tracksPerSync'],
+    {
+      help: 'Each track is one request; the next run carries on with the rest.',
+      when: yamap,
+    },
+  ),
+];
 
 /** Options for `jam demo`, not settings: nothing here is written to a config file. */
 const demoOption = (step: Pick<Step, 'id' | 'kind' | 'title'> & Partial<Step>): Step => ({
@@ -449,6 +561,13 @@ export const SOURCES: Source[] = [
     help: 'Your activities through the Garmin Connect Personal API, with a key you create yourself. Free; needs no approval.',
     steps: [...GARMIN_STEPS, ...pullRangeSteps('garmin', 'Garmin', garmin)],
     actions: () => ['sync-garmin'],
+  },
+  {
+    id: 'yamap',
+    label: 'YAMAP',
+    help: 'Your own YAMAP activities and their tracks, with the sign-in token from your browser. YAMAP has no official way to do this: read docs/yamap.md first.',
+    steps: [...YAMAP_STEPS, ...pullRangeSteps('yamap', 'YAMAP', yamap)],
+    actions: () => ['sync-yamap'],
   },
   {
     id: 'sheet',

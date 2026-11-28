@@ -28,6 +28,7 @@ export const ACTION_IDS = [
   'sync-sheet',
   'sync-gpx',
   'sync-garmin',
+  'sync-yamap',
   'match',
   'routes',
   'routes-review',
@@ -71,7 +72,7 @@ const fetchArgs = (ctx: Ctx): string[] => {
 
 /** `--from` and `--to` for one source's pull, from the "this run only" answers. */
 const rangeOptions =
-  (source: 'strava' | 'garmin') =>
+  (source: 'strava' | 'garmin' | 'yamap') =>
   (ctx: Ctx): Record<string, string> => {
     const day = (id: string) => {
       const value = str(ctx.answers[id] ?? '').trim();
@@ -172,6 +173,13 @@ export const ACTIONS: Record<ActionId, Action> = {
     answered: rangeOptions('garmin'),
     network: true,
   },
+  'sync-yamap': {
+    id: 'sync-yamap',
+    title: 'Fetch YAMAP activities',
+    command: ['sync', 'yamap'],
+    answered: rangeOptions('yamap'),
+    network: true,
+  },
   match: { id: 'match', title: 'Match activities to the lists', command: ['match'] },
   routes: { id: 'routes', title: 'Group repeated activities into routes', command: ['routes'] },
   'routes-review': {
@@ -256,6 +264,12 @@ export const setupPlan = (ctx: Ctx, includePrivate: boolean): PlanItem[] => {
         plan.push({ id: action, skip: 'the GPX folder is not there yet' });
       else if (action === 'sync-garmin' && !ctx.facts.garminKey && !ctx.answers['garmin.apiKey'])
         plan.push({ id: action, skip: 'no Garmin personal API key yet' });
+      else if (
+        action === 'sync-yamap' &&
+        !ctx.config.site.activities.yamap.userId &&
+        !ctx.answers['yamap.userId']
+      )
+        plan.push({ id: action, skip: 'no YAMAP user id yet' });
       else plan.push({ id: action });
     }
   plan.push(
@@ -275,6 +289,7 @@ export const followUps = (affects: ReadonlySet<Affects>): ActionId[] => {
     ['full-pull', 'sync-strava'],
     ['pull-strava', 'sync-strava'],
     ['pull-garmin', 'sync-garmin'],
+    ['pull-yamap', 'sync-yamap'],
     ['match', 'match'],
     ['regroup', 'routes-regroup'],
     ['zones', 'zones-preview'],

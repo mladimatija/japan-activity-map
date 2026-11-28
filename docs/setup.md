@@ -95,6 +95,8 @@ Demo data is offered only when this version has the `demo` command; otherwise th
 | Strava Client ID                      | none               | `strava.clientId` in `secrets.jsonc`                                         |
 | Strava Client Secret (typed hidden)   | none               | `strava.clientSecret` in `secrets.jsonc`                                     |
 | Garmin personal API key (hidden)      | none; may be empty | `garmin.apiKey` in `secrets.jsonc`, when Garmin is chosen                    |
+| YAMAP profile address or number       | none               | `activities.yamap.userId` in `site.jsonc`, when YAMAP is chosen              |
+| YAMAP sign-in token (hidden)          | none; may be empty | `yamap.token` in `secrets.jsonc`; pasted however it was copied               |
 | Import "Only You" activities?         | no                 | `import.includePrivate` in `strava.jsonc`, `publish.includeOnlyMeActivities` |
 | Home location to hide (lat, lon)      | none; may be empty | the first zone in `privacy-zones.jsonc`                                      |
 | Hide radius                           | 500 m              | that zone's `radiusM`                                                        |
@@ -135,7 +137,8 @@ The plan of a quick setup: download and build the missing reference lists, `stra
 Groups, in order: `site`, `map` (light and dark style, terrain), `views`, `publish` (seven
 switches), `output`, the sources (`strava`: dates, types, sport types, full tracks, API addresses;
 `gpx`: which of Strava, GPX files and Garmin the site is built from, the type of a file that names none,
-the folder; `garmin`: the key, Only Me activities, the first day, recordings per run; for Strava and Garmin
+the folder; `garmin`: the key, Only Me activities, the first day, recordings per run; `yamap`: the profile, the sign-in token (with a notice when YAMAP
+has refused the stored one), the type, the first day, tracks per run; for Strava, Garmin and YAMAP
 also the days to fetch this time only, which go to the sync as `--from` and `--to` and are not saved; `sheet`), `privacy` (the zones, and the three privacy thresholds), `lists` (what to download now),
 `matching`, `routeGrouping`, `routes` (names, merges and splits, as JSON), `deploy`.
 
@@ -166,7 +169,7 @@ keeps it.
 ## Secrets
 
 - Typed hidden in a terminal, or taken from `JAM_STRAVA_CLIENT_ID`, `JAM_STRAVA_CLIENT_SECRET` and
-  `JAM_GARMIN_API_KEY`, or from stdin as `NAME=value` lines with `--secrets-stdin`.
+  `JAM_GARMIN_API_KEY` and `JAM_YAMAP_TOKEN`, or from stdin as `NAME=value` lines with `--secrets-stdin`.
 - Never a flag, never in an answers file (refused), never in the log, masked in every diff, never
   in `data/setup-state.json`, never sent back by the web wizard.
 

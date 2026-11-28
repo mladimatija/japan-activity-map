@@ -70,6 +70,9 @@ jobs:
       - name: Garmin sync against a stand-in server
         run: pnpm check:garmin
 
+      - name: YAMAP sync against a stand-in server
+        run: pnpm check:yamap
+
       - name: Privacy checks
         run: pnpm check:privacy
 

@@ -5,6 +5,7 @@ import { currentStoreMarker, demoRefusal } from '../demo/marker.ts';
 import { listsBuild, listsFetch, listsValidate } from './lists.ts';
 import { garminCheck, garminWipe, syncGarmin } from './garmin.ts';
 import { RANGE_OPTIONS } from './range.ts';
+import { syncYamap, yamapCheck, yamapToken, yamapWipe } from './yamap.ts';
 import { gpxWipe, syncGpx } from './gpx.ts';
 import { syncSheet } from './sheet.ts';
 import { buildCommand } from './build.ts';
@@ -130,6 +131,57 @@ export const COMMANDS: readonly Command[] = [
       ...RANGE_OPTIONS,
     },
     run: syncGarmin,
+  },
+  {
+    name: 'sync yamap',
+    summary: 'Fetch your YAMAP activities with your own sign-in token',
+    args: {
+      usage: '',
+      help: [
+        'Lists your activities, then downloads the tracks of those that have none yet, newest',
+        'first, up to activities.yamap.tracksPerSync a run. Needs activities.yamap.userId and the',
+        'sign-in token (yamap.token in config/secrets.jsonc, or JAM_YAMAP_TOKEN). The token expires',
+        'when YAMAP signs your browser out; `pnpm jam yamap token` stores a new one. See docs/yamap.md.',
+      ].join('\n'),
+    },
+    options: {
+      full: {
+        type: 'boolean',
+        description:
+          'List everything again, or everything in --from/--to; remove what YAMAP no longer has',
+      },
+      tracks: {
+        type: 'string',
+        description: 'How many tracks to download this run: a number, or "all"',
+      },
+      ...RANGE_OPTIONS,
+    },
+    run: syncYamap,
+  },
+  {
+    name: 'yamap token',
+    summary: 'Store a new YAMAP sign-in token: paste it (not shown), or pipe it in',
+    args: {
+      usage: '',
+      help: [
+        'Asks for the value of the yamap_token cookie without showing it, stores it in',
+        'config/secrets.jsonc and tries it. Or pipe it in: pbpaste | pnpm jam yamap token',
+      ].join('\n'),
+    },
+    run: yamapToken,
+  },
+  {
+    name: 'yamap check',
+    summary: 'Check that the YAMAP user id and sign-in token work',
+    run: yamapCheck,
+  },
+  {
+    name: 'yamap wipe',
+    summary: 'Delete YAMAP activities from the local store, keeping everything else',
+    options: {
+      yes: { type: 'boolean', description: 'Do it; without this it only says what it would do' },
+    },
+    run: yamapWipe,
   },
   {
     name: 'garmin check',

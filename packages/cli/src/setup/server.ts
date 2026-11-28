@@ -4,6 +4,7 @@
  * a fixed list of actions with arguments decided here, and no way to read a secret back.
  */
 import { randomBytes, timingSafeEqual } from 'node:crypto';
+import { cleanToken } from '../yamap/token.ts';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
@@ -172,11 +173,17 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
       for (const id of [
         'strava.clientSecret',
         'garmin.apiKey',
+        'yamap.token',
         'deploy.apiToken',
         'deploy.accountId',
         'deploy.netlifyToken',
       ])
         if (typeof answers[id] === 'string' && answers[id].length >= 4) secrets.add(answers[id]);
+      // The YAMAP token is stored tidied; that form must not come back in output either.
+      if (typeof answers['yamap.token'] === 'string') {
+        const tidy = cleanToken(answers['yamap.token']);
+        if (tidy.length >= 4) secrets.add(tidy);
+      }
       const group = typeof body.group === 'string' ? groupNamed(body.group) : undefined;
       if (start === 'change' && !group) throw new Refused(400, 'Change mode needs a group.');
       return {
@@ -305,7 +312,14 @@ export const serveSetup = (context: CommandContext): Promise<number> => {
             stopRunning = undefined;
             // The days asked for "this time only" are spent once their pull has run: a later pull
             // in the same session must not be narrowed to them without being asked.
-            const source = id === 'sync-strava' ? 'strava' : id === 'sync-garmin' ? 'garmin' : '';
+            const source =
+              id === 'sync-strava'
+                ? 'strava'
+                : id === 'sync-garmin'
+                  ? 'garmin'
+                  : id === 'sync-yamap'
+                    ? 'yamap'
+                    : '';
             if (source && code === 0 && applied) {
               delete applied.answers[`${source}.pull.from`];
               delete applied.answers[`${source}.pull.to`];
