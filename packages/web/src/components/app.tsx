@@ -7,7 +7,7 @@ import { cva } from 'class-variance-authority';
 import { type ComponentProps, type ReactNode, useState } from 'react';
 
 import { filterCount, NO_FILTERS } from '../filters.ts';
-import { STATUS_LABELS } from '../format.ts';
+import { date, STATUS_LABELS } from '../format.ts';
 import { cn } from '../lib/utils.ts';
 import type { Status } from '../map/palette.ts';
 import { type Named, nameIn, otherLang, subName, useLang } from '../names.tsx';
@@ -157,8 +157,16 @@ export const GroupChevron = () => (
 /** How a foldable group's heading row looks: filter groups, a list's regions, activity months. */
 export const GROUP_ROW = 'min-h-11 rounded-sm px-1 text-sm font-semibold hover:bg-muted';
 
-/** A headline figure: how far along, out of what, and the share: "5 / 100 … 5%". */
-export const Headline = ({ value, of, share }: { value: ReactNode; of: string; share: string }) => (
+/** A headline figure: how far along, out of what, and the share: "5 / 100 … 5%" (or the seal). */
+export const Headline = ({
+  value,
+  of,
+  share,
+}: {
+  value: ReactNode;
+  of: string;
+  share: ReactNode;
+}) => (
   <p className="mb-2 flex items-baseline gap-1 font-figure tabular-nums">
     <strong className="text-3xl leading-none font-bold md:text-figure">{value}</strong>
     <span className="text-lg text-muted-foreground"> {of}</span>
@@ -349,6 +357,57 @@ export const Readout = ({ idle, children }: { idle?: ReactNode; children: ReactN
     </div>
   );
 };
+
+/**
+ * A finished list's seal: 踏破, walked to the end, in a round seal stamped once onto its cover (the
+ * site's one animation), with the day under it when the build knows it. `small` is the seal alone,
+ * for a row in the list menu. Seal red is for this and the site's mark only.
+ */
+export const CompletionSeal = ({
+  on,
+  small = false,
+  className,
+}: {
+  on?: string | null;
+  small?: boolean;
+  className?: string;
+}) => (
+  <span
+    role="img"
+    aria-label={on ? t('Finished on {date}', { date: date(on) }) : t('Finished')}
+    className={cn('inline-flex flex-col items-center gap-1', className)}
+  >
+    <svg
+      viewBox="0 0 48 48"
+      aria-hidden
+      className={cn('shrink-0 -rotate-6', small ? 'size-5' : 'size-16 animate-stamp')}
+    >
+      <circle cx="24" cy="24" r="22.5" className="fill-seal" />
+      <circle
+        cx="24"
+        cy="24"
+        r="19"
+        className="fill-none stroke-seal-foreground"
+        strokeWidth="1.2"
+      />
+      {['踏', '破'].map((glyph, at) => (
+        <text
+          key={glyph}
+          x="24"
+          y={at === 0 ? 16.5 : 31.5}
+          textAnchor="middle"
+          dominantBaseline="central"
+          className="fill-seal-foreground font-title text-[14px] font-bold"
+        >
+          {glyph}
+        </text>
+      ))}
+    </svg>
+    {on && !small && (
+      <span className="font-mono text-[10px] text-muted-foreground tabular-nums">{date(on)}</span>
+    )}
+  </span>
+);
 
 /** Small capitals over a title. */
 export const Eyebrow = ({ children }: { children: ReactNode }) => (

@@ -75,6 +75,31 @@ const MAP_COLORS = {
 
 export const mapColors = (dark: boolean) => MAP_COLORS[dark ? 'dark' : 'light'];
 
+/** The base map's own greys dyed indigo (map/dye.ts): a hue in OKLCH, and how much colour to add. */
+export interface MapDye {
+  /** The page's indigo: --cloth and --primary sit at about 270°. */
+  hue: number;
+  /** Land, parks, towns: a cast, no more. */
+  land: number;
+  /** Sea, lakes and rivers: plainly indigo. */
+  water: number;
+}
+
+/**
+ * The default base maps (OpenFreeMap's Positron and Dark) are greys, so they take the site's dye:
+ * Positron a faint cool cast with indigo water, Dark the night indigo of the page. A style of
+ * one's own keeps its colours.
+ */
+const MAP_DYE: Record<'light' | 'dark', MapDye> = {
+  light: { hue: 268, land: 0.005, water: 0.03 },
+  dark: { hue: 271, land: 0.05, water: 0.06 },
+};
+const DYED_STYLE = /^https:\/\/tiles\.openfreemap\.org\/styles\/(positron|dark)\/?$/;
+
+/** The dye for a base map at `url`: the default styles only. */
+export const mapDye = (url: string, dark: boolean): MapDye | undefined =>
+  DYED_STYLE.test(url) ? MAP_DYE[dark ? 'dark' : 'light'] : undefined;
+
 /** A type the palette does not know, a reference route's line, and plain white and near-black. */
 export const UNKNOWN_TYPE_COLOR = '#666666';
 export const REFERENCE_LINE_COLOR = '#8c8c8c';

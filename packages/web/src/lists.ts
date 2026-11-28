@@ -52,6 +52,23 @@ export const groupByRegion = (data: Data, list: List, shown: ListItem[]): Region
 export const STATUS_ORDER: Status[] = ['done', 'partial', 'dns', 'want', 'none'];
 
 /** Done out of total: items for a point list, metres for a route list. */
+/**
+ * Whether a list is finished (踏破), and on which day when the build says: a points list on the
+ * day its last place was first reached; a route has no such day, since a stage is covered bit by
+ * bit. Undefined while there is still something left.
+ */
+export const finishedOf = (list: List): { on: string | null } | undefined => {
+  if (list.items.length === 0 || list.items.some((item) => item.status !== 'done'))
+    return undefined;
+  if (list.kind === 'route') return { on: null };
+  const days = list.items.map((item) => item.first);
+  return {
+    on: days.every((day): day is string => Boolean(day))
+      ? days.reduce((latest, day) => (day > latest ? day : latest))
+      : null,
+  };
+};
+
 export const progressOf = (list: List): { done: number; total: number; share: number } => {
   const done = list.kind === 'route' ? (list.coveredM ?? 0) : (list.counts.done ?? 0);
   const total = list.kind === 'route' ? (list.lengthM ?? 0) : list.items.length;

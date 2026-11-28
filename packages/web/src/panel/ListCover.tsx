@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 
-import { Eyebrow, Headline, NameTitle } from '../components/app.tsx';
+import { CompletionSeal, Eyebrow, Headline, NameTitle } from '../components/app.tsx';
 import { contours } from '../contours.ts';
 import type { List } from '../data.ts';
 import { distanceText, percent } from '../format.ts';
-import { progressOf } from '../lists.ts';
+import { finishedOf, progressOf } from '../lists.ts';
 import { t } from '../i18n.ts';
 
 /** The pattern's own box; the cover crops it to whatever shape the pane gives it. */
@@ -39,11 +39,13 @@ const TitleSlip = ({ text }: { text: string }) => (
 
 /**
  * The top of a list, on indigo cloth printed with contour lines of its own: what kind of list,
- * its name in both languages, and how far along. The bar or stamp grid follows it on the page.
+ * its name in both languages, and how far along, or the seal once it is finished. The stamp grid,
+ * route line or bar follows it on the page.
  */
 export const ListCover = ({ list }: { list: List }) => {
   const lines = useMemo(() => contours(list.id, BOX.width, BOX.height), [list.id]);
   const { done, total, share } = progressOf(list);
+  const finished = finishedOf(list);
   return (
     <header className="relative -mx-4 grid grid-cols-[minmax(0,1fr)_auto] gap-4 overflow-hidden px-4 pt-4 pb-3 surface-cloth md:-mx-5 md:px-5">
       <svg
@@ -76,7 +78,9 @@ export const ListCover = ({ list }: { list: List }) => {
                 ? t('of {total}', { total: distanceText(total, 0) })
                 : `/ ${total}`
             }
-            share={percent(share, 1)}
+            share={
+              finished ? <CompletionSeal on={finished.on} className="-my-2" /> : percent(share, 1)
+            }
           />
         </div>
       </div>

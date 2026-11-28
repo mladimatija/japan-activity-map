@@ -1,4 +1,5 @@
-import { WHITE } from './palette.ts';
+import { dyeValue } from './dye.ts';
+import { type MapDye, WHITE } from './palette.ts';
 import type {
   ExpressionSpecification,
   FilterSpecification,
@@ -75,6 +76,29 @@ const colourOf = (value: unknown): string | undefined => {
 const isWater = (layer: LayerSpecification) =>
   layer.type === 'fill' && 'source-layer' in layer && layer['source-layer'] === 'water';
 
+const COLOUR_PAINT = [
+  'background-color',
+  'fill-color',
+  'fill-outline-color',
+  'fill-extrusion-color',
+];
+
+/** A layer's fills (and rivers' lines) dyed: water plainly, the rest with a cast (map/dye.ts). */
+const dyeLayer = (layer: LayerSpecification, dye: MapDye): LayerSpecification => {
+  const wet =
+    isWater(layer) ||
+    ('source-layer' in layer && layer['source-layer'] === 'waterway' && layer.type === 'line');
+  const keys = wet && layer.type === 'line' ? ['line-color'] : COLOUR_PAINT;
+  if (!('paint' in layer) || !layer.paint || (layer.type === 'line' && !wet)) return layer;
+  const paint = Object.fromEntries(
+    Object.entries(layer.paint).map(([key, value]) => [
+      key,
+      keys.includes(key) ? dyeValue(value, dye.hue, wet ? dye.water : dye.land) : value,
+    ]),
+  );
+  return { ...layer, paint } as LayerSpecification;
+};
+
 /** The regular weight of the fonts the style's labels use (the first is often an italic). */
 const fontOf = (layers: LayerSpecification[]): BaseStyle['font'] => {
   const fonts = layers
@@ -94,8 +118,16 @@ const fontOf = (layers: LayerSpecification[]): BaseStyle['font'] => {
  * The base style as the map should first draw it, so nothing flashes and then changes: outside
  * Japan covered in the style's own sea colour, under its labels (a coastal name reaching out over
  * the sea is not cut off), and only the labels inside Japan's area kept, so foreign names never show.
+ * With a `dye` (the default base maps), its greys are dyed indigo first, the sea included.
  */
-export const prepareStyle = (style: StyleSpecification, mask: Data['mask']): BaseStyle => {
+export const prepareStyle = (
+  given: StyleSpecification,
+  mask: Data['mask'],
+  dye?: MapDye,
+): BaseStyle => {
+  const style = dye
+    ? { ...given, layers: given.layers.map((layer) => dyeLayer(layer, dye)) }
+    : given;
   const water = style.layers.find(isWater);
   const background = style.layers.find((layer) => layer.type === 'background');
   const sea =
@@ -211,10 +243,15 @@ const fetchStyle = (url: string): Promise<StyleSpecification | undefined> => {
 };
 
 /**
- * The base map style at `url`, prepared for Japan (see `prepareStyle`); undefined while it loads.
- * If the file cannot be fetched here, the address itself, for MapLibre to try and report.
+ * The base map style at `url`, prepared for Japan (see `prepareStyle`) and dyed when given a `dye`;
+ * undefined while it loads. If the file cannot be fetched here, the address itself, for MapLibre
+ * to try and report.
  */
-export const useBaseStyle = (url: string, mask: Data['mask']): BaseStyle | undefined => {
+export const useBaseStyle = (
+  url: string,
+  mask: Data['mask'],
+  dye?: MapDye,
+): BaseStyle | undefined => {
   const [loaded, setLoaded] = useState<{ url: string; style: StyleSpecification | undefined }>();
   useEffect(() => {
     let current = true;
@@ -227,6 +264,6 @@ export const useBaseStyle = (url: string, mask: Data['mask']): BaseStyle | undef
   }, [url]);
   return useMemo(() => {
     if (loaded?.url !== url) return undefined;
-    return loaded.style ? prepareStyle(loaded.style, mask) : { style: url, font: {} };
-  }, [loaded, url, mask]);
+    return loaded.style ? prepareStyle(loaded.style, mask, dye) : { style: url, font: {} };
+  }, [loaded, url, mask, dye]);
 };

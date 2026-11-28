@@ -16,6 +16,7 @@ import { ensureLoaded, lazyErrors, referenceByList, tracksByYear } from '../src/
 import { PlaceTip, PrefectureTip } from '../src/map/HoverTip.tsx';
 import { prefectureBreaks, selectionShape } from '../src/map/useMapSources.ts';
 import { groupByRegion, visibleItems } from '../src/lists.ts';
+import { ListCover } from '../src/panel/ListCover.tsx';
 import { Pane } from '../src/panel/Pane.tsx';
 import { buildIndex, search } from '../src/search.ts';
 import { TopBar } from '../src/shell/TopBar.tsx';
@@ -275,6 +276,38 @@ for (const lang of ['en', 'ja'] as const) {
   );
 }
 setLang('en');
+
+// A finished list wears the seal on its cover, with the day its last place was first reached; a list
+// with anything left does not.
+{
+  const list = data.lists.find((entry) => entry.kind === 'point' && entry.items.length > 1);
+  if (list) {
+    const finished = {
+      ...list,
+      items: list.items.map((item, at) => ({
+        ...item,
+        status: 'done' as const,
+        first: at === 1 ? '2026-05-01' : '2024-08-15',
+      })),
+    };
+    const sealed = renderToString(<ListCover list={finished} />);
+    check(
+      sealed.includes('Finished on 1 May 2026'),
+      `a finished list has the seal and its day (${list.id})`,
+    );
+    check(
+      !renderToString(
+        <ListCover
+          list={{
+            ...finished,
+            items: [...finished.items.slice(1), { ...list.items[0], status: 'want' as const }],
+          }}
+        />,
+      ).includes('Finished'),
+      'a list with a place left has no seal',
+    );
+  }
+}
 
 // Region groups hold every item once; status filters keep exactly that status.
 for (const list of data.lists) {

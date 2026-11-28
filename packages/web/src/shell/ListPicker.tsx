@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from 'lucide-react';
 
+import { CompletionSeal } from '../components/app.tsx';
 import { Button } from '../components/ui/button.tsx';
 import { Progress } from '../components/ui/progress.tsx';
 import {
@@ -15,7 +16,7 @@ import {
 import type { Data, List } from '../data.ts';
 import { distanceText, percent, THEME_LABELS } from '../format.ts';
 import { cn } from '../lib/utils.ts';
-import { progressOf } from '../lists.ts';
+import { finishedOf, progressOf } from '../lists.ts';
 import { Name, nameIn, useLang } from '../names.tsx';
 import { chooseList, useStore } from '../store.ts';
 import { t } from '../i18n.ts';
@@ -103,7 +104,11 @@ export const ListPicker = ({ data }: { data: Data }) => {
                       </span>
                       <span className="grid flex-none grid-cols-[auto_auto] items-center gap-x-2 gap-y-1 text-right text-xs tabular-nums">
                         <span>{completionText(entry)}</span>
-                        <span className="text-muted-foreground">{percent(share, 1)}</span>
+                        {finishedOf(entry) ? (
+                          <CompletionSeal small className="justify-self-end" />
+                        ) : (
+                          <span className="text-muted-foreground">{percent(share, 1)}</span>
+                        )}
                         <MiniBar share={share} className="col-span-2 w-full" />
                       </span>
                     </DropdownMenuRadioItem>

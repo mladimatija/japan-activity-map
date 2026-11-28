@@ -82,6 +82,11 @@ were checked together for colour-blind separation in both modes. In CSS as `--st
 (`mapColors(dark)`: labels, halo, hover accent, heat, hillshade) and the chart series also live.
 `pnpm check:web` fails on a colour written anywhere else in the code.
 
+The default base maps (OpenFreeMap's Positron and Dark) are greys, so they are dyed to match the
+page (`mapDye`, `map/dye.ts`): every fill keeps its lightness and takes the page's indigo, a cast
+on land and plainly on water, so map and pane read as one cloth in both modes. A base map of your
+own (`map.styleUrl`) keeps its colours.
+
 | Meaning                              | Colour                                                    | Where                                 |
 | ------------------------------------ | --------------------------------------------------------- | ------------------------------------- |
 | Done                                 | `#3647a3` (dark: `#5a69dc`)                               | `bg-status-done`, pins, progress bars |
@@ -133,7 +138,8 @@ face comes in 500 to 700, so its normal text shows at 500. Numbers that line up 
   between panels on a page `mb-4`.
 - A control is at least 44 px for touch (`touch-target`) and 36 px for a pointer.
 - Motion is short and optional: everything respects `prefers-reduced-motion` (set once in
-  `index.css`).
+  `index.css`). The one animation that is part of the identity is the completion seal pressed onto
+  a finished list's cover (`animate-stamp`, 280 ms); add no other.
 
 ## Components
 
@@ -162,6 +168,7 @@ Reach for these before writing markup. All are in `packages/web/src`.
 | Something loading, nothing there, a note | `Loading`, `Empty`, `Note`                                                                                                                 | `components/app.tsx`                         |
 | A remembered choice                      | `usePref`                                                                                                                                  | `prefs.ts`                                   |
 | The site's mark                          | `SealMark` (the seal with 踏, beside the site's name)                                                                                      | `components/app.tsx`                         |
+| A finished list                          | `CompletionSeal` (踏破 with the day, stamped onto the cover; `small` in the list menu); `finishedOf` says when                             | `components/app.tsx`, `lists.ts`             |
 | Names in, and units                      | `PrefsMenu` in the masthead; on phones `LangSwitch` and `UnitsSwitch` in the layers menu                                                   | `shell/PrefsMenu.tsx`                        |
 
 Patterns:

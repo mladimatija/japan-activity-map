@@ -32,7 +32,7 @@ import {
   TrackLayers,
   visible,
 } from './MapLayers.tsx';
-import { mapColors, STATUSES, statusHex, statusIcon } from './palette.ts';
+import { mapColors, mapDye, STATUSES, statusHex, statusIcon } from './palette.ts';
 import { mapLocale, t } from '../i18n.ts';
 import { isMobile } from '../hooks/use-mobile.ts';
 import {
@@ -150,7 +150,12 @@ export const MapView = ({ data, dark }: { data: Data; dark: boolean }) => {
   // (the mask in the style's own sea colour, foreign labels filtered out), so nothing flashes.
   const styleUrl =
     dark && data.meta.map.darkStyleUrl ? data.meta.map.darkStyleUrl : data.meta.map.styleUrl;
-  const base = useBaseStyle(styleUrl, data.mask);
+  // The default base maps are greys: dyed the page's indigo, so map and pane are one cloth.
+  const base = useBaseStyle(
+    styleUrl,
+    data.mask,
+    mapDye(styleUrl, dark && Boolean(data.meta.map.darkStyleUrl)),
+  );
   // Labels use a font the base map's style serves; MapLibre's default font may not exist there.
   const font = base?.font ?? {};
   // The base map's vector source with its boundary lines, for prefecture borders drawn from the
