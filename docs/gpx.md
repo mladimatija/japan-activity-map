@@ -42,7 +42,7 @@ Fetching straight from Garmin Connect is a separate source (docs/garmin.md).
 | Distance       | the length of the track                                                                  |
 | Climb          | the heights, counting a rise once it passes 5 m; none without heights                    |
 | Elapsed time   | first point to last                                                                      |
-| Moving time    | the time spent moving faster than about 1 km/h, not counting gaps between segments       |
+| Moving time    | the time spent getting somewhere: see "Moving time and GPS jumps" below                  |
 
 The type is read loosely: "Hiking", "hike", "trail_running", "Trail Run", "cycling", "Walk",
 "登山", "ハイキング", "ランニング", "トレイルランニング", "サイクリング" and "ウォーキング" are
@@ -118,6 +118,27 @@ Switching deletes nothing.
 Privacy zones, the publish rules and the audit apply to GPX activities exactly as to the others
 (docs/privacy.md). File names and folders stay in the local store and are never published; the
 name inside the file is published as the activity's name unless `publish.activityNames` is off.
+
+## Moving time and GPS jumps
+
+These apply to every recording read from a file: GPX, FIT, and what `jam sync garmin` downloads.
+
+Moving time is judged over stretches of at least 30 seconds, by how far each stretch got in a
+straight line. Slower than about 0.5 km/h counts as standing still, so a watch wobbling on the spot
+adds nothing, and a steep climb at a few hundred metres an hour still counts. Some apps (YAMAP is
+one) write a point every 20 m instead of every second, which says nothing about a rest between two
+points. So a stretch never counts for longer than walking its length slowly would take (0.9 km/h,
+plus its climb at 360 m an hour).
+
+A point is dropped as a GPS jump when reaching it from the last good point would take more than
+the activity's top speed: 18 km/h for a hike or a walk, 36 km/h for a run, 108 km/h for a ride. The
+dropped points are left out of the distance, the climb and the track on the map. If more than one
+point in twenty would go, the file is probably not the type it was given (a ride read as a hike),
+and it is kept exactly as recorded; set its `<type>` or `defaultType` and import again. Files
+without times keep every point.
+
+A recording that spans two days is still one activity, dated by its first point. Its elapsed time
+runs from the first point to the last, the night included; its moving time doesn't.
 
 ## Limits
 

@@ -113,7 +113,7 @@ export const zonesCommand = async (context: CommandContext): Promise<number> => 
       log.info(`  ${count}: ${reason}`);
     const links = published.filter((activity) => activity.link).length;
     log.info(
-      `Strava links: ${links ? `${links} activities` : 'none'} (publish.stravaLinks is ${config.site.publish.stravaLinks ? 'on' : 'off'}). Names: ${config.site.publish.activityNames ? 'as in Strava or the sheet' : 'generic labels'}. Time of day: ${config.site.publish.timeOfDay ? 'published' : 'dates only'}. Seconds along tracks: ${config.site.publish.paceAlongTracks ? "published, from each stretch's start" : 'off'}.`,
+      `Strava links: ${links ? `${links} activities` : 'none'} (publish.stravaLinks is ${config.site.publish.stravaLinks ? 'on' : 'off'}). Names: ${config.site.publish.activityNames ? 'as recorded, or as the sheet has them' : 'generic labels'}. Time of day: ${config.site.publish.timeOfDay ? 'published' : 'dates only'}. Seconds along tracks: ${config.site.publish.paceAlongTracks ? "published, from each stretch's start" : 'off'}.`,
     );
     if (options.preview === true) {
       // A local file to look at the cuts in any GeoJSON viewer. It stays in data/, never published.

@@ -9,6 +9,8 @@ import {
   gpxActivity,
   gpxActivityId,
   gpxKey,
+  movingSeconds,
+  withoutJumps,
 } from '../src/gpx-import/activity.ts';
 import { gpxActivityType } from '../src/gpx-import/type.ts';
 import { isGpxEntry, readGpxZip } from '../src/gpx-import/zip.ts';
@@ -254,4 +256,50 @@ test('setup upload: the name the page sends becomes a plain .zip or .gpx file na
   for (const refused of ['notes.txt', 'archive.zip.exe', '.zip', '..gpx', '', 'gpx', 'a.gpx/'])
     assert.equal(name(refused), undefined, refused);
   assert.equal(uploadName('%E0%A4%A'), undefined);
+});
+
+// A walk north from 東京駅: one point every `everyS` seconds, `stepM` metres on, `riseM` metres up.
+const walk = (count: number, everyS: number, stepM: number, riseM = 0) =>
+  Array.from({ length: count }, (_, i) => ({
+    lon: 139.7671,
+    lat: 35.6812 + (i * stepM) / 111_320,
+    ele: 10 + i * riseM,
+    time: new Date(Date.UTC(2026, 4, 16, 0, 0, i * everyS)).toISOString(),
+  }));
+const stampsOf = (points: { time: string }[]) => points.map((point) => Date.parse(point.time));
+
+test('moving time counts a slow, steep climb written a point every 20 m', () => {
+  // 20 m in 75 s is 0.27 m/s: below a brisk-walk threshold, and still plainly walking uphill.
+  const climb = walk(41, 75, 20, 10);
+  assert.equal(Math.round(movingSeconds(climb, stampsOf(climb))), 40 * 75);
+});
+
+test('moving time leaves out a rest, and a long rest hidden between two sparse points', () => {
+  const rest = walk(11, 60, 1);
+  assert.equal(movingSeconds(rest, stampsOf(rest)), 0);
+  // 20 m, then nothing for ten minutes: the stretch counts its length at a slow walk, no more.
+  const sparse = walk(2, 100, 20);
+  assert.equal(Math.round(movingSeconds(sparse, stampsOf(sparse))), 80);
+});
+
+test('moving time ignores the wobble of a watch standing still', () => {
+  // A point a second, each a few decimetres from the same spot.
+  const still = Array.from({ length: 300 }, (_, i) => ({
+    lon: 139.7671 + ((i % 3) - 1) * 0.000003,
+    lat: 35.6812 + (((i + 1) % 3) - 1) * 0.000003,
+    time: new Date(Date.UTC(2026, 4, 16, 0, 0, i)).toISOString(),
+  }));
+  assert.equal(movingSeconds(still, stampsOf(still)), 0);
+});
+
+test('GPS jumps are dropped, and a track of another kind is left alone', () => {
+  const track = walk(40, 20, 20);
+  const jumped = track.map((point, i) => (i === 20 ? { ...point, lon: point.lon + 0.004 } : point));
+  const cleaned = withoutJumps(jumped, 5);
+  assert.equal(cleaned.length, 39);
+  assert.ok(cleaned.every((point) => point.lon === 139.7671));
+  assert.equal(withoutJumps(track, 5).length, 40);
+  // A ride read as a hike: every step is "too fast", so nothing is dropped.
+  const ride = walk(40, 2, 20);
+  assert.equal(withoutJumps(ride, 5).length, 40);
 });

@@ -11,8 +11,33 @@ import type { Columns } from '../sheet/sync.ts';
 import { keyedId } from '../store/ids.ts';
 import { gpxActivityType } from './type.ts';
 
-/** Slower than this between two points (about 1 km/h) counts as standing still. */
-const MOVING_MPS = 0.3;
+/**
+ * Moving time is judged over stretches of at least this long, by how far the stretch got as the
+ * crow flies: a watch that writes a point a second wobbles on the spot at a standstill, and that
+ * wobble must not count as walking.
+ */
+const STRETCH_S = 30;
+/** Slower than this over a stretch (about 0.5 km/h) counts as standing still. A steep climb is slow. */
+const MOVING_MPS = 0.15;
+/**
+ * The most time one stretch can count: its length at a slow walk plus its climb at a slow climb.
+ * A recorder that writes a point every 20 m says nothing of a rest between two points; this keeps
+ * a long rest inside one stretch from counting as moving.
+ */
+const SLOWEST_MPS = 0.25;
+const SLOWEST_CLIMB_MPS = 0.1;
+/** Faster than this is not something the activity does: a jump of the GPS. */
+const TOP_MPS: Record<ActivityType, number> = {
+  hike: 5,
+  walk: 5,
+  run: 10,
+  trail_run: 10,
+  ride: 30,
+};
+/** Between two points written in the same second, more than this is a jump. */
+const JUMP_M = 30;
+/** More jumps than this share of the points, and the track is left as it was recorded. */
+const MOST_JUMPS = 0.05;
 /** A rise counts once it passes this, so the wobble of GPS heights adds no climb. */
 const CLIMB_STEP_M = 5;
 
@@ -42,6 +67,61 @@ export const climbM = (elevations: readonly number[]): number => {
     } else if (height < anchor) anchor = height;
   }
   return gain;
+};
+
+/**
+ * The points without the jumps of the GPS: a point is dropped when getting to it from the last
+ * point kept would take more than the activity's top speed. The allowance grows with time, so a
+ * track that really moved on is picked up again a few points later. The first point always stays.
+ * When that would drop more than MOST_JUMPS of the points, the track is not what its type says (a
+ * ride imported as a hike) and it is left as recorded. Needs a time on every point.
+ */
+export const withoutJumps = (segment: readonly GpxPoint[], topMps: number): GpxPoint[] => {
+  const kept: GpxPoint[] = [];
+  for (const point of segment) {
+    const before = kept.at(-1);
+    if (!before) {
+      kept.push(point);
+      continue;
+    }
+    const seconds = (Date.parse(point.time ?? '') - Date.parse(before.time ?? '')) / 1000;
+    const step = distanceM([before.lon, before.lat], [point.lon, point.lat]);
+    // Two points in the same second cannot be told apart by speed: the wobble of a few metres stays.
+    if (seconds > 0 ? step / seconds > topMps : step > JUMP_M) continue;
+    kept.push(point);
+  }
+  // A short track may lose a point or two whatever its length.
+  const most = Math.max(2, segment.length * MOST_JUMPS);
+  return segment.length - kept.length > most ? [...segment] : kept;
+};
+
+/**
+ * Seconds in motion along one segment: see STRETCH_S, MOVING_MPS and SLOWEST_MPS. `stamps` are
+ * the points' times in milliseconds.
+ */
+export const movingSeconds = (segment: readonly GpxPoint[], stamps: readonly number[]): number => {
+  let moving = 0;
+  let from = 0;
+  let path = 0;
+  for (let i = 1; i < segment.length; i++) {
+    const [a, b] = [segment[i - 1], segment[i]];
+    if (!a || !b) continue;
+    path += distanceM([a.lon, a.lat], [b.lon, b.lat]);
+    const seconds = ((stamps[i] ?? 0) - (stamps[from] ?? 0)) / 1000;
+    if (seconds < STRETCH_S && i < segment.length - 1) continue;
+    const start = segment[from];
+    if (start && seconds > 0) {
+      const crow = distanceM([start.lon, start.lat], [b.lon, b.lat]);
+      if (crow / seconds >= MOVING_MPS) {
+        const climb =
+          start.ele !== undefined && b.ele !== undefined ? Math.abs(b.ele - start.ele) : 0;
+        moving += Math.min(seconds, path / SLOWEST_MPS + climb / SLOWEST_CLIMB_MPS);
+      }
+    }
+    from = i;
+    path = 0;
+  }
+  return moving;
 };
 
 /** A date in a file name, such as 2025-04-12, 20250412 or 2025_04_12; undefined without one. */
@@ -89,10 +169,19 @@ export const fitActivity = (bytes: Uint8Array, file: GpxFileRef, options: Option
 
 /** A parsed track file as one activity. */
 export const trackActivity = (
-  { segments, info }: Gpx & { info: GpxInfo },
+  { segments: recorded, info }: Gpx & { info: GpxInfo },
   file: GpxFileRef,
   options: Options,
 ): GpxActivity => {
+  const type = gpxActivityType(info.type) ?? options.defaultType;
+  // Jumps are told by speed, so only a track with a time on every point can lose them.
+  const allTimed = recorded.every((segment) =>
+    segment.every((point) => Number.isFinite(Date.parse(point.time ?? ''))),
+  );
+  const segments = allTimed
+    ? recorded.map((segment) => withoutJumps(segment, TOP_MPS[type]))
+    : recorded;
+  const jumps = recorded.flat().length - segments.flat().length;
   const points: GpxPoint[] = segments.flat();
   const coordinates = points.map(
     (point) => [round6(point.lon), round6(point.lat)] as [number, number],
@@ -111,13 +200,9 @@ export const trackActivity = (
     for (let i = 1; i < segment.length; i++) {
       const [a, b] = [segment[i - 1], segment[i]];
       if (!a || !b) continue;
-      const step = distanceM([a.lon, a.lat], [b.lon, b.lat]);
-      lengthM += step;
-      if (timed) {
-        const seconds = ((stamps[index + i] ?? 0) - (stamps[index + i - 1] ?? 0)) / 1000;
-        if (seconds > 0 && step / seconds >= MOVING_MPS) movingS += seconds;
-      }
+      lengthM += distanceM([a.lon, a.lat], [b.lon, b.lat]);
     }
+    if (timed) movingS += movingSeconds(segment, stamps.slice(index, index + segment.length));
     index += segment.length;
   }
 
@@ -160,7 +245,7 @@ export const trackActivity = (
       start_time: start.toISOString(),
       start_local: local ?? utcToLocal(start, options.timeZone),
       time_zone: options.timeZone,
-      activity_type: gpxActivityType(info.type) ?? options.defaultType,
+      activity_type: type,
       sport_type: info.type ?? null,
       event_tags: '[]',
       name,
@@ -174,7 +259,12 @@ export const trackActivity = (
       start_lon: first ? first[0] : null,
       end_lat: last ? last[1] : null,
       end_lon: last ? last[0] : null,
-      raw: json({ file: file.label, key, type: info.type ?? null }),
+      raw: json({
+        file: file.label,
+        key,
+        type: info.type ?? null,
+        ...(jumps > 0 ? { jumps } : {}),
+      }),
     },
     track: {
       detail: 'full',
