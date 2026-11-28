@@ -1,9 +1,11 @@
 # Design system
 
-Indigo on warm paper. This file is the reference for anyone adding to the site's
-interface: what the colours and sizes are called, what each is for, and which component to reach
-for. The values live in one place, `packages/web/src/index.css`; the token table below repeats
-them, and `pnpm check:web` fails when the two disagree.
+Aizome (藍染, indigo-dyed): indigo cloth on paper. Indigo is the site's material as well as its
+accent, places you finish are dyed in, and a red seal marks a list you have completed. This file is
+the reference for anyone adding to the site's interface: what the colours and sizes are called,
+what each is for, and which component to reach for. The values live in one place,
+`packages/web/src/index.css`; the token table below repeats them, and `pnpm check:web` fails when
+the two disagree.
 
 ## Rules
 
@@ -11,12 +13,16 @@ them, and `pnpm check:web` fails when the two disagree.
    `text-muted-foreground`, `bg-primary`). A hex in a `.tsx` file is a bug, except in
    `map/palette.ts` (data colours for the map, which MapLibre needs as literals).
 2. Indigo is the only accent. It marks what can be acted on or is selected: primary buttons,
-   links, the open page, pressed chips, focus. Nothing else is indigo.
+   links, the open page, pressed chips, focus. Indigo `cloth` is a surface, not an accent (rule
+   4). The seal's red marks only the logo and a finished list: it is never a status, never on
+   the map, and never on a control.
 3. Data colours mean something and are never chrome. Blue is done, orange a run, green a hike,
    and so on (see Data colours). Don't use them for buttons, borders or decoration, and don't
    use indigo for data.
-4. Paper, then white. The page is `background` (warm paper). Things that sit on it (cards,
-   menus, the pane) are `card` / `popover` (white). Hover and quiet fills are `muted`.
+4. Cloth, paper, white. The page is `background` (paper). Things that sit on it (cards, menus,
+   the pane) are `card` / `popover` (white). Hover and quiet fills are `muted`. `cloth` (indigo)
+   is only for the masthead and a list's cover, with its own text, controls and borders
+   (`cloth-foreground`, `cloth-accent`, `cloth-border`) and the title slip (`slip`) on a cover.
 5. Two text colours. `foreground` for what is read, `muted-foreground` for what supports it.
    No opacity on text.
 6. Both modes. Every token has a dark value; a component that uses only tokens works in both.
@@ -33,27 +39,37 @@ them, and `pnpm check:web` fails when the two disagree.
 
 Light and dark values, and the Tailwind names that use them.
 
-| Token                  | Light     | Dark      | Use                                                                             |
-| ---------------------- | --------- | --------- | ------------------------------------------------------------------------------- |
-| `--background`         | `#faf8f3` | `#15171f` | The page. `bg-background`                                                       |
-| `--foreground`         | `#1f2433` | `#eceaf2` | Text that is read. `text-foreground`                                            |
-| `--card`               | `#ffffff` | `#1d202b` | Cards and panels on the page. `bg-card`                                         |
-| `--popover`            | `#ffffff` | `#1d202b` | Menus, popovers, the map key. `bg-popover`                                      |
-| `--primary`            | `#2f3f8f` | `#a3aef0` | The accent: primary buttons, links, pressed chips. `bg-primary`, `text-primary` |
-| `--primary-foreground` | `#ffffff` | `#151a3a` | Text on `primary`. `text-primary-foreground`                                    |
-| `--accent`             | `#e6e8f5` | `#2a3160` | Indigo tint: the open page, a highlighted menu row. `bg-accent`                 |
-| `--accent-foreground`  | `#232f6b` | `#dde1fb` | Text on `accent`. `text-accent-foreground`                                      |
-| `--secondary`          | `#f1eee6` | `#262a37` | Secondary buttons. `bg-secondary`                                               |
-| `--muted`              | `#f1eee6` | `#262a37` | Hover washes, quiet fills, empty bars. `bg-muted`                               |
-| `--muted-foreground`   | `#5f6470` | `#a2a6b5` | Supporting text, labels, axes. `text-muted-foreground`                          |
-| `--border`             | `#e7e2d6` | `#2f3342` | Hairlines and card edges. `border-border` (the default)                         |
-| `--input`              | `#d9d3c5` | `#3a3f51` | Edges of fields and switches. `border-input`                                    |
-| `--ring`               | `#5a68bf` | `#6f7bc8` | Focus ring. `ring-ring`                                                         |
-| `--destructive`        | `#b3261e` | `#f2857d` | Errors and deleting. `text-destructive`                                         |
+| Token                      | Light     | Dark      | Use                                                                             |
+| -------------------------- | --------- | --------- | ------------------------------------------------------------------------------- |
+| `--background`             | `#f1f2f4` | `#0c1130` | The page: paper, or night indigo in dark mode. `bg-background`                  |
+| `--foreground`             | `#181b27` | `#e8eaf4` | Text that is read. `text-foreground`                                            |
+| `--card`                   | `#ffffff` | `#141a40` | Cards and panels on the page. `bg-card`                                         |
+| `--popover`                | `#ffffff` | `#141a40` | Menus, popovers, the map key. `bg-popover`                                      |
+| `--primary`                | `#2f3f8f` | `#a3aef0` | The accent: primary buttons, links, pressed chips. `bg-primary`, `text-primary` |
+| `--primary-foreground`     | `#ffffff` | `#151a3a` | Text on `primary`. `text-primary-foreground`                                    |
+| `--accent`                 | `#e2e6f4` | `#222b68` | Indigo tint: the open page, a highlighted menu row. `bg-accent`                 |
+| `--accent-foreground`      | `#232f6b` | `#dde1fb` | Text on `accent`. `text-accent-foreground`                                      |
+| `--secondary`              | `#e4e7ed` | `#1c2352` | Secondary buttons. `bg-secondary`                                               |
+| `--muted`                  | `#e4e7ed` | `#1c2352` | Hover washes, quiet fills, empty bars. `bg-muted`                               |
+| `--muted-foreground`       | `#545a6c` | `#a3a9c4` | Supporting text, labels, axes. `text-muted-foreground`                          |
+| `--border`                 | `#d8dbe3` | `#232b58` | Hairlines and card edges. `border-border` (the default)                         |
+| `--input`                  | `#c6cbd6` | `#3a4479` | Edges of fields and switches. `border-input`                                    |
+| `--ring`                   | `#5a68bf` | `#6f7bc8` | Focus ring. `ring-ring`                                                         |
+| `--destructive`            | `#b3261e` | `#f2857d` | Errors and deleting. `text-destructive`                                         |
+| `--cloth`                  | `#17224f` | `#1b2766` | Indigo cloth: the masthead and a list's cover, nothing else. `bg-cloth`         |
+| `--cloth-foreground`       | `#f3f1ea` | `#eef0fa` | Text on cloth. `text-cloth-foreground`                                          |
+| `--cloth-muted-foreground` | `#b9c0e0` | `#aab3dc` | Supporting text on cloth. `text-cloth-muted-foreground`                         |
+| `--cloth-accent`           | `#223070` | `#26337a` | A control on cloth: the list picker, the search field. `bg-cloth-accent`        |
+| `--cloth-border`           | `#2b3a78` | `#2a3880` | Dividers on cloth, and the contour lines dyed into it. `border-cloth-border`    |
+| `--slip`                   | `#fbf8ef` | `#ece6d6` | The title slip (題箋) on a cover; light in both modes, like a label. `bg-slip`  |
+| `--slip-foreground`        | `#1d2030` | `#1d2030` | Text on the slip. `text-slip-foreground`                                        |
+| `--seal`                   | `#bd2f28` | `#c13d33` | The seal (朱): the logo and a finished list, nothing else. `bg-seal`            |
+| `--seal-foreground`        | `#fff7f2` | `#fff5f2` | The glyph on a seal. `text-seal-foreground`                                     |
 
-Measured contrast (WCAG): text on the page 14.6:1 light and 15.0:1 dark; supporting text at least
-5.1:1 on page, card and muted fill in both modes; indigo links 8.9:1 and 8.4:1; text on a primary
-button 9.4:1 and 8.0:1.
+Measured contrast (WCAG): text on the page 15.3:1 light and 15.4:1 dark; supporting text at least
+5.5:1 on page, card and muted fill in both modes; indigo links 8.4:1 and 8.7:1; text on a primary
+button 9.4:1 and 8.0:1. On cloth: text 13.5:1 and 12.1:1, supporting text 8.5:1 and 6.7:1 (5.5:1 on
+`cloth-accent`). Text on the slip 15.2:1 and 13.0:1; a seal's glyph 5.5:1 and 4.9:1.
 
 ### Data colours
 

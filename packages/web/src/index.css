@@ -144,6 +144,17 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  /* Aizome's materials: indigo cloth, the title slip on it, and the seal for a finished list. */
+  --color-cloth: var(--cloth);
+  --color-cloth-foreground: var(--cloth-foreground);
+  --color-cloth-muted-foreground: var(--cloth-muted-foreground);
+  --color-cloth-accent: var(--cloth-accent);
+  --color-cloth-border: var(--cloth-border);
+  --color-slip: var(--slip);
+  --color-slip-foreground: var(--slip-foreground);
+  --color-seal: var(--seal);
+  --color-seal-foreground: var(--seal-foreground);
+
   /* Data colours (Okabe–Ito, safe for colour-blind viewers): the same on the map and in the panel. */
   --color-status-done: var(--status-done);
   --color-status-partial: var(--status-partial);
@@ -171,44 +182,61 @@
 
 :root {
   /*
-   * Design tokens: indigo on warm paper. The one place colours are defined; docs/design-system.md
-   * says what each is for, and `pnpm check:web` fails if the two disagree. Components use the
-   * Tailwind names (bg-background, text-muted-foreground, bg-primary…), never a hex of their own.
+   * Design tokens: Aizome (藍染), indigo cloth on paper. The one place colours are defined;
+   * docs/design-system.md says what each is for, and `pnpm check:web` fails if the two disagree.
+   * Components use the Tailwind names (bg-background, text-muted-foreground, bg-primary…), never
+   * a hex of their own.
    */
   --radius: 0.625rem;
 
-  /* Surfaces: the page is warm paper; cards and menus are white on it. */
-  --background: #faf8f3;
-  --foreground: #1f2433;
+  /* Surfaces: the page is paper, cool with a touch of indigo; cards and menus are white on it. */
+  --background: #f1f2f4;
+  --foreground: #181b27;
   --card: #ffffff;
-  --card-foreground: #1f2433;
+  --card-foreground: #181b27;
   --popover: #ffffff;
-  --popover-foreground: #1f2433;
+  --popover-foreground: #181b27;
 
   /* Indigo (藍): the one accent. Buttons, links, focus, what is selected. */
   --primary: #2f3f8f;
   --primary-foreground: #ffffff;
-  --accent: #e6e8f5;
+  --accent: #e2e6f4;
   --accent-foreground: #232f6b;
   /* The focus ring is drawn at half strength in places, so it starts darker than a tint. */
   --ring: #5a68bf;
 
   /* Quiet fills and text: hover washes, secondary buttons, supporting text. */
-  --secondary: #f1eee6;
-  --secondary-foreground: #1f2433;
-  --muted: #f1eee6;
-  /* Darker than neutral-500 on purpose: small supporting text must reach 4.5:1 on paper. */
-  --muted-foreground: #5f6470;
-  --border: #e7e2d6;
-  --input: #d9d3c5;
+  --secondary: #e4e7ed;
+  --secondary-foreground: #181b27;
+  --muted: #e4e7ed;
+  /* Dark enough that small supporting text reaches 4.5:1 on paper, cards and muted fills. */
+  --muted-foreground: #545a6c;
+  --border: #d8dbe3;
+  --input: #c6cbd6;
   --destructive: #b3261e;
 
   /* Neutral steps for charts that only need light-to-dark. */
-  --chart-1: #ddd8cc;
-  --chart-2: #8a8d98;
-  --chart-3: #646874;
-  --chart-4: #474b59;
-  --chart-5: #2c3040;
+  --chart-1: #d5d9e2;
+  --chart-2: #878da0;
+  --chart-3: #626879;
+  --chart-4: #454b5c;
+  --chart-5: #2a2f40;
+
+  /*
+   * Cloth: indigo as a material, for the masthead and a list's cover only. Its border is also
+   * the colour of the contour lines dyed into it; its accent is a control sitting on it.
+   */
+  --cloth: #17224f;
+  --cloth-foreground: #f3f1ea;
+  --cloth-muted-foreground: #b9c0e0;
+  --cloth-accent: #223070;
+  --cloth-border: #2b3a78;
+  /* The title slip (題箋) on a cover: the one warm white, light in both modes like a label. */
+  --slip: #fbf8ef;
+  --slip-foreground: #1d2030;
+  /* The seal (朱): the logo and a finished list. Never a status, never on the map. */
+  --seal: #bd2f28;
+  --seal-foreground: #fff7f2;
 
   /* Data colours (Okabe–Ito, colour-blind safe). Meaning, not decoration: never used for chrome. */
   --status-done: #3647a3;
@@ -229,33 +257,43 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Indigo on charcoal: the same roles, re-picked for a dark page (not inverted). */
-    --background: #15171f;
-    --foreground: #eceaf2;
-    --card: #1d202b;
-    --card-foreground: #eceaf2;
-    --popover: #1d202b;
-    --popover-foreground: #eceaf2;
+    /* Night indigo: the same roles, re-picked for a dark page (not inverted). */
+    --background: #0c1130;
+    --foreground: #e8eaf4;
+    --card: #141a40;
+    --card-foreground: #e8eaf4;
+    --popover: #141a40;
+    --popover-foreground: #e8eaf4;
     --primary: #a3aef0;
     --primary-foreground: #151a3a;
-    --accent: #2a3160;
+    --accent: #222b68;
     --accent-foreground: #dde1fb;
     --ring: #6f7bc8;
-    --secondary: #262a37;
-    --secondary-foreground: #eceaf2;
-    --muted: #262a37;
-    --muted-foreground: #a2a6b5;
-    --border: #2f3342;
-    --input: #3a3f51;
+    --secondary: #1c2352;
+    --secondary-foreground: #e8eaf4;
+    --muted: #1c2352;
+    --muted-foreground: #a3a9c4;
+    --border: #232b58;
+    --input: #3a4479;
     --destructive: #f2857d;
 
-    /* Done is indigo like the page; a step lighter here to stand on charcoal. */
+    /* Done is indigo like the page; a step lighter here to stand on the night page. */
     --status-done: #5a69dc;
-    --chart-1: #3a3f51;
-    --chart-2: #6c7183;
-    --chart-3: #8e93a5;
-    --chart-4: #b4b8c7;
-    --chart-5: #dcdee8;
+    --chart-1: #2c3563;
+    --chart-2: #5d6590;
+    --chart-3: #7f87ad;
+    --chart-4: #a7aecb;
+    --chart-5: #d6dae8;
+    /* Cloth is brighter and more saturated than the page here, so it still reads as cloth. */
+    --cloth: #1b2766;
+    --cloth-foreground: #eef0fa;
+    --cloth-muted-foreground: #aab3dc;
+    --cloth-accent: #26337a;
+    --cloth-border: #2a3880;
+    --slip: #ece6d6;
+    --slip-foreground: #1d2030;
+    --seal: #c13d33;
+    --seal-foreground: #fff5f2;
     --grade-1: #6aabf1;
     --grade-2: #1757ac;
     --grade-3: #5c5c5c;

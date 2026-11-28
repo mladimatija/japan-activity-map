@@ -299,8 +299,8 @@ splits need times: both come from full GPS samples (see "Height profiles" below)
 with `publish.paceAlongTracks` (docs/privacy.md). Without either, the detail says so.
 
 The colours, type sizes, components and rules for adding to the interface are in
-[docs/design-system.md](design-system.md): indigo on warm paper, with every colour a token in
-`src/index.css`.
+[docs/design-system.md](design-system.md): Aizome, indigo cloth on paper, with every colour a
+token in `src/index.css`.
 
 ### Pages and the pane
 
