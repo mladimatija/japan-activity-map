@@ -4,7 +4,7 @@
  */
 import { ChevronDownIcon } from 'lucide-react';
 import { cva } from 'class-variance-authority';
-import type { ComponentProps, ReactNode } from 'react';
+import { type ComponentProps, type ReactNode, useState } from 'react';
 
 import { filterCount, NO_FILTERS } from '../filters.ts';
 import { STATUS_LABELS } from '../format.ts';
@@ -319,6 +319,36 @@ export const SealMark = ({ className }: { className?: string }) => (
     </text>
   </svg>
 );
+
+/**
+ * A line over a chart (or the stamp grid) that says what the pointer or the keyboard focus is on: any mark inside with
+ * a `data-tip` speaks through it, the way the height profile and the route chart read out. `idle`
+ * is what the line says otherwise.
+ */
+export const Readout = ({ idle, children }: { idle?: ReactNode; children: ReactNode }) => {
+  const [tip, setTip] = useState<string | null>(null);
+  const read = (target: EventTarget) =>
+    setTip((target as Element).closest?.('[data-tip]')?.getAttribute('data-tip') ?? null);
+  return (
+    <div
+      onPointerOver={(event) => read(event.target)}
+      onPointerLeave={() => setTip(null)}
+      onFocus={(event) => read(event.target)}
+      onBlur={() => setTip(null)}
+    >
+      <p
+        className={cn(
+          'mb-1 min-h-5 truncate text-compact tabular-nums',
+          tip ? 'font-semibold' : 'text-muted-foreground',
+        )}
+        aria-hidden
+      >
+        {tip ?? idle}
+      </p>
+      {children}
+    </div>
+  );
+};
 
 /** Small capitals over a title. */
 export const Eyebrow = ({ children }: { children: ReactNode }) => (

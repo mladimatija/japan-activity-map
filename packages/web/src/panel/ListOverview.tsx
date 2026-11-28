@@ -5,10 +5,7 @@ import {
   Chip,
   Count,
   Empty,
-  Eyebrow,
   GROUP_ROW,
-  Headline,
-  NameTitle,
   ROW_MAIN,
   ROW_SUB,
   RowBody,
@@ -41,6 +38,8 @@ import { panSoon, setHover, useHovered } from '../hover.ts';
 import { groupByRegion, progressOf, regionOf, STATUS_ORDER, visibleItems } from '../lists.ts';
 import { STATUS_COLORS } from '../map/palette.ts';
 import { MiniBar } from '../shell/ListPicker.tsx';
+import { ListCover } from './ListCover.tsx';
+import { STAMP_GRID_MAX, StampGrid } from './StampGrid.tsx';
 import { derive, NO_FILTERS } from '../filters.ts';
 import type { Status } from '../map/palette.ts';
 import { usePref } from '../prefs.ts';
@@ -48,19 +47,14 @@ import { select, setFilters, useStore } from '../store.ts';
 import { Name, prefectureName, useLang } from '../names.tsx';
 import { t } from '../i18n.ts';
 
-/** Count, share and a bar split by status: the first thing a list says. */
-const Progress = ({ list }: { list: List }) => {
-  const { done, total, share } = progressOf(list);
+/**
+ * A bar split by status, under the cover: for routes, and for lists too long for the stamp grid.
+ */
+const ProgressBar = ({ list }: { list: List }) => {
+  const { total, share } = progressOf(list);
   const counts = list.counts as Record<string, number>;
   return (
-    <div className="mt-4 mb-3">
-      <Headline
-        value={list.kind === 'route' ? distanceText(done, 1) : done}
-        of={
-          list.kind === 'route' ? t('of {total}', { total: distanceText(total, 0) }) : `/ ${total}`
-        }
-        share={percent(share, 1)}
-      />
+    <div className="mb-3">
       <div
         className="flex h-2.5 overflow-hidden rounded-full bg-muted *:h-full"
         role="img"
@@ -306,16 +300,15 @@ export const ListOverview = ({ data }: { data: Data }) => {
     // Arrow keys move between the rows inside; the section itself takes no focus.
     // oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <section aria-labelledby="list-title" onKeyDown={step} onFocus={landed}>
-      <header>
-        <Eyebrow>
-          {list.kind === 'route'
-            ? t('Route list')
-            : t('{count} places', { count: list.items.length })}
-        </Eyebrow>
-        <NameTitle id="list-title" name={list.title} />
-      </header>
-      <Progress list={list} />
-      <NextUp data={data} list={list} />
+      <ListCover list={list} />
+      <div className="mt-3">
+        <NextUp data={data} list={list} />
+        {list.kind === 'point' && list.items.length <= STAMP_GRID_MAX ? (
+          <StampGrid list={list} />
+        ) : (
+          <ProgressBar list={list} />
+        )}
+      </div>
       <StatusChips data={data} list={list} />
       {list.kind === 'point' && (
         // The Switch inside is the control; the rule cannot see into the component.

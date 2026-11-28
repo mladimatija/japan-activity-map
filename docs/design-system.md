@@ -23,6 +23,8 @@ the two disagree.
    the pane) are `card` / `popover` (white). Hover and quiet fills are `muted`. `cloth` (indigo)
    is only for the masthead and a list's cover, with its own text, controls and borders
    (`cloth-foreground`, `cloth-accent`, `cloth-border`) and the title slip (`slip`) on a cover.
+   A block of cloth takes `surface-cloth`, which points the page's text, fills and focus ring at
+   the cloth's, so components inside keep their usual classes.
 5. Two text colours. `foreground` for what is read, `muted-foreground` for what supports it.
    No opacity on text.
 6. Both modes. Every token has a dark value; a component that uses only tokens works in both.
@@ -147,10 +149,12 @@ Reach for these before writing markup. All are in `packages/web/src`.
 | On or off with a label                   | `SwitchField`                                                                                                                              | `panel/controls.tsx`                         |
 | A page of charts                         | `ChartPage`, with `Panel` for each block                                                                                                   | `pages/charts.tsx`                           |
 | Headline numbers                         | `Figures` (`hero` makes the first the headline)                                                                                            | `pages/charts.tsx`                           |
-| A chart that says what is pointed at     | `Panel readout`, and `data-tip` on each mark                                                                                               | `pages/charts.tsx`                           |
+| A chart that says what is pointed at     | `Panel readout`, and `data-tip` on each mark (`Readout` on its own outside a panel)                                                        | `pages/charts.tsx`, `components/app.tsx`     |
 | A titled part of a detail                | `Section`; `Fold` when it should start closed                                                                                              | `components/app.tsx`                         |
 | Term and value pairs                     | `Facts`                                                                                                                                    | `components/app.tsx`                         |
 | A share done                             | `MiniBar` with the fraction beside it                                                                                                      | `shell/ListPicker.tsx`                       |
+| The top of a list                        | `ListCover`: cloth with the list's own contour lines (`contours.ts`), the title slip and the headline                                      | `panel/ListCover.tsx`                        |
+| Every place of a list at a glance        | `StampGrid`: point lists up to 120 places, in list order, in the pins' shapes; longer lists and routes keep the bar                        | `panel/StampGrid.tsx`                        |
 | A status                                 | `StatusIcon`, `StatusBadge`                                                                                                                | `panel/StatusIcon.tsx`, `components/app.tsx` |
 | A place or list name in both languages   | `Name`, `nameIn`                                                                                                                           | `names.tsx`                                  |
 | Something loading, nothing there, a note | `Loading`, `Empty`, `Note`                                                                                                                 | `components/app.tsx`                         |

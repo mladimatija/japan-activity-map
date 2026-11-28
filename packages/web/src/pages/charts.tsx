@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react';
+import type { ReactNode } from 'react';
 
 import {
   Card,
@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from '../components/ui/card.tsx';
 import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group.tsx';
+import { Readout } from '../components/app.tsx';
 import { cn } from '../lib/utils.ts';
 import { touchOnly } from '../hooks/use-mobile.ts';
 import { t } from '../i18n.ts';
@@ -220,33 +221,3 @@ export const Figures = ({ items, hero = false }: { items: [string, string][]; he
     ))}
   </dl>
 );
-
-/**
- * A line over a chart that says what the pointer or the keyboard focus is on: any mark inside with
- * a `data-tip` speaks through it, the way the height profile and the route chart read out. `idle`
- * is what the line says otherwise.
- */
-export const Readout = ({ idle, children }: { idle?: ReactNode; children: ReactNode }) => {
-  const [tip, setTip] = useState<string | null>(null);
-  const read = (target: EventTarget) =>
-    setTip((target as Element).closest?.('[data-tip]')?.getAttribute('data-tip') ?? null);
-  return (
-    <div
-      onPointerOver={(event) => read(event.target)}
-      onPointerLeave={() => setTip(null)}
-      onFocus={(event) => read(event.target)}
-      onBlur={() => setTip(null)}
-    >
-      <p
-        className={cn(
-          'mb-1 min-h-5 truncate text-compact tabular-nums',
-          tip ? 'font-semibold' : 'text-muted-foreground',
-        )}
-        aria-hidden
-      >
-        {tip ?? idle}
-      </p>
-      {children}
-    </div>
-  );
-};

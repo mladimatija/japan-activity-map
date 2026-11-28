@@ -527,6 +527,8 @@ export const JA: Record<string, string> = {
   Insights: '分析',
   'Point at the chart to read a value.': 'グラフを指すと値を表示します。',
   'Tap the chart to read a value.': 'グラフをタップすると値を表示します。',
+  'In list order. Point at one to read it.': 'リストの順番。指すと名前を表示します。',
+  'In list order. Tap one to open it.': 'リストの順番。タップすると開きます。',
   '50+ years': '50年以上',
   Milestones: 'マイルストーン',
   'The next round number for each, and when a list is finished at the pace of the last 12 months.':

@@ -356,3 +356,20 @@
     height: 44px;
   }
 }
+
+/*
+ * A surface of indigo cloth (a list's cover): the page's text, fills, borders and focus ring point
+ * at the cloth's, so the components inside (Eyebrow, NameTitle, Headline) work unchanged. Kept at
+ * the end, after the dark block: `pnpm check:web` reads each token's first value in each mode.
+ */
+@utility surface-cloth {
+  background-color: var(--cloth);
+  color: var(--cloth-foreground);
+  --foreground: var(--cloth-foreground);
+  --muted-foreground: var(--cloth-muted-foreground);
+  --muted: var(--cloth-accent);
+  --border: var(--cloth-border);
+  --primary: var(--cloth-foreground);
+  --primary-foreground: var(--cloth);
+  --ring: var(--cloth-foreground);
+}
