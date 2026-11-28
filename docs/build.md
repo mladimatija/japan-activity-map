@@ -66,7 +66,10 @@ build.
 
 In `config/site.jsonc` under `output`:
 
-- `simplifyM` (5): tracks and route lines are simplified so no point moves more than this.
+- `simplifyM` (5): tracks and route lines are simplified so no point moves more than this. A
+  track with heights also keeps the points its profile needs: simplifying looks at a line from
+  above, so on a straight ridge it would drop the summit. The published profile is never more
+  than 5 m off the recorded one.
 - `decimals` (5): coordinates keep 5 decimals, about 1 m.
 - `startBudgetKB` (1024): the gzip-compressed size of the files loaded at start may not exceed this;
   a build over budget fails.
