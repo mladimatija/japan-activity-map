@@ -112,8 +112,9 @@ and is left off the map.
 - Limits. Garmin doesn't publish its limits, and it throttles. There is never more than one
   request under way, and each waits `activities.garmin.api.pauseMs` (2 seconds unless you set it)
   after the one before. Every time Garmin fails to answer, the wait doubles, up to 30 seconds; it
-  comes back down as the answers return. If Garmin says outright to slow down, the run keeps what
-  it fetched, says so, and the next run carries on. A first pull of 1,500 recordings takes about
+  comes back down as the answers return. When Garmin says when to come back (a `Retry-After`),
+  that is waited out, up to two minutes; past that, or when Garmin says outright to slow down,
+  the run keeps what it fetched, says so, and the next run carries on. A first pull of 1,500 recordings takes about
   an hour at this pace.
 - Timeouts. Garmin's servers sometimes answer "gateway timeout" (HTTP 504), mostly on a long
   first pull. Each request is tried four times. A recording that still gets no answer is left for

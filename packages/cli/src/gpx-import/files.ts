@@ -57,13 +57,19 @@ const readCapped = (path: string, limits: ZipLimits): Uint8Array => {
   return readFileSync(path);
 };
 
-const fromArchive = (path: string, label: string, limits: ZipLimits, into: Collected): void => {
+const fromArchive = (
+  path: string,
+  label: string,
+  limits: ZipLimits,
+  into: Collected,
+  also?: RegExp,
+): void => {
   const size = statSync(path).size;
   if (size > MAX_ARCHIVE_BYTES)
     throw new JamError(
       `${label}: the archive is ${Math.ceil(size / 1024 / 1024)} MB, over the 1024 MB that is read. Unpack it and import the folder, or split it.`,
     );
-  const zip = readGpxZip(readFileSync(path), label, limits);
+  const zip = readGpxZip(readFileSync(path), label, limits, also);
   into.archives++;
   into.ignored += zip.ignored;
   for (const entry of zip.entries.toSorted(byName))
@@ -74,17 +80,23 @@ const fromArchive = (path: string, label: string, limits: ZipLimits, into: Colle
     });
 };
 
-const fromFolder = (dir: string, prefix: string, limits: ZipLimits, into: Collected): void => {
+const fromFolder = (
+  dir: string,
+  prefix: string,
+  limits: ZipLimits,
+  into: Collected,
+  also?: RegExp,
+): void => {
   const entries = readdirSync(dir, { withFileTypes: true }).toSorted(byName);
   for (const entry of entries) {
     const path = join(dir, entry.name);
     const label = `${prefix}${entry.name}`;
     if (hidden(entry.name)) into.ignored++;
-    else if (entry.isDirectory()) fromFolder(path, `${label}/`, limits, into);
+    else if (entry.isDirectory()) fromFolder(path, `${label}/`, limits, into, also);
     // Links are not followed: an import reads what is in the folder, nothing it points at.
     else if (!entry.isFile()) into.ignored++;
-    else if (/\.zip$/i.test(entry.name)) fromArchive(path, label, limits, into);
-    else if (/\.(gpx|fit)$/i.test(entry.name))
+    else if (/\.zip$/i.test(entry.name)) fromArchive(path, label, limits, into, also);
+    else if (/\.(gpx|fit)$/i.test(entry.name) || also?.test(entry.name))
       into.sources.push({ label, name: stem(entry.name), read: () => readCapped(path, limits) });
     else into.ignored++;
   }
@@ -94,12 +106,17 @@ const fromFolder = (dir: string, prefix: string, limits: ZipLimits, into: Collec
  * Every GPX file under `path`: a folder (subfolders and .zip archives included), one .zip, or one
  * .gpx. Throws a JamError when the path is none of those or an archive is one that is not read.
  */
-export const collectGpx = (path: string, limits: ZipLimits = DEFAULT_ZIP_LIMITS): Collected => {
+export const collectGpx = (
+  path: string,
+  limits: ZipLimits = DEFAULT_ZIP_LIMITS,
+  /** Other file names to collect beside .gpx and .fit. */
+  also?: RegExp,
+): Collected => {
   const into: Collected = { sources: [], archives: 0, ignored: 0 };
   if (!existsSync(path)) throw new JamError(`Nothing at ${shownPath(path)}.`);
   const stat = statSync(path);
-  if (stat.isDirectory()) fromFolder(path, '', limits, into);
-  else if (/\.zip$/i.test(path)) fromArchive(path, basename(path), limits, into);
+  if (stat.isDirectory()) fromFolder(path, '', limits, into, also);
+  else if (/\.zip$/i.test(path)) fromArchive(path, basename(path), limits, into, also);
   else if (/\.(gpx|fit)$/i.test(path))
     into.sources.push({
       label: basename(path),

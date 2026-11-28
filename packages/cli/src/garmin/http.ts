@@ -53,6 +53,19 @@ export const PAGE_SIZE = 99;
 const WAITS_MS = [5000, 15_000, 30_000];
 /** The wait between two requests never grows past this. */
 const LONGEST_GAP_MS = 30_000;
+/** A Retry-After longer than this is not waited for in one go; the run stops and says so. */
+const LONGEST_RETRY_AFTER_MS = 120_000;
+
+/**
+ * What a Retry-After header asks for, in milliseconds: a number of seconds, or an HTTP date.
+ * Undefined when there is none or it cannot be read.
+ */
+export const retryAfterMs = (headers: Headers, now = Date.now()): number | undefined => {
+  const value = headers.get('Retry-After');
+  if (!value) return undefined;
+  const seconds = /^\s*\d+\s*$/.test(value) ? Number(value) : (Date.parse(value) - now) / 1000;
+  return Number.isFinite(seconds) ? Math.max(0, seconds) * 1000 : undefined;
+};
 
 /** For the checks: JAM_SLEEP_SCALE=0 skips real waiting. */
 const scale = Number(process.env.JAM_SLEEP_SCALE ?? '1');
@@ -133,8 +146,10 @@ export class GarminApi {
 
   async #fetch(path: string, init: RequestInit): Promise<Response> {
     let lastError = '';
+    let waited = false;
     for (let attempt = 0; attempt <= WAITS_MS.length; attempt++) {
-      if (attempt > 0) await pause(WAITS_MS[attempt - 1] ?? 0);
+      if (attempt > 0 && !waited) await pause(WAITS_MS[attempt - 1] ?? 0);
+      waited = false;
       let response: Response;
       try {
         response = await this.#send(`${this.#base}${path}`, init);
@@ -142,6 +157,24 @@ export class GarminApi {
         lastError = errorText(error);
         this.#log.debug(`Garmin: ${path} failed (${lastError}), attempt ${attempt + 1}`);
         continue;
+      }
+      // Garmin saying when to come back (with a 429 or a 503) is followed to the second, within
+      // reason; past that the run stops and the next one carries on.
+      const asked = retryAfterMs(response.headers);
+      if ((response.status === 429 || response.status === 503) && asked !== undefined) {
+        if (asked > LONGEST_RETRY_AFTER_MS)
+          throw new GarminLimitError(
+            `Garmin Connect asks for a pause of ${Math.ceil(asked / 60_000)} minutes. What was fetched is kept; run the command again then and it carries on.`,
+          );
+        if (attempt < WAITS_MS.length) {
+          this.#log.debug(
+            `Garmin: ${path} asked to wait ${Math.ceil(asked / 1000)} s (HTTP ${response.status})`,
+          );
+          await pause(asked);
+          waited = true;
+          lastError = `HTTP ${response.status}`;
+          continue;
+        }
       }
       if (response.status >= 500) {
         lastError = `HTTP ${response.status}`;

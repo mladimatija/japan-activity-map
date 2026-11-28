@@ -50,11 +50,12 @@ const UTF8_NAME = 0x0800;
 const mb = (bytes: number) => `${Math.ceil(bytes / MB)} MB`;
 
 /** Whether an entry's path is one to import: a .gpx or .fit file, not hidden, not macOS's resource copies. */
-export const isGpxEntry = (name: string): boolean => {
+export const isGpxEntry = (name: string, also?: RegExp): boolean => {
   const parts = name.split('/').filter(Boolean);
   if (name.endsWith('/') || parts.length === 0) return false;
   if (parts.some((part) => part === '__MACOSX' || part.startsWith('.'))) return false;
-  return /\.(gpx|fit)$/i.test(parts.at(-1) ?? '');
+  const file = parts.at(-1) ?? '';
+  return /\.(gpx|fit)$/i.test(file) || (also?.test(file) ?? false);
 };
 
 const decodeName = (raw: Uint8Array, utf8Flag: boolean): string => {
@@ -79,6 +80,8 @@ export const readGpxZip = (
   bytes: Uint8Array,
   label: string,
   limits: ZipLimits = DEFAULT_ZIP_LIMITS,
+  /** Other file names to read beside .gpx and .fit, such as a list that comes with them. */
+  also?: RegExp,
 ): GpxZip => {
   const refuse = (why: string): never => {
     throw new JamError(`${label}: ${why}`);
@@ -135,7 +138,7 @@ export const readGpxZip = (
       (flags & UTF8_NAME) !== 0,
     ).replaceAll('\\', '/');
     offset += 46 + nameLength + extraLength + commentLength;
-    if (!isGpxEntry(name)) {
+    if (!isGpxEntry(name, also)) {
       ignored++;
       continue;
     }

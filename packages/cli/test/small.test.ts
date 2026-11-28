@@ -77,3 +77,16 @@ test('process: a program that is not there is a result, not an exception', async
   assert.equal(result.code, 1);
   assert.ok(result.missing);
 });
+
+test('exported Strava files: the id in a name, and the ids a list gives', async () => {
+  const { idInName, idsByFile } = await import('../src/strava/tracks-from.ts');
+  assert.equal(idInName('strava_17421562394.gpx'), 17421562394);
+  assert.equal(idInName('17421562394_Morning Run.gpx'), 17421562394);
+  assert.equal(idInName('17421562394.fit'), 17421562394);
+  assert.equal(idInName('2026-05-09_Morning Run.gpx'), undefined);
+  assert.equal(idInName('Morning Run.gpx'), undefined);
+  const list = idsByFile(
+    'Activity ID,Activity Date,Activity Name,Filename\n123456789,"Jan 2, 2024","Run, easy",activities/7000001.fit.gz\n987654321,x,y,\nnot-an-id,x,y,activities/1.gpx\n',
+  );
+  assert.deepEqual([...list], [['7000001.fit.gz', 123456789]]);
+});

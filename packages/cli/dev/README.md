@@ -28,7 +28,11 @@ and run with `--config <that folder>` and these environment variables:
 
 Send JSON to `POST /__control` to make the server fail or change; the options are listed at the
 top of `fake-strava.ts`. The checks end with a pull of one range of days: what it reports, what
-`--full` removes, and that the next plain pull is still an incremental one.
+`--full` removes, and that the next plain pull is still an incremental one. Then full tracks from
+exported files (`--tracks-from`): matched by the id in the name, by `activities.csv` and by start
+time, a file for an unknown id reported, full tracks left alone without `--replace`, a gzipped
+file from an account export matched through its list, and files refused for starting on another
+day than their activity or for having their ends cut off.
 
 ## Shared check harness
 
@@ -68,7 +72,8 @@ after, a new and a renamed activity, Only Me activities, being told to slow down
 through, an expired token, `garmin wipe` with the same public ids afterwards, a full pull that
 removes what is gone, and a build from Garmin. It also covers a pull of some days (`--from`,
 `--to`), Garmin counting days by either clock, gateway timeouts on files and on list pages, a
-token sent as plain text, a recording sent unzipped and a file Garmin refuses. Run it with `pnpm check:garmin`. To try it by hand:
+token sent as plain text, a recording sent unzipped, a file Garmin refuses, and a `Retry-After`
+that is waited out or, when it is an hour, ends the run. Run it with `pnpm check:garmin`. To try it by hand:
 
 ```sh
 node packages/cli/dev/fake-garmin.ts --port 8726    # accepts the key "good-key"

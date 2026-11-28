@@ -103,6 +103,26 @@ pnpm jam sync strava             # later pulls start at the day of the last succ
   each; the next sync carries on. `pnpm jam sync strava --streams missing --limit 400` does a bigger
   batch now, Japan first, waiting out Strava's 15-minute limits (about an hour for 400).
   `--streams 123,456` picks activities by Strava id. Full tracks are kept by later pulls.
+- Full tracks from files, without the requests. If you have your activities as files, from a
+  bulk export tool such as [strava-bulk-gpx](https://github.com/mladimatija/strava-bulk-gpx) or
+  from Strava's account export, `pnpm jam sync strava --tracks-from <folder, .zip or file>` reads
+  them (GPX and FIT, gzipped or not) and attaches each as the full track of the Strava activity it
+  belongs to. For a long history this is minutes instead of hours, and no API requests.
+  - Matching. A file is matched by an `activities.csv` beside it that pairs files with activity
+    ids (both strava-bulk-gpx and the account export write one), then by the Strava id in its name
+    (`strava_123.gpx`, `123_Morning Run.gpx`), then by starting within five minutes of exactly one
+    stored activity. A file matched by id that starts on another day than its activity is refused:
+    the account export names files by upload, and that number isn't the activity's.
+  - What is taken. Only the track. The activity's name, type and figures stay Strava's. Activities
+    that already have a full track are left alone unless you add `--replace`. GPS jumps are left
+    out as in any file (docs/gpx.md).
+  - What is skipped, and said. Files for activities the store doesn't hold, files that can't be
+    read, and files an export tool has cut the start and end off (`_trimmed`): the site does its
+    own hiding at build time and needs the whole track for matching. TCX files aren't read.
+  - The account export is often over 1 GB, which a zip isn't read past: unpack it and give the
+    folder.
+  - Afterwards, `pnpm jam update --no-sync` matches, groups and builds with the new tracks.
+    `--dry-run` shows what would be attached.
 
 ## Private activities
 

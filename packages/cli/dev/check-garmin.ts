@@ -452,6 +452,23 @@ try {
     down.code === 0 && /stopped answering/.test(down.text) && rows().length > 0 && tracked() === 0,
     down.text,
   );
+  // Garmin saying when to come back: a short Retry-After is waited out and the file fetched; a
+  // long one ends the run with the time, keeping what it has.
+  jamWith(withKey, 'garmin', 'wipe', '--yes');
+  await control({ retryAfter: 1 });
+  const polite = sync('--files', '1');
+  check(
+    'a short Retry-After is waited out and the file is still fetched',
+    polite.code === 0 && /1 fetched \(1 with a track/.test(polite.text),
+    polite.text,
+  );
+  await control({ retryAfter: 3600 });
+  const longWait = sync('--files', '1');
+  check(
+    'a Retry-After of an hour ends the run, saying how long Garmin asks for',
+    longWait.code === 0 && /asks for a pause of 60 minutes/.test(longWait.text),
+    longWait.text,
+  );
   const badDay = sync('--from', '2025-02-31');
   check(
     'a day that is not in the calendar is refused',

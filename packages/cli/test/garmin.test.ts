@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { siteOptionsSchema } from '@jam/core';
 
 import { garminActivityId, isSummary, summaryColumns } from '../src/garmin/sync.ts';
+import { retryAfterMs } from '../src/garmin/http.ts';
 import { garminActivityType } from '../src/garmin/types.ts';
 
 const settings = siteOptionsSchema.parse({}).activities.garmin;
@@ -70,4 +71,19 @@ test('an id is the same on every pull, and only numbered summaries count', () =>
   assert.ok(isSummary({ activityId: 1 }));
   assert.ok(!isSummary({ activityId: 'x' }));
   assert.ok(!isSummary(null));
+});
+
+test('Retry-After is read as seconds or as a date, and ignored when it is neither', () => {
+  const now = Date.parse('2026-11-28T10:00:00Z');
+  assert.equal(retryAfterMs(new Headers({ 'Retry-After': '30' }), now), 30_000);
+  assert.equal(
+    retryAfterMs(new Headers({ 'Retry-After': 'Sat, 28 Nov 2026 10:01:00 GMT' }), now),
+    60_000,
+  );
+  assert.equal(
+    retryAfterMs(new Headers({ 'Retry-After': 'Sat, 28 Nov 2026 09:00:00 GMT' }), now),
+    0,
+  );
+  assert.equal(retryAfterMs(new Headers({ 'Retry-After': 'soon' }), now), undefined);
+  assert.equal(retryAfterMs(new Headers(), now), undefined);
 });

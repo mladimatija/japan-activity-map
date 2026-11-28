@@ -21,6 +21,7 @@ import {
 } from '../strava/sync.ts';
 import { openStore } from '../store/store.ts';
 import { configFor } from './config.ts';
+import { attachTracks } from '../strava/tracks-from.ts';
 import { pullRange } from './range.ts';
 import type { CommandContext } from './types.ts';
 import { errorText, JamError } from '../errors.ts';
@@ -144,6 +145,44 @@ export const syncStrava = async (context: CommandContext): Promise<number> => {
     throw new JamError(
       '--full goes with --from, --to or --last: it removes what Strava no longer has in that range.',
     );
+
+  // Full tracks from files on disk: no sign-in, no requests.
+  if (typeof options['tracks-from'] === 'string') {
+    const store = await openStore(log);
+    try {
+      const report = attachTracks(
+        store,
+        options['tracks-from'],
+        {
+          dryRun: flags.dryRun,
+          replace: options.replace === true,
+          timeZone: loaded.sheet.timeZone,
+        },
+        log,
+      );
+      const how = [
+        report.by.name ? `${report.by.name} by the id in the file name` : '',
+        report.by.list ? `${report.by.list} by activities.csv` : '',
+        report.by.time ? `${report.by.time} by start time` : '',
+      ]
+        .filter(Boolean)
+        .join(', ');
+      log.info(
+        `${report.files} files. ${flags.dryRun ? 'Would attach' : 'Attached'} full tracks to ${report.attached} Strava activities${how ? ` (${how})` : ''}.`,
+      );
+      if (report.keptFull > 0)
+        log.info(
+          `  ${report.keptFull} already had a full track and were left alone (--replace takes the file's instead).`,
+        );
+      if (report.attached > 0 && !flags.dryRun)
+        log.info('Run `pnpm jam update --no-sync` (or `match`, `routes` and `build`) to use them.');
+      for (const item of report.unmatched) log.warn(`  ${item.label}: ${item.why}`);
+      for (const item of report.unreadable) log.warn(`  ${item.label}: skipped, ${item.why}`);
+      return 0;
+    } finally {
+      store.close();
+    }
+  }
 
   if (typeof options['if-stale'] === 'string') {
     const days = parseAge(options['if-stale']);

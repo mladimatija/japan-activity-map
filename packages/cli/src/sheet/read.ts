@@ -10,7 +10,7 @@ export interface RawSheet {
 }
 
 /** RFC 4180 CSV: quoted fields, doubled quotes, line breaks inside quotes, CRLF or LF, a BOM. */
-const parseCsv = (text: string): string[][] => {
+export const parseCsv = (text: string): string[][] => {
   const input = text.replace(/^﻿/, '');
   const records: string[][] = [];
   let record: string[] = [];

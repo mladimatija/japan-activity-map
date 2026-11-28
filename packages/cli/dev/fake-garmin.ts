@@ -147,6 +147,8 @@ const body = (request: IncomingMessage): Promise<string> =>
 let plain = false;
 /** Answer 504 to this many file requests, as Garmin's gateway does under load. */
 let timeOutFiles = 0;
+/** Answer the next file request with 429 and this Retry-After, in seconds; 0 for none. */
+let retryAfter = 0;
 /** Answer 504 to a list page larger than this. */
 let largestPage = Number.POSITIVE_INFINITY;
 let gmtDays = false;
@@ -180,6 +182,7 @@ createServer((request, response) => {
       if (change.expireTokens === true) tokens.clear();
       if (typeof change.plain === 'boolean') plain = change.plain;
       if (typeof change.timeOutFiles === 'number') timeOutFiles = change.timeOutFiles;
+      if (typeof change.retryAfter === 'number') retryAfter = change.retryAfter;
       if (typeof change.largestPage === 'number') largestPage = change.largestPage;
       if (typeof change.gmtDays === 'boolean') gmtDays = change.gmtDays;
       if (typeof change.addAt === 'string')
@@ -243,6 +246,17 @@ createServer((request, response) => {
       if (timeOutFiles > 0) {
         timeOutFiles--;
         return send(response, 504, { error: 'gateway timeout' });
+      }
+      if (retryAfter > 0) {
+        const seconds = retryAfter;
+        retryAfter = 0;
+        response.writeHead(429, {
+          'Content-Type': 'application/json',
+          'Retry-After': String(seconds),
+          Connection: 'close',
+        });
+        response.end('{"error":"too many requests"}');
+        return;
       }
       if (refused.has(Number(file[1]))) return send(response, 403, { error: 'forbidden' });
       const activity = activities.find((entry) => entry.id === Number(file[1]));

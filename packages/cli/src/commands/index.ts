@@ -60,6 +60,16 @@ export const COMMANDS: readonly Command[] = [
         type: 'boolean',
         description: 'With --from, --to or --last: remove what Strava no longer has in that range',
       },
+      'tracks-from': {
+        type: 'string',
+        value: 'path',
+        description:
+          'Attach full tracks from exported files (a folder, a .zip or one file) instead of fetching them',
+      },
+      replace: {
+        type: 'boolean',
+        description: "With --tracks-from: take the file's track even where a full one is stored",
+      },
     },
     run: syncStrava,
   },

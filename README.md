@@ -155,7 +155,7 @@ Everything below is for working on the code.
 | `pnpm jam lists validate` | Check the built lists                                                                |
 | `pnpm jam sync sheet`     | Import the manual activity sheet (`templates/README.md`)                             |
 | `pnpm jam strava auth`    | Sign in to Strava ([setup](docs/strava-setup.md))                                    |
-| `pnpm jam sync strava`    | Fetch Strava activities since the last pull; `--from`/`--to` for some days only      |
+| `pnpm jam sync strava`    | Fetch Strava activities since the last pull; `--tracks-from` reads exported files    |
 | `pnpm jam strava wipe`    | Delete Strava activities from the store, keeping sheet data (`--yes`)                |
 | `pnpm jam sync garmin`    | Fetch Garmin Connect activities with your own key; `--from`/`--to` work here too     |
 | `pnpm jam garmin check`   | Check that the Garmin key works                                                      |

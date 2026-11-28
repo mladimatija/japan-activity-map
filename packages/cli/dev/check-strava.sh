@@ -85,4 +85,45 @@ check "the next plain pull carries on from the last plain one" "$(grep -c '^Incr
 jam sync strava --last 2x > "$TMP/last.log" 2>&1; check "--last refuses an age it cannot read" "$? $(grep -c 'such as 30d' "$TMP/last.log")" "1 1"
 jam sync strava --full > "$TMP/full.log" 2>&1; check "--full alone is refused" "$?" 1
 
+# Full tracks from exported files: matched by the id in the name, by activities.csv, or by start.
+gpxfor() { # id, file: a GPX whose points start when the activity did
+  node -e '
+    const [id, file] = process.argv.slice(1);
+    const { DatabaseSync } = require("node:sqlite");
+    const row = new DatabaseSync(process.env.JAM_DATA_DIR + "/jam.sqlite").prepare("SELECT start_time FROM activities WHERE strava_id = ?").get(Number(id));
+    const t0 = Date.parse(row.start_time);
+    const pts = Array.from({ length: 12 }, (_, i) => `<trkpt lat="${(35.6812 + i * 0.0002).toFixed(6)}" lon="${(139.7671 + i * 0.0003).toFixed(6)}"><ele>${10 + i}</ele><time>${new Date(t0 + i * 30000).toISOString()}</time></trkpt>`).join("");
+    require("node:fs").writeFileSync(file, `<?xml version="1.0"?><gpx version="1.1" creator="test"><trk><trkseg>${pts}</trkseg></trk></gpx>`);
+  ' "$1" "$2"
+}
+ids=$(sql "SELECT group_concat(strava_id) FROM (SELECT strava_id FROM activities WHERE source = 'strava' AND has_track = 1 ORDER BY start_time LIMIT 3)")
+a=${ids%%,*}; rest=${ids#*,}; b=${rest%%,*}; c=${rest#*,}
+mkdir -p "$TMP/export"
+gpxfor "$a" "$TMP/export/strava_$a.gpx"
+gpxfor "$b" "$TMP/export/Morning Run.gpx"
+gpxfor "$c" "$TMP/export/yamap_export.gpx"
+printf 'Activity ID,Activity URL,File,Date\n%s,https://www.strava.com/activities/%s,Morning Run.gpx,2024-01-02\n' "$b" "$b" > "$TMP/export/activities.csv"
+gpxfor "$a" "$TMP/export/strava_999999999.gpx"
+jam sync strava --tracks-from "$TMP/export" --dry-run --replace > "$TMP/tracks-dry.log" 2>&1
+check "tracks from files, dry run, writes nothing" "$(sql "SELECT COUNT(*) FROM tracks WHERE point_count = 12")" 0
+jam sync strava --tracks-from "$TMP/export" --replace > "$TMP/tracks.log" 2>&1
+check "tracks from files attach by name, by activities.csv and by start time" "$(grep -c 'Attached full tracks to 3 Strava activities (1 by the id in the file name, 1 by activities.csv, 1 by start time)' "$TMP/tracks.log")" 1
+check "  ...the three now have full tracks of 12 points" "$(sql "SELECT COUNT(*) FROM tracks t JOIN activities a ON a.id = t.activity_id WHERE t.detail = 'full' AND t.point_count = 12 AND a.strava_id IN ($a, $b, $c)")" 3
+check "  ...a file for an unknown Strava id is reported, not stored" "$(grep -c 'strava_999999999.gpx: Strava activity 999999999 is not in the store' "$TMP/tracks.log")" 1
+# Strava's own account export: files named by upload and gzipped, with a list saying whose they are.
+d=$(sql "SELECT strava_id FROM activities WHERE source = 'strava' AND has_track = 1 ORDER BY start_time LIMIT 1 OFFSET 5")
+e=$(sql "SELECT strava_id FROM activities WHERE source = 'strava' AND has_track = 1 ORDER BY start_time LIMIT 1 OFFSET 40")
+mkdir -p "$TMP/account/activities"
+gpxfor "$d" "$TMP/account/activities/7000001.gpx"; gzip "$TMP/account/activities/7000001.gpx"
+printf 'Activity ID,Activity Date,Activity Name,Filename\n%s,"Jan 2, 2024",Run,activities/7000001.gpx.gz\n' "$d" > "$TMP/account/activities.csv"
+# A file whose number happens to be another activity's id, recorded on another day.
+gpxfor "$d" "$TMP/account/activities/$e.gpx"
+gpxfor "$a" "$TMP/account/activities/strava_${b}_trimmed.gpx"
+jam sync strava --tracks-from "$TMP/account" --replace > "$TMP/account.log" 2>&1
+check "an account export's gzipped file is matched through its list" "$(grep -c 'Attached full tracks to 1 Strava activities (1 by activities.csv)' "$TMP/account.log")" 1
+check "  ...a number in a name that is another activity's id is refused by its date" "$(grep -c "not when Strava activity $e did" "$TMP/account.log")" 1
+check "  ...and a file with its ends cut off is refused" "$(grep -c 'export it again without hiding them' "$TMP/account.log")" 1
+jam sync strava --tracks-from "$TMP/export" > "$TMP/tracks-again.log" 2>&1
+check "  ...a second run leaves the full tracks alone" "$(grep -c '3 already had a full track' "$TMP/tracks-again.log")" 1
+
 [ $failed = 0 ] && echo "All checks passed." || { echo "Some checks failed; the fake server log was $TMP/fake.log."; exit 1; }
